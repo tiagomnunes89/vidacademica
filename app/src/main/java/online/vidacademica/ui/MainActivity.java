@@ -1,8 +1,10 @@
-package online.vidacademica;
+package online.vidacademica.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import online.vidacademica.R;
 
 public class MainActivity extends AppCompatActivity {
 
