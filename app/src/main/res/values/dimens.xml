@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="paddingEditText">15dp</dimen>
+    <dimen name="textSizeDefault">12sp</dimen>
+    <dimen name="textSizeTiny">10sp</dimen>
+    <dimen name="marginDefault">8dp</dimen>
+
+</resources>
