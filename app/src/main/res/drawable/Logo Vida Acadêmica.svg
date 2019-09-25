@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW 2019 (64 Bit) -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="297mm" height="210mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 29700 21000"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <font id="FontID0" horiz-adv-x="666" font-variant="normal" style="fill-rule:nonzero" font-style="normal" font-weight="400">
+	<font-face 
+		font-family="Geometr415 Blk BT">
+		<font-face-src>
+			<font-face-name name="Geometr415 Blk BT Black"/>
+		</font-face-src>
+	</font-face>
+   <missing-glyph><path d="M0 0z"/></missing-glyph>
+   <glyph unicode="A" horiz-adv-x="666" d="M235 225l186 0 -91.8335 221.667 -94.1667 -221.667zm-265 -225l361.167 730 10.6667 0 353.167 -730 -176.834 0 -44.8334 103 -287.333 0 -45.8341 -103 -170.166 0z"/>
+   <glyph unicode="V" horiz-adv-x="631" d="M321.833 -27.0005l-11.6661 0 -334.167 735.001 178.833 0 167 -387.167 168.5 387.167 165.666 0 -334.167 -735.001z"/>
+  </font>
+  <style type="text/css">
+   <![CDATA[
+    @font-face { font-family:"Geometr415 Blk BT";font-variant:normal;font-style:normal;font-weight:normal;src:url("#FontID0") format(svg)}
+    .fil1 {fill:#FFCC29}
+    .fil0 {fill:#91D8F7}
+    .fil3 {fill:#00AFEF}
+    .fil2 {fill:#1A4382}
+    .fnt0 {font-weight:normal;font-size:7564.67px;font-family:'Geometr415 Blk BT'}
+   ]]>
+  </style>
+ </defs>
+ <g id="Camada_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <circle class="fil0" cx="14924.13" cy="10695.47" r="5919.86"/>
+  <circle class="fil1" cx="14670.13" cy="11203.47" r="5919.86"/>
+  <circle class="fil2" cx="14764.8" cy="10978.8" r="5919.86"/>
+  <text x="11316.33" y="12291.59"  class="fil1 fnt0">V</text>
+  <text x="13178.98" y="14522.93"  class="fil3 fnt0">A</text>
+ </g>
+</svg>
