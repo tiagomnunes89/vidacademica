@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "599622372885",
+    "firebase_url": "https://vidacademica-81e92.firebaseio.com",
+    "project_id": "vidacademica-81e92",
+    "storage_bucket": "vidacademica-81e92.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:599622372885:android:2e98c712ad75bfa7a4481c",
+        "android_client_info": {
+          "package_name": "online.vidacademica"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "599622372885-cclk5a9720mfocn2gocjbsq572oj06oi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB__0BVqD3EvIN73w7N8rtkj7p9n4CFHGI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "599622372885-cclk5a9720mfocn2gocjbsq572oj06oi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
