@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="paddingEditText">15dp</dimen>
-    <dimen name="textSizeDefault">12sp</dimen>
-    <dimen name="textSizeTiny">10sp</dimen>
-    <dimen name="marginDefault">8dp</dimen>
+
+    <!-- Text Dimensions -->
+    <dimen name="font_primary_title">24sp</dimen>
+    <dimen name="font_normal_text">20sp</dimen>
+    <dimen name="font_secondary_title">18sp</dimen>
+    <dimen name="font_tertiary_title">16sp</dimen>
+    <dimen name="font_text">14sp</dimen>
+    <dimen name="font_mentions">12sp</dimen>
+    <dimen name="font_min_text_size">8sp</dimen>
+
+    <!--Sizes-->
+    <dimen name="xxxx_largest_size">80dp</dimen>
+    <dimen name="xxx_largest_size">72dp</dimen>
+    <dimen name="xx_largest_size">64dp</dimen>
+    <dimen name="largest_size">48dp</dimen>
+    <dimen name="x_largest_size">40dp</dimen>
+    <dimen name="large_size">32dp</dimen>
+    <dimen name="default_size">24dp</dimen>
+    <dimen name="short_size">16dp</dimen>
+    <dimen name="semi_short_size">12dp</dimen>
+    <dimen name="little_size">8dp</dimen>
+    <dimen name="tiny_size">4dp</dimen>
+    <dimen name="very_tiny_size">2dp</dimen>
+    <dimen name="no_size">0dp</dimen>
 
 </resources>
