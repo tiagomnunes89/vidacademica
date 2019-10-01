@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +30,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        colorStatusBar(getWindow());
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -40,6 +43,14 @@ public class Login extends AppCompatActivity {
                 signIn();
             }
         });
+    }
+
+    private void colorStatusBar(Window window) {
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        View view = window.getDecorView();
+        view.setSystemUiVisibility(View.GONE);
+        window.setStatusBarColor(getResources().getColor(R.color.colorBackground));
     }
 
     private void signIn() {
@@ -57,7 +68,7 @@ public class Login extends AppCompatActivity {
             if (task.isSuccessful()) {
                 handleSignInResult(task);
             } else {
-                Toast.makeText(this, "Deu ruim", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Login não concluído", Toast.LENGTH_LONG).show();
             }
         }
     }
