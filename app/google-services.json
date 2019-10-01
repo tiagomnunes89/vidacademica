@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "599622372885-1bbh2615aes7bfbkf7eb0lfi1p27h910.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "online.vidacademica",
+            "certificate_hash": "8b055adad0af805beea0e815d0dae05eb6b887c0"
+          }
+        },
+        {
           "client_id": "599622372885-cclk5a9720mfocn2gocjbsq572oj06oi.apps.googleusercontent.com",
           "client_type": 3
         }
