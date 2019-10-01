@@ -33,22 +33,13 @@ public class Login extends AppCompatActivity {
                 .requestEmail()
                 .build();
         mSignInClient = GoogleSignIn.getClient(this, gso);
-
         signInButton = findViewById(R.id.sign_in_button);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (view.getId() == R.id.sign_in_button) {
-                    signIn();
-                }
+                signIn();
             }
         });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        GoogleSignIn.getLastSignedInAccount(this);
     }
 
     private void signIn() {
