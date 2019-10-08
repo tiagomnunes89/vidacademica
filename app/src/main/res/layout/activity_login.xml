@@ -6,16 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".ui.Login">
 
-
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/photo_login" />
 
     <LinearLayout
         android:id="@+id/layout_title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:elevation="@dimen/little_size"
+        android:layout_marginStart="@dimen/default_size"
+        android:layout_marginTop="@dimen/xxxx_largest_size"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/image_icon_app"
@@ -31,10 +41,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="@dimen/default_size"
+            android:layout_marginTop="@dimen/default_size"
             android:fontFamily="sans-serif-light"
             android:text="@string/name_app"
-            android:textColor="@color/colorWhite"
+            android:textColor="@android:color/white"
             android:textSize="@dimen/font_normal_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,24 +52,17 @@
 
     </LinearLayout>
 
-    <ImageView
+    <LinearLayout
+        android:id="@+id/linear_layout_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/login_photo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/short_size"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingStart="@dimen/default_size"
+        android:paddingEnd="@dimen/default_size"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_title">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/constraint_bottoms"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_user"
@@ -71,6 +74,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/white"
                 android:hint="@string/user"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white" />
@@ -95,21 +99,39 @@
                 android:textColorHint="@android:color/white" />
 
         </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/short_size"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_bottoms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/linear_layout_input"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/default_size"
+            android:layout_marginEnd="@dimen/little_size"
+            android:backgroundTint="@android:color/white"
             android:text="Entrar"
-            android:textColor="@android:color/black" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toStartOf="@+id/sign_in_button"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/short_size" />
-    </LinearLayout>
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/default_size"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
