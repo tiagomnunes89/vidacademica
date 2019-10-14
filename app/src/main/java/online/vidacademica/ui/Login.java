@@ -19,6 +19,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
 import online.vidacademica.R;
+import online.vidacademica.RegisterActivity;
 
 public class Login extends AppCompatActivity {
     SignInButton signInButton;
@@ -80,5 +81,9 @@ public class Login extends AppCompatActivity {
         } catch (ApiException e) {
             Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
         }
+    }
+
+    public void openRegisterSccreen(View view) {
+        startActivity(new Intent(this, RegisterActivity.class));
     }
 }
