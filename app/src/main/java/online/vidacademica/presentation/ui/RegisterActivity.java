@@ -1,8 +1,10 @@
-package online.vidacademica;
+package online.vidacademica.presentation.ui;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import online.vidacademica.R;
 
 public class RegisterActivity extends AppCompatActivity {
 

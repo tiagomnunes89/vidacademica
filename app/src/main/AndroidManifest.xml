@@ -13,11 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".presentation.ui.RegisterActivity"></activity>
         <activity
-            android:name=".HomeActivity"
+            android:name=".presentation.ui.HomeActivity"
             android:label="@string/title_activity_home" />
-        <activity android:name=".ui.Login">
+        <activity android:name=".presentation.ui.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

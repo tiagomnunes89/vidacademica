@@ -1,4 +1,4 @@
-package online.vidacademica.ui.home;
+package online.vidacademica.presentation.ui.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

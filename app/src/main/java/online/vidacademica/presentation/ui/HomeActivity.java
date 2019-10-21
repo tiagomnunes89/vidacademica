@@ -1,4 +1,4 @@
-package online.vidacademica;
+package online.vidacademica.presentation.ui;
 
 import android.os.Bundle;
 
@@ -9,6 +9,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import online.vidacademica.R;
 
 public class HomeActivity extends AppCompatActivity {
 

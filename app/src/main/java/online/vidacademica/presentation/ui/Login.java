@@ -1,4 +1,4 @@
-package online.vidacademica.ui;
+package online.vidacademica.presentation.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +19,6 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
 import online.vidacademica.R;
-import online.vidacademica.RegisterActivity;
 
 public class Login extends AppCompatActivity {
     SignInButton signInButton;

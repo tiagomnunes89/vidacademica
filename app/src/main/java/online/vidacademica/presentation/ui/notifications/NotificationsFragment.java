@@ -1,4 +1,4 @@
-package online.vidacademica.ui.notifications;
+package online.vidacademica.presentation.ui.notifications;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
