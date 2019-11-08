@@ -7,4 +7,11 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="nome">Nome</string>
+    <string name="e_mail">E-mail</string>
+    <string name="celular">Celular</string>
+    <string name="data_de_nascimento">Data de Nascimento</string>
+    <string name="senha">Senha</string>
+    <string name="confirma_o_de_senha">Confirmação de senha</string>
+    <string name="enviar_cadastro">Enviar cadastro</string>
 </resources>
