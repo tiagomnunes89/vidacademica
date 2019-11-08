@@ -1,4 +1,4 @@
-package online.vidacademica.ui;
+package online.vidacademica.presentation.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -80,5 +80,9 @@ public class Login extends AppCompatActivity {
         } catch (ApiException e) {
             Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
         }
+    }
+
+    public void openRegisterSccreen(View view) {
+        startActivity(new Intent(this, RegisterActivity.class));
     }
 }
