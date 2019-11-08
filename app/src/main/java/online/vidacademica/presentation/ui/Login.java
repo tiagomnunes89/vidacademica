@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,8 +22,9 @@ import com.google.android.gms.tasks.Task;
 import online.vidacademica.R;
 
 public class Login extends AppCompatActivity {
-    SignInButton signInButton;
-    GoogleSignInClient mSignInClient;
+    private SignInButton signInButton;
+    private GoogleSignInClient mSignInClient;
+    private TextView textViewRegister;
     private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN = 9001;
 
@@ -35,12 +37,19 @@ public class Login extends AppCompatActivity {
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
+        textViewRegister = findViewById(R.id.text_register_now);
         mSignInClient = GoogleSignIn.getClient(this, gso);
         signInButton = findViewById(R.id.sign_in_button);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 signIn();
+            }
+        });
+        textViewRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Login.this,RegisterActivity.class));
             }
         });
     }

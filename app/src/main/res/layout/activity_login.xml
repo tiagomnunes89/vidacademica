@@ -139,6 +139,7 @@
             android:layout_gravity="center" />
 
         <TextView
+            android:id="@+id/text_register_now"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
@@ -146,8 +147,8 @@
             android:layout_gravity="center"
             android:textSize="@dimen/font_tertiary_title"
             android:fontFamily="sans-serif-light"
-            android:text="Criar Cadastro"
-            android:onClick="openRegisterSccreen"/>
+            android:text="@string/criar_cadastro"
+            android:onClick="openRegisterSccreen" />
 
     </LinearLayout>
 

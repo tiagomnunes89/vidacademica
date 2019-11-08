@@ -174,7 +174,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/default_size"
-            android:layout_marginTop="@dimen/little_size"
+            android:layout_marginTop="@dimen/default_size"
             android:layout_marginEnd="@dimen/default_size"
             android:backgroundTint="@android:color/white"
             android:fontFamily="sans-serif-light"
