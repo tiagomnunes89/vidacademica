@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +23,7 @@ import com.google.android.gms.tasks.Task;
 import online.vidacademica.R;
 
 public class Login extends AppCompatActivity {
-    private SignInButton signInButton;
+    private Button signInButton;
     private GoogleSignInClient mSignInClient;
     private TextView textViewRegister;
     private static final String TAG = "SignInActivity";
