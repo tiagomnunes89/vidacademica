@@ -1,4 +1,4 @@
-package online.vidacademica.data.service.api;
+package online.vidacademica.api.vidacademica;
 
 import androidx.annotation.NonNull;
 
@@ -16,9 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    private static final String URL = "https://api.themoviedb.org/3/";
-
-    private static final String KEY_SERVICE_VALIDATION = "d272326e467344029e68e3c4ff0b4059";
+    private static final String URL = ApiConstants.BASE_URL;
 
     private static final HttpLoggingInterceptor logger =
             new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -31,15 +29,15 @@ public class ApiClient {
                         @Override
                         public Response intercept(@NonNull Chain chain) throws IOException {
                             Request request = chain.request();
-                            HttpUrl url = request.url().newBuilder().addQueryParameter("api_key",KEY_SERVICE_VALIDATION).build();
+                            HttpUrl url = request.url().newBuilder().build();
                             request = request.newBuilder().url(url).build();
                             return chain.proceed(request);
                         }
                     })
                     .connectTimeout(60, TimeUnit.SECONDS)
-                    .readTimeout(60,TimeUnit.SECONDS)
-                    .writeTimeout(60,TimeUnit.SECONDS)
-                    .callTimeout(60,TimeUnit.SECONDS);
+                    .readTimeout(60, TimeUnit.SECONDS)
+                    .writeTimeout(60, TimeUnit.SECONDS)
+                    .callTimeout(60, TimeUnit.SECONDS);
 
     private static Retrofit getRetroInstance() {
         return new Retrofit.Builder().baseUrl(URL)
@@ -49,7 +47,7 @@ public class ApiClient {
 
     private static final Retrofit retrofit = getRetroInstance();
 
-    public static <S> S buildService(Class<S> serviceType){
+    public static <S> S buildService(Class<S> serviceType) {
         return retrofit.create(serviceType);
     }
 
