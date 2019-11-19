@@ -8,7 +8,7 @@ import retrofit2.http.POST;
 
 public interface AuthService {
 
-    @POST(ApiConstants.AUTH_PATH)
+    @POST(ApiConstants.AUTH_PATH_LOGIN)
     Call<TokenEntity> auth(@Body TokenEntity tokenEntity);
 
 }

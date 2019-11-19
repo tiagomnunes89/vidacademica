@@ -34,7 +34,7 @@ public class TokenEntity implements Serializable {
         private String token;
         private String role;
 
-        public Builder email(String email) {
+        public Builder email(Email email) {
             this.email = email;
             return this;
         }

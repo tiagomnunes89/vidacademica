@@ -1,4 +1,4 @@
-package online.vidacademica.presentation.ui;
+package online.vidacademica.presentation.ui.login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,9 +20,14 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
-import online.vidacademica.R;
+import org.apache.commons.validator.ValidatorException;
 
-public class Login extends AppCompatActivity {
+import online.vidacademica.R;
+import online.vidacademica.entities.Email;
+import online.vidacademica.presentation.ui.RegisterActivity;
+import online.vidacademica.repositories.TokenRepository;
+
+public class LoginActivity extends AppCompatActivity {
     private SignInButton signInButton;
     private GoogleSignInClient mSignInClient;
     private TextView textViewRegister;
@@ -39,19 +45,46 @@ public class Login extends AppCompatActivity {
                 .build();
         textViewRegister = findViewById(R.id.text_register_now);
         mSignInClient = GoogleSignIn.getClient(this, gso);
-        signInButton = findViewById(R.id.sign_in_button);
-        signInButton.setOnClickListener(new View.OnClickListener() {
+        textViewRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+            }
+        });
+
+        setUpListeners();
+    }
+
+    private void setUpListeners() {
+
+        findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 signIn();
             }
         });
-        textViewRegister.setOnClickListener(new View.OnClickListener() {
+
+        findViewById(R.id.button_sign_in_internal).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Login.this,RegisterActivity.class));
+            public void onClick(View view) {
+                signInInternal();
             }
         });
+    }
+
+    private void signInInternal() {
+        Email user = null;
+        try {
+            user = new Email(((EditText) findViewById(R.id.edit_user)).getText().toString());
+        } catch (ValidatorException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Endereço de e-mail inválido, por favor siga o exemplo: email@example.com ", Toast.LENGTH_LONG).show();
+            return;
+        }
+        String pass = ((EditText) findViewById(R.id.edit_password)).getText().toString();
+
+        TokenRepository tokenRepository = new TokenRepository();
+        tokenRepository.getToken(user, pass);
     }
 
     private void colorStatusBar(Window window) {
@@ -77,7 +110,7 @@ public class Login extends AppCompatActivity {
             if (task.isSuccessful()) {
                 handleSignInResult(task);
             } else {
-                Toast.makeText(this, "Login não concluído", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "LoginActivity não concluído", Toast.LENGTH_LONG).show();
             }
         }
     }

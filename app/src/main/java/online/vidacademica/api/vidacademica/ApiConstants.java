@@ -1,6 +1,8 @@
 package online.vidacademica.api.vidacademica;
 
 public class ApiConstants {
-    public static final String BASE_URL = "https://vidacademica-services.herokuapp.com";
-    public static final String AUTH_PATH = "/auth";
+    static final String BASE_URL = "https://vidacademica-services.herokuapp.com";
+
+    private static final String AUTH_PATH = "/auth";
+    public static final String AUTH_PATH_LOGIN = AUTH_PATH + "/login";
 }

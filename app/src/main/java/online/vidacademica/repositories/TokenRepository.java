@@ -11,6 +11,7 @@ import online.vidacademica.api.vidacademica.ApiClient;
 import online.vidacademica.api.vidacademica.auth.AuthService;
 import online.vidacademica.core.ErrorMessage;
 import online.vidacademica.core.ResponseModel;
+import online.vidacademica.entities.Email;
 import online.vidacademica.entities.TokenEntity;
 import online.vidacademica.utils.JsonUtils;
 import retrofit2.Call;
@@ -27,7 +28,7 @@ public class TokenRepository {
         authService = ApiClient.buildService(AuthService.class);
     }
 
-    public LiveData<ResponseModel<TokenEntity>> getToken(String email, String password) {
+    public LiveData<ResponseModel<TokenEntity>> getToken(Email email, String password) {
         TokenEntity tokenEntity = new TokenEntity.Builder().email(email).password(password).build();
         final MutableLiveData<ResponseModel<TokenEntity>> data = new MutableLiveData<>();
 
