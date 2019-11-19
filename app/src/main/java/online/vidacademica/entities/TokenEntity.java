@@ -6,7 +6,7 @@ import java.util.Objects;
 public class TokenEntity implements Serializable {
     private static final long serialVersionUID = 1357370471500938070L;
 
-    private String email;
+    private Email email;
     private String password;
     private String token;
     private String role;
@@ -14,7 +14,7 @@ public class TokenEntity implements Serializable {
     public TokenEntity() {
     }
 
-    public TokenEntity(String email, String password, String token, String role) {
+    public TokenEntity(Email email, String password, String token, String role) {
         this.email = email;
         this.password = password;
         this.token = token;
@@ -29,7 +29,7 @@ public class TokenEntity implements Serializable {
     }
 
     public static class Builder {
-        private String email;
+        private Email email;
         private String password;
         private String token;
         private String role;
