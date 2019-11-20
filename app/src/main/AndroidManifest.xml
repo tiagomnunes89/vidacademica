@@ -13,14 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".presentation.ui.ProfileActivity"></activity>
         <activity
             android:name=".presentation.ui.RegisterActivity"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize" />
         <activity
             android:name=".presentation.ui.HomeActivity"
-            android:label="@string/title_activity_home"
-            android:configChanges="orientation|screenSize" />
-        <activity android:name=".presentation.ui.Login"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_activity_home" />
+        <activity
+            android:name=".presentation.ui.Login"
             android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
