@@ -1,5 +1,6 @@
 package online.vidacademica.presentation.ui;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +30,7 @@ public class Login extends AppCompatActivity {
     private TextView textViewRegister;
     private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN = 9001;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,8 @@ public class Login extends AppCompatActivity {
                 startActivity(new Intent(Login.this,RegisterActivity.class));
             }
         });
+
+
     }
 
     private void colorStatusBar(Window window) {

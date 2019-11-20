@@ -43,7 +43,6 @@
                     android:textColor="@color/colorWhite"
                     android:textSize="@dimen/font_normal_text" />
 
-
             </LinearLayout>
 
             <LinearLayout
@@ -101,12 +100,13 @@
                     app:errorEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_input_et_birth_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@android:color/white"
-                        android:ems="10"
+                        android:focusable="false"
                         android:hint="@string/birth_date"
-                        android:inputType="date"
+                        android:inputType="none"
                         android:textColor="@android:color/white"
                         android:textColorHint="@android:color/white" />
 

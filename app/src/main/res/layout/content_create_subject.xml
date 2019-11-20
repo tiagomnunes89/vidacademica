@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".presentation.ui.createSubjectActivity"
+    tools:context=".presentation.ui.CreateSubjectActivity"
     tools:showIn="@layout/activity_create_subject">
 
 
@@ -67,7 +67,6 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:layout_marginTop="100dp"
-
             android:gravity="start|top"
             android:hint="Descrição"
             android:inputType="textMultiLine"
@@ -106,13 +105,10 @@
                     android:id="@+id/input_dt_inicio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:clickable="true"
                     android:focusable="false"
-                    android:focusableInTouchMode="false"
                     android:gravity="center"
-                    android:hint="Data de inicio"
                     android:inputType="none"
-                    android:text="Data de inicio"></EditText>
+                    android:text="Selecione a data inicial"></EditText>
 
 
             </com.google.android.material.textfield.TextInputLayout>

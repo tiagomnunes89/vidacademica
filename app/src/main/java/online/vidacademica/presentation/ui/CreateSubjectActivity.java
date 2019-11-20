@@ -1,31 +1,26 @@
 package online.vidacademica.presentation.ui;
 
 import android.app.DatePickerDialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.icu.util.Calendar;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
 import online.vidacademica.R;
+import online.vidacademica.core.Util;
 
-public class createSubjectActivity extends AppCompatActivity {
+public class CreateSubjectActivity extends AppCompatActivity {
 
-    private static final String TAG = "createSubjectActivity";
-
-
+    private static final String TAG = "CreateSubjectActivity";
     private EditText etDateStartSubject;
-    private DatePickerDialog.OnDateSetListener mDateSetListener;
+    private DatePickerDialog.OnDateSetListener onDateSetListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,32 +38,19 @@ public class createSubjectActivity extends AppCompatActivity {
             }
         });
 
-        etDateStartSubject = (EditText) findViewById(R.id.input_dt_inicio);
+        etDateStartSubject = findViewById(R.id.input_dt_inicio);
 
         etDateStartSubject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Calendar cal = Calendar.getInstance();
-
-                int year = cal.get(Calendar.YEAR);
-                int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog dialog = new DatePickerDialog(
-                        createSubjectActivity.this,
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        mDateSetListener,
-                        year, month, day);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
+                Util.callDatePickerDialog(CreateSubjectActivity.this, onDateSetListener);
             }
         });
 
-        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+        onDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 Log.d(TAG, "onDateSet: mm/dd/yyy: " + day + "/" + month + "/" + year);
-
                 String date = day + "/" + month + "/" + year;
                 etDateStartSubject.setText(date);
             }

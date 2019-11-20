@@ -13,17 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".presentation.ui.ProfileActivity"></activity>
-        <activity
-            android:name=".presentation.ui.createSubjectActivity"
-            android:label="@string/title_activity_create_subject"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".presentation.ui.ProfileActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
+        </activity>
+        <activity
+            android:name=".presentation.ui.CreateSubjectActivity"
+            android:label="@string/title_activity_create_subject"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
             android:name=".presentation.ui.RegisterActivity"
@@ -35,11 +35,6 @@
         <activity
             android:name=".presentation.ui.Login"
             android:configChanges="orientation|screenSize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
