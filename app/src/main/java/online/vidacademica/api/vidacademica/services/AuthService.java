@@ -1,4 +1,4 @@
-package online.vidacademica.api.vidacademica.auth;
+package online.vidacademica.api.vidacademica.services;
 
 import online.vidacademica.api.vidacademica.ApiConstants;
 import online.vidacademica.entities.TokenEntity;

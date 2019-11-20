@@ -8,7 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.Arrays;
 
 import online.vidacademica.api.vidacademica.ApiClient;
-import online.vidacademica.api.vidacademica.auth.AuthService;
+import online.vidacademica.api.vidacademica.services.AuthService;
 import online.vidacademica.core.ErrorMessage;
 import online.vidacademica.core.ResponseModel;
 import online.vidacademica.entities.Email;
