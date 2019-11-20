@@ -1,167 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    app:layout_constraintEnd_toEndOf="parent"
     tools:context=".presentation.ui.Login">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <ImageView
-            android:id="@+id/imageView"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:fitsSystemWindows="true"
-            android:src="@drawable/photo_login"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:id="@+id/layout_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/default_size"
-            android:layout_marginTop="@dimen/xxxx_largest_size"
-            android:elevation="@dimen/little_size"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/image_icon_app"
-                android:layout_width="@dimen/xxxx_largest_size"
-                android:layout_height="@dimen/xxxx_largest_size"
-                android:src="@drawable/ic_vidacademica_without_background"
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:fitsSystemWindows="true"
+                android:src="@drawable/photo_login"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/text_name_app"
+            <LinearLayout
+                android:id="@+id/layout_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/default_size"
+                android:layout_marginTop="@dimen/xxxx_largest_size"
+                android:elevation="@dimen/little_size"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/image_icon_app"
+                    android:layout_width="@dimen/xxxx_largest_size"
+                    android:layout_height="@dimen/xxxx_largest_size"
+                    android:src="@drawable/ic_vidacademica_without_background"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/text_name_app"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="@dimen/default_size"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/name_app"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/font_normal_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/image_icon_app" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_layout_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_size"
-                android:fontFamily="sans-serif-light"
-                android:text="@string/name_app"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/font_normal_text"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/default_size"
+                android:paddingEnd="@dimen/default_size"
+                app:layout_constraintBottom_toTopOf="@+id/constraint_bottoms"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_icon_app" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView">
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linear_layout_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_size"
-            android:orientation="vertical"
-            android:paddingStart="@dimen/default_size"
-            android:paddingEnd="@dimen/default_size"
-            app:layout_constraintBottom_toTopOf="@+id/constraint_bottoms"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_user"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:errorEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_user"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@android:color/white"
-                    android:hint="@string/user"
-                    android:textColor="@android:color/white"
-                    android:textColorHint="@android:color/white" />
+                    app:errorEnabled="true">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@android:color/white"
+                        android:hint="@string/user"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@android:color/white" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_password"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/short_size"
-                app:errorEnabled="true"
-                app:passwordToggleEnabled="true">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_password"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/password"
-                    android:inputType="textPassword"
-                    android:textColor="@android:color/white"
-                    android:textColorHint="@android:color/white" />
+                    android:layout_marginTop="@dimen/short_size"
+                    app:errorEnabled="true"
+                    app:passwordToggleEnabled="true">
 
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/password"
+                        android:inputType="textPassword"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@android:color/white" />
 
-        <LinearLayout
-            android:id="@+id/constraint_bottoms"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linear_layout_input">
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
-            <Button
+            <LinearLayout
+                android:id="@+id/constraint_bottoms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="@dimen/default_size"
-                android:layout_marginEnd="@dimen/default_size"
-                android:fontFamily="sans-serif-light"
-                android:paddingTop="@dimen/little_size"
-                android:paddingBottom="@dimen/little_size"
-                android:text="@string/enter"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/font_normal_text"
-                android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent"
-                app:strokeColor="@color/colorWhite" />
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear_layout_input">
 
-            <Button
-                android:id="@+id/sign_in_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/enter_google"
-                android:textAllCaps="false"
-                android:textColor="@android:color/black"
-                android:layout_marginStart="@dimen/default_size"
-                android:layout_marginTop="@dimen/little_size"
-                android:layout_marginEnd="@dimen/default_size" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/default_size"
+                    android:layout_marginEnd="@dimen/default_size"
+                    android:fontFamily="sans-serif-light"
+                    android:paddingTop="@dimen/little_size"
+                    android:paddingBottom="@dimen/little_size"
+                    android:text="@string/enter"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/font_normal_text"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="@color/colorWhite" />
 
-            <TextView
-                android:id="@+id/text_register_now"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/short_size"
-                android:layout_marginBottom="@dimen/default_size"
-                android:fontFamily="sans-serif-light"
-                android:onClick="openRegisterSccreen"
-                android:text="@string/create_register"
-                android:textAllCaps="true"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/font_tertiary_title" />
+                <Button
+                    android:id="@+id/sign_in_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/default_size"
+                    android:layout_marginTop="@dimen/little_size"
+                    android:layout_marginEnd="@dimen/default_size"
+                    android:text="@string/enter_google"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/black" />
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/text_register_now"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/short_size"
+                    android:layout_marginBottom="@dimen/default_size"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="openRegisterSccreen"
+                    android:text="@string/create_register"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/font_tertiary_title" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
-</ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>

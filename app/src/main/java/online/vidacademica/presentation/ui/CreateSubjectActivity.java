@@ -5,32 +5,29 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
-import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.databinding.DataBindingUtil;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import online.vidacademica.R;
 import online.vidacademica.core.Util;
+import online.vidacademica.databinding.ActivityCreateSubjectBinding;
 
 public class CreateSubjectActivity extends AppCompatActivity {
 
     private static final String TAG = "CreateSubjectActivity";
-    private EditText etDateStartSubject;
     private DatePickerDialog.OnDateSetListener onDateSetListener;
+    private ActivityCreateSubjectBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_subject);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_create_subject);
+        setSupportActionBar(binding.toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -38,9 +35,7 @@ public class CreateSubjectActivity extends AppCompatActivity {
             }
         });
 
-        etDateStartSubject = findViewById(R.id.input_dt_inicio);
-
-        etDateStartSubject.setOnClickListener(new View.OnClickListener() {
+        binding.contentCreateSubjectLayout.inputDtInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Util.callDatePickerDialog(CreateSubjectActivity.this, onDateSetListener);
@@ -52,7 +47,7 @@ public class CreateSubjectActivity extends AppCompatActivity {
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 Log.d(TAG, "onDateSet: mm/dd/yyy: " + day + "/" + month + "/" + year);
                 String date = day + "/" + month + "/" + year;
-                etDateStartSubject.setText(date);
+                binding.contentCreateSubjectLayout.inputDtInicio.setText(date);
             }
         };
     }
