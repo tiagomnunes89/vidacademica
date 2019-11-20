@@ -17,4 +17,7 @@
     <string name="register">Cadastro</string>
     <string name="enter">Entrar</string>
     <string name="enter_google">Login Google</string>
+    <string name="title_activity_create_subject">createSubjectActivity</string>
+    <string name="nota_minima">Nota Minima</string>
+    <string name="dt_inicio">Data de inicio</string>
 </resources>
