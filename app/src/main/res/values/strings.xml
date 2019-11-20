@@ -10,7 +10,7 @@
     <string name="name">Nome</string>
     <string name="email">E-mail</string>
     <string name="cellphone">Celular</string>
-    <string name="birth_date">Data de Nascimento</string>
+    <string name="birth_date">Data de nascimento</string>
     <string name="password_confirmation">Confirmação de senha</string>
     <string name="send_register">Enviar cadastro</string>
     <string name="create_register">Criar Cadastro</string>
@@ -22,6 +22,10 @@
     <string name="update_register">Alterar cadastro</string>
     <string name="change_password">Trocar senha</string>
     <string name="title_activity_create_subject">createSubjectActivity</string>
-    <string name="nota_minima">Nota Minima</string>
-    <string name="dt_inicio">Data de inicio</string>
+    <string name="nota_minima">Nota mínima</string>
+    <string name="dt_inicio">Data de início</string>
+    <string name="rg">RG</string>
+    <string name="new_password_confirmation">Confirmação da nova senha</string>
+    <string name="new_password">Nova senha</string>
+    <string name="current_password">Senha atual</string>
 </resources>
