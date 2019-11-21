@@ -22,10 +22,14 @@
     <string name="update_register">Alterar cadastro</string>
     <string name="change_password">Trocar senha</string>
     <string name="title_activity_create_subject">createSubjectActivity</string>
-    <string name="nota_minima">Nota mínima</string>
+    <string name="minimum_grade">Nota mínima</string>
     <string name="dt_inicio">Data de início</string>
     <string name="rg">RG</string>
     <string name="new_password_confirmation">Confirmação da nova senha</string>
     <string name="new_password">Nova senha</string>
     <string name="current_password">Senha atual</string>
+    <string name="description">Descrição</string>
+    <string name="initial_date">Data inicial</string>
+    <string name="final_date">Data final</string>
+    <string name="subject">Disciplina</string>
 </resources>

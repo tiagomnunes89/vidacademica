@@ -11,13 +11,13 @@ import androidx.databinding.DataBindingUtil;
 
 import online.vidacademica.R;
 import online.vidacademica.core.Util;
-import online.vidacademica.databinding.ActivityProfileBinding;
+import online.vidacademica.databinding.ActivityRegisterBinding;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private static final String TAG = "RegisterActivity";
     private DatePickerDialog.OnDateSetListener onDateSetListener;
-    private ActivityProfileBinding binding;
+    private ActivityRegisterBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

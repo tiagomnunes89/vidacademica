@@ -16,9 +16,9 @@ import online.vidacademica.core.Util;
 import online.vidacademica.databinding.ActivityCreateSubjectBinding;
 
 public class CreateSubjectActivity extends AppCompatActivity {
-
     private static final String TAG = "CreateSubjectActivity";
-    private DatePickerDialog.OnDateSetListener onDateSetListener;
+    private DatePickerDialog.OnDateSetListener onDateSetListenerStart;
+    private DatePickerDialog.OnDateSetListener onDateSetListenerFinal;
     private ActivityCreateSubjectBinding binding;
 
     @Override
@@ -35,19 +35,35 @@ public class CreateSubjectActivity extends AppCompatActivity {
             }
         });
 
-        binding.contentCreateSubjectLayout.inputDtInicio.setOnClickListener(new View.OnClickListener() {
+        binding.inputStartDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Util.callDatePickerDialog(CreateSubjectActivity.this, onDateSetListener);
+                Util.callDatePickerDialog(CreateSubjectActivity.this, onDateSetListenerStart);
             }
         });
 
-        onDateSetListener = new DatePickerDialog.OnDateSetListener() {
+        binding.inputFinalDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Util.callDatePickerDialog(CreateSubjectActivity.this, onDateSetListenerFinal);
+            }
+        });
+
+        onDateSetListenerStart = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 Log.d(TAG, "onDateSet: mm/dd/yyy: " + day + "/" + month + "/" + year);
                 String date = day + "/" + month + "/" + year;
-                binding.contentCreateSubjectLayout.inputDtInicio.setText(date);
+                binding.inputStartDate.setText(date);
+            }
+        };
+
+        onDateSetListenerFinal = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                Log.d(TAG, "onDateSet: mm/dd/yyy: " + day + "/" + month + "/" + year);
+                String date = day + "/" + month + "/" + year;
+                binding.inputFinalDate.setText(date);
             }
         };
     }
