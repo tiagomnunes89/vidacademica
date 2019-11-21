@@ -25,7 +25,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register);
 
-        binding.textInputEtBirthDate.setOnClickListener(new View.OnClickListener() {
+        binding.layoutRegisterContent.textInputEtBirthDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Util.callDatePickerDialog(RegisterActivity.this, onDateSetListener);
@@ -37,13 +37,19 @@ public class RegisterActivity extends AppCompatActivity {
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 Log.d(TAG, "onDateSet: mm/dd/yyy: " + day + "/" + month + "/" + year);
                 String date = day + "/" + month + "/" + year;
-                binding.textInputEtBirthDate.setText(date);
+                binding.layoutRegisterContent.textInputEtBirthDate.setText(date);
             }
         };
         binding.imageViewBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(RegisterActivity.this, PreLoginActivity.class));
+            }
+        });
+        binding.layoutRegisterContent.btnSendRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegisterActivity.this, ProfileActivity.class));
             }
         });
     }

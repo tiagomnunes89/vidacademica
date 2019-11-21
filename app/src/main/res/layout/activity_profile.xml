@@ -33,6 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
+                    android:id="@+id/image_view_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -63,7 +64,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintBottom_toTopOf="@+id/btn_send_register"
+                    app:layout_constraintBottom_toTopOf="@+id/btn_change_register"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
@@ -239,7 +240,7 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/btn_send_register"
+                    android:id="@+id/btn_change_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/AppTheme.Button.Blue"

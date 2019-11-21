@@ -1,6 +1,7 @@
 package online.vidacademica.presentation.ui;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -39,5 +40,17 @@ public class ProfileActivity extends AppCompatActivity {
                 binding.textInputEtBirthDate.setText(date);
             }
         };
+        binding.btnChangeRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileActivity.this, CreateSubjectActivity.class));
+            }
+        });
+        binding.imageViewBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 }

@@ -49,6 +49,12 @@ public class Login extends AppCompatActivity {
                 startActivity(new Intent(Login.this, PreLoginActivity.class));
             }
         });
+        binding.buttonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Login.this, RegisterActivity.class));
+            }
+        });
     }
 
     private void colorStatusBar(Window window) {

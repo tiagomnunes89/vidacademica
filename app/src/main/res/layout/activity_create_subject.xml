@@ -8,240 +8,42 @@
 
     </data>
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary">
 
-            <LinearLayout
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/short_size"
-                    android:src="@drawable/ic_turn_back_black_24dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end|center_vertical"
-                    android:layout_marginEnd="@dimen/default_size"
-                    android:fontFamily="@font/dosis_bold"
-                    android:gravity="end"
-                    android:text="@string/title_register_subject"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/font_primary_title" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linear_layout_name_score"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:paddingStart="@dimen/default_size"
-                android:paddingTop="@dimen/default_size"
-                android:paddingEnd="@dimen/default_size"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/text_input_create_subject"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/little_size"
-                    android:layout_weight="1"
-                    app:errorEnabled="true">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@android:color/white"
-                        android:hint="@string/subject"
-                        android:textColor="@android:color/white"
-                        android:textColorHint="@android:color/white" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/select_minimum_score"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    app:errorEnabled="true">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@android:color/white"
-                        android:hint="@string/minimum_grade"
-                        android:inputType="numberDecimal|numberSigned"
-                        android:maxLength="6"
-                        android:textColor="@android:color/white"
-                        android:textColorHint="@android:color/white" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_description_subject_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_size"
-                android:layout_marginEnd="@dimen/default_size"
-                app:errorEnabled="true"
-                app:layout_constraintTop_toBottomOf="@+id/linear_layout_name_score">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/input_description_subject"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@android:color/white"
-                    android:hint="@string/description"
-                    android:inputType="textMultiLine" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <LinearLayout
-                android:id="@+id/linear_layout_start_final_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:paddingStart="@dimen/default_size"
-                android:paddingEnd="@dimen/default_size"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/input_description_subject_layout">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/text_input_dt_start_subject"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:errorEnabled="true">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/input_start_date"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusable="false"
-                        android:hint="@string/initial_date"
-                        android:inputType="none" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/text_input_dt_final_subject"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/little_size"
-                    android:layout_weight="1"
-                    app:errorEnabled="true">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/input_final_date"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusable="false"
-                        android:hint="@string/final_date"
-                        android:inputType="none" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/text_view_class_schedules"
+            <ImageView
+                android:id="@+id/image_view_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_size"
-                android:layout_marginTop="@dimen/little_size"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/short_size"
+                android:src="@drawable/ic_turn_back_black_24dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="@dimen/default_size"
                 android:fontFamily="@font/dosis_bold"
-                android:text="@string/class_schedule"
-                android:textSize="@dimen/font_normal_text"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linear_layout_start_final_date" />
+                android:gravity="end"
+                android:text="@string/title_register_subject"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/font_primary_title" />
 
-            <LinearLayout
-                android:id="@+id/linear_layout_add_schedule"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_size"
-                android:layout_marginTop="@dimen/short_size"
-                android:layout_marginEnd="@dimen/default_size"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_class_schedules">
+        </LinearLayout>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_button_add_white_24dp" />
+        <include
+            android:id="@+id/layout_create_subject_content"
+            layout="@layout/create_subject_content" />
 
-                <TextView
-                    android:id="@+id/text_view_add_schedule"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/little_size"
-                    android:fontFamily="@font/century_gothic"
-                    android:text="@string/add_class_schedule"
-                    android:textSize="@dimen/font_secondary_title" />
-
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_size"
-                android:layout_marginEnd="@dimen/default_size"
-                app:layout_constraintBottom_toTopOf="@+id/btn_save_subject"
-                app:layout_constraintTop_toBottomOf="@+id/linear_layout_add_schedule"
-                tools:itemCount="2"
-                tools:listitem="@layout/item_class_schedules" />
-
-            <Button
-                android:id="@+id/btn_save_subject"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="@dimen/default_size"
-                android:layout_marginTop="@dimen/default_size"
-                android:layout_marginEnd="@dimen/default_size"
-                android:layout_marginBottom="@dimen/default_size"
-                android:fontFamily="sans-serif-light"
-                android:text="@string/save_subject"
-                android:textAllCaps="true"
-                android:textSize="@dimen/font_normal_text"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </LinearLayout>
 </layout>

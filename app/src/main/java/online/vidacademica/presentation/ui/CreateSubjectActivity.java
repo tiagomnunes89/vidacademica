@@ -9,8 +9,6 @@ import android.widget.DatePicker;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
-import com.google.android.material.snackbar.Snackbar;
-
 import online.vidacademica.R;
 import online.vidacademica.core.Util;
 import online.vidacademica.databinding.ActivityCreateSubjectBinding;
@@ -26,14 +24,14 @@ public class CreateSubjectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_create_subject);
 
-        binding.inputStartDate.setOnClickListener(new View.OnClickListener() {
+        binding.layoutCreateSubjectContent.inputStartDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Util.callDatePickerDialog(CreateSubjectActivity.this, onDateSetListenerStart);
             }
         });
 
-        binding.inputFinalDate.setOnClickListener(new View.OnClickListener() {
+        binding.layoutCreateSubjectContent.inputFinalDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Util.callDatePickerDialog(CreateSubjectActivity.this, onDateSetListenerFinal);
@@ -45,7 +43,7 @@ public class CreateSubjectActivity extends AppCompatActivity {
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 Log.d(TAG, "onDateSet: mm/dd/yyy: " + day + "/" + month + "/" + year);
                 String date = day + "/" + month + "/" + year;
-                binding.inputStartDate.setText(date);
+                binding.layoutCreateSubjectContent.inputStartDate.setText(date);
             }
         };
 
@@ -54,9 +52,15 @@ public class CreateSubjectActivity extends AppCompatActivity {
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 Log.d(TAG, "onDateSet: mm/dd/yyy: " + day + "/" + month + "/" + year);
                 String date = day + "/" + month + "/" + year;
-                binding.inputFinalDate.setText(date);
+                binding.layoutCreateSubjectContent.inputFinalDate.setText(date);
             }
         };
+        binding.imageViewBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
 }
