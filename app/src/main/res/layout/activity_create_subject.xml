@@ -130,13 +130,13 @@
                 android:id="@+id/linear_layout_start_final_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:baselineAligned="false"
                 android:orientation="horizontal"
                 android:paddingStart="@dimen/default_size"
                 android:paddingEnd="@dimen/default_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/input_description_subject_layout"
-                android:baselineAligned="false">
+                app:layout_constraintTop_toBottomOf="@+id/input_description_subject_layout">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_input_dt_start_subject"
@@ -195,8 +195,8 @@
                 android:layout_marginStart="@dimen/default_size"
                 android:layout_marginTop="@dimen/short_size"
                 android:layout_marginEnd="@dimen/default_size"
-                android:orientation="horizontal"
                 android:gravity="center_horizontal"
+                android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_class_schedules">
 
@@ -223,8 +223,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/default_size"
                 android:layout_marginEnd="@dimen/default_size"
-                app:layout_constraintTop_toBottomOf="@+id/linear_layout_add_schedule"
                 app:layout_constraintBottom_toTopOf="@+id/btn_save_subject"
+                app:layout_constraintTop_toBottomOf="@+id/linear_layout_add_schedule"
                 tools:itemCount="2"
                 tools:listitem="@layout/item_class_schedules" />
 
@@ -247,7 +247,5 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </ScrollView>
 </layout>
