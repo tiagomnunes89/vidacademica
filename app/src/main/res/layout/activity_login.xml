@@ -24,44 +24,38 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:fitsSystemWindows="true"
-                android:src="@drawable/photo_login"
+                android:src="@drawable/login_photo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <LinearLayout
-                android:id="@+id/layout_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_size"
-                android:layout_marginTop="@dimen/xxxx_largest_size"
-                android:elevation="@dimen/little_size"
-                android:orientation="vertical"
+                android:id="@+id/linear_layout_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/image_icon_app"
-                    android:layout_width="@dimen/xxxx_largest_size"
-                    android:layout_height="@dimen/xxxx_largest_size"
-                    android:src="@drawable/ic_vidacademica_without_background"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/text_name_app"
+                    android:id="@+id/image_view_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginTop="@dimen/default_size"
-                    android:fontFamily="sans-serif-light"
-                    android:text="@string/name_app"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/font_normal_text"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/image_icon_app" />
+                    android:layout_marginStart="@dimen/short_size"
+                    android:src="@drawable/ic_turn_back_black_24dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="@dimen/default_size"
+                    android:fontFamily="@font/dosis_bold"
+                    android:gravity="end"
+                    android:text="@string/login"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/font_primary_title" />
 
             </LinearLayout>
 
@@ -88,10 +82,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@android:color/white"
-                        android:hint="@string/user"
-                        android:textColor="@android:color/white"
-                        android:textColorHint="@android:color/white" />
+                        android:hint="@string/user" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -108,9 +99,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/password"
-                        android:inputType="textPassword"
-                        android:textColor="@android:color/white"
-                        android:textColorHint="@android:color/white" />
+                        android:inputType="textPassword" />
 
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -125,46 +114,21 @@
                 app:layout_constraintTop_toBottomOf="@+id/linear_layout_input">
 
                 <Button
+                    android:id="@+id/button_login"
+                    style="@style/AppTheme.Button.Orange"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/default_size"
-                    android:layout_marginEnd="@dimen/default_size"
-                    android:fontFamily="sans-serif-light"
-                    android:paddingTop="@dimen/little_size"
-                    android:paddingBottom="@dimen/little_size"
                     android:text="@string/enter"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/font_normal_text"
-                    android:textStyle="bold"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:strokeColor="@color/colorWhite" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
                     android:id="@+id/sign_in_button"
+                    style="@style/AppTheme.Button.Blue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/default_size"
-                    android:layout_marginTop="@dimen/little_size"
-                    android:layout_marginEnd="@dimen/default_size"
+                    android:layout_marginTop="@dimen/default_size"
                     android:text="@string/enter_google"
-                    android:textAllCaps="false"
-                    android:textColor="@android:color/black" />
-
-                <TextView
-                    android:id="@+id/text_register_now"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/short_size"
-                    android:layout_marginBottom="@dimen/default_size"
-                    android:fontFamily="sans-serif-light"
-                    android:onClick="openRegisterSccreen"
-                    android:text="@string/create_register"
-                    android:textAllCaps="true"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/font_tertiary_title" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </LinearLayout>
 

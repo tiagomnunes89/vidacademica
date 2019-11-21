@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/short_size"
         android:textSize="@dimen/font_secondary_title"
+        android:fontFamily="@font/dosis_bold"
         app:layout_constraintTop_toBottomOf="@+id/divider_open"
         tools:text="Segunda-feira" />
 

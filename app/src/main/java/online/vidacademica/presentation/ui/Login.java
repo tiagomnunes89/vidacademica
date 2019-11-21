@@ -43,14 +43,12 @@ public class Login extends AppCompatActivity {
                 signIn();
             }
         });
-        binding.textRegisterNow.setOnClickListener(new View.OnClickListener() {
+        binding.imageViewBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Login.this, RegisterActivity.class));
+                startActivity(new Intent(Login.this, PreLoginActivity.class));
             }
         });
-
-
     }
 
     private void colorStatusBar(Window window) {

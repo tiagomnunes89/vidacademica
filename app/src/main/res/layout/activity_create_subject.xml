@@ -18,53 +18,47 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/app_bar_layout"
+            <LinearLayout
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/AppTheme.AppBarOverlay"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <LinearLayout
-                    android:id="@+id/toolbar"
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/short_size"
+                    android:src="@drawable/ic_turn_back_black_24dp" />
+
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:background="?attr/colorPrimary">
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="@dimen/default_size"
+                    android:fontFamily="@font/dosis_bold"
+                    android:gravity="end"
+                    android:text="@string/title_register_subject"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/font_primary_title" />
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="@dimen/short_size"
-                        android:src="@drawable/ic_turn_back_black_24dp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end|center_vertical"
-                        android:layout_marginEnd="@dimen/default_size"
-                        android:gravity="end"
-                        android:text="@string/title_register_subject"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/font_primary_title" />
-
-                </LinearLayout>
-
-            </com.google.android.material.appbar.AppBarLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linear_layout_name_score"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:baselineAligned="false"
                 android:orientation="horizontal"
                 android:paddingStart="@dimen/default_size"
                 android:paddingTop="@dimen/default_size"
                 android:paddingEnd="@dimen/default_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/app_bar_layout">
+                app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_input_create_subject"
@@ -182,6 +176,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/default_size"
                 android:layout_marginTop="@dimen/little_size"
+                android:fontFamily="@font/dosis_bold"
                 android:text="@string/class_schedule"
                 android:textSize="@dimen/font_normal_text"
                 android:textStyle="bold"
@@ -212,6 +207,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/little_size"
+                    android:fontFamily="@font/century_gothic"
                     android:text="@string/add_class_schedule"
                     android:textSize="@dimen/font_secondary_title" />
 

@@ -36,4 +36,5 @@
     <string name="class_schedule">Horários da aula</string>
     <string name="add_class_schedule">Adicionar horário de aula</string>
     <string name="save_subject">Salvar matéria</string>
+    <string name="login">Login</string>
 </resources>
