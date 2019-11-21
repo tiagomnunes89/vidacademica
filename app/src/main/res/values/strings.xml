@@ -31,5 +31,9 @@
     <string name="description">Descrição</string>
     <string name="initial_date">Data inicial</string>
     <string name="final_date">Data final</string>
-    <string name="subject">Disciplina</string>
+    <string name="subject">Matéria</string>
+    <string name="title_register_subject">Cadastrar matéria</string>
+    <string name="class_schedule">Horários da aula</string>
+    <string name="add_class_schedule">Adicionar horário de aula</string>
+    <string name="save_subject">Salvar matéria</string>
 </resources>

@@ -27,19 +27,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.appcompat.widget.Toolbar
+                <LinearLayout
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    android:background="?attr/colorPrimary"
-                    app:popupTheme="@style/AppTheme.PopupOverlay">
+                    android:background="?attr/colorPrimary">
 
-                    <androidx.appcompat.widget.AppCompatImageView
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/short_size"
                         android:src="@drawable/ic_turn_back_black_24dp" />
 
-                </androidx.appcompat.widget.Toolbar>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center_vertical"
+                        android:layout_marginEnd="@dimen/default_size"
+                        android:gravity="end"
+                        android:text="@string/title_register_subject"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/font_primary_title" />
+
+                </LinearLayout>
 
             </com.google.android.material.appbar.AppBarLayout>
 
@@ -124,7 +135,8 @@
                 android:paddingEnd="@dimen/default_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/input_description_subject_layout">
+                app:layout_constraintTop_toBottomOf="@+id/input_description_subject_layout"
+                android:baselineAligned="false">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_input_dt_start_subject"
@@ -164,32 +176,78 @@
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
-            <View
-                android:id="@+id/divider"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginStart="@dimen/default_size"
-                android:layout_marginTop="@dimen/semi_short_size"
-                android:layout_marginEnd="@dimen/default_size"
-                android:background="@android:color/white"
-                app:layout_constraintTop_toBottomOf="@+id/linear_layout_start_final_date" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab"
+            <TextView
+                android:id="@+id/text_view_class_schedules"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="@dimen/fab_margin"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:srcCompat="@android:drawable/ic_input_add" />
+                android:layout_marginStart="@dimen/default_size"
+                android:layout_marginTop="@dimen/little_size"
+                android:text="@string/class_schedule"
+                android:textSize="@dimen/font_normal_text"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear_layout_start_final_date" />
 
-            <androidx.recyclerview.widget.RecyclerView
+            <LinearLayout
+                android:id="@+id/linear_layout_add_schedule"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/default_size"
-                app:layout_constraintTop_toBottomOf="@+id/divider" />
+                android:layout_marginStart="@dimen/default_size"
+                android:layout_marginTop="@dimen/short_size"
+                android:layout_marginEnd="@dimen/default_size"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_class_schedules">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_button_add_white_24dp" />
+
+                <TextView
+                    android:id="@+id/text_view_add_schedule"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/little_size"
+                    android:text="@string/add_class_schedule"
+                    android:textSize="@dimen/font_secondary_title" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_size"
+                android:layout_marginEnd="@dimen/default_size"
+                app:layout_constraintTop_toBottomOf="@+id/linear_layout_add_schedule"
+                app:layout_constraintBottom_toTopOf="@+id/btn_save_subject"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_class_schedules" />
+
+            <Button
+                android:id="@+id/btn_save_subject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/default_size"
+                android:layout_marginTop="@dimen/default_size"
+                android:layout_marginEnd="@dimen/default_size"
+                android:layout_marginBottom="@dimen/default_size"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/save_subject"
+                android:textAllCaps="true"
+                android:textSize="@dimen/font_normal_text"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </ScrollView>
 </layout>
