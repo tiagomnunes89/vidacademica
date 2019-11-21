@@ -8,21 +8,25 @@ import android.icu.util.Calendar;
 
 public class Util {
 
-    public static void callDatePickerDialog (Context context, DatePickerDialog.OnDateSetListener onDateSetListener){
+    private static DatePickerDialog dialog;
+
+    public static void callDatePickerDialog(Context context, DatePickerDialog.OnDateSetListener onDateSetListener) {
+
         Calendar cal = Calendar.getInstance();
 
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
-        DatePickerDialog dialog = new DatePickerDialog(
-                context,
-                android.R.style.Theme_DeviceDefault_Light_Dialog_MinWidth,
-                onDateSetListener,
-                year, month, day);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        if (dialog == null) {
+            dialog = new DatePickerDialog(
+                    context,
+                    android.R.style.Theme_DeviceDefault_Light_Dialog,
+                    onDateSetListener,
+                    year, month, day);
+        }
         dialog.show();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
     }
-
-
 }
+
