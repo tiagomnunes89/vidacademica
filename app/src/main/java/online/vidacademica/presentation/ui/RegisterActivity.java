@@ -46,7 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(new Intent(RegisterActivity.this, PreLoginActivity.class));
             }
         });
-        binding.layoutRegisterContent.btnSendRegister.setOnClickListener(new View.OnClickListener() {
+        binding.btnSendRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(RegisterActivity.this, ProfileActivity.class));

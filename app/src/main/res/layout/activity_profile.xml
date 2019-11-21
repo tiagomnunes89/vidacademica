@@ -6,254 +6,63 @@
 
     <data>
 
-        <import type="android.view.View" />
-
-        <variable
-            name="wantsToChangePass"
-            type="boolean" />
-
     </data>
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimaryDark"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+            <ImageView
+                android:id="@+id/image_view_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/short_size"
+                android:src="@drawable/ic_turn_back_black_24dp" />
 
-                <ImageView
-                    android:id="@+id/image_view_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/short_size"
-                    android:src="@drawable/ic_turn_back_black_24dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end|center_vertical"
-                    android:layout_marginEnd="@dimen/default_size"
-                    android:fontFamily="@font/dosis_bold"
-                    android:gravity="end"
-                    android:text="@string/profile"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/font_primary_title" />
-
-            </LinearLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/default_size"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar">
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="@dimen/default_size"
+                android:fontFamily="@font/dosis_bold"
+                android:gravity="end"
+                android:text="@string/profile"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/font_primary_title" />
 
-                <LinearLayout
-                    android:id="@+id/linear_register"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toTopOf="@+id/btn_change_register"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+        </LinearLayout>
 
-                    <LinearLayout
-                        android:id="@+id/layout_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="@dimen/default_size"
-                        android:orientation="horizontal"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+        <include
+            android:id="@+id/layout_create_subject_content"
+            layout="@layout/profile_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/short_size"
+            app:layout_constraintBottom_toTopOf="@id/btn_change_register"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-                    </LinearLayout>
+        <Button
+            android:id="@+id/btn_change_register"
+            style="@style/AppTheme.Button.Blue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_size"
+            android:layout_marginEnd="@dimen/default_size"
+            android:layout_marginBottom="@dimen/default_size"
+            android:text="@string/update_register"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-                    <LinearLayout
-                        android:id="@+id/linear_layout_input"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_title">
-
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/text_input_name"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:errorEnabled="true">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:backgroundTint="@android:color/white"
-                                android:hint="@string/name"
-                                android:inputType="textPersonName"
-                                android:textColor="@android:color/white"
-                                android:textColorHint="@android:color/white" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/text_input_phone"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:errorEnabled="true">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:backgroundTint="@android:color/white"
-                                android:hint="@string/cellphone"
-                                android:inputType="phone"
-                                android:textColor="@android:color/white"
-                                android:textColorHint="@android:color/white" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/text_input_rg"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:errorEnabled="true">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:backgroundTint="@android:color/white"
-                                android:hint="@string/rg"
-                                android:inputType="phone"
-                                android:textColor="@android:color/white"
-                                android:textColorHint="@android:color/white" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/text_input_birth"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:errorEnabled="true">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/text_input_et_birth_date"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:backgroundTint="@android:color/white"
-                                android:focusable="false"
-                                android:hint="@string/birth_date"
-                                android:inputType="none"
-                                android:textColor="@android:color/white"
-                                android:textColorHint="@android:color/white" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <CheckBox
-                            android:id="@+id/checkbox_password"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:checked="@={wantsToChangePass}"
-                            android:text="@string/change_password"
-                            android:textAllCaps="true"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/text_input_password"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:visibility="@{wantsToChangePass ? View.VISIBLE : View.GONE, default = gone}"
-                            app:errorEnabled="true"
-                            app:passwordToggleEnabled="true">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:backgroundTint="@android:color/white"
-                                android:hint="@string/current_password"
-                                android:inputType="textPassword"
-                                android:textColor="@android:color/white"
-                                android:textColorHint="@android:color/white" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/text_input_password_confirmation"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:visibility="@{wantsToChangePass ? View.VISIBLE : View.GONE, default = gone}"
-                            app:errorEnabled="true"
-                            app:passwordToggleEnabled="true">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:backgroundTint="@android:color/white"
-                                android:hint="@string/new_password"
-                                android:inputType="textPassword"
-                                android:textColor="@android:color/white"
-                                android:textColorHint="@android:color/white" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/text_input_new_password_confirmation"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:visibility="@{wantsToChangePass ? View.VISIBLE : View.GONE, default = gone}"
-                            app:errorEnabled="true"
-                            app:passwordToggleEnabled="true">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:backgroundTint="@android:color/white"
-                                android:hint="@string/new_password_confirmation"
-                                android:inputType="textPassword"
-                                android:textColor="@android:color/white"
-                                android:textColorHint="@android:color/white" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <Button
-                    android:id="@+id/btn_change_register"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/AppTheme.Button.Blue"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="0dp"
-                    android:text="@string/update_register"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

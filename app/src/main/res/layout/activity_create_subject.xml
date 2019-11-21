@@ -8,7 +8,7 @@
 
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
@@ -18,7 +18,8 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary">
+            android:background="?attr/colorPrimaryDark"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/image_view_back"
@@ -43,7 +44,25 @@
 
         <include
             android:id="@+id/layout_create_subject_content"
-            layout="@layout/create_subject_content" />
+            layout="@layout/create_subject_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/short_size"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintBottom_toTopOf="@id/btn_save_subject"/>
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/btn_save_subject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/AppTheme.Button.Blue"
+            android:layout_marginStart="@dimen/default_size"
+            android:layout_marginEnd="@dimen/default_size"
+            android:layout_marginBottom="@dimen/default_size"
+            android:text="@string/save_subject"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -6,6 +6,12 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <variable
+            name="wantsToChangePass"
+            type="boolean" />
+
     </data>
 
     <ScrollView
@@ -24,38 +30,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintBottom_toTopOf="@+id/btn_send_register"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
                     android:id="@+id/layout_title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="@dimen/default_size"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:id="@+id/image_icon_app"
-                        android:layout_width="@dimen/xxxx_largest_size"
-                        android:layout_height="@dimen/xxxx_largest_size"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/logo_vidacademica_light" />
-
-                    <TextView
-                        android:id="@+id/text_name_app"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/default_size"
-                        android:fontFamily="sans-serif-light"
-                        android:text="@string/name_app"
-                        android:textColor="@android:color/white"
-                        android:textSize="@dimen/font_normal_text" />
 
                 </LinearLayout>
 
@@ -67,6 +55,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/layout_title">
+
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/text_input_name"
@@ -86,23 +75,6 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_input_email"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@android:color/white"
-                            android:hint="@string/email"
-                            android:inputType="textEmailAddress"
-                            android:textColor="@android:color/white"
-                            android:textColorHint="@android:color/white" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/text_input_phone"
@@ -160,11 +132,21 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <CheckBox
+                        android:id="@+id/checkbox_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@={wantsToChangePass}"
+                        android:text="@string/change_password"
+                        android:textAllCaps="true"
+                        android:textStyle="bold" />
+
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/text_input_password"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="@{wantsToChangePass ? View.VISIBLE : View.GONE, default = gone}"
                         app:errorEnabled="true"
                         app:passwordToggleEnabled="true">
 
@@ -172,7 +154,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@android:color/white"
-                            android:hint="@string/password"
+                            android:hint="@string/current_password"
                             android:inputType="textPassword"
                             android:textColor="@android:color/white"
                             android:textColorHint="@android:color/white" />
@@ -184,6 +166,7 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="@{wantsToChangePass ? View.VISIBLE : View.GONE, default = gone}"
                         app:errorEnabled="true"
                         app:passwordToggleEnabled="true">
 
@@ -191,7 +174,27 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@android:color/white"
-                            android:hint="@string/password_confirmation"
+                            android:hint="@string/new_password"
+                            android:inputType="textPassword"
+                            android:textColor="@android:color/white"
+                            android:textColorHint="@android:color/white" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_new_password_confirmation"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="@{wantsToChangePass ? View.VISIBLE : View.GONE, default = gone}"
+                        app:errorEnabled="true"
+                        app:passwordToggleEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/white"
+                            android:hint="@string/new_password_confirmation"
                             android:inputType="textPassword"
                             android:textColor="@android:color/white"
                             android:textColorHint="@android:color/white" />

@@ -8,7 +8,7 @@
 
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
@@ -18,7 +18,8 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary">
+            android:background="?attr/colorPrimaryDark"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/image_view_back"
@@ -35,7 +36,7 @@
                 android:layout_marginEnd="@dimen/default_size"
                 android:fontFamily="@font/dosis_bold"
                 android:gravity="end"
-                android:text="@string/title_register_subject"
+                android:text="@string/register"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/font_primary_title" />
 
@@ -43,7 +44,23 @@
 
         <include
             android:id="@+id/layout_register_content"
-            layout="@layout/register_content" />
+            layout="@layout/register_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/short_size"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintBottom_toTopOf="@id/btn_send_register"/>
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/btn_send_register"
+            style="@style/AppTheme.Button.Blue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_size"
+            android:layout_marginEnd="@dimen/default_size"
+            android:layout_marginBottom="@dimen/default_size"
+            android:text="@string/send_register"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

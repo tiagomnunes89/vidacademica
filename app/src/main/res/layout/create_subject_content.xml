@@ -192,23 +192,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/default_size"
                 android:layout_marginEnd="@dimen/default_size"
-                app:layout_constraintBottom_toTopOf="@+id/btn_save_subject"
                 app:layout_constraintTop_toBottomOf="@+id/linear_layout_add_schedule"
                 tools:itemCount="2"
                 tools:listitem="@layout/item_class_schedules" />
-
-            <Button
-                android:id="@+id/btn_save_subject"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/AppTheme.Button.Blue"
-                android:layout_marginStart="@dimen/default_size"
-                android:layout_marginEnd="@dimen/default_size"
-                android:layout_marginBottom="@dimen/default_size"
-                android:text="@string/save_subject"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

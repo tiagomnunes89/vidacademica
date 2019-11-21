@@ -25,7 +25,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_profile);
 
-        binding.textInputEtBirthDate.setOnClickListener(new View.OnClickListener() {
+        binding.layoutCreateSubjectContent.textInputEtBirthDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Util.callDatePickerDialog(ProfileActivity.this, onDateSetListener);
@@ -37,7 +37,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 Log.d(TAG, "onDateSet: mm/dd/yyy: " + day + "/" + month + "/" + year);
                 String date = day + "/" + month + "/" + year;
-                binding.textInputEtBirthDate.setText(date);
+                binding.layoutCreateSubjectContent.textInputEtBirthDate.setText(date);
             }
         };
         binding.btnChangeRegister.setOnClickListener(new View.OnClickListener() {
