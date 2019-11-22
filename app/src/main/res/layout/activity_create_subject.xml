@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".presentation.ui.RegisterActivity">
+    tools:context=".presentation.ui.CreateSubjectActivity">
 
     <data>
 
@@ -36,31 +36,33 @@
                 android:layout_marginEnd="@dimen/default_size"
                 android:fontFamily="@font/dosis_bold"
                 android:gravity="end"
-                android:text="@string/register"
+                android:text="@string/title_register_subject"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/font_primary_title" />
 
         </LinearLayout>
 
         <include
-            android:id="@+id/layout_register_content"
-            layout="@layout/register_content"
+            android:id="@+id/layout_create_subject_content"
+            layout="@layout/create_subject_content"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/short_size"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
-            app:layout_constraintBottom_toTopOf="@id/btn_send_register"/>
+            app:layout_constraintBottom_toTopOf="@id/btn_save_subject"/>
 
         <Button
-            android:id="@+id/btn_send_register"
-            style="@style/AppTheme.Button.Blue"
+            android:id="@+id/btn_save_subject"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/AppTheme.Button.Blue"
             android:layout_marginStart="@dimen/default_size"
             android:layout_marginEnd="@dimen/default_size"
             android:layout_marginBottom="@dimen/default_size"
-            android:text="@string/send_register"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            android:text="@string/save_subject"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
