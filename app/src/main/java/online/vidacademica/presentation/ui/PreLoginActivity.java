@@ -1,14 +1,15 @@
 package online.vidacademica.presentation.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityPreLoginBinding;
+import online.vidacademica.presentation.ui.login.LoginActivity;
 
 public class PreLoginActivity extends AppCompatActivity {
     private ActivityPreLoginBinding binding;
@@ -20,7 +21,7 @@ public class PreLoginActivity extends AppCompatActivity {
         binding.buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(PreLoginActivity.this, Login.class));
+                startActivity(new Intent(PreLoginActivity.this, LoginActivity.class));
             }
         });
         binding.buttonRegister.setOnClickListener(new View.OnClickListener() {
