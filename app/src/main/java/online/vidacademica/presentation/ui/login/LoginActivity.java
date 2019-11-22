@@ -1,4 +1,4 @@
-package online.vidacademica.presentation.ui;
+package online.vidacademica.presentation.ui.login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,55 +6,78 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
-import online.vidacademica.R;
-import online.vidacademica.databinding.ActivityLoginBinding;
+import org.apache.commons.validator.ValidatorException;
 
-public class Login extends AppCompatActivity {
+import online.vidacademica.R;
+import online.vidacademica.entities.Email;
+import online.vidacademica.presentation.ui.RegisterActivity;
+import online.vidacademica.repositories.TokenRepository;
+
+public class LoginActivity extends AppCompatActivity {
+    private SignInButton signInButton;
     private GoogleSignInClient mSignInClient;
+    private TextView textViewRegister;
     private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN = 9001;
-    private ActivityLoginBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+        setContentView(R.layout.activity_login);
         colorStatusBar(getWindow());
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
         mSignInClient = GoogleSignIn.getClient(this, gso);
-        binding.signInButton.setOnClickListener(new View.OnClickListener() {
+
+        setUpListeners();
+    }
+
+    private void setUpListeners() {
+
+        findViewById(R.id.button_sign_in_internal).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 signIn();
             }
         });
-        binding.imageViewBack.setOnClickListener(new View.OnClickListener() {
+
+        findViewById(R.id.button_sign_in_internal).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Login.this, PreLoginActivity.class));
+            public void onClick(View view) {
+                signInInternal();
             }
         });
-        binding.buttonLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Login.this, RegisterActivity.class));
-            }
-        });
+    }
+
+    private void signInInternal() {
+        Email user = null;
+        try {
+            user = new Email(((EditText) findViewById(R.id.edit_user)).getText().toString());
+        } catch (ValidatorException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Endereço de e-mail inválido, por favor siga o exemplo: email@example.com ", Toast.LENGTH_LONG).show();
+            return;
+        }
+        String pass = ((EditText) findViewById(R.id.edit_password)).getText().toString();
+
+        TokenRepository tokenRepository = new TokenRepository();
+        tokenRepository.getToken(user, pass);
     }
 
     private void colorStatusBar(Window window) {
@@ -80,7 +103,7 @@ public class Login extends AppCompatActivity {
             if (task.isSuccessful()) {
                 handleSignInResult(task);
             } else {
-                Toast.makeText(this, "Login não concluído", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "LoginActivity não concluído", Toast.LENGTH_LONG).show();
             }
         }
     }
