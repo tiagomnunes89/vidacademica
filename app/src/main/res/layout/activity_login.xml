@@ -130,6 +130,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_size"
                     android:text="@string/enter_google"
+                    android:visibility="invisible"
                     app:layout_constraintTop_toTopOf="parent" />
 
             </LinearLayout>

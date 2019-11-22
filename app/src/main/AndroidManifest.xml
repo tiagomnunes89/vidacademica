@@ -33,7 +33,7 @@
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_home" />
         <activity
-            android:name=".presentation.ui.Login"
+            android:name=".presentation.ui.login.LoginActivity"
             android:configChanges="orientation|screenSize">
 
         </activity>
