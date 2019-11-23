@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +15,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
@@ -28,9 +26,7 @@ import online.vidacademica.presentation.ui.RegisterActivity;
 import online.vidacademica.repositories.TokenRepository;
 
 public class LoginActivity extends AppCompatActivity {
-    private SignInButton signInButton;
     private GoogleSignInClient mSignInClient;
-    private TextView textViewRegister;
     private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN = 9001;
 
@@ -70,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
         try {
             user = new Email(((EditText) findViewById(R.id.edit_user)).getText().toString());
         } catch (ValidatorException e) {
-            e.printStackTrace();
+            Log.d(TAG, "signInInternal: ", e);
             Toast.makeText(this, "Endereço de e-mail inválido, por favor siga o exemplo: email@example.com ", Toast.LENGTH_LONG).show();
             return;
         }

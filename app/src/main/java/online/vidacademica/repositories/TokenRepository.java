@@ -1,5 +1,6 @@
 package online.vidacademica.repositories;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
@@ -23,15 +24,19 @@ public class TokenRepository {
     private static final String TAG = "TokenRepository";
 
     private final AuthService authService;
+    private final SharedPreferences sharedPreferences;
 
     public TokenRepository() {
         authService = ApiClient.buildService(AuthService.class);
+        sharedPreferences = ;
     }
 
     public LiveData<ResponseModel<TokenEntity>> getToken(Email email, String password) {
-        TokenEntity tokenEntity = new TokenEntity.Builder().email(email).password(password).build();
-        final MutableLiveData<ResponseModel<TokenEntity>> data = new MutableLiveData<>();
 
+        TokenEntity tokenEntity = new TokenEntity.Builder().email(email).password(password).build();
+
+        final MutableLiveData<ResponseModel<TokenEntity>> data = new MutableLiveData<>();
+        
         authService.auth(tokenEntity).enqueue(new Callback<TokenEntity>() {
             @Override
             public void onResponse(Call<TokenEntity> call, Response<TokenEntity> response) {
