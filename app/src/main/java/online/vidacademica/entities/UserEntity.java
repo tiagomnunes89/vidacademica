@@ -1,94 +1,77 @@
 package online.vidacademica.entities;
 
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
-import java.time.Instant;
+import java.util.Date;
 import java.util.Objects;
 
+import online.vidacademica.entities.weak.Email;
+
+@Entity(tableName = "users")
 public class UserEntity implements Serializable {
     private static final long serialVersionUID = -6604092636383467611L;
 
+    @PrimaryKey
     private Long id;
     private String name;
     private Email email;
-    private Instant dateOfBirth;
+    private Date dateOfBirth;
     private String socialId;
 
-    private UserEntity(Builder builder) {
-        this.id = builder.id;
-        this.name = builder.name;
-        this.email = builder.email;
-        this.dateOfBirth = builder.dateOfBirth;
-        this.socialId = builder.socialId;
+    public UserEntity() {
     }
 
-
-    public static FullNameStep builder(Long id) {
-        return new Builder(id);
+    @Ignore
+    public UserEntity(Long id, String name, Email email, Date dateOfBirth, String socialId) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.dateOfBirth = dateOfBirth;
+        this.socialId = socialId;
     }
 
-    public interface FullNameStep {
-        BirthdayStep withName(String dateOfBirth);
+    public Long getId() {
+        return id;
     }
 
-    public interface BirthdayStep {
-        EmailStep withBirthday(Instant dateOfBirth);
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public interface EmailStep {
-        SocialIdStep withMail(Email email);
+    public String getName() {
+        return name;
     }
 
-    public interface SocialIdStep {
-        BuildStep withSocialId(String socialId);
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public interface BuildStep {
-        UserEntity build();
+    public Email getEmail() {
+        return email;
     }
 
-
-    public static class Builder implements FullNameStep, BirthdayStep, EmailStep, SocialIdStep, BuildStep {
-
-        private Long id;
-        private String name;
-        private Email email;
-        private Instant dateOfBirth;
-        private String socialId;
-
-        private Builder(Long id) {
-            this.id = id;
-        }
-
-        @Override
-        public BirthdayStep withName(String name) {
-            this.name = name;
-            return this;
-        }
-
-        @Override
-        public EmailStep withBirthday(Instant dateOfBirth) {
-            this.dateOfBirth = dateOfBirth;
-            return this;
-        }
-
-        @Override
-        public SocialIdStep withMail(Email email) {
-            this.email = email;
-            return this;
-        }
-
-        @Override
-        public BuildStep withSocialId(String socialId) {
-            this.socialId = socialId;
-            return this;
-        }
-
-        @Override
-        public UserEntity build() {
-            return new UserEntity(this);
-        }
+    public void setEmail(Email email) {
+        this.email = email;
     }
 
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getSocialId() {
+        return socialId;
+    }
+
+    public void setSocialId(String socialId) {
+        this.socialId = socialId;
+    }
 
     @Override
     public boolean equals(Object o) {

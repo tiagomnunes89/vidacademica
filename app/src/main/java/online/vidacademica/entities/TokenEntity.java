@@ -1,11 +1,21 @@
 package online.vidacademica.entities;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+import online.vidacademica.entities.weak.Email;
+
+@Entity(tableName = "token")
 public class TokenEntity implements Serializable {
     private static final long serialVersionUID = 1357370471500938070L;
 
+    @PrimaryKey
+    @NonNull
     private Email email;
     private String password;
     private String token;
@@ -14,6 +24,7 @@ public class TokenEntity implements Serializable {
     public TokenEntity() {
     }
 
+    @Ignore
     public TokenEntity(Email email, String password, String token, String role) {
         this.email = email;
         this.password = password;
@@ -21,42 +32,42 @@ public class TokenEntity implements Serializable {
         this.role = role;
     }
 
-    public TokenEntity(Builder builder) {
-        this.email = builder.email;
-        this.password = builder.password;
-        this.token = builder.token;
-        this.role = builder.role;
+    @Ignore
+    public TokenEntity(Email email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
-    public static class Builder {
-        private Email email;
-        private String password;
-        private String token;
-        private String role;
+    public Email getEmail() {
+        return email;
+    }
 
-        public Builder email(Email email) {
-            this.email = email;
-            return this;
-        }
+    public void setEmail(Email email) {
+        this.email = email;
+    }
 
-        public Builder password(String password) {
-            this.password = password;
-            return this;
-        }
+    public String getPassword() {
+        return password;
+    }
 
-        public Builder token(String token) {
-            this.token = token;
-            return this;
-        }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-        public Builder role(String role) {
-            this.role = role;
-            return this;
-        }
+    public String getToken() {
+        return token;
+    }
 
-        public TokenEntity build() {
-            return new TokenEntity(this);
-        }
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override
@@ -69,6 +80,8 @@ public class TokenEntity implements Serializable {
                 Objects.equals(token, that.token) &&
                 role.equals(that.role);
     }
+
+
 
     @Override
     public int hashCode() {

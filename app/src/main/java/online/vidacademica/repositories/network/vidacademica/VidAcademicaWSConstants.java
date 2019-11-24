@@ -1,6 +1,6 @@
-package online.vidacademica.api.vidacademica;
+package online.vidacademica.repositories.network.vidacademica;
 
-public class ApiConstants {
+public final class VidAcademicaWSConstants {
     static final String BASE_URL = "https://vidacademica-services.herokuapp.com";
 
     private static final String AUTH_PATH = "/auth";

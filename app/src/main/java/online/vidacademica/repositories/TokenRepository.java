@@ -1,5 +1,6 @@
 package online.vidacademica.repositories;
 
+import android.content.Context;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
@@ -7,32 +8,41 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.Arrays;
 
-import online.vidacademica.api.vidacademica.ApiClient;
-import online.vidacademica.api.vidacademica.services.AuthService;
 import online.vidacademica.core.ErrorMessage;
 import online.vidacademica.core.ResponseModel;
-import online.vidacademica.entities.Email;
 import online.vidacademica.entities.TokenEntity;
+import online.vidacademica.entities.weak.Email;
+import online.vidacademica.repositories.network.vidacademica.VidAcademicaWSClient;
+import online.vidacademica.repositories.network.vidacademica.services.TokenService;
 import online.vidacademica.utils.JsonUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TokenRepository {
+    private static final String TAG = TokenRepository.class.getSimpleName();
 
-    private static final String TAG = "TokenRepository";
+    private static TokenRepository instance;
+    private final TokenService tokenService;
 
-    private final AuthService authService;
+    private TokenRepository(Context context) {
+        tokenService = VidAcademicaWSClient.buildService(TokenService.class);
+    }
 
-    public TokenRepository() {
-        authService = ApiClient.buildService(AuthService.class);
+    public static synchronized TokenRepository getInstance(Context context) {
+        if (instance == null) {
+            instance = new TokenRepository(context);
+        }
+        return instance;
     }
 
     public LiveData<ResponseModel<TokenEntity>> getToken(Email email, String password) {
-        TokenEntity tokenEntity = new TokenEntity.Builder().email(email).password(password).build();
+
+        TokenEntity tokenEntity = new TokenEntity(email, password);
+
         final MutableLiveData<ResponseModel<TokenEntity>> data = new MutableLiveData<>();
 
-        authService.auth(tokenEntity).enqueue(new Callback<TokenEntity>() {
+        tokenService.auth(tokenEntity).enqueue(new Callback<TokenEntity>() {
             @Override
             public void onResponse(Call<TokenEntity> call, Response<TokenEntity> response) {
 

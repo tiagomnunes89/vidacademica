@@ -1,4 +1,4 @@
-package online.vidacademica.entities;
+package online.vidacademica.entities.weak;
 
 import org.apache.commons.validator.ValidatorException;
 import org.apache.commons.validator.routines.EmailValidator;
@@ -18,8 +18,9 @@ public class Email {
     }
 
     public void setEmail(String email) throws ValidatorException {
-        if (EmailValidator.getInstance().isValid(email))
+        if (EmailValidator.getInstance().isValid(email)) {
             this.email = email;
+        }
         else
             throw new ValidatorException(String.format("This %s mail not has a valida sintaxe.", email));
     }
@@ -35,5 +36,12 @@ public class Email {
     @Override
     public int hashCode() {
         return Objects.hash(email);
+    }
+
+    @Override
+    public String toString() {
+        return "Email{" +
+                "email='" + email + '\'' +
+                '}';
     }
 }
