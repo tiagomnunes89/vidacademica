@@ -1,4 +1,4 @@
-package online.vidacademica.presentation.ui.login;
+package online.vidacademica.ui.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,9 +21,9 @@ import com.google.android.gms.tasks.Task;
 import org.apache.commons.validator.ValidatorException;
 
 import online.vidacademica.R;
-import online.vidacademica.entities.Email;
-import online.vidacademica.presentation.ui.RegisterActivity;
+import online.vidacademica.entities.weak.Email;
 import online.vidacademica.repositories.TokenRepository;
+import online.vidacademica.ui.RegisterActivity;
 
 public class LoginActivity extends AppCompatActivity {
     private GoogleSignInClient mSignInClient;

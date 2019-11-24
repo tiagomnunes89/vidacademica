@@ -1,4 +1,4 @@
-package online.vidacademica.entities;
+package online.vidacademica.entities.weak;
 
 import org.apache.commons.validator.ValidatorException;
 import org.apache.commons.validator.routines.EmailValidator;

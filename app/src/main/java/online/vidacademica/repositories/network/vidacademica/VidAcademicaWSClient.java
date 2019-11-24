@@ -1,4 +1,4 @@
-package online.vidacademica.api.vidacademica;
+package online.vidacademica.repositories.network.vidacademica;
 
 import androidx.annotation.NonNull;
 
@@ -14,9 +14,9 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ApiClient {
+public class VidAcademicaWSClient {
 
-    private static final String URL = ApiConstants.BASE_URL;
+    private static final String URL = VidAcademicaWSConstants.BASE_URL;
 
     private static final HttpLoggingInterceptor logger =
             new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);

@@ -1,4 +1,4 @@
-package online.vidacademica.presentation.ui;
+package online.vidacademica.ui;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;

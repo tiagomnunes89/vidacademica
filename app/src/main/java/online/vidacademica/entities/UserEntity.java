@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
+import online.vidacademica.entities.weak.Email;
+
 public class UserEntity implements Serializable {
     private static final long serialVersionUID = -6604092636383467611L;
 

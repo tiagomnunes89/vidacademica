@@ -7,8 +7,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import org.apache.commons.validator.ValidatorException;
 
-import online.vidacademica.api.vidacademica.ApiClient;
-import online.vidacademica.api.vidacademica.services.UserService;
+import online.vidacademica.repositories.network.vidacademica.VidAcademicaWSClient;
+import online.vidacademica.repositories.network.vidacademica.services.UserService;
 import online.vidacademica.core.ErrorMessage;
 import online.vidacademica.core.ResponseModel;
 import online.vidacademica.entities.UserEntity;
@@ -25,7 +25,7 @@ public class UserRepository {
     private final UserService userService;
 
     public UserRepository() {
-        userService = ApiClient.buildService(UserService.class);
+        userService = VidAcademicaWSClient.buildService(UserService.class);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

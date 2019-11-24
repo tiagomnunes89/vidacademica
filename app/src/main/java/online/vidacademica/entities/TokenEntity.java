@@ -3,6 +3,8 @@ package online.vidacademica.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import online.vidacademica.entities.weak.Email;
+
 public class TokenEntity implements Serializable {
     private static final long serialVersionUID = 1357370471500938070L;
 
