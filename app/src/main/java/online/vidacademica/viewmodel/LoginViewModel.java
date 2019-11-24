@@ -1,4 +1,4 @@
-package online.vidacademica.ui.viewmodel;
+package online.vidacademica.viewmodel;
 
 import android.app.Application;
 
@@ -13,9 +13,9 @@ public class LoginViewModel extends AndroidViewModel {
 
     public LoginViewModel(@NonNull Application application) {
         super(application);
-
-
+        tokenRepository = TokenRepository.getInstance(application);
     }
+
 
 
 }

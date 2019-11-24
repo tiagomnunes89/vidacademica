@@ -1,4 +1,4 @@
-package online.vidacademica.ui;
+package online.vidacademica.view.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,7 +10,6 @@ import androidx.databinding.DataBindingUtil;
 
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityPreLoginBinding;
-import online.vidacademica.ui.view.LoginActivity;
 
 public class PreLoginActivity extends AppCompatActivity {
     private ActivityPreLoginBinding binding;

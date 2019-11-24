@@ -1,4 +1,4 @@
-package online.vidacademica.ui;
+package online.vidacademica.view.ui;
 
 import android.os.Bundle;
 

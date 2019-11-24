@@ -33,7 +33,7 @@ public class UserRepository {
 
         final MutableLiveData<ResponseModel<UserEntity>> data = new MutableLiveData<>();
 
-        userService.getAllUsers().enqueue(new Callback<UserEntity>() {
+        userService.getAllUsers("").enqueue(new Callback<UserEntity>() {
             @Override
             public void onResponse(Call<UserEntity> call, Response<UserEntity> response) {
 
