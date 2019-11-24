@@ -5,7 +5,13 @@
     tools:context=".ui.Login">
 
     <data>
+        <variable
+            name="user"
+            type="online.vidacademica.entities.UserLoginEntity" />
 
+        <variable
+            name="loginViewModel"
+            type="online.vidacademica.viewmodel.LoginViewModel" />
     </data>
 
     <ScrollView
@@ -83,7 +89,8 @@
                         android:id="@+id/edit_user"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/user" />
+                        android:hint="@string/user"
+                        android:text="@{user.email}"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -101,7 +108,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/password"
-                        android:inputType="textPassword" />
+                        android:inputType="textPassword"
+                        android:text="@{user.password}"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -121,7 +129,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/enter"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:onClick="@{(user) -> loginViewModel.login(user)}"/>
 
                 <Button
                     android:id="@+id/button_sign_in_internal"
