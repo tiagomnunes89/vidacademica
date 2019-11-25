@@ -16,8 +16,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class VidAcademicaWSClient {
 
-    private static final String URL = VidAcademicaWSConstants.BASE_URL;
-
     private static final HttpLoggingInterceptor logger =
             new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
 
@@ -40,7 +38,7 @@ public class VidAcademicaWSClient {
                     .callTimeout(60, TimeUnit.SECONDS);
 
     private static Retrofit getRetroInstance() {
-        return new Retrofit.Builder().baseUrl(URL)
+        return new Retrofit.Builder().baseUrl(VidAcademicaWSConstants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttp.build()).build();
     }

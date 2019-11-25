@@ -11,6 +11,7 @@ import androidx.room.TypeConverters;
 import online.vidacademica.entities.TokenEntity;
 import online.vidacademica.entities.UserEntity;
 import online.vidacademica.helpers.Converters;
+import online.vidacademica.repositories.storage.local.dao.TokenDao;
 
 import static online.vidacademica.repositories.storage.local.VidAcademicaLocalDBConstants.DATABASE_NAME;
 
@@ -26,6 +27,8 @@ import static online.vidacademica.repositories.storage.local.VidAcademicaLocalDB
 public abstract class VidAcademicaLocalDBClient extends RoomDatabase {
 
     private static VidAcademicaLocalDBClient INSTANCE;
+
+    public abstract TokenDao tokenDao();
 
     public static VidAcademicaLocalDBClient getInstance(final Context context) {
         if (INSTANCE == null) {

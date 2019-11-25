@@ -1,15 +1,19 @@
-package online.vidacademica.entities;
+package online.vidacademica.entities.databind;
+
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+import androidx.lifecycle.MutableLiveData;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-public class UserLoginEntity implements Serializable {
+public class UserLoginDatabind implements Serializable {
     private static final long serialVersionUID = 5977833862920711908L;
 
     private String email;
     private String password;
 
-    public UserLoginEntity() {
+    public UserLoginDatabind() {
     }
 
     public String getEmail() {
@@ -32,7 +36,7 @@ public class UserLoginEntity implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserLoginEntity that = (UserLoginEntity) o;
+        UserLoginDatabind that = (UserLoginDatabind) o;
         return email.equals(that.email);
     }
 

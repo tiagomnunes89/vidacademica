@@ -18,8 +18,15 @@ public class Converters {
     }
 
     @TypeConverter
-    public static Email convert(String email) throws ValidatorException {
-        return new Email(email);
+    public static Email convert(String email) {
+        Email newEmail = null;
+        try {
+            newEmail = new Email(email);
+        } catch (ValidatorException e) {
+            e.printStackTrace();
+        }
+
+        return newEmail;
     }
 
     // Converte o tipo date
