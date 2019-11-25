@@ -5,13 +5,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityLoginBinding;
+import online.vidacademica.entities.TokenEntity;
 import online.vidacademica.viewmodel.LoginViewModel;
 
 public class LoginActivity extends AppCompatActivity {
@@ -31,23 +35,20 @@ public class LoginActivity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         binding.setLifecycleOwner(this);
+        binding.setLoginViewModel(loginViewModel);
 
+        loginViewModel.getToken().observe(this, new Observer<TokenEntity>() {
+            @Override
+            public void onChanged(@Nullable TokenEntity tokenEntity) {
+                if (tokenEntity == null) {
+                    binding.editUser.setError("Usuário ou senha incorretos.");
+                } else {
+                    Toast.makeText(LoginActivity.this, tokenEntity.getToken(), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
-
-
-        setUpClickHandlers();
     }
-
-    private void setUpClickHandlers() {
-
-//        findViewById(R.id.button_sign_in_internal).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                loginViewModel.login();
-//            }
-//        });
-    }
-
 
     private void colorStatusBar(Window window) {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -57,8 +58,4 @@ public class LoginActivity extends AppCompatActivity {
         window.setStatusBarColor(getResources().getColor(R.color.colorBackground));
     }
 
-
-    public void openRegisterSccreen(View view) {
-        startActivity(new Intent(this, RegisterActivity.class));
-    }
 }

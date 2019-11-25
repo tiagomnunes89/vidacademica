@@ -7,10 +7,10 @@
     <data>
         <variable
             name="user"
-            type="online.vidacademica.entities.UserLoginEntity" />
+            type="online.vidacademica.entities.databind.UserLoginDatabind" />
 
         <variable
-            name="loginViewModel"
+            name="LoginViewModel"
             type="online.vidacademica.viewmodel.LoginViewModel" />
     </data>
 
@@ -90,7 +90,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/user"
-                        android:text="@{user.email}"/>
+                        android:text="@={LoginViewModel.userLoginDatabind.email}"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -109,7 +109,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/password"
                         android:inputType="textPassword"
-                        android:text="@{user.password}"/>
+                        android:text="@={LoginViewModel.userLoginDatabind.password}"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -130,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/enter"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:onClick="@{(user) -> loginViewModel.login(user)}"/>
+                    android:onClick="@{() -> LoginViewModel.login()}"/>
 
                 <Button
                     android:id="@+id/button_sign_in_internal"

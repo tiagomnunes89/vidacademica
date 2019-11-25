@@ -16,7 +16,7 @@ public class TokenEntity implements Serializable {
 
     @PrimaryKey
     @NonNull
-    private Email email;
+    private String email;
     private String password;
     private String token;
     private String role;
@@ -25,7 +25,7 @@ public class TokenEntity implements Serializable {
     }
 
     @Ignore
-    public TokenEntity(Email email, String password, String token, String role) {
+    public TokenEntity(String email, String password, String token, String role) {
         this.email = email;
         this.password = password;
         this.token = token;
@@ -33,16 +33,16 @@ public class TokenEntity implements Serializable {
     }
 
     @Ignore
-    public TokenEntity(Email email, String password) {
+    public TokenEntity(String email, String password) {
         this.email = email;
         this.password = password;
     }
 
-    public Email getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(Email email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
