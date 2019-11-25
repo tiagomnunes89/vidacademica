@@ -4,48 +4,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".presentation.CreateCourseActivity">
 
-<ScrollView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_name_course"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <LinearLayout
+                android:id="@+id/linear_layout_course"
                 android:layout_width="match_parent"
-                android:layout_marginStart="@dimen/default_size"
-                android:layout_marginEnd="@dimen/default_size"
-                android:layout_marginTop="@dimen/default_size"
-                android:layout_marginBottom="@dimen/default_size"
                 android:layout_height="wrap_content"
-                app:errorEnabled="true">
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar_create_course">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_name_course"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@android:color/white"
-                    android:hint="@string/name"
-                    android:inputType="textPersonName"
-                    android:textColor="@android:color/white"
-                    android:textColorHint="@android:color/white" />
+                    android:layout_marginStart="@dimen/default_size"
+                    android:layout_marginTop="@dimen/default_size"
+                    android:layout_marginBottom="@dimen/default_size"
+                    android:layout_weight="1"
+                    app:errorEnabled="true">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@android:color/white"
+                        android:hint="@string/name"
+                        android:inputType="textPersonName"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@android:color/white" />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_workload_course"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="@dimen/default_size"
+                    android:layout_marginEnd="@dimen/default_size"
+                    android:layout_marginBottom="@dimen/default_size"
+                    android:layout_weight="1"
+                    app:errorEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@android:color/white"
+                        android:hint="Carga horária"
+                        android:inputType="numberDecimal"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@android:color/white" />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/text_input_description_course"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/default_size"
+                android:layout_marginTop="100dp"
                 android:layout_marginEnd="@dimen/default_size"
                 android:layout_marginBottom="@dimen/short_size"
-                android:layout_height="wrap_content"
-                app:errorEnabled="true">
+                app:errorEnabled="true"
+                app:layout_constraintTop_toTopOf="@+id/linear_layout_course">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -54,12 +92,33 @@
                     android:hint="@string/description"
                     android:inputType="textMultiLine"
                     android:textColor="@android:color/white"
-                    android:textColorHint="@android:color/white"
-                    />
+                    android:textColorHint="@android:color/white" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:id="@+id/text_view_status_course"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_size"
+                android:layout_marginTop="@dimen/little_size"
+                android:fontFamily="@font/dosis_bold"
+                android:text="Status"
+                android:textSize="@dimen/font_normal_text"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_input_description_course" />
 
-        </LinearLayout>
+            <Spinner
+                android:id="@+id/input_status_course"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_size"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="@dimen/default_size"
+                android:layout_marginBottom="@dimen/short_size"
+                app:layout_constraintTop_toTopOf="@+id/text_view_status_course"></Spinner>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </ScrollView>
 </layout>
