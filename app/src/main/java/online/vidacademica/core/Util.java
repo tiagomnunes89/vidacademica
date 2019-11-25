@@ -8,9 +8,9 @@ import android.icu.util.Calendar;
 
 public class Util {
 
-    private static DatePickerDialog dialog;
+    private DatePickerDialog dialog;
 
-    public static void callDatePickerDialog(Context context, DatePickerDialog.OnDateSetListener onDateSetListener) {
+    public void callDatePickerDialog(Context context, DatePickerDialog.OnDateSetListener onDateSetListener) {
 
         Calendar cal = Calendar.getInstance();
 
@@ -25,8 +25,8 @@ public class Util {
                     onDateSetListener,
                     year, month, day);
         }
-        dialog.show();
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        dialog.show();
     }
 }
 

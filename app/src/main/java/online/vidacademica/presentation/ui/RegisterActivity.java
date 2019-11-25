@@ -19,6 +19,7 @@ public class RegisterActivity extends AppCompatActivity {
     private static final String TAG = "RegisterActivity";
     private DatePickerDialog.OnDateSetListener onDateSetListener;
     private ActivityRegisterBinding binding;
+    private Util util = new Util();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
         binding.layoutRegisterContent.textInputEtBirthDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Util.callDatePickerDialog(RegisterActivity.this, onDateSetListener);
+                util.callDatePickerDialog(RegisterActivity.this, onDateSetListener);
             }
         });
 

@@ -189,10 +189,9 @@
                 android:id="@+id/recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_size"
-                android:layout_marginEnd="@dimen/default_size"
                 app:layout_constraintTop_toBottomOf="@+id/linear_layout_add_schedule"
                 tools:itemCount="2"
+                tools:layout_editor_absoluteX="24dp"
                 tools:listitem="@layout/item_class_schedules" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
