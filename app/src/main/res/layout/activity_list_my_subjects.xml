@@ -46,4 +46,25 @@
         android:spinnerMode="dropdown"
         android:padding="@dimen/little_size"
         app:layout_constraintTop_toBottomOf="@id/toolbar"></Spinner>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/spinner"
+        android:layout_marginTop="@dimen/default_size"
+        android:layout_marginStart="@dimen/default_size"
+        android:layout_marginEnd="@dimen/default_size"
+        tools:itemCount="5"
+        tools:listitem="@layout/item_recycler_subject"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/default_size"
+        android:src="@drawable/ic_add_black_24dp">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
 </androidx.constraintlayout.widget.ConstraintLayout>
