@@ -39,4 +39,5 @@
     <string name="login">Login</string>
     <string name="title_activity_create_course">CreateCourseActivity</string>
     <string name="title_create_curso">Criar Curso</string>
+    <string name="title_activity_list_my_courses">ListMyCoursesActivity</string>
 </resources>
