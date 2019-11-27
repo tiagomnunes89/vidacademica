@@ -14,6 +14,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".view.ui.PreLoginActivity">
+
+        </activity>
+        <activity android:name=".view.ui.activity_listMySubjects">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
