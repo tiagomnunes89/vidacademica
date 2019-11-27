@@ -1,36 +1,39 @@
 package online.vidacademica.entities;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
-import online.vidacademica.entities.weak.Email;
-
-@Entity(tableName = "users")
 public class UserEntity implements Serializable {
     private static final long serialVersionUID = -6604092636383467611L;
 
-    @PrimaryKey
     private Long id;
     private String name;
-    private Email email;
-    private Date dateOfBirth;
+    private String email;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
+    private LocalDate dateOfBirth;
     private String socialId;
+    private String password;
 
     public UserEntity() {
     }
 
     @Ignore
-    public UserEntity(Long id, String name, Email email, Date dateOfBirth, String socialId) {
+    public UserEntity(Long id, String name, String email, LocalDate dateOfBirth, String socialId, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.socialId = socialId;
+        this.password = password;
     }
 
     public Long getId() {
@@ -49,20 +52,28 @@ public class UserEntity implements Serializable {
         this.name = name;
     }
 
-    public Email getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(Email email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
+    public String getDateOfBirth() {
+        String response = "";
+        if (dateOfBirth != null) {
+            String[] mesAnoDia = dateOfBirth.toString().split("\\-");
+            response = String.format("%s/%s/%s", mesAnoDia[2], mesAnoDia[0], mesAnoDia[1]);
+        }
+        return response;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void setDateOfBirth(String dateOfBirth) {
+        String[] splittedDate = dateOfBirth.split("\\/");
+        LocalDate date = LocalDate.of(Integer.parseInt(splittedDate[2]), Integer.parseInt(splittedDate[1]), Integer.parseInt(splittedDate[0])).atStartOfDay().toLocalDate();
+        this.dateOfBirth = date;
     }
 
     public String getSocialId() {
@@ -71,6 +82,14 @@ public class UserEntity implements Serializable {
 
     public void setSocialId(String socialId) {
         this.socialId = socialId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

@@ -5,7 +5,9 @@
     tools:context=".view.ui.RegisterActivity">
 
     <data>
-
+        <variable
+            name="RegisterViewModel"
+            type="online.vidacademica.viewmodel.RegisterViewModel" />
     </data>
 
     <ScrollView
@@ -82,7 +84,8 @@
                             android:hint="@string/name"
                             android:inputType="textPersonName"
                             android:textColor="@android:color/white"
-                            android:textColorHint="@android:color/white" />
+                            android:textColorHint="@android:color/white"
+                            android:text="@={RegisterViewModel.userEntity.name}"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -100,27 +103,29 @@
                             android:hint="@string/email"
                             android:inputType="textEmailAddress"
                             android:textColor="@android:color/white"
-                            android:textColorHint="@android:color/white" />
+                            android:textColorHint="@android:color/white"
+                            android:text="@={RegisterViewModel.userEntity.email}"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_input_phone"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true">
+<!--                    <com.google.android.material.textfield.TextInputLayout-->
+<!--                        android:id="@+id/text_input_phone"-->
+<!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        app:errorEnabled="true">-->
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@android:color/white"
-                            android:hint="@string/cellphone"
-                            android:inputType="phone"
-                            android:textColor="@android:color/white"
-                            android:textColorHint="@android:color/white" />
+<!--                        <com.google.android.material.textfield.TextInputEditText-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:backgroundTint="@android:color/white"-->
+<!--                            android:hint="@string/cellphone"-->
+<!--                            android:inputType="phone"-->
+<!--                            android:textColor="@android:color/white"-->
+<!--                            android:textColorHint="@android:color/white"-->
+<!--                            android:text="@={RegisterViewModel.userEntity}"/>-->
 
-                    </com.google.android.material.textfield.TextInputLayout>
+<!--                    </com.google.android.material.textfield.TextInputLayout>-->
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/text_input_rg"
@@ -136,7 +141,8 @@
                             android:hint="@string/rg"
                             android:inputType="phone"
                             android:textColor="@android:color/white"
-                            android:textColorHint="@android:color/white" />
+                            android:textColorHint="@android:color/white"
+                            android:text="@={RegisterViewModel.userEntity.socialId}"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -156,7 +162,8 @@
                             android:hint="@string/birth_date"
                             android:inputType="none"
                             android:textColor="@android:color/white"
-                            android:textColorHint="@android:color/white" />
+                            android:textColorHint="@android:color/white"
+                            android:text="@={RegisterViewModel.userEntity.dateOfBirth}"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -175,7 +182,8 @@
                             android:hint="@string/password"
                             android:inputType="textPassword"
                             android:textColor="@android:color/white"
-                            android:textColorHint="@android:color/white" />
+                            android:textColorHint="@android:color/white"
+                            android:text="@={RegisterViewModel.userEntity.password}"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -194,7 +202,8 @@
                             android:hint="@string/password_confirmation"
                             android:inputType="textPassword"
                             android:textColor="@android:color/white"
-                            android:textColorHint="@android:color/white" />
+                            android:textColorHint="@android:color/white"
+                            android:text="@={RegisterViewModel.userEntity.password}"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 

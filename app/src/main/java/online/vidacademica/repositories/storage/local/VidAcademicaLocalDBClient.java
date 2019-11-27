@@ -17,8 +17,7 @@ import static online.vidacademica.repositories.storage.local.VidAcademicaLocalDB
 
 @Database(
         entities = {
-                TokenEntity.class,
-                UserEntity.class
+                TokenEntity.class
         },
         version = 1,
         exportSchema = false

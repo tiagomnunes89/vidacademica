@@ -6,5 +6,5 @@ public final class VidAcademicaWSConstants {
     private static final String AUTH_PATH = "/auth";
     public static final String AUTH_PATH_LOGIN = AUTH_PATH + "/login";
 
-    public static final String USER_PATH = "/user";
+    public static final String USER_PATH = "/users";
 }
