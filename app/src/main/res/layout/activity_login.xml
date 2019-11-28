@@ -2,10 +2,16 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".presentation.ui.Login">
+    tools:context=".ui.Login">
 
     <data>
+        <variable
+            name="user"
+            type="online.vidacademica.entities.databind.UserLoginDatabind" />
 
+        <variable
+            name="LoginViewModel"
+            type="online.vidacademica.viewmodel.LoginViewModel" />
     </data>
 
     <ScrollView
@@ -80,9 +86,11 @@
                     app:errorEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_user"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/user" />
+                        android:hint="@string/user"
+                        android:text="@={LoginViewModel.userLoginDatabind.email}"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -96,10 +104,12 @@
                     app:passwordToggleEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/password"
-                        android:inputType="textPassword" />
+                        android:inputType="textPassword"
+                        android:text="@={LoginViewModel.userLoginDatabind.password}"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -119,15 +129,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/enter"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:onClick="@{() -> LoginViewModel.login()}"/>
 
                 <Button
-                    android:id="@+id/sign_in_button"
+                    android:id="@+id/button_sign_in_internal"
                     style="@style/AppTheme.Button.Blue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_size"
                     android:text="@string/enter_google"
+                    android:visibility="invisible"
                     app:layout_constraintTop_toTopOf="parent" />
 
             </LinearLayout>

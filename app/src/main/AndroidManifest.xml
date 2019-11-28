@@ -4,7 +4,7 @@
     package="online.vidacademica">
 
     <dist:module dist:instant="true" />
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,10 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+<<<<<<< HEAD
         <activity
             android:name=".presentation.ui.ListMyCoursesActivity"
             android:label="@string/title_activity_list_my_courses"
             android:theme="@style/AppTheme.NoActionBar">
+=======
+        <activity android:name=".view.ui.PreLoginActivity">
+>>>>>>> master
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,6 +28,7 @@
             </intent-filter>
 
         </activity>
+<<<<<<< HEAD
         <activity
             android:name=".presentation.CreateCourseActivity"
             android:label="@string/title_activity_create_course"
@@ -32,20 +37,35 @@
         </activity>
         <activity android:name=".presentation.ui.PreLoginActivity"></activity>
         <activity android:name=".presentation.ui.ProfileActivity" />
+=======
+        <activity android:name=".view.ui.ProfileActivity" />
+>>>>>>> master
         <activity
-            android:name=".presentation.ui.CreateSubjectActivity"
+            android:name=".view.ui.CreateSubjectActivity"
             android:label="@string/title_activity_create_subject"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+<<<<<<< HEAD
             android:name=".presentation.ui.RegisterActivity"
             android:configChanges="orientation|screenSize" />
+=======
+            android:name=".view.ui.RegisterActivity"
+            android:configChanges="orientation|screenSize"></activity>
+>>>>>>> master
         <activity
-            android:name=".presentation.ui.HomeActivity"
+            android:name=".view.ui.HomeActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_home" />
         <activity
+<<<<<<< HEAD
             android:name=".presentation.ui.Login"
             android:configChanges="orientation|screenSize" />
+=======
+            android:name=".view.ui.LoginActivity"
+            android:configChanges="orientation|screenSize">
+
+        </activity>
+>>>>>>> master
     </application>
 
 </manifest>

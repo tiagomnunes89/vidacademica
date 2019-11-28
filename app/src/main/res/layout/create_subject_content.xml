@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".presentation.ui.CreateSubjectActivity">
+    tools:context=".view.ui.CreateSubjectActivity">
 
     <data>
 
@@ -18,8 +18,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-
-
             <LinearLayout
                 android:id="@+id/linear_layout_name_score"
                 android:layout_width="match_parent"
@@ -31,7 +29,7 @@
                 android:paddingEnd="@dimen/default_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_input_create_subject"
@@ -47,6 +45,7 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="@android:color/white"
                         android:hint="@string/subject"
+                        android:inputType="text"
                         android:textColor="@android:color/white"
                         android:textColorHint="@android:color/white" />
 
@@ -190,10 +189,9 @@
                 android:id="@+id/recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_size"
-                android:layout_marginEnd="@dimen/default_size"
                 app:layout_constraintTop_toBottomOf="@+id/linear_layout_add_schedule"
                 tools:itemCount="2"
+                tools:layout_editor_absoluteX="24dp"
                 tools:listitem="@layout/item_class_schedules" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
