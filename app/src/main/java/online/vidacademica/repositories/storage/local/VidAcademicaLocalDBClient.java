@@ -5,11 +5,9 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
 
 import online.vidacademica.entities.TokenEntity;
-import online.vidacademica.entities.UserEntity;
 import online.vidacademica.helpers.Converters;
 import online.vidacademica.repositories.storage.local.dao.TokenDao;
 
@@ -41,5 +39,4 @@ public abstract class VidAcademicaLocalDBClient extends RoomDatabase {
         }
         return INSTANCE;
     }
-
 }

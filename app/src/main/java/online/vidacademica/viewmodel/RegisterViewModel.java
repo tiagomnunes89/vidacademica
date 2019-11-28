@@ -36,9 +36,6 @@ public class RegisterViewModel extends AndroidViewModel {
         if (!(userEntityResponse == null) && !(userEntityResponse.getValue() == null) && (userEntityResponse.getValue().getCode() == CREATED)) {
             response.setValue(Boolean.TRUE);
         }
-
         return response;
     }
-
-
 }

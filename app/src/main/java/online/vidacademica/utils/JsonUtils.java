@@ -8,5 +8,4 @@ public class JsonUtils {
         Gson gson = new Gson();
         return gson.toJson(obj);
     }
-
 }

@@ -53,5 +53,4 @@ public class VidAcademicaWSClient {
     public static <S> S buildService(Class<S> serviceType) {
         return retrofit.create(serviceType);
     }
-
 }

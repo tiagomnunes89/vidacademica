@@ -1,21 +1,19 @@
 package online.vidacademica.repositories;
 
 import android.content.Context;
-import android.os.Build;
 import android.util.Log;
 
-import androidx.annotation.RequiresApi;
 import androidx.lifecycle.MutableLiveData;
 
 import org.apache.commons.validator.ValidatorException;
 
 import java.util.Arrays;
 
-import online.vidacademica.repositories.network.vidacademica.VidAcademicaWSClient;
-import online.vidacademica.repositories.network.vidacademica.services.UserService;
 import online.vidacademica.core.ErrorMessage;
 import online.vidacademica.core.ResponseModel;
 import online.vidacademica.entities.UserEntity;
+import online.vidacademica.repositories.network.vidacademica.VidAcademicaWSClient;
+import online.vidacademica.repositories.network.vidacademica.services.UserService;
 import online.vidacademica.utils.JsonUtils;
 import retrofit2.Call;
 import retrofit2.Callback;

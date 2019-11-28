@@ -13,7 +13,6 @@ import java.util.Objects;
 import online.vidacademica.core.ErrorMessage;
 import online.vidacademica.core.ResponseModel;
 import online.vidacademica.entities.TokenEntity;
-import online.vidacademica.entities.weak.Email;
 import online.vidacademica.repositories.network.vidacademica.VidAcademicaWSClient;
 import online.vidacademica.repositories.network.vidacademica.services.TokenService;
 import online.vidacademica.repositories.storage.local.VidAcademicaLocalDBClient;
