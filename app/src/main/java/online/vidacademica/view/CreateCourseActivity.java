@@ -20,8 +20,7 @@ import android.widget.Toast;
 
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityCreateCourseBinding;
-import online.vidacademica.databinding.ActivityCreateSubjectBinding;
-import online.vidacademica.presentation.ui.CreateSubjectActivity;
+import online.vidacademica.view.ui.CreateSubjectActivity;
 
 public class CreateCourseActivity extends AppCompatActivity {
 

@@ -5,6 +5,8 @@
 
     <dist:module dist:instant="true" />
     <uses-permission android:name="android.permission.INTERNET" />
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,9 +19,15 @@
         <activity
             android:name=".presentation.ui.ListMyCoursesActivity"
             android:label="@string/title_activity_list_my_courses"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".view.ui.activity_listMySubjects">
+
 
         </activity>
         <activity android:name=".view.ui.PreLoginActivity">
@@ -46,8 +54,6 @@
         <activity
             android:name=".presentation.ui.RegisterActivity"
             android:configChanges="orientation|screenSize" />
-            android:name=".view.ui.RegisterActivity"
-            android:configChanges="orientation|screenSize"></activity>
         <activity
             android:name=".view.ui.HomeActivity"
             android:configChanges="orientation|screenSize"
@@ -55,10 +61,7 @@
         <activity
             android:name=".presentation.ui.Login"
             android:configChanges="orientation|screenSize" />
-            android:name=".view.ui.LoginActivity"
-            android:configChanges="orientation|screenSize">
 
-        </activity>
     </application>
 
-</manifest>
+    </manifest>
