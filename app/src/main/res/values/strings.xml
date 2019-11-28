@@ -38,6 +38,10 @@
     <string name="add_class_schedule">Adicionar horário de aula</string>
     <string name="save_subject">Salvar matéria</string>
     <string name="login">Login</string>
+    <string name="title_activity_create_course">CreateCourseActivity</string>
+    <string name="title_create_curso">Criar Curso</string>
+    <string name="title_activity_list_my_courses">ListMyCoursesActivity</string>
+
     <string name="item_recicler_titulo_materia">TextViewTextViewTextViewTextViewTextViewTextView</string>
     <string name="item_periodo_date">06/19 - 01/20</string>
 </resources>

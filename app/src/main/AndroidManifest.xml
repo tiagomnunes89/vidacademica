@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+
+        <activity
+            android:name=".presentation.ui.ListMyCoursesActivity"
+            android:label="@string/title_activity_list_my_courses"
+            android:theme="@style/AppTheme.NoActionBar">
+
         <activity android:name=".view.ui.activity_listMySubjects">
 
         </activity>
@@ -22,13 +28,24 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+        <activity
+            android:name=".presentation.CreateCourseActivity"
+            android:label="@string/title_activity_create_course"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity android:name=".presentation.ui.PreLoginActivity"></activity>
+        <activity android:name=".presentation.ui.ProfileActivity" />
         <activity android:name=".view.ui.ProfileActivity" />
         <activity
             android:name=".view.ui.CreateSubjectActivity"
             android:label="@string/title_activity_create_subject"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".presentation.ui.RegisterActivity"
+            android:configChanges="orientation|screenSize" />
             android:name=".view.ui.RegisterActivity"
             android:configChanges="orientation|screenSize"></activity>
         <activity
@@ -36,6 +53,8 @@
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_home" />
         <activity
+            android:name=".presentation.ui.Login"
+            android:configChanges="orientation|screenSize" />
             android:name=".view.ui.LoginActivity"
             android:configChanges="orientation|screenSize">
 
