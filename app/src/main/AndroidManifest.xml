@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="online.vidacademica">
-
     <dist:module dist:instant="true" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -15,46 +14,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <activity android:name=".view.ui.activity_listMySubjects">
 
+        <activity android:name=".view.ui.ListMySubjectsActivity">
         </activity>
-=======
-<<<<<<< HEAD
-=======
 
->>>>>>> 3c637fa1393102ee36de7a03989f4dad49cb99a3
+
+
         <activity
             android:name=".view.ui.ListMyCoursesActivity"
             android:label="@string/title_activity_list_my_courses"
-<<<<<<< HEAD
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
-        <activity android:name=".view.ui.activity_listMySubjects">
-=======
-<<<<<<< HEAD
-            android:theme="@style/AppTheme.NoActionBar">
-=======
->>>>>>> branchEdu
-=======
-            android:theme="@style/AppTheme.NoActionBar" />
->>>>>>> 3c637fa1393102ee36de7a03989f4dad49cb99a3
+
         <activity android:name=".view.ui.PreLoginActivity">
->>>>>>> master
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-<<<<<<< HEAD
-
-
-        </activity>
-        <activity android:name=".view.ui.PreLoginActivity">
-
-=======
->>>>>>> master
         </activity>
         <activity
             android:name=".view.ui.CreateCourseActivity"
@@ -66,27 +43,16 @@
             android:label="@string/title_activity_create_subject"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-<<<<<<< HEAD
-            android:name=".presentation.ui.RegisterActivity"
-=======
             android:name=".view.ui.RegisterActivity"
->>>>>>> master
             android:configChanges="orientation|screenSize" />
         <activity
             android:name=".view.ui.HomeActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_home" />
         <activity
-<<<<<<< HEAD
-            android:name=".presentation.ui.Login"
-            android:configChanges="orientation|screenSize" />
-
-    </application>
-
-    </manifest>
-=======
             android:name=".view.ui.LoginActivity"
             android:configChanges="orientation|screenSize" />
     </application>
-</manifest>
->>>>>>> master
+
+    </manifest>
+
