@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ui.activity_listMySubjects">
+    tools:context=".view.ui.ListMySubjectsActivity">
 
     <LinearLayout
         android:id="@+id/toolbar"
@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="@dimen/short_size"
+            android:contentDescription="@string/arrow_to_back"
             android:src="@drawable/ic_turn_back_black_24dp" />
 
         <TextView
@@ -28,7 +29,7 @@
             android:layout_marginEnd="@dimen/default_size"
             android:fontFamily="@font/dosis_bold"
             android:gravity="end"
-            android:text="@string/mysubjects"
+            android:text="@string/my_subjects"
             android:textColor="@android:color/black"
             android:textSize="@dimen/font_primary_title" />
 
@@ -38,33 +39,32 @@
         android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/default_size"
         android:layout_marginStart="@dimen/default_size"
+        android:layout_marginTop="@dimen/default_size"
         android:layout_marginEnd="@dimen/default_size"
-        android:entries="@array/courses"
         android:background="@drawable/spinner_border_input"
-        android:spinnerMode="dropdown"
+        android:entries="@array/courses"
         android:padding="@dimen/little_size"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"></Spinner>
+        android:spinnerMode="dropdown"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/spinner"
-        android:layout_marginTop="@dimen/default_size"
         android:layout_marginStart="@dimen/default_size"
+        android:layout_marginTop="@dimen/default_size"
         android:layout_marginEnd="@dimen/default_size"
+        app:layout_constraintTop_toBottomOf="@id/spinner"
         tools:itemCount="5"
-        tools:listitem="@layout/item_recycler_subject"
-        />
+        tools:listitem="@layout/item_recycler_subject" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/default_size"
-        android:src="@drawable/ic_add_black_24dp">
+        android:src="@drawable/ic_add_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,5 +19,4 @@ public interface TokenDao {
 
     @Query("DELETE FROM token")
     void deleteAll();
-
 }

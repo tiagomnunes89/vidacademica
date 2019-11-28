@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/short_size"
+                android:contentDescription="@string/arrow_to_back"
                 android:src="@drawable/ic_turn_back_black_24dp" />
 
             <TextView
@@ -48,17 +49,18 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/short_size"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_create_course"
-            app:layout_constraintBottom_toTopOf="@id/btn_save_course"/>
+            app:layout_constraintBottom_toTopOf="@id/btn_save_course"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_create_course" />
+
         <Button
             android:id="@+id/btn_save_course"
+            style="@style/AppTheme.Button.Blue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/AppTheme.Button.Blue"
             android:layout_marginStart="@dimen/default_size"
             android:layout_marginEnd="@dimen/default_size"
             android:layout_marginBottom="@dimen/default_size"
-            android:text="Salvar"
+            android:text="@string/save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

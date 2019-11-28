@@ -40,5 +40,4 @@ public class Converters {
     public static Date convert(Long date) {
         return new Date(date);
     }
-
 }

@@ -23,6 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/a_woman_using_our_app"
                 android:fitsSystemWindows="true"
                 android:src="@drawable/pre_login_photo"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -35,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/default_size"
                 android:layout_marginTop="@dimen/x_largest_size"
+                android:contentDescription="@string/arrow_to_back"
                 android:src="@drawable/ic_logo_dark_va"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -42,28 +44,28 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/default_size"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:layout_marginBottom="@dimen/default_size"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
 
 
                 <Button
                     android:id="@+id/button_login"
+                    style="@style/AppTheme.Button.Orange"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/AppTheme.Button.Orange"
                     android:text="@string/login"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
                     android:id="@+id/button_register"
+                    style="@style/AppTheme.Button.Blue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_size"
-                    style="@style/AppTheme.Button.Blue"
                     android:text="@string/register"
                     app:layout_constraintTop_toTopOf="parent" />
 

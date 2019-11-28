@@ -18,13 +18,13 @@
     <string name="enter">Entrar</string>
     <string name="enter_google">Login Google</string>
     <string name="profile">Perfil</string>
-    <string name="mysubjects">Minhas matérias</string>
+    <string name="my_subjects">Minhas matérias</string>
     <string name="edit">Editar</string>
     <string name="update_register">Alterar cadastro</string>
     <string name="change_password">Trocar senha</string>
     <string name="title_activity_create_subject">createSubjectActivity</string>
     <string name="minimum_grade">Nota mínima</string>
-    <string name="dt_inicio">Data de início</string>
+    <string name="start_date">Data de início</string>
     <string name="rg">RG</string>
     <string name="new_password_confirmation">Confirmação da nova senha</string>
     <string name="new_password">Nova senha</string>
@@ -41,7 +41,17 @@
     <string name="title_activity_create_course">CreateCourseActivity</string>
     <string name="title_create_curso">Criar Curso</string>
     <string name="title_activity_list_my_courses">ListMyCoursesActivity</string>
+    <string name="item_recycler_title_subject">TextViewTextViewTextViewTextViewTextViewTextView</string>
+    <string name="item_period_date">06/19 – 01/20</string>
+    <string name="save">Salvar</string>
+    <string name="arrow_to_back">Arrow to back</string>
+    <string name="students_photo">Students photo</string>
+    <string name="a_woman_using_our_app">A woman using our app</string>
+    <string name="add_icon">Add icon</string>
+    <string name="from">De:</string>
+    <string name="to">até:</string>
+    <string name="icon_description">App icon</string>
+    <string name="status">Status</string>
+    <string name="red_ball">Red ball</string>
 
-    <string name="item_recicler_titulo_materia">TextViewTextViewTextViewTextViewTextViewTextView</string>
-    <string name="item_periodo_date">06/19 - 01/20</string>
 </resources>
