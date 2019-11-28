@@ -20,22 +20,17 @@
             android:name=".presentation.ui.ListMyCoursesActivity"
             android:label="@string/title_activity_list_my_courses"
             android:theme="@style/AppTheme.NoActionBar" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
         </activity>
         <activity android:name=".view.ui.activity_listMySubjects">
-
-
-        </activity>
-        <activity android:name=".view.ui.PreLoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
+        </activity>
+        <activity android:name=".view.ui.PreLoginActivity">
 
         </activity>
         <activity
