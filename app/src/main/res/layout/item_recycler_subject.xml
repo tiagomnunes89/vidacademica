@@ -7,36 +7,38 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_size"
         android:background="@color/colorWhite"
         android:orientation="horizontal"
-        android:padding="@dimen/semi_short_size"
-        android:layout_marginTop="@dimen/default_size">
+        android:padding="@dimen/semi_short_size">
 
         <TextView
             android:id="@+id/item_titulo_materia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="@string/item_recicler_titulo_materia"
-            android:textColor="@android:color/black"
             android:ellipsize="end"
-            android:maxLines="1"/>
+            android:maxLines="1"
+            android:text="@string/item_recycler_title_subject"
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/item_data_periodo_materia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="@string/item_periodo_date"
-            android:textColor="@android:color/black"
-            android:gravity="end"/>
+            android:gravity="end"
+            android:text="@string/item_period_date"
+            android:textColor="@android:color/black" />
     </LinearLayout>
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_red"
         android:layout_gravity="end"
+        android:layout_marginTop="@dimen/little_size"
         android:layout_marginEnd="@dimen/little_size"
-        android:layout_marginTop="@dimen/little_size"></ImageView>
+        android:src="@drawable/ic_red"
+        android:contentDescription="@string/red_ball" />
 
 </FrameLayout>

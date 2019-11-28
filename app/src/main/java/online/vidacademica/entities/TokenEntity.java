@@ -8,8 +8,6 @@ import androidx.room.PrimaryKey;
 import java.io.Serializable;
 import java.util.Objects;
 
-import online.vidacademica.entities.weak.Email;
-
 @Entity(tableName = "token")
 public class TokenEntity implements Serializable {
     private static final long serialVersionUID = 1357370471500938070L;
@@ -80,7 +78,6 @@ public class TokenEntity implements Serializable {
                 Objects.equals(token, that.token) &&
                 role.equals(that.role);
     }
-
 
 
     @Override

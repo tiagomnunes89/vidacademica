@@ -1,12 +1,12 @@
 package online.vidacademica.view.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import online.vidacademica.R;
 
-public class activity_listMySubjects extends AppCompatActivity {
+public class ListMySubjectsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

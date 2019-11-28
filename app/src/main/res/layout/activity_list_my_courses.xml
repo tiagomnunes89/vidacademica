@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".view.ui.RegisterActivity">
+    tools:context=".presentation.ui.ListMyCoursesActivity">
 
     <data>
 
@@ -15,7 +15,7 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar_my_courses"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimaryDark"
@@ -37,33 +37,30 @@
                 android:layout_marginEnd="@dimen/default_size"
                 android:fontFamily="@font/dosis_bold"
                 android:gravity="end"
-                android:text="@string/profile"
+                android:text="Meus Cursos"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/font_primary_title" />
 
         </LinearLayout>
 
         <include
-            android:id="@+id/layout_create_subject_content"
-            layout="@layout/profile_content"
+            android:id="@+id/layout_list_my_courses_content"
+            layout="@layout/content_list_my_courses"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/short_size"
-            app:layout_constraintBottom_toTopOf="@id/btn_change_register"
-            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+            app:layout_constraintTop_toBottomOf="@id/toolbar_my_courses" />
 
-        <Button
-            android:id="@+id/btn_change_register"
-            style="@style/AppTheme.Button.Blue"
-            android:layout_width="match_parent"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/default_size"
-            android:layout_marginEnd="@dimen/default_size"
-            android:layout_marginBottom="@dimen/default_size"
-            android:text="@string/update_register"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
+            app:srcCompat="@drawable/ic_add_black_24dp"
+            tools:layout_editor_absoluteX="329dp"
+            tools:layout_editor_absoluteY="634dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

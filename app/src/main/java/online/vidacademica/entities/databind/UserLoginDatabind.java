@@ -1,9 +1,5 @@
 package online.vidacademica.entities.databind;
 
-import androidx.databinding.BaseObservable;
-import androidx.databinding.Bindable;
-import androidx.lifecycle.MutableLiveData;
-
 import java.io.Serializable;
 import java.util.Objects;
 
