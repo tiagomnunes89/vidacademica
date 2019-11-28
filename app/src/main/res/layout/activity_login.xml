@@ -5,6 +5,7 @@
     tools:context=".ui.Login">
 
     <data>
+
         <variable
             name="user"
             type="online.vidacademica.entities.databind.UserLoginDatabind" />
@@ -29,11 +30,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/students_photo"
                 android:fitsSystemWindows="true"
                 android:src="@drawable/login_photo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 android:id="@+id/linear_layout_toolbar"
@@ -50,6 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/short_size"
+                    android:contentDescription="@string/arrow_to_back"
                     android:src="@drawable/ic_turn_back_black_24dp" />
 
                 <TextView
@@ -90,7 +93,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/user"
-                        android:text="@={LoginViewModel.userLoginDatabind.email}"/>
+                        android:text="@={LoginViewModel.userLoginDatabind.email}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -109,7 +112,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/password"
                         android:inputType="textPassword"
-                        android:text="@={LoginViewModel.userLoginDatabind.password}"/>
+                        android:text="@={LoginViewModel.userLoginDatabind.password}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -128,9 +131,9 @@
                     style="@style/AppTheme.Button.Orange"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="@{() -> LoginViewModel.login()}"
                     android:text="@string/enter"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:onClick="@{() -> LoginViewModel.login()}"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
                     android:id="@+id/button_sign_in_internal"

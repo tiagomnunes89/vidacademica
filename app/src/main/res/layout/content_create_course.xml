@@ -14,7 +14,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/text_input_name_course"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -25,19 +24,19 @@
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="@dimen/default_size"
                 android:layout_weight="1"
-                app:layout_constraintTop_toTopOf="parent"
-                app:errorEnabled="true">
+                app:errorEnabled="true"
+                app:layout_constraintTop_toTopOf="parent">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/white"
+                    android:hint="@string/name"
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@android:color/white"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@android:color/white"
-                android:hint="@string/name"
-                android:inputType="textPersonName"
-                app:layout_constraintTop_toTopOf="parent"
-                android:textColor="@android:color/white"
-                android:textColorHint="@android:color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -70,7 +69,7 @@
                 android:layout_marginStart="@dimen/default_size"
                 android:layout_marginTop="@dimen/little_size"
                 android:fontFamily="@font/dosis_bold"
-                android:text="Status"
+                android:text="@string/status"
                 android:textSize="@dimen/font_normal_text"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -82,11 +81,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/default_size"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/course_spinner_border_input"
                 android:layout_marginEnd="@dimen/default_size"
                 android:layout_marginBottom="@dimen/short_size"
-                app:layout_constraintTop_toTopOf="@+id/text_view_status_course"></Spinner>
+                android:background="@drawable/course_spinner_border_input"
+                app:layout_constraintTop_toTopOf="@+id/text_view_status_course" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </ScrollView>
 </layout>

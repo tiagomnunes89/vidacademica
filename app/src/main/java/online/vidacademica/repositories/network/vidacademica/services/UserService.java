@@ -1,7 +1,7 @@
 package online.vidacademica.repositories.network.vidacademica.services;
 
-import online.vidacademica.repositories.network.vidacademica.VidAcademicaWSConstants;
 import online.vidacademica.entities.UserEntity;
+import online.vidacademica.repositories.network.vidacademica.VidAcademicaWSConstants;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".presentation.ui.ListMyCoursesActivity">
+
     <data>
 
     </data>
@@ -26,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/short_size"
+                android:contentDescription="@string/arrow_to_back"
                 android:src="@drawable/ic_turn_back_black_24dp" />
 
             <TextView
@@ -41,13 +43,13 @@
 
         </LinearLayout>
 
-        <include layout="@layout/content_list_my_courses"
+        <include
             android:id="@+id/layout_list_my_courses_content"
+            layout="@layout/content_list_my_courses"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/short_size"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_my_courses"/>
-
+            app:layout_constraintTop_toBottomOf="@id/toolbar_my_courses" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
@@ -55,14 +57,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_add_black_24dp"
             tools:layout_editor_absoluteX="329dp"
-            tools:layout_editor_absoluteY="634dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-
+            tools:layout_editor_absoluteY="634dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </layout>

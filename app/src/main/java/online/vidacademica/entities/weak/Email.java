@@ -20,8 +20,7 @@ public class Email {
     public void setEmail(String email) throws ValidatorException {
         if (EmailValidator.getInstance().isValid(email)) {
             this.email = email;
-        }
-        else
+        } else
             throw new ValidatorException(String.format("This %s mail not has a valida sintaxe.", email));
     }
 

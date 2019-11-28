@@ -48,14 +48,12 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-
         binding.imageViewBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
-
     }
 
     private void colorStatusBar(Window window) {
@@ -65,5 +63,4 @@ public class LoginActivity extends AppCompatActivity {
         view.setSystemUiVisibility(View.GONE);
         window.setStatusBarColor(getResources().getColor(R.color.colorBackground));
     }
-
 }
