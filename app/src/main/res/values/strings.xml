@@ -18,6 +18,7 @@
     <string name="enter">Entrar</string>
     <string name="enter_google">Login Google</string>
     <string name="profile">Perfil</string>
+    <string name="mysubjects">Minhas matérias</string>
     <string name="edit">Editar</string>
     <string name="update_register">Alterar cadastro</string>
     <string name="change_password">Trocar senha</string>
@@ -40,4 +41,7 @@
     <string name="title_activity_create_course">CreateCourseActivity</string>
     <string name="title_create_curso">Criar Curso</string>
     <string name="title_activity_list_my_courses">ListMyCoursesActivity</string>
+
+    <string name="item_recicler_titulo_materia">TextViewTextViewTextViewTextViewTextViewTextView</string>
+    <string name="item_periodo_date">06/19 - 01/20</string>
 </resources>
