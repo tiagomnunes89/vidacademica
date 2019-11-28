@@ -8,4 +8,11 @@
     tools:context=".view.ui.ListMyCoursesActivity"
     tools:showIn="@layout/activity_list_my_courses">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:itemCount="5"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_my_course"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
