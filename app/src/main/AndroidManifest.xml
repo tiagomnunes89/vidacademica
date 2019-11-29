@@ -18,7 +18,8 @@
             android:name=".view.ui.ListMyCoursesActivity"
             android:label="@string/title_activity_list_my_courses"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".view.ui.PreLoginActivity">
+        <activity
+            android:name=".view.ui.PreLoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +30,8 @@
             android:name=".view.ui.CreateCourseActivity"
             android:label="@string/title_activity_create_course"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".view.ui.ProfileActivity" />
+        <activity
+            android:name=".view.ui.ProfileActivity" />
         <activity
             android:name=".view.ui.CreateSubjectActivity"
             android:label="@string/title_activity_create_subject"

@@ -4,6 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".view.ui.RegisterActivity">
 
+    <data>
+
+        <variable
+            name="isButtonEnabled"
+            type="androidx.databinding.ObservableBoolean" />
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

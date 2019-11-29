@@ -77,13 +77,17 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/short_size"
                         app:errorEnabled="true">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_text_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/little_size"
                             android:backgroundTint="@android:color/white"
                             android:hint="@string/name"
+                            android:imeOptions="actionNext"
                             android:inputType="textPersonName"
                             android:text="@={RegisterViewModel.userEntity.name}"
                             android:textColor="@android:color/white"
@@ -96,12 +100,16 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/short_size"
                         app:errorEnabled="true">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_text_email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@android:color/white"
+                            android:imeOptions="actionNext"
+                            android:layout_marginBottom="@dimen/little_size"
                             android:hint="@string/email"
                             android:inputType="textEmailAddress"
                             android:text="@={RegisterViewModel.userEntity.email}"
@@ -110,19 +118,24 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
+
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/text_input_rg"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/short_size"
                         app:errorEnabled="true">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_text_rg"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@android:color/white"
+                            android:imeOptions="actionNext"
+                            android:layout_marginBottom="@dimen/little_size"
                             android:hint="@string/rg"
-                            android:inputType="phone"
+                            android:inputType="textEmailAddress"
                             android:text="@={RegisterViewModel.userEntity.socialId}"
                             android:textColor="@android:color/white"
                             android:textColorHint="@android:color/white" />
@@ -134,14 +147,18 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/short_size"
                         app:errorEnabled="true">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_input_et_birth_date"
+                            android:id="@+id/edit_text_birth_date"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@android:color/white"
-                            android:focusable="false"
+                            android:imeOptions="actionNext"
+                            android:cursorVisible="false"
+                            android:focusable="true"
+                            android:layout_marginBottom="@dimen/little_size"
                             android:hint="@string/birth_date"
                             android:inputType="none"
                             android:text="@={RegisterViewModel.userEntity.dateOfBirth}"
@@ -150,40 +167,28 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
+
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/text_input_password"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/short_size"
                         app:errorEnabled="true"
                         app:passwordToggleEnabled="true">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_text_password"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@android:color/white"
                             android:hint="@string/password"
                             android:inputType="textPassword"
-                            android:text="@={RegisterViewModel.userEntity.password}"
-                            android:textColor="@android:color/white"
-                            android:textColorHint="@android:color/white" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_input_password_confirmation"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true"
-                        app:passwordToggleEnabled="true">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@android:color/white"
-                            android:hint="@string/password_confirmation"
-                            android:inputType="textPassword"
+                            android:maxLength="10"
+                            android:layout_marginBottom="@dimen/little_size"
+                            android:imeOptions="actionDone"
+                            android:imeActionLabel="@+id/edit_text_name"
+                            android:imeActionId="@integer/config_navAnimTime"
                             android:text="@={RegisterViewModel.userEntity.password}"
                             android:textColor="@android:color/white"
                             android:textColorHint="@android:color/white" />
