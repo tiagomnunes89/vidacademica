@@ -2,9 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="online.vidacademica">
-
     <dist:module dist:instant="true" />
     <uses-permission android:name="android.permission.INTERNET" />
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,24 +15,30 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
+        <activity android:name=".view.ui.ListMySubjectsActivity">
+        </activity>
+
+
+
         <activity
             android:name=".view.ui.ListMyCoursesActivity"
-            android:label="@string/title_activity_list_my_courses"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".view.ui.PreLoginActivity">
+            android:label="Meus Cursos"
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".view.ui.PreLoginActivity">
+
+        </activity>
         <activity
             android:name=".view.ui.CreateCourseActivity"
             android:label="@string/title_activity_create_course"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".view.ui.ProfileActivity" />
+        <activity android:name=".view.ui.ProfileActivity" />
         <activity
             android:name=".view.ui.CreateSubjectActivity"
             android:label="@string/title_activity_create_subject"
@@ -47,4 +54,6 @@
             android:name=".view.ui.LoginActivity"
             android:configChanges="orientation|screenSize" />
     </application>
-</manifest>
+
+    </manifest>
+
