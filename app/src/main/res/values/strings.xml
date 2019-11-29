@@ -38,10 +38,9 @@
     <string name="add_class_schedule">Adicionar horário de aula</string>
     <string name="save_subject">Salvar matéria</string>
     <string name="login">Login</string>
-    <string name="item_recicler_titulo_materia">TextViewTextViewTextViewTextViewTextViewTextView</string>
-    <string name="item_periodo_date">06/19 - 01/20</string>
     <string name="title_activity_create_course">CreateCourseActivity</string>
     <string name="title_create_curso">Criar Curso</string>
+    <string name="title_activity_list_my_courses">ListMyCoursesActivity</string>
     <string name="item_recycler_title_subject">TextViewTextViewTextViewTextViewTextViewTextView</string>
     <string name="item_period_date">06/19 – 01/20</string>
     <string name="save">Salvar</string>
@@ -54,4 +53,17 @@
     <string name="icon_description">App icon</string>
     <string name="status">Status</string>
     <string name="red_ball">Red ball</string>
+    <string name="required_field">Campo obrigatório</string>
+    <string name="invalid_email">Email inválido</string>
+    <string name="invalid_phone_number">Número de celular inválido</string>
+    <string name="invalid_name">Nome incompleto</string>
+    <string name="birth_date_wrong">Sua idade deve ser superior a 8 anos</string>
+    <string name="invalid_date">Data inválida</string>
+    <string name="invalid_password">Senha inválida</string>
+    <string name="not_equals_passwords">As senhas não coincidem</string>
+    <string name="insufficient_age">Idade insuficiente</string>
+    <string name="email_example">Ex.: nome@gmail.com</string>
+    <string name="hint_name">Preencha nome e sobrenome, não abrevie</string>
+    <string name="tip_password">Deve ter letras e números, de 6 a 10 dígitos</string>
+
 </resources>
