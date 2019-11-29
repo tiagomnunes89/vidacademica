@@ -18,6 +18,7 @@ public class CreateSubjectActivity extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener onDateSetListenerStart;
     private DatePickerDialog.OnDateSetListener onDateSetListenerFinal;
     private ActivityCreateSubjectBinding binding;
+    private Util util = new Util();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +28,14 @@ public class CreateSubjectActivity extends AppCompatActivity {
         binding.layoutCreateSubjectContent.inputStartDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Util.callDatePickerDialog(CreateSubjectActivity.this, onDateSetListenerStart);
+                util.callDatePickerDialog(CreateSubjectActivity.this, onDateSetListenerStart);
             }
         });
 
         binding.layoutCreateSubjectContent.inputFinalDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Util.callDatePickerDialog(CreateSubjectActivity.this, onDateSetListenerFinal);
+                util.callDatePickerDialog(CreateSubjectActivity.this, onDateSetListenerFinal);
             }
         });
 
@@ -62,7 +63,4 @@ public class CreateSubjectActivity extends AppCompatActivity {
             }
         });
     }
-
 }
-
-

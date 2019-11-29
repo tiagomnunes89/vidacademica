@@ -23,8 +23,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/short_size"
-        android:textSize="@dimen/font_secondary_title"
         android:fontFamily="@font/dosis_bold"
+        android:textSize="@dimen/font_secondary_title"
         app:layout_constraintTop_toBottomOf="@+id/divider_open"
         tools:text="Segunda-feira" />
 
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="@dimen/default_size"
-            android:text="De:"
+            android:text="@string/from"
             android:textSize="@dimen/font_secondary_title"
             android:textStyle="normal"
             app:layout_constraintTop_toBottomOf="@+id/text_view_title_item_sch" />
@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="@dimen/default_size"
-            android:text="até:"
+            android:text="@string/to"
             android:textSize="@dimen/font_secondary_title"
             android:textStyle="normal"
             app:layout_constraintTop_toBottomOf="@+id/text_view_title_item_sch" />

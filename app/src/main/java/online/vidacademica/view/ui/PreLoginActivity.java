@@ -32,6 +32,5 @@ public class PreLoginActivity extends AppCompatActivity {
                 startActivity(new Intent(PreLoginActivity.this, RegisterActivity.class));
             }
         });
-
     }
 }

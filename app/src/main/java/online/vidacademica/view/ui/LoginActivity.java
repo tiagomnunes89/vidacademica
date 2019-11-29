@@ -44,10 +44,16 @@ public class LoginActivity extends AppCompatActivity {
                     binding.editUser.setError("Usuário ou senha incorretos.");
                 } else {
                     Toast.makeText(LoginActivity.this, tokenEntity.getToken(), Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
                 }
             }
         });
-
+        binding.imageViewBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     private void colorStatusBar(Window window) {
@@ -57,5 +63,4 @@ public class LoginActivity extends AppCompatActivity {
         view.setSystemUiVisibility(View.GONE);
         window.setStatusBarColor(getResources().getColor(R.color.colorBackground));
     }
-
 }

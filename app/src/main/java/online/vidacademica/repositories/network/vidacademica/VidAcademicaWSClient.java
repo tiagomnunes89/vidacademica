@@ -1,6 +1,9 @@
 package online.vidacademica.repositories.network.vidacademica;
 
+import android.os.Build;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -14,6 +17,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class VidAcademicaWSClient {
 
     private static final HttpLoggingInterceptor logger =
@@ -37,6 +41,7 @@ public class VidAcademicaWSClient {
                     .writeTimeout(60, TimeUnit.SECONDS)
                     .callTimeout(60, TimeUnit.SECONDS);
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private static Retrofit getRetroInstance() {
         return new Retrofit.Builder().baseUrl(VidAcademicaWSConstants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -48,5 +53,4 @@ public class VidAcademicaWSClient {
     public static <S> S buildService(Class<S> serviceType) {
         return retrofit.create(serviceType);
     }
-
 }
