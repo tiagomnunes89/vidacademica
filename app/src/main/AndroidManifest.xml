@@ -16,6 +16,11 @@
         android:usesCleartextTraffic="true">
 
         <activity android:name=".view.ui.ListMySubjectsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
 
@@ -24,11 +29,7 @@
             android:name=".view.ui.ListMyCoursesActivity"
             android:label="Meus Cursos"
             android:theme="@style/AppTheme.NoActionBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".view.ui.PreLoginActivity">
