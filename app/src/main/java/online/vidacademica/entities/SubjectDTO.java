@@ -12,6 +12,13 @@ public class SubjectDTO implements Serializable {
     private LocalDate startDate;
     private LocalDate endDate;
 
+    public SubjectDTO(String name, boolean active, LocalDate startDate, LocalDate endDate) {
+        this.name = name;
+        this.active = active;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
