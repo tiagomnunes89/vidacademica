@@ -54,4 +54,5 @@
     <string name="icon_description">App icon</string>
     <string name="status">Status</string>
     <string name="red_ball">Red ball</string>
+    <string name="title_create_class">Criar classe</string>
 </resources>
