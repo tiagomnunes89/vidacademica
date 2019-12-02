@@ -89,18 +89,30 @@
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/text_view_sujbjects"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_size"
+                android:layout_marginTop="@dimen/default_size"
+                android:fontFamily="@font/dosis_bold"
+                android:text="@string/subjects"
+                android:textSize="@dimen/font_normal_text"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear_layout_start_final_date" />
             <Spinner
                 android:id="@+id/spinner_list_subjects"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginStart="@dimen/default_size"
-                android:layout_marginTop="@dimen/default_size"
+                android:layout_marginTop="0dp"
                 android:layout_marginEnd="@dimen/default_size"
                 android:background="@drawable/spinner_border_input"
                 android:entries="@array/subjects"
                 android:padding="@dimen/little_size"
                 android:spinnerMode="dropdown"
-                app:layout_constraintTop_toBottomOf="@id/linear_layout_start_final_date" />
+                app:layout_constraintTop_toBottomOf="@id/text_view_sujbjects" />
 
             <TextView
                 android:id="@+id/text_view_status_course"
