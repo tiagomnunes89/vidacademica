@@ -15,14 +15,31 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+<<<<<<< HEAD
         <activity android:name=".content_create_registration"></activity>
         <activity android:name=".activity_create_registration">
+=======
+
+        <activity android:name=".view.ui.ListMySubjectsActivity">
+        </activity>
+
+
+
+        <activity
+            android:name=".view.ui.ListMyCoursesActivity"
+            android:label="Meus Cursos"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+
+        <activity android:name=".view.ui.PreLoginActivity">
+>>>>>>> 972cc609cae25de49bb9439ebcb4915c1b3bd731
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".activity_create_class">
 
         </activity>
@@ -32,6 +49,8 @@
             android:label="Meus Cursos"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".view.ui.PreLoginActivity" />
+=======
+>>>>>>> 972cc609cae25de49bb9439ebcb4915c1b3bd731
         <activity
             android:name=".view.ui.CreateCourseActivity"
             android:label="@string/title_activity_create_course"
