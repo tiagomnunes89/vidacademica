@@ -18,7 +18,8 @@ public class RegisterViewModel extends AndroidViewModel {
     private UserRepository userRepository;
 
     public UserEntity userEntity = new UserEntity();
-    public LiveData<ResponseModel<UserEntity>> userEntityResponse;
+
+    private MutableLiveData<ResponseModel<UserEntity>> userEntityResponse;
 
     public RegisterViewModel(@NonNull Application application) {
         super(application);
@@ -26,15 +27,20 @@ public class RegisterViewModel extends AndroidViewModel {
     }
 
     public void register() {
-        userEntityResponse = userRepository.registerUser(userEntity);
+        userRepository.registerUser(userEntity, userEntityResponse);
     }
 
-    public LiveData<Boolean> isRegistred() {
-        MutableLiveData<Boolean> response = new MutableLiveData<>();
+    public LiveData<ResponseModel<UserEntity>> getUsResponseModelLiveData() {
+        if (userEntityResponse == null) userEntityResponse = new MutableLiveData<>();
+        return userEntityResponse;
+    }
 
-        response.setValue(Boolean.FALSE);
-        if (!(userEntityResponse == null) && !(userEntityResponse.getValue() == null) && (userEntityResponse.getValue().getCode() == CREATED)) {
-            response.setValue(Boolean.TRUE);
+    public boolean isRegistred() {
+        boolean response = false;
+        if (userEntityResponse != null &&
+                userEntityResponse.getValue() != null &&
+                userEntityResponse.getValue().getCode() == CREATED) {
+            response = true;
         }
         return response;
     }
