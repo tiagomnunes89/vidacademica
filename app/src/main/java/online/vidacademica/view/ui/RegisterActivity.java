@@ -14,8 +14,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import online.vidacademica.R;
+import online.vidacademica.core.ResponseModel;
 import online.vidacademica.core.Util;
 import online.vidacademica.databinding.ActivityRegisterBinding;
+import online.vidacademica.entities.UserEntity;
 import online.vidacademica.viewmodel.RegisterViewModel;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -43,17 +45,16 @@ public class RegisterActivity extends AppCompatActivity {
 
         binding.layoutRegisterContent.setRegisterViewModel(registerViewModel);
 
-        registerViewModel.isRegistred().observe(this, new Observer<Boolean>() {
+        registerViewModel.getUsResponseModelLiveData().observe(this, new Observer<ResponseModel<UserEntity>>() {
             @Override
-            public void onChanged(Boolean isRegistred) {
-                if (!screenCreated) {
-                    if (isRegistred) {
+            public void onChanged(ResponseModel<UserEntity> userEntityResponseModel) {
+                if (screenCreated != null) {
+                    if (registerViewModel.isRegistred()) {
                         Toast.makeText(RegisterActivity.this, "Registro realizado com sucesso.", Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(RegisterActivity.this, "Erro, servidor ocupado, tente novamente mais tarde.", Toast.LENGTH_LONG).show();
                     }
                 }
-                screenCreated = false;
             }
         });
 
