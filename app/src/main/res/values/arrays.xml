@@ -13,4 +13,10 @@
         <item>Inativo</item>
     </string-array>
 
+    <string-array name="classes">arraySpinner
+        <item>Turma TensorMind</item>
+        <item>Turma Manticora</item>
+        <item>Turma CyberCheese</item>
+    </string-array>
+
 </resources>

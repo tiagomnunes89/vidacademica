@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.CreateCourseActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/text_view_sujbjects"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_size"
+                android:layout_marginTop="@dimen/default_size"
+                android:fontFamily="@font/dosis_bold"
+                android:text="@string/subjects"
+                android:textSize="@dimen/font_normal_text"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_input_name_class" />
+            <Spinner
+                android:id="@+id/spinner_list_subjects"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_size"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="@dimen/default_size"
+                android:background="@drawable/spinner_border_input"
+                android:entries="@array/subjects"
+                android:padding="@dimen/little_size"
+                android:spinnerMode="dropdown"
+                app:layout_constraintTop_toBottomOf="@id/text_view_sujbjects" />
+
+            <TextView
+                android:id="@+id/text_view_status_course"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_size"
+                android:layout_marginTop="@dimen/default_size"
+                android:fontFamily="@font/dosis_bold"
+                android:text="@string/classes"
+                android:textSize="@dimen/font_normal_text"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinner_list_subjects" />
+
+            <Spinner
+                android:id="@+id/select_class"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_size"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="@dimen/default_size"
+                android:layout_marginBottom="@dimen/short_size"
+                android:padding="@dimen/little_size"
+                android:entries="@array/classes"
+                android:background="@drawable/course_spinner_border_input"
+                app:layout_constraintTop_toTopOf="@+id/text_view_status_course" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_name_class"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_size"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="@dimen/default_size"
+                android:layout_weight="1"
+                app:errorEnabled="true"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/white"
+                    android:hint="@string/name_do_aluno"
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@android:color/white"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginStart="@dimen/default_size"
+                android:layout_marginEnd="@dimen/default_size"
+                android:layout_marginTop="@dimen/default_size"
+                android:layout_marginBottom="@dimen/default_size"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintTop_toBottomOf="@+id/select_class"/>
+
+            <TextView
+                android:id="@+id/sub_title_registered_students"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/subtitle_registered_students"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/divider"
+                tools:layout_editor_absoluteX="174dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/student_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_size"
+                android:layout_marginTop="@dimen/little_size"
+                android:layout_marginEnd="@dimen/default_size"
+                tools:itemCount="7"
+                tools:listitem="@layout/item_recycler_student"
+                app:layout_constraintTop_toBottomOf="@+id/sub_title_registered_students"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>

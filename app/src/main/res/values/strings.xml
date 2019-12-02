@@ -56,4 +56,9 @@
     <string name="red_ball">Red ball</string>
     <string name="title_create_class">Criar classe</string>
     <string name="subjects">Matérias</string>
+    <string name="classes">Classes</string>
+    <string name="title_registration">Associar aluno a classe</string>
+    <string name="name_do_aluno">Nome do aluno</string>
+    <string name="subtitle_registered_students">Alunos matriculados</string>
+    <string name="user_date_of_birth">1978/11/16</string>
 </resources>
