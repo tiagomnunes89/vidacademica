@@ -54,4 +54,7 @@
     <string name="icon_description">App icon</string>
     <string name="status">Status</string>
     <string name="red_ball">Red ball</string>
+    <string name="title_activity_creste_test">CresteTestActivity</string>
+    <string name="title_create_test">Criar Teste</string>
+    <string name="btn_save_test">Salvar Teste</string>
 </resources>
