@@ -16,9 +16,18 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".content_create_registration"></activity>
-        <activity android:name=".activity_create_registration"></activity>
-        =======
+        <activity android:name=".content_create_registration">
+
+
+        </activity>
+        <activity android:name=".activity_create_registration">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".view.ui.ListMySubjectsActivity"></activity>
 
@@ -30,11 +39,7 @@
 
         <activity android:name=".view.ui.PreLoginActivity">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".activity_create_class">

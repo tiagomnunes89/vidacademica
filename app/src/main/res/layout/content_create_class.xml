@@ -15,7 +15,7 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_name_class"
+                android:id="@+id/text_input_name_student"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -106,8 +106,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginStart="@dimen/default_size"
-                android:layout_marginTop="0dp"
+                android:layout_marginTop="2dp"
                 android:layout_marginEnd="@dimen/default_size"
+                android:layout_marginBottom="@dimen/short_size"
                 android:background="@drawable/spinner_border_input"
                 android:entries="@array/subjects"
                 android:padding="@dimen/little_size"
@@ -135,6 +136,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="@dimen/default_size"
                 android:layout_marginBottom="@dimen/short_size"
+                android:padding="@dimen/little_size"
                 android:entries="@array/status"
                 android:background="@drawable/course_spinner_border_input"
                 app:layout_constraintTop_toTopOf="@+id/text_view_status_course" />
