@@ -33,6 +33,12 @@ public class RegisterActivity extends BaseActivity {
     private Boolean screenCreated;
 
     @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        dismissProgressBar();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -88,5 +94,8 @@ public class RegisterActivity extends BaseActivity {
                 registerViewModel.register();
             }
         });
+
+
+
     }
 }

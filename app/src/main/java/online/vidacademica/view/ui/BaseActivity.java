@@ -45,25 +45,23 @@ public abstract class BaseActivity extends AppCompatActivity {
             mProgressBar = new ProgressBar(this);
             mProgressBar.setVisibility(View.INVISIBLE);
 
-            ConstraintSet constraintSet = new ConstraintSet();
-            constraintSet.clone(this.getParent());
-            constraintSet.connect(parentViewId, ConstraintSet.START, parentViewId, ConstraintSet.END);
-            constraintSet.connect(parentViewId, ConstraintSet.TOP, parentViewId, ConstraintSet.BOTTOM);
-            constraintSet.applyTo(mProgressBar);
+            mProgressBar.setForegroundGravity(View.TEXT_ALIGNMENT_CENTER);
             ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             mProgressBar.setLayoutParams(layoutParams);
         }
 
         mProgressBar.setVisibility(View.VISIBLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-        ((ViewGroup) findViewById(parentViewId)).addView(mProgressBar);
+        ViewGroup vg = ((ViewGroup) findViewById(parentViewId));
+        vg.addView(mProgressBar);
     }
 
     protected void dismissProgressBar() {
-//        if (mProgressBar != null) {
-//            mProgressBar.setVisibility();
-//        }
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        if (mProgressBar != null) {
+            mProgressBar.setVisibility(View.INVISIBLE);
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            Toast.makeText(this, "Carregamento cancelado. \n \n Favor tentar novamente.", Toast.LENGTH_LONG).show();
+        }
     }
 
     protected void showToast(String msg) {
