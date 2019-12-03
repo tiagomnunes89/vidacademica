@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.ui.ListMySubjectsActivity">
+
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimaryDark"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/image_view_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/short_size"
+            android:contentDescription="@string/arrow_to_back"
+            android:src="@drawable/ic_turn_back_black_24dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="@dimen/default_size"
+            android:fontFamily="@font/dosis_bold"
+            android:gravity="end"
+            android:text="@string/my_scores"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/font_primary_title" />
+
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/spinner_courses_in_my_scores"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/default_size"
+        android:layout_marginTop="@dimen/default_size"
+        android:layout_marginEnd="@dimen/default_size"
+        android:background="@drawable/spinner_border_input"
+        android:entries="@array/courses"
+        android:padding="@dimen/little_size"
+        android:spinnerMode="dropdown"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/subject_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_size"
+        android:layout_marginTop="@dimen/default_size"
+        android:layout_marginEnd="@dimen/default_size"
+        app:layout_constraintTop_toBottomOf="@id/spinner_courses_in_my_scores"
+        tools:itemCount="5"
+        tools:listitem="@layout/item_recycler_scores" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
