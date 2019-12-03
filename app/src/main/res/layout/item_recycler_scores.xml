@@ -31,15 +31,4 @@
             android:text="@string/item_score"
             android:textColor="@android:color/black" />
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/item_circle_red"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginTop="@dimen/little_size"
-        android:layout_marginEnd="@dimen/little_size"
-        android:src="@drawable/ic_red"
-        android:contentDescription="@string/red_ball" />
-
 </FrameLayout>

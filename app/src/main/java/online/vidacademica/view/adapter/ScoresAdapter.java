@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import online.vidacademica.R;
 import online.vidacademica.entities.TestResultDTO;
@@ -28,20 +29,19 @@ public class ScoresAdapter extends RecyclerView.Adapter<ScoresAdapter.ScoresView
     @Override
     public ScoresViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.item_recycler_scores, parent, false);
-
         return new ScoresViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ScoresViewHolder holder, int position) {
-        TestResultDTO teste = testResultDTOS.get(position);
-
-        // ******   holder.nota.setText(teste.getScore());
+        TestResultDTO score = testResultDTOS.get(position);
+        Locale.setDefault(Locale.US);
+        holder.nota.setText(Double.toString(score.getScore()));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return testResultDTOS.size();
     }
 
     public class ScoresViewHolder extends RecyclerView.ViewHolder {
