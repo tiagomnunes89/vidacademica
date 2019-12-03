@@ -20,7 +20,7 @@ import online.vidacademica.databinding.ActivityRegisterBinding;
 import online.vidacademica.entities.UserEntity;
 import online.vidacademica.viewmodel.RegisterViewModel;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends BaseActivity {
 
     private static final String TAG = RegisterActivity.class.getSimpleName();
     private DatePickerDialog.OnDateSetListener onDateSetListener;
@@ -31,6 +31,12 @@ public class RegisterActivity extends AppCompatActivity {
     private Util util = new Util();
 
     private Boolean screenCreated;
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        dismissProgressBar();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,8 +90,12 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                startActivity(new Intent(RegisterActivity.this, ProfileActivity.class));
+                showProgressBar(R.id.register_screen);
                 registerViewModel.register();
             }
         });
+
+
+
     }
 }
