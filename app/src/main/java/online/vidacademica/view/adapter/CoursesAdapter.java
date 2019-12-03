@@ -14,7 +14,6 @@ import java.util.List;
 
 import online.vidacademica.R;
 import online.vidacademica.entities.CourseDTO;
-import online.vidacademica.entities.TestEntity;
 
 public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.CourseViewHolder> {
 

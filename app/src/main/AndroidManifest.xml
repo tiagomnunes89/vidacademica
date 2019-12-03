@@ -16,21 +16,32 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.ui.ListMyTestsActivity"
+            android:label="@string/title_activity_list_my_tests"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity
             android:name=".view.ui.CreateTestActivity"
             android:label="@string/title_activity_creste_test"
             android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".view.ui.ListMySubjectsActivity"></activity>
+        <activity android:name=".view.ui.ListMySubjectsActivity" />
         <activity
             android:name=".view.ui.ListMyCoursesActivity"
             android:label="Meus Cursos"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".view.ui.PreLoginActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

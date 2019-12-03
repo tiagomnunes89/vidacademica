@@ -4,4 +4,9 @@
         <item>Sistemas para internet</item>
         <item>Logística</item>
     </string-array>
+
+    <string-array name="subjects">arraySpinner
+        <item>Comercio eletrônico</item>
+        <item>Desenvolvimento para dispositivos móveis</item>
+    </string-array>
 </resources>

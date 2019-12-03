@@ -57,4 +57,5 @@
     <string name="title_activity_creste_test">CresteTestActivity</string>
     <string name="title_create_test">Criar Teste</string>
     <string name="btn_save_test">Salvar Teste</string>
+    <string name="title_activity_list_my_tests">ListMyTestsActivity</string>
 </resources>
