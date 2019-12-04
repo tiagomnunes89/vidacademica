@@ -36,6 +36,14 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.CourseVi
     public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
         CourseDTO courseDTO = courses.get(position);
         holder.titulo.setText(courseDTO.getName());
+        String status;
+        if (courseDTO.isActive()){
+            status = "Ativo";
+        }else {
+            status = "Inativo";
+        }
+        holder.status.setText(status);
+        holder.descricao.setText(courseDTO.getDescription());
     }
 
     @Override
@@ -46,10 +54,14 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.CourseVi
     public class CourseViewHolder extends RecyclerView.ViewHolder {
         //item_titulo_course
         TextView titulo;
+        TextView status;
+        TextView descricao;
 
         public CourseViewHolder(@NonNull View itemView) {
             super(itemView);
             titulo = itemView.findViewById(R.id.name_course);
+            status = itemView.findViewById(R.id.status_course);
+            descricao = itemView.findViewById(R.id.description_course);
         }
     }
 }

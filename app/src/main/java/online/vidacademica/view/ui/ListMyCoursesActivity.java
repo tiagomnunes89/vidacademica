@@ -52,7 +52,7 @@ public class ListMyCoursesActivity extends AppCompatActivity {
     }
     private void getCourses() {
         CourseDTO course1 = new CourseDTO("Sistemas para internet","teste",true);
-        CourseDTO course2 = new CourseDTO("Licenciatura","teste",true);
+        CourseDTO course2 = new CourseDTO("Licenciatura","teste",false);
 
         courses.add(course1);
         courses.add(course2);
