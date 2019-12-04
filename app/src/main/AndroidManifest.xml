@@ -16,18 +16,18 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".item_recycler_scores"></activity>
-        <activity android:name=".activity_my_scores">
+        <activity android:name=".activity_my_scores" />
+        <activity android:name=".content_create_registration" />
+        <activity android:name=".activity_create_registration">
+
+        </activity>
+        <activity android:name=".view.ui.ListMySubjectsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".content_create_registration" />
-        <activity android:name=".activity_create_registration">
-
-        </activity>
-        <activity android:name=".view.ui.ListMySubjectsActivity" />
         <activity
             android:name=".view.ui.ListMyCoursesActivity"
             android:label="Meus Cursos"
