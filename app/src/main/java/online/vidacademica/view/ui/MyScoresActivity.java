@@ -1,4 +1,4 @@
-package online.vidacademica;
+package online.vidacademica.view.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,10 +10,11 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+import online.vidacademica.R;
 import online.vidacademica.entities.TestResultDTO;
 import online.vidacademica.view.adapter.ScoresAdapter;
 
-public class activity_my_scores extends AppCompatActivity {
+public class MyScoresActivity extends AppCompatActivity {
 
     List<TestResultDTO> testResultDTOList = new ArrayList<>();
 
