@@ -64,4 +64,8 @@
     <string name="my_scores">Minhas notas</string>
     <string name="item_score">nota_matéria</string>
     <string name="item_recycler_title_course">Lógica de programação</string>
+    <string name="title_activity_list_my_tests">Meus Testes</string>
+    <string name="title_activity_creste_test">Criar Teste</string>
+    <string name="title_create_test">Criar Teste</string>
+    <string name="btn_save_test">Salvar Teste</string>
 </resources>
