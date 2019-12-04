@@ -36,6 +36,7 @@
             android:name=".view.ui.CreateRegistrationActivity">
 
         </activity>
+
         <activity
             android:name=".view.ui.ListMySubjectsActivity">
 
