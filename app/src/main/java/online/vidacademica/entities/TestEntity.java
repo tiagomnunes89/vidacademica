@@ -10,19 +10,26 @@ public class TestEntity implements Serializable {
     private Long id;
     private String name;
     private Double fullScore;
-    private Instant date;
-    private Instant creationDate;
+    private String date;
+    private String creationDate;
 
     public TestEntity() {
     }
 
-    public TestEntity(Long id, String name, Double fullScore, Instant date, Instant creationDate) {
+    public TestEntity(Long id, String name, Double fullScore,String date, String creationDate) {
         super();
         this.id = id;
         this.name = name;
         this.fullScore = fullScore;
         this.date = date;
         this.creationDate = creationDate;
+    }
+
+    public TestEntity(String name, Double fullScore,String date) {
+        super();
+        this.name = name;
+        this.fullScore = fullScore;
+        this.date = date;
     }
 
     public Long getId() {
@@ -49,21 +56,26 @@ public class TestEntity implements Serializable {
         this.fullScore = fullScore;
     }
 
-    public Instant getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Instant date) {
-        this.date = date;
+    public void setDate(String date) {
+        String[] splittedDate = date.split("\\/");
+        this.date = String.format("%s-%-%sT00:00:00z", Integer.parseInt(splittedDate[2]), Integer.parseInt(splittedDate[1]), Integer.parseInt(splittedDate[0]));
+
     }
 
-    public Instant getCreationDate() {
+    public String getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Instant creationDate) {
-        this.creationDate = creationDate;
+    public void setCreationDate(String creationDate) {
+        String[] splittedDate = creationDate.split("\\/");
+        this.creationDate = String.format("%s-%-%sT00:00:00z", Integer.parseInt(splittedDate[2]), Integer.parseInt(splittedDate[1]), Integer.parseInt(splittedDate[0]));
     }
+
+
 
     @Override
     public boolean equals(Object o) {

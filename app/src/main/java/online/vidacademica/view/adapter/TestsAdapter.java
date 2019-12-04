@@ -38,7 +38,10 @@ public class TestsAdapter extends RecyclerView.Adapter<TestsAdapter.TestViewHold
         TestEntity testEntity = tests.get(position);
         holder.titulo.setText(testEntity.getName());
         holder.fullScore.setText(  Double.toString(testEntity.getFullScore()));
-
+        String dayTest = testEntity.getDate().substring(8,10);
+        String monthTest = testEntity.getDate().substring(5,7);
+        String yearTest = testEntity.getDate().substring(2,4);
+        holder.dtTest.setText(dayTest + "/"+monthTest+"/"+yearTest);
 
     }
 
