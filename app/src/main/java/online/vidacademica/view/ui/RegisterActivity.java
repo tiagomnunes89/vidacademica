@@ -15,9 +15,9 @@ import androidx.lifecycle.ViewModelProviders;
 
 import online.vidacademica.R;
 import online.vidacademica.core.ResponseModel;
-import online.vidacademica.core.Util;
 import online.vidacademica.databinding.ActivityRegisterBinding;
 import online.vidacademica.entities.UserEntity;
+import online.vidacademica.utils.Util;
 import online.vidacademica.viewmodel.RegisterViewModel;
 
 public class RegisterActivity extends AppCompatActivity {

@@ -4,60 +4,198 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".view.ui.RegisterActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+        <variable
+            name="RegisterViewModel"
+            type="online.vidacademica.viewmodel.RegisterViewModel" />
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:orientation="vertical">
+        android:fillViewport="true">
 
-        <LinearLayout
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimaryDark"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/image_view_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/short_size"
-                android:contentDescription="@string/arrow_to_back"
-                android:src="@drawable/ic_turn_back_black_24dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end|center_vertical"
-                android:layout_marginEnd="@dimen/default_size"
-                android:fontFamily="@font/dosis_bold"
-                android:gravity="end"
-                android:text="@string/register"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/font_primary_title" />
-
-        </LinearLayout>
-
-        <include
-            android:id="@+id/layout_register_content"
-            layout="@layout/register_content"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="@dimen/short_size"
-            app:layout_constraintBottom_toTopOf="@id/btn_send_register"
-            app:layout_constraintTop_toBottomOf="@id/toolbar" />
-
-        <Button
-            android:id="@+id/btn_send_register"
-            style="@style/AppTheme.Button.Blue"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/default_size"
-            android:layout_marginEnd="@dimen/default_size"
-            android:layout_marginBottom="@dimen/default_size"
-            android:text="@string/send_register"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            android:padding="@dimen/default_size"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:id="@+id/linear_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/layout_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/default_size"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/image_icon_app"
+                        android:layout_width="@dimen/xxxx_largest_size"
+                        android:layout_height="@dimen/xxxx_largest_size"
+                        android:layout_gravity="center_horizontal"
+                        android:contentDescription="@string/icon_description"
+                        android:src="@drawable/logo_vidacademica_light" />
+
+                    <TextView
+                        android:id="@+id/text_name_app"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/default_size"
+                        android:fontFamily="sans-serif-light"
+                        android:text="@string/name_app"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/font_normal_text" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_title">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_name"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/short_size"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_text_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/little_size"
+                            android:backgroundTint="@android:color/white"
+                            android:hint="@string/name"
+                            android:imeOptions="actionNext"
+                            android:inputType="textPersonName"
+                            android:text="@={RegisterViewModel.userEntity.name}"
+                            android:textColor="@android:color/white"
+                            android:textColorHint="@android:color/white" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_email"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/short_size"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_text_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/white"
+                            android:imeOptions="actionNext"
+                            android:layout_marginBottom="@dimen/little_size"
+                            android:hint="@string/email"
+                            android:inputType="textEmailAddress"
+                            android:text="@={RegisterViewModel.userEntity.email}"
+                            android:textColor="@android:color/white"
+                            android:textColorHint="@android:color/white" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_rg"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/short_size"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_text_rg"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/white"
+                            android:imeOptions="actionNext"
+                            android:layout_marginBottom="@dimen/little_size"
+                            android:hint="@string/rg"
+                            android:inputType="textEmailAddress"
+                            android:text="@={RegisterViewModel.userEntity.socialId}"
+                            android:textColor="@android:color/white"
+                            android:textColorHint="@android:color/white" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_birth"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/short_size"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_text_birth_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/white"
+                            android:imeOptions="actionNext"
+                            android:cursorVisible="false"
+                            android:focusable="true"
+                            android:layout_marginBottom="@dimen/little_size"
+                            android:hint="@string/birth_date"
+                            android:inputType="none"
+                            android:text="@={RegisterViewModel.userEntity.dateOfBirth}"
+                            android:textColor="@android:color/white"
+                            android:textColorHint="@android:color/white" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_password"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/short_size"
+                        app:errorEnabled="true"
+                        app:passwordToggleEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_text_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/white"
+                            android:hint="@string/password"
+                            android:inputType="textPassword"
+                            android:maxLength="10"
+                            android:layout_marginBottom="@dimen/little_size"
+                            android:imeOptions="actionDone"
+                            android:imeActionLabel="@+id/edit_text_name"
+                            android:imeActionId="@integer/config_navAnimTime"
+                            android:text="@={RegisterViewModel.userEntity.password}"
+                            android:textColor="@android:color/white"
+                            android:textColorHint="@android:color/white" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
