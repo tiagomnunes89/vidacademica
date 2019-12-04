@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import online.vidacademica.R;
-import online.vidacademica.core.Util;
+import online.vidacademica.utils.Util;
 import online.vidacademica.databinding.ActivityCreateSubjectBinding;
 
 public class CreateSubjectActivity extends AppCompatActivity {
