@@ -29,14 +29,14 @@
             android:layout_marginEnd="@dimen/default_size"
             android:fontFamily="@font/dosis_bold"
             android:gravity="end"
-            android:text="@string/my_subjects"
+            android:text="@string/my_scores"
             android:textColor="@android:color/black"
             android:textSize="@dimen/font_primary_title" />
 
     </LinearLayout>
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinner_courses_in_my_scores"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/default_size"
@@ -49,24 +49,15 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/subject_recycler"
+        android:id="@+id/scores_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_size"
         android:layout_marginTop="@dimen/default_size"
         android:layout_marginEnd="@dimen/default_size"
-        app:layout_constraintTop_toBottomOf="@id/spinner"
+        app:layout_constraintTop_toBottomOf="@id/spinner_courses_in_my_scores"
         tools:itemCount="5"
-        tools:listitem="@layout/item_recycler_subject" />
+        tools:listitem="@layout/item_recycler_scores" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/default_size"
-        android:backgroundTint="#2196F3"
-        android:src="@drawable/ic_add_black_24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
 
-    </com.google.android.material.floatingactionbutton.FloatingActionButton>
 </androidx.constraintlayout.widget.ConstraintLayout>

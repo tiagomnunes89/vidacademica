@@ -38,7 +38,7 @@
     <string name="add_class_schedule">Adicionar horário de aula</string>
     <string name="save_subject">Salvar matéria</string>
     <string name="login">Login</string>
-    <string name="item_recicler_titulo_materia">TextViewTextViewTextViewTextViewTextViewTextView</string>
+    <string name="item_recicler_titulo_materia">Lógica de programação</string>
     <string name="item_periodo_date">06/19 - 01/20</string>
     <string name="title_activity_create_course">CreateCourseActivity</string>
     <string name="title_create_curso">Criar Curso</string>
@@ -54,8 +54,14 @@
     <string name="icon_description">App icon</string>
     <string name="status">Status</string>
     <string name="red_ball">Red ball</string>
-    <string name="title_activity_creste_test">CresteTestActivity</string>
-    <string name="title_create_test">Criar Teste</string>
-    <string name="btn_save_test">Salvar Teste</string>
-    <string name="title_activity_list_my_tests">ListMyTestsActivity</string>
+    <string name="title_create_class">Criar classe</string>
+    <string name="subjects">Matérias</string>
+    <string name="classes">Classes</string>
+    <string name="title_registration">Associar aluno a classe</string>
+    <string name="name_do_aluno">Nome do aluno</string>
+    <string name="subtitle_registered_students">Alunos matriculados</string>
+    <string name="user_date_of_birth">1978/11/16</string>
+    <string name="my_scores">Minhas notas</string>
+    <string name="item_score">nota_matéria</string>
+    <string name="item_recycler_title_course">Lógica de programação</string>
 </resources>

@@ -6,7 +6,18 @@
     </string-array>
 
     <string-array name="subjects">arraySpinner
-        <item>Comercio eletrônico</item>
-        <item>Desenvolvimento para dispositivos móveis</item>
+        <item>Lógica de programação</item>
+        <item>Fundamentos de webdesign 1</item>
     </string-array>
+    <string-array name="status">arraySpinner
+        <item>Ativo</item>
+        <item>Inativo</item>
+    </string-array>
+
+    <string-array name="classes">arraySpinner
+        <item>Turma TensorMind</item>
+        <item>Turma Manticora</item>
+        <item>Turma CyberCheese</item>
+    </string-array>
+
 </resources>

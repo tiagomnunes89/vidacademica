@@ -69,9 +69,7 @@ public class UserRepository {
         return data;
     }
 
-    public MutableLiveData<ResponseModel<UserEntity>> registerUser(UserEntity userEntity) {
-
-        final MutableLiveData<ResponseModel<UserEntity>> data = new MutableLiveData<>();
+    public MutableLiveData<ResponseModel<UserEntity>> registerUser(UserEntity userEntity, final MutableLiveData<ResponseModel<UserEntity>> mutableLiveDataObject) {
 
         userService.registerUser(userEntity).enqueue(new Callback<UserEntity>() {
             @Override
@@ -86,7 +84,7 @@ public class UserRepository {
                     responseModel.setErrorMessage(err);
                 }
 
-                data.setValue(responseModel);
+                mutableLiveDataObject.setValue(responseModel);
             }
 
             @Override
@@ -95,6 +93,8 @@ public class UserRepository {
             }
         });
 
-        return data;
+        return mutableLiveDataObject;
     }
+
+
 }
