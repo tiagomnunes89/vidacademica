@@ -1,11 +1,11 @@
 package online.vidacademica.view.validation;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ActivityBaseClassValidator extends AppCompatActivity {
+import online.vidacademica.view.ui.BaseActivity;
+
+public abstract class ActivityBaseClassValidator extends BaseActivity {
 
     private List<IValidator> validationList = new ArrayList<>();
 

@@ -1,14 +1,16 @@
-package online.vidacademica;
+package online.vidacademica.view.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class activity_my_scores extends AppCompatActivity {
+import online.vidacademica.R;
+
+public class CreateClassActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_scores);
+        setContentView(R.layout.activity_create_class);
     }
 }

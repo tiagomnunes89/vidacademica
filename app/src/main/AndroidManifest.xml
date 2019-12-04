@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:tools="http://schemas.android.com/tools"
     package="online.vidacademica">
 
     <dist:module dist:instant="true" />
@@ -14,29 +15,41 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".item_recycler_scores"></activity>
-        <activity android:name=".activity_my_scores" />
-        <activity android:name=".content_create_registration" />
-        <activity android:name=".activity_create_registration">
+        android:usesCleartextTraffic="true"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+
+        <activity
+            android:name=".view.ui.PreLoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.ui.ListMySubjectsActivity" />
+        <activity
+            android:name=".view.ui.ListMyTestsActivity"
+            android:label="@string/title_activity_list_my_tests"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.ui.MyScoresActivity" />
+        <activity
+            android:name=".view.ui.CreateRegistrationActivity">
+
+        </activity>
+        <activity
+            android:name=".view.ui.ListMySubjectsActivity">
+
+        </activity>
+        <activity
+            android:name=".view.ui.CreateTestActivity"
+            android:label="@string/title_activity_creste_test"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.ui.ListMyCoursesActivity"
             android:label="Meus Cursos"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".view.ui.PreLoginActivity" />
-        <activity android:name=".activity_create_class" />
         <activity
-            android:name=".view.ui.CreateCourseActivity"
-            android:label="@string/title_activity_create_course"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".view.ui.ProfileActivity" />
+            android:name=".view.ui.ProfileActivity" />
         <activity
             android:name=".view.ui.CreateSubjectActivity"
             android:label="@string/title_activity_create_subject"
@@ -51,6 +64,7 @@
         <activity
             android:name=".view.ui.LoginActivity"
             android:configChanges="orientation|screenSize" />
+
     </application>
 
 </manifest>

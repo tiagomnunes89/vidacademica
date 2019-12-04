@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,15 @@ public class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.Subjec
     public void onBindViewHolder(@NonNull SubjectViewHolder holder, int position) {
         SubjectDTO subject = subjects.get(position);
         holder.titulo.setText(subject.getName());
+        String yearStart = subject.getStartDate().substring(2, 4);
+        String monthStart = subject.getStartDate().substring(5, 7);
+        String yearEnd = subject.getEndDate().substring(2, 4);;
+        String monthEnd = subject.getEndDate().substring(5, 7);;
+        holder.data.setText(monthStart + "/" + yearStart + " - " + monthEnd + "/" + yearEnd);
+
+        if(subject.isActive()){
+            holder.circle.setImageResource(R.drawable.ic_green);
+        }
     }
 
     @Override
@@ -45,10 +55,14 @@ public class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.Subjec
     public class SubjectViewHolder extends RecyclerView.ViewHolder {
         //item_titulo_materia
         TextView titulo;
+        TextView data;
+        ImageView circle;
 
         public SubjectViewHolder(@NonNull View itemView) {
             super(itemView);
             titulo = itemView.findViewById(R.id.item_titulo_materia);
+            data = itemView.findViewById(R.id.item_data_periodo_materia);
+            circle = itemView.findViewById(R.id.item_circle);
         }
     }
 }

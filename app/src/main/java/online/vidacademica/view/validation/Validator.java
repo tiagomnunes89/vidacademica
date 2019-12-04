@@ -6,6 +6,8 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
 
+import online.vidacademica.view.validation.validators.ValidatorDefaultTextInput;
+
 public class Validator {
 
     /**
@@ -50,4 +52,3 @@ public class Validator {
         return validator instanceof ValidatorDefaultTextInput;
     }
 }
-© 2019 GitHub, Inc.

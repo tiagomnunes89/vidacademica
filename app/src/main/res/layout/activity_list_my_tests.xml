@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ui.ListMySubjectsActivity">
+    tools:context=".view.ui.ListMyTestsActivity">
 
     <LinearLayout
         android:id="@+id/toolbar"
@@ -29,35 +29,42 @@
             android:layout_marginEnd="@dimen/default_size"
             android:fontFamily="@font/dosis_bold"
             android:gravity="end"
-            android:text="@string/my_scores"
+            android:text="Meus Testes"
             android:textColor="@android:color/black"
             android:textSize="@dimen/font_primary_title" />
 
     </LinearLayout>
 
     <Spinner
-        android:id="@+id/spinner_courses_in_my_scores"
+        android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/default_size"
         android:layout_marginTop="@dimen/default_size"
         android:layout_marginEnd="@dimen/default_size"
         android:background="@drawable/spinner_border_input"
-        android:entries="@array/courses"
+        android:entries="@array/subjects"
         android:padding="@dimen/little_size"
         android:spinnerMode="dropdown"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/scores_recycler"
+    <include
+        android:id="@+id/layout_list_my_tests_content"
+        layout="@layout/content_list_my_tests"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/short_size"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_size"
-        android:layout_marginTop="@dimen/default_size"
-        android:layout_marginEnd="@dimen/default_size"
-        app:layout_constraintTop_toBottomOf="@id/spinner_courses_in_my_scores"
-        tools:itemCount="5"
-        tools:listitem="@layout/item_recycler_scores" />
-
-
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_add_black_24dp"
+        tools:layout_editor_absoluteX="329dp"
+        tools:layout_editor_absoluteY="634dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
