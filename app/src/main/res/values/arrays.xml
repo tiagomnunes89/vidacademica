@@ -4,6 +4,7 @@
         <item>Sistemas para internet</item>
         <item>Logística</item>
     </string-array>
+
     <string-array name="subjects">arraySpinner
         <item>Lógica de programação</item>
         <item>Fundamentos de webdesign 1</item>

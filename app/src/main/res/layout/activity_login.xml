@@ -7,10 +7,6 @@
     <data>
 
         <variable
-            name="user"
-            type="online.vidacademica.entities.databind.UserLoginDatabind" />
-
-        <variable
             name="LoginViewModel"
             type="online.vidacademica.viewmodel.LoginViewModel" />
     </data>
