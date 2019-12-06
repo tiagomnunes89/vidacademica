@@ -2,6 +2,7 @@ package online.vidacademica.repositories.network.vidacademica.services;
 
 import java.util.List;
 
+import online.vidacademica.entities.CourseDTO;
 import online.vidacademica.entities.UserDTO;
 import online.vidacademica.repositories.network.vidacademica.VidAcademicaWSConstants;
 import retrofit2.Call;
@@ -10,12 +11,12 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 
-public interface UserService {
+public interface CourseService {
 
-    @GET(VidAcademicaWSConstants.USER_PATH)
-    Call<List<UserDTO>> getAllUsers(@Header("Authorization") String bearerToken);
+    @GET(VidAcademicaWSConstants.COURSE_PATH)
+    Call<List<CourseDTO>> getAllUsers(@Header("Authorization") String bearerToken);
 
-    @POST(VidAcademicaWSConstants.USER_PATH)
-    Call<UserDTO> registerUser(@Body UserDTO userDTO);
+    @POST(VidAcademicaWSConstants.COURSE_PATH)
+    Call<CourseDTO> insert(@Header("Authorization") String bearerToken, @Body CourseDTO couseDTO);
 
 }

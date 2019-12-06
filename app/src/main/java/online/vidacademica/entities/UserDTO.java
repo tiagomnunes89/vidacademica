@@ -8,7 +8,7 @@ import androidx.room.Ignore;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class UserEntity implements Serializable {
+public class UserDTO implements Serializable {
     private static final long serialVersionUID = -6604092636383467611L;
 
     private Long id;
@@ -18,12 +18,12 @@ public class UserEntity implements Serializable {
     private String socialId;
     private String password;
 
-    public UserEntity() {
+    public UserDTO() {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Ignore
-    public UserEntity(Long id, String name, String email, String dateOfBirth, String socialId, String password) {
+    public UserDTO(Long id, String name, String email, String dateOfBirth, String socialId, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -91,7 +91,7 @@ public class UserEntity implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserEntity that = (UserEntity) o;
+        UserDTO that = (UserDTO) o;
         return id.equals(that.id);
     }
 

@@ -5,7 +5,6 @@
     tools:context=".view.ui.RegisterActivity">
 
     <data>
-
         <variable
             name="RegisterViewModel"
             type="online.vidacademica.viewmodel.RegisterViewModel" />
@@ -89,7 +88,7 @@
                             android:hint="@string/name"
                             android:imeOptions="actionNext"
                             android:inputType="textPersonName"
-                            android:text="@={RegisterViewModel.userEntity.name}"
+                            android:text="@={RegisterViewModel.userDTO.name}"
                             android:textColor="@android:color/white"
                             android:textColorHint="@android:color/white" />
 
@@ -112,7 +111,7 @@
                             android:layout_marginBottom="@dimen/little_size"
                             android:hint="@string/email"
                             android:inputType="textEmailAddress"
-                            android:text="@={RegisterViewModel.userEntity.email}"
+                            android:text="@={RegisterViewModel.userDTO.email}"
                             android:textColor="@android:color/white"
                             android:textColorHint="@android:color/white" />
 
@@ -136,7 +135,7 @@
                             android:layout_marginBottom="@dimen/little_size"
                             android:hint="@string/rg"
                             android:inputType="textEmailAddress"
-                            android:text="@={RegisterViewModel.userEntity.socialId}"
+                            android:text="@={RegisterViewModel.userDTO.socialId}"
                             android:textColor="@android:color/white"
                             android:textColorHint="@android:color/white" />
 
@@ -161,7 +160,7 @@
                             android:layout_marginBottom="@dimen/little_size"
                             android:hint="@string/birth_date"
                             android:inputType="none"
-                            android:text="@={RegisterViewModel.userEntity.dateOfBirth}"
+                            android:text="@={RegisterViewModel.userDTO.dateOfBirth}"
                             android:textColor="@android:color/white"
                             android:textColorHint="@android:color/white" />
 
@@ -189,7 +188,7 @@
                             android:imeOptions="actionDone"
                             android:imeActionLabel="@+id/edit_text_name"
                             android:imeActionId="@integer/config_navAnimTime"
-                            android:text="@={RegisterViewModel.userEntity.password}"
+                            android:text="@={RegisterViewModel.userDTO.password}"
                             android:textColor="@android:color/white"
                             android:textColorHint="@android:color/white" />
 

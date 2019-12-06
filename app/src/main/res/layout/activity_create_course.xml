@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/create_course_screen">
 
         <LinearLayout
             android:id="@+id/toolbar_create_course"
