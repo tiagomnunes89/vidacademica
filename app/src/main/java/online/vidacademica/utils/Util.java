@@ -16,7 +16,7 @@ public class Util {
     private static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^((?!.*?\\.\\.)[A-Za-z0-9._-]+@[A-Za-z0-9]+[A-Za-z0-9\\-.]+\\" +
                     ".[A-Za-z0-9\\-.]+[A-Za-z0-9]+)$", Pattern.CASE_INSENSITIVE);
-    private static final Pattern PASSWORD_PATTERN = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,10}$");
+    private static final Pattern PASSWORD_PATTERN = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,10}$");
     private static final Pattern PHONE_NUMBER_PATTERN = Pattern.compile("^\\([1-9]{2}\\) 9 [0-9]{4}[- ]*[0-9]{4}");
     private static final Pattern VALIDATION_FULL_NAME = Pattern.compile("^(([A-ZÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ'`]){2,}( [A-ZÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ'`]{2,}){1,}"
             + "(( [A-ZÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ'`]{1,}( [A-ZÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ'`]{2,}){1,}))* *)$", Pattern.CASE_INSENSITIVE);
@@ -63,7 +63,7 @@ public class Util {
     public static boolean validatePatternPassword(String password) {
         if (password == null) return false;
         Matcher matcher = PASSWORD_PATTERN.matcher(password);
-        // The password must be from 6 to 10 digits with less than 1 number and less than 1 letter
+        // The password must be from 8 to 10 digits with less than 1 number and less than 1 letter
         return matcher.find();
     }
 }
