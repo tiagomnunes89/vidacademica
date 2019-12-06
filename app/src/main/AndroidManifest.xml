@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:tools="http://schemas.android.com/tools"
     package="online.vidacademica">
-    <dist:module dist:instant="true" />
-    <uses-permission android:name="android.permission.INTERNET" />
 
+    <dist:module dist:instant="true" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,31 +15,44 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-
-        <activity android:name=".view.ui.ListMySubjectsActivity">
-        </activity>
-
-
+        android:usesCleartextTraffic="true"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
         <activity
-            android:name=".view.ui.ListMyCoursesActivity"
-            android:label="Meus Cursos"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:name=".view.ui.PreLoginActivity">
         </activity>
-
-        <activity android:name=".view.ui.PreLoginActivity">
+        <activity
+            android:name=".view.ui.ListMyTestsActivity"
+            android:label="@string/title_activity_list_my_tests"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
-            android:name=".view.ui.CreateCourseActivity"
-            android:label="@string/title_activity_create_course"
+            android:name=".view.ui.MyScoresActivity" />
+        <activity
+            android:name=".view.ui.CreateRegistrationActivity">
+
+        </activity>
+
+        <activity
+            android:name=".view.ui.ListMySubjectsActivity">
+
+        </activity>
+        <activity
+            android:name=".view.ui.CreateTestActivity"
+            android:label="@string/title_activity_creste_test"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".view.ui.ProfileActivity" />
+        <activity
+            android:name=".view.ui.ListMyCoursesActivity"
+            android:label="Meus Cursos"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.ui.ProfileActivity" />
         <activity
             android:name=".view.ui.CreateSubjectActivity"
             android:label="@string/title_activity_create_subject"
@@ -52,7 +67,7 @@
         <activity
             android:name=".view.ui.LoginActivity"
             android:configChanges="orientation|screenSize" />
+
     </application>
 
-    </manifest>
-
+</manifest>

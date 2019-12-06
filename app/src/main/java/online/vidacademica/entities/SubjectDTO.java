@@ -9,8 +9,15 @@ public class SubjectDTO implements Serializable {
 
     private String name;
     private boolean active;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private String startDate;
+    private String endDate;
+
+    public SubjectDTO(String name, boolean active, String startDate, String endDate) {
+        this.name = name;
+        this.active = active;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -32,19 +39,21 @@ public class SubjectDTO implements Serializable {
         this.active = active;
     }
 
-    public LocalDate getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
+    public void setStartDate(String startDate) {
+        String[] splittedDate = startDate.split("\\/");
+        this.startDate = String.format("%s-%-%sT00:00:00z", Integer.parseInt(splittedDate[2]), Integer.parseInt(splittedDate[1]), Integer.parseInt(splittedDate[0]));
     }
 
-    public LocalDate getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
+    public void setEndDate(String endDate) {
+        String[] splittedDate = endDate.split("\\/");
+        this.endDate = String.format("%s-%-%sT00:00:00z", Integer.parseInt(splittedDate[2]), Integer.parseInt(splittedDate[1]), Integer.parseInt(splittedDate[0]));
     }
 }
