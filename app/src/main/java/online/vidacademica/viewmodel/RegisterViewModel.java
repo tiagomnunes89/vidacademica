@@ -30,7 +30,7 @@ public class RegisterViewModel extends AndroidViewModel {
         userRepository.registerUser(userEntity, userEntityResponse);
     }
 
-    public LiveData<ResponseModel<UserEntity>> getUsResponseModelLiveData() {
+    public LiveData<ResponseModel<UserEntity>> getIsResponseModelLiveData() {
         if (userEntityResponse == null) userEntityResponse = new MutableLiveData<>();
         return userEntityResponse;
     }

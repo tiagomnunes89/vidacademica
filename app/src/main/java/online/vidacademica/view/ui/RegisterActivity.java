@@ -3,6 +3,7 @@ package online.vidacademica.view.ui;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
@@ -54,29 +55,7 @@ public class RegisterActivity extends ActivityBaseClassValidator {
 
         binding.layoutRegisterContent.setRegisterViewModel(registerViewModel);
 
-        registerViewModel.getUsResponseModelLiveData().observe(this, userEntityResponseModel -> {
-            if (screenCreated != null) {
-                if (registerViewModel.isRegistred()) {
-                    Toast.makeText(RegisterActivity.this, "Registro realizado com sucesso.", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(RegisterActivity.this, "Erro, servidor ocupado, tente novamente mais tarde.", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-
-        binding.layoutRegisterContent.editTextBirthDate.setOnClickListener(view ->
-                util.callDatePickerDialog(RegisterActivity.this, onDateSetListener));
-
-        onDateSetListener = (datePicker, year, month, day) -> {
-            String date = DateFormatUtils.onDateSetResultToString(datePicker);
-            binding.layoutRegisterContent.editTextBirthDate.setText(date);
-        };
-        binding.imageViewBack.setOnClickListener(v ->
-                startActivity(new Intent(RegisterActivity.this, PreLoginActivity.class)));
-        binding.btnSendRegister.setOnClickListener(v -> {
-            startActivity(new Intent(RegisterActivity.this, ProfileActivity.class));
-            registerViewModel.register();
-        });
+        observeActions();
         initValidator();
     }
 
@@ -115,6 +94,40 @@ public class RegisterActivity extends ActivityBaseClassValidator {
                 enableContinueButton(executeAllValidators(getValidationList(), ValidatorDefaultTextInput.class));
             else binding.layoutRegisterContent.textInputRg.setErrorEnabled(false);
         });
+    }
+
+    private void observeActions() {
+
+        binding.btnSendRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                startActivity(new Intent(RegisterActivity.this, ProfileActivity.class));
+                showProgressBar(R.id.register_screen);
+                registerViewModel.register();
+            }
+        });
+
+        binding.layoutRegisterContent.editTextBirthDate.setOnClickListener(view ->
+                util.callDatePickerDialog(RegisterActivity.this, onDateSetListener));
+
+        onDateSetListener = (datePicker, year, month, day) -> {
+            String date = DateFormatUtils.onDateSetResultToString(datePicker);
+            binding.layoutRegisterContent.editTextBirthDate.setText(date);
+        };
+        binding.imageViewBack.setOnClickListener(v -> startActivity(new Intent(RegisterActivity.this, PreLoginActivity.class)));
+
+        registerViewModel.getIsResponseModelLiveData().observe(this, userEntityResponseModel -> {
+            if (screenCreated != null) {
+                if (registerViewModel.isRegistred()) {
+                    dismissProgressBar();
+                    Toast.makeText(RegisterActivity.this, "Registro realizado com sucesso.", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(RegisterActivity.this, "Erro, servidor ocupado, tente novamente mais tarde.", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+
     }
 
     @Override

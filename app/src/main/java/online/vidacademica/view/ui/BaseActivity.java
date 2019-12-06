@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.constraintlayout.widget.Constraints;
 
@@ -28,7 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
     }
 
-    protected final void showProgressBar(int parentViewId) {
+    protected final void showProgressBar(final int parentViewId) {
 
 
 //                <ProgressBar
@@ -44,9 +45,17 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (mProgressBar == null) {
             mProgressBar = new ProgressBar(this);
             mProgressBar.setVisibility(View.INVISIBLE);
+            mProgressBar.setId(View.generateViewId());
 
-            mProgressBar.setForegroundGravity(View.TEXT_ALIGNMENT_CENTER);
-            ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(300, 300);
+
+            layoutParams.topToTop = parentViewId;
+            layoutParams.bottomToBottom = parentViewId;
+            layoutParams.leftToLeft = parentViewId;
+            layoutParams.rightToRight = parentViewId;
+            layoutParams.verticalBias = (float) 0.5;
+            layoutParams.horizontalBias = (float) 0.5;
+
             mProgressBar.setLayoutParams(layoutParams);
         }
 
