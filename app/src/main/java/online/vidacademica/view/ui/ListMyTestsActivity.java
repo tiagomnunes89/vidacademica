@@ -60,5 +60,4 @@ public class ListMyTestsActivity extends AppCompatActivity {
         tests.add(test1);
         tests.add(test2);
     }
-
 }
