@@ -17,32 +17,21 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-
-        <activity
-            android:name=".view.ui.PreLoginActivity">
-
-
-        </activity>
-        <activity
-            android:name=".view.ui.ListMyTestsActivity"
-            android:label="@string/title_activity_list_my_tests"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity
-            android:name=".view.ui.MyScoresActivity">
-        </activity>
-        <activity
-            android:name=".view.ui.CreateRegistrationActivity">
+        <activity android:name=".view.ui.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".view.ui.ListMySubjectsActivity">
-
-        </activity>
+        <activity android:name=".view.ui.PreLoginActivity" />
+        <activity
+            android:name=".view.ui.ListMyTestsActivity"
+            android:label="@string/title_activity_list_my_tests"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".view.ui.MyScoresActivity" />
+        <activity android:name=".view.ui.CreateRegistrationActivity"></activity>
+        <activity android:name=".view.ui.ListMySubjectsActivity"></activity>
         <activity
             android:name=".view.ui.CreateTestActivity"
             android:label="@string/title_activity_creste_test"
@@ -59,22 +48,10 @@
         <activity
             android:name=".view.ui.RegisterActivity"
             android:configChanges="orientation|screenSize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-
-
-        <activity
-            android:name=".view.ui.HomeActivity"
-            android:configChanges="orientation|screenSize"
-            android:label="@string/title_activity_home" />
         <activity
             android:name=".view.ui.LoginActivity"
             android:configChanges="orientation|screenSize" />
-
     </application>
 
 </manifest>
