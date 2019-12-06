@@ -20,6 +20,8 @@
 
         <activity
             android:name=".view.ui.PreLoginActivity">
+
+
         </activity>
         <activity
             android:name=".view.ui.ListMyTestsActivity"
@@ -38,8 +40,7 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".view.ui.ListMySubjectsActivity">
+        <activity android:name=".view.ui.ListMySubjectsActivity">
 
         </activity>
         <activity
@@ -50,15 +51,22 @@
             android:name=".view.ui.ListMyCoursesActivity"
             android:label="Meus Cursos"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".view.ui.ProfileActivity" />
+        <activity android:name=".view.ui.ProfileActivity" />
         <activity
             android:name=".view.ui.CreateSubjectActivity"
             android:label="@string/title_activity_create_subject"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.ui.RegisterActivity"
-            android:configChanges="orientation|screenSize" />
+            android:configChanges="orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
         <activity
             android:name=".view.ui.HomeActivity"
             android:configChanges="orientation|screenSize"

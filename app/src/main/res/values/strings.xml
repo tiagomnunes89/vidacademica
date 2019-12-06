@@ -75,7 +75,7 @@
     <string name="insufficient_age">Idade insuficiente</string>
     <string name="email_example">Ex.: nome@gmail.com</string>
     <string name="hint_name">Preencha nome e sobrenome, não abrevie</string>
-    <string name="tip_password">Deve ter letras e números, de 6 a 10 dígitos</string>
+    <string name="tip_password">Deve ter letras e números, de 8 a 10 dígitos</string>
     <string name="title_activity_list_my_tests">Meus Testes</string>
     <string name="title_activity_creste_test">Criar Teste</string>
     <string name="title_create_test">Criar Teste</string>
