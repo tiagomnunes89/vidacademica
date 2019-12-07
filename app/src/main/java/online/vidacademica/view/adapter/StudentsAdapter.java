@@ -37,7 +37,10 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.Studen
     public void onBindViewHolder(@NonNull StudentsAdapter.StudentsViewHolder holder, int position) {
         UserEntity student = students.get(position);
         holder.StudentName.setText(student.getName());
-        holder.dateOfBirth.setText(student.getDateOfBirth());
+        String birthYear = student.getDateOfBirth().substring(0, 4);
+        String birthDia  = student.getDateOfBirth().substring(15, 17);
+        String birthMonth = student.getDateOfBirth().substring(18,20);
+        holder.dateOfBirth.setText(birthDia +"/"+ birthMonth +"/"+ birthYear);
     }
 
     @Override
@@ -49,7 +52,6 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.Studen
 
         TextView StudentName;
         TextView dateOfBirth;
-        EditText EdtNome;
 
         public StudentsViewHolder(@NonNull View itemView) {
             super(itemView);
