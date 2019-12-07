@@ -10,17 +10,17 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_vidacademica"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_vidacademica"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
-            android:name=".view.ui.setResultTestActivity"
+            android:name=".view.ui.TeacherHomeActivity"
+            android:label="@string/title_activity_teacher_home"
             android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".view.ui.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,27 +28,26 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".view.ui.PreLoginActivity"></activity>
         <activity
-            android:name=".view.ui.ListMyTestsActivity"
-            android:label="@string/title_activity_list_my_tests"
+            android:name=".view.ui.setResultTestActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".view.ui.MyScoresActivity"></activity>
-        <activity android:name=".view.ui.CreateRegistrationActivity">
-        </activity>
+        <activity android:name=".view.ui.HomeActivity">
+
         </activity>
         <activity android:name=".view.ui.PreLoginActivity" />
         <activity
             android:name=".view.ui.ListMyTestsActivity"
             android:label="@string/title_activity_list_my_tests"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".view.ui.MyScoresActivity" />
         <activity android:name=".view.ui.CreateRegistrationActivity"></activity>
-        <activity android:name=".view.ui.ListMySubjectsActivity"></activity>
+        <activity android:name=".view.ui.ListMySubjectsActivity" />
         <activity
             android:name=".view.ui.CreateTestActivity"
             android:label="@string/title_activity_creste_test"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
         <activity
             android:name=".view.ui.ListMyCoursesActivity"
             android:label="Meus Cursos"
@@ -60,13 +59,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.ui.RegisterActivity"
-            android:configChanges="orientation|screenSize">
-        </activity>
-        <activity
-            android:name=".view.ui.HomeActivity"
-            android:configChanges="orientation|screenSize"
-            android:label="@string/title_activity_home" />
-
+            android:configChanges="orientation|screenSize"></activity>
         <activity
             android:name=".view.ui.LoginActivity"
             android:configChanges="orientation|screenSize" />
