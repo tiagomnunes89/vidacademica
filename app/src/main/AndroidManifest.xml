@@ -7,7 +7,7 @@
     <dist:module dist:instant="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,8 +20,11 @@
 
         <activity
             android:name=".view.ui.PreLoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".view.ui.ListMyTestsActivity"
@@ -33,11 +36,7 @@
         </activity>
         <activity
             android:name=".view.ui.CreateRegistrationActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".view.ui.ListMySubjectsActivity">
@@ -59,14 +58,7 @@
         <activity
             android:name=".view.ui.RegisterActivity"
             android:configChanges="orientation|screenSize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-
-
         <activity
             android:name=".view.ui.HomeActivity"
             android:configChanges="orientation|screenSize"
