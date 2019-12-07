@@ -37,10 +37,10 @@ public class VidAcademicaWSClient {
                         }
                     })
 
-                    .connectTimeout(60, TimeUnit.SECONDS)
-                    .readTimeout(60, TimeUnit.SECONDS)
-                    .writeTimeout(60, TimeUnit.SECONDS)
-                    .callTimeout(60, TimeUnit.SECONDS);
+                    .connectTimeout(120, TimeUnit.SECONDS)
+                    .readTimeout(120, TimeUnit.SECONDS)
+                    .writeTimeout(120, TimeUnit.SECONDS)
+                    .callTimeout(120, TimeUnit.SECONDS);
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private static Retrofit getRetroInstance() {
