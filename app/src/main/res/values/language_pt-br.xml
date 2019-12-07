@@ -79,6 +79,8 @@
     <string name="title_activity_creste_test">Criar Teste</string>
     <string name="title_create_test">Criar Teste</string>
     <string name="btn_save_test">Salvar Teste</string>
+    <string name="title_activity_set_result_test">setResultTestActivity</string>
+    <string name="title_activity_teacher_home">TeacherHomeActivity</string>
 
     <!--Gerais-->
     <string name="app_field_name">Nome</string>
