@@ -13,6 +13,8 @@ import online.vidacademica.core.ResponseModel;
 import online.vidacademica.entities.CourseDTO;
 import online.vidacademica.repositories.CourseRepository;
 
+import static online.vidacademica.repositories.network.vidacademica.VidAcademicaWSConstants.STATUS_CODE_CREATED;
+
 public class CourseViewModel extends AndroidViewModel {
 
     private CourseRepository courseRepository;
@@ -24,6 +26,7 @@ public class CourseViewModel extends AndroidViewModel {
 
     public CourseViewModel(@NonNull Application application) {
         super(application);
+        courseRepository = CourseRepository.getInstance(application);
     }
 
     public void createCourse() {
@@ -33,6 +36,16 @@ public class CourseViewModel extends AndroidViewModel {
     public LiveData<ResponseModel<CourseDTO>> getLastCourseCreated() {
         if (courseDTOResponse == null) courseDTOResponse = new MutableLiveData<>();
         return courseDTOResponse;
+    }
+
+    public boolean lastCourseCreated() {
+        boolean response = false;
+
+        if (getLastCourseCreated() != null && getLastCourseCreated().getValue() != null && getLastCourseCreated().getValue().getCode() == STATUS_CODE_CREATED) {
+            response = true;
+        }
+
+        return response;
     }
 
     public LiveData<List<ResponseModel<CourseDTO>>> getAllCourses() {

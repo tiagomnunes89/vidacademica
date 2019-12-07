@@ -9,6 +9,11 @@ public class CourseDTO implements Serializable {
     private String description;
     private boolean active;
 
+    private static final String STATUS_ACTIVE = "Ativo";
+    private static final String STATUS_INACTIVE = "Inativo";
+
+    public static final String[] POSSIBLE_STATUS = new String[]{STATUS_ACTIVE, STATUS_INACTIVE};
+
     public CourseDTO() {
     }
 
@@ -38,7 +43,26 @@ public class CourseDTO implements Serializable {
         return active;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setActive(String active) {
+        this.active = activeString2Boolean(active);
+    }
+
+    private boolean activeString2Boolean(String status) {
+
+        boolean response = true;
+
+        if (status.equalsIgnoreCase(STATUS_INACTIVE)) {
+            response = false;
+        }
+
+        return response;
+    }
+
+    private String activeBoolean2String(boolean status) {
+        if (status) {
+            return STATUS_ACTIVE;
+        }
+
+        return STATUS_INACTIVE;
     }
 }

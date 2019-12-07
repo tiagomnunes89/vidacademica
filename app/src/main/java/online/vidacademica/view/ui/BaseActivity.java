@@ -55,8 +55,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             mProgressBar.setVisibility(View.INVISIBLE);
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             Toast.makeText(this, "Carregamento cancelado. \n \n Favor tentar novamente.", Toast.LENGTH_LONG).show();
-        } else {
-            super.onBackPressed();
         }
     }
 
@@ -64,6 +62,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
+    protected final void showToast(Integer msgResourceId) {
+        showToast(getString(msgResourceId));
+    }
+
+    protected final void showAlert(Integer titleResourceId, Integer msgResourceId, int actionCustomIdentifier) {
+        showAlert(getString(titleResourceId), getString(msgResourceId), actionCustomIdentifier);
+    }
     protected final void showAlert(String title, String msg, int actionCustomIdentifier) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(title)

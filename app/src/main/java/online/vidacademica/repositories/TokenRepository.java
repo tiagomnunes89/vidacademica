@@ -35,8 +35,9 @@ public class TokenRepository {
     private TokenRepository(Context context) {
         VidAcademicaLocalDBClient db = VidAcademicaLocalDBClient.getInstance(context);
         dao = db.tokenDao();
-
         tokenService = VidAcademicaWSClient.buildService(TokenService.class);
+
+        reLogin();
     }
 
     public static TokenRepository getInstance(Context context) {
@@ -44,6 +45,20 @@ public class TokenRepository {
             instance = new TokenRepository(context);
         }
         return instance;
+    }
+
+    private void reLogin() {
+
+        try {
+            LiveData<TokenEntity> tokenEntityLiveData = getToken();
+
+            if (tokenEntityLiveData != null && tokenEntityLiveData.getValue() != null) {
+                login(tokenEntityLiveData.getValue());
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "reLogin: Erro ao tentar fazer o login novamente.", e);
+        }
+
     }
 
     public void login(final TokenEntity tokenEntity) {
@@ -82,6 +97,10 @@ public class TokenRepository {
 
     public LiveData<TokenEntity> getToken() {
         return dao.findOne();
+    }
+
+    public TokenEntity getTokenMainThread() {
+        return dao.findOne().getValue();
     }
 
     private void insert(TokenEntity tokenEntity) {
