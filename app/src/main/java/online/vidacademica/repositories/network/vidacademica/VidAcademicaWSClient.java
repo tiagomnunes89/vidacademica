@@ -36,6 +36,7 @@ public class VidAcademicaWSClient {
                             return chain.proceed(request);
                         }
                     })
+
                     .connectTimeout(60, TimeUnit.SECONDS)
                     .readTimeout(60, TimeUnit.SECONDS)
                     .writeTimeout(60, TimeUnit.SECONDS)

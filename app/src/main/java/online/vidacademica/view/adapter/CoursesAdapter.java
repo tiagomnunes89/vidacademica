@@ -37,9 +37,9 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.CourseVi
         CourseDTO courseDTO = courses.get(position);
         holder.titulo.setText(courseDTO.getName());
         String status;
-        if (courseDTO.isActive()){
+        if (courseDTO.isActive()) {
             status = "Ativo";
-        }else {
+        } else {
             status = "Inativo";
         }
         holder.status.setText(status);

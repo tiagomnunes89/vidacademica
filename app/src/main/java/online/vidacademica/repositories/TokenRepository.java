@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 
 import online.vidacademica.core.ErrorMessage;
 import online.vidacademica.core.ResponseModel;
@@ -30,13 +31,12 @@ public class TokenRepository {
 
     private TokenDao dao;
 
-    private LiveData<ResponseModel<TokenEntity>> tokenEntity;
-
     private TokenRepository(Context context) {
         VidAcademicaLocalDBClient db = VidAcademicaLocalDBClient.getInstance(context);
         dao = db.tokenDao();
-
         tokenService = VidAcademicaWSClient.buildService(TokenService.class);
+
+        reLogin();
     }
 
     public static TokenRepository getInstance(Context context) {
@@ -44,6 +44,21 @@ public class TokenRepository {
             instance = new TokenRepository(context);
         }
         return instance;
+    }
+
+    private void reLogin() {
+
+        try {
+            TokenEntity tokenEntity = getTokenSync();
+
+            if (tokenEntity != null) {
+                login(tokenEntity);
+            }
+
+        } catch (Exception e) {
+            Log.e(TAG, "reLogin: Erro ao tentar fazer o login novamente.", e);
+        }
+
     }
 
     public void login(final TokenEntity tokenEntity) {
@@ -84,15 +99,42 @@ public class TokenRepository {
         return dao.findOne();
     }
 
-    private void insert(TokenEntity tokenEntity) {
-        new insertAsyncTask(dao).execute(tokenEntity);
+    public TokenEntity getTokenSync() {
+
+        TokenEntity response = new TokenEntity();
+
+        try {
+            response = new FindOneAsync(dao).execute().get();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return response;
     }
 
-    private static class insertAsyncTask extends AsyncTask<TokenEntity, Void, Void> {
+    private class FindOneAsync extends AsyncTask<Void, Void, TokenEntity> {
 
         private TokenDao dao;
 
-        insertAsyncTask(TokenDao dao) {
+        FindOneAsync(TokenDao dao) {
+            this.dao = dao;
+        }
+
+        @Override
+        protected TokenEntity doInBackground(Void... voids) {
+            return dao.findOneSync();
+        }
+    }
+
+    private void insert(TokenEntity tokenEntity) {
+        new InsertAsyncTask(dao).execute(tokenEntity);
+    }
+
+    private class InsertAsyncTask extends AsyncTask<TokenEntity, Void, Void> {
+
+        private TokenDao dao;
+
+        InsertAsyncTask(TokenDao dao) {
             this.dao = dao;
         }
 

@@ -8,18 +8,18 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import online.vidacademica.core.ResponseModel;
-import online.vidacademica.entities.UserEntity;
+import online.vidacademica.entities.UserDTO;
 import online.vidacademica.repositories.UserRepository;
+
+import static online.vidacademica.repositories.network.vidacademica.VidAcademicaWSConstants.STATUS_CODE_CREATED;
 
 public class RegisterViewModel extends AndroidViewModel {
 
-    private static final Integer CREATED = 201;
-
     private UserRepository userRepository;
 
-    public UserEntity userEntity = new UserEntity();
+    public UserDTO userDTO = new UserDTO();
 
-    private MutableLiveData<ResponseModel<UserEntity>> userEntityResponse;
+    private MutableLiveData<ResponseModel<UserDTO>> userEntityResponse;
 
     public RegisterViewModel(@NonNull Application application) {
         super(application);
@@ -27,10 +27,10 @@ public class RegisterViewModel extends AndroidViewModel {
     }
 
     public void register() {
-        userRepository.registerUser(userEntity, userEntityResponse);
+        userRepository.registerUser(userDTO, userEntityResponse);
     }
 
-    public LiveData<ResponseModel<UserEntity>> getIsResponseModelLiveData() {
+    public LiveData<ResponseModel<UserDTO>> getIsResponseModelLiveData() {
         if (userEntityResponse == null) userEntityResponse = new MutableLiveData<>();
         return userEntityResponse;
     }
@@ -39,7 +39,7 @@ public class RegisterViewModel extends AndroidViewModel {
         boolean response = false;
         if (userEntityResponse != null &&
                 userEntityResponse.getValue() != null &&
-                userEntityResponse.getValue().getCode() == CREATED) {
+                userEntityResponse.getValue().getCode() == STATUS_CODE_CREATED) {
             response = true;
         }
         return response;
