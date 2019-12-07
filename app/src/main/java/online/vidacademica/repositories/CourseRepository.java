@@ -42,11 +42,11 @@ public class CourseRepository {
 
     public MutableLiveData<ResponseModel<CourseDTO>> insert(CourseDTO courseDTO, final MutableLiveData<ResponseModel<CourseDTO>> mutableLiveDataObject) {
 
-        LiveData<TokenEntity> tokenEntity = Optional.of(tokenRepository.getToken()).orElse(new MutableLiveData<>());
+        TokenEntity tokenEntity = Optional.of(tokenRepository.getTokenSync()).orElse(new TokenEntity());
 
         String hash = "";
-        if (tokenEntity.getValue() != null) {
-            hash = tokenEntity.getValue().getToken();
+        if (tokenEntity != null) {
+            hash = tokenEntity.getToken();
         }
 
         courseService.insert(String.format("Bearer %s", hash), courseDTO).enqueue(new Callback<CourseDTO>() {

@@ -45,8 +45,6 @@ public class CreateCourseActivity extends BaseActivity {
     protected void alertYes(int actionCustomIdentifier) {
         switch (actionCustomIdentifier) {
             case 0:
-                showToast(R.string.create_course_toast_create_loading);
-                courseViewModel.createCourse();
                 break;
         }
     }
@@ -64,6 +62,7 @@ public class CreateCourseActivity extends BaseActivity {
         binding.btnSaveCourse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showToast(R.string.create_course_toast_create_loading);
                 showProgressBar(R.id.create_course_screen);
                 courseViewModel.createCourse();
             }

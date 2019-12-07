@@ -7,6 +7,7 @@ public class CourseDTO implements Serializable {
 
     private String name;
     private String description;
+    private Double workload = 0.0;
     private boolean active;
 
     private static final String STATUS_ACTIVE = "Ativo";
@@ -37,6 +38,14 @@ public class CourseDTO implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Double getWorkload() {
+        return workload;
+    }
+
+    public void setWorkload(Double workload) {
+        this.workload = workload;
     }
 
     public boolean isActive() {

@@ -69,6 +69,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected final void showAlert(Integer titleResourceId, Integer msgResourceId, int actionCustomIdentifier) {
         showAlert(getString(titleResourceId), getString(msgResourceId), actionCustomIdentifier);
     }
+
     protected final void showAlert(String title, String msg, int actionCustomIdentifier) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(title)
@@ -94,7 +95,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected final void showAlert(String title, String msg) {
         showAlert(title, msg, 0);
     }
-
 
 
     protected abstract void alertYes(final int actionCustomIdentifier);
