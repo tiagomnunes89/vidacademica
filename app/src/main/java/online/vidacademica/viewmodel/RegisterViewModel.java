@@ -8,7 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import online.vidacademica.core.ResponseModel;
-import online.vidacademica.entities.UserDTO;
+import online.vidacademica.entities.UserEntity;
 import online.vidacademica.repositories.UserRepository;
 
 import static online.vidacademica.repositories.network.vidacademica.VidAcademicaWSConstants.STATUS_CODE_CREATED;
@@ -17,9 +17,9 @@ public class RegisterViewModel extends AndroidViewModel {
 
     private UserRepository userRepository;
 
-    public UserDTO userDTO = new UserDTO();
+    public UserEntity userEntity = new UserEntity();
 
-    private MutableLiveData<ResponseModel<UserDTO>> userEntityResponse;
+    private MutableLiveData<ResponseModel<UserEntity>> userEntityResponse;
 
     public RegisterViewModel(@NonNull Application application) {
         super(application);
@@ -27,10 +27,10 @@ public class RegisterViewModel extends AndroidViewModel {
     }
 
     public void register() {
-        userRepository.registerUser(userDTO, userEntityResponse);
+        userRepository.registerUser(userEntity, userEntityResponse);
     }
 
-    public LiveData<ResponseModel<UserDTO>> getIsResponseModelLiveData() {
+    public LiveData<ResponseModel<UserEntity>> getIsResponseModelLiveData() {
         if (userEntityResponse == null) userEntityResponse = new MutableLiveData<>();
         return userEntityResponse;
     }
