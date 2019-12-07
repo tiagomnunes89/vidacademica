@@ -66,6 +66,20 @@
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/short_size"
             app:layout_constraintTop_toBottomOf="@id/text_view_name_test" />
+
+        <Button
+            android:id="@+id/btn_save_results"
+            style="@style/AppTheme.Button.Blue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_size"
+            android:layout_marginEnd="@dimen/default_size"
+            android:layout_marginBottom="@dimen/default_size"
+            android:text="Salvar Notas"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
