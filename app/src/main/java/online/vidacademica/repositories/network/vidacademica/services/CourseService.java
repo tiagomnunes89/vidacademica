@@ -3,7 +3,6 @@ package online.vidacademica.repositories.network.vidacademica.services;
 import java.util.List;
 
 import online.vidacademica.entities.CourseDTO;
-import online.vidacademica.entities.UserDTO;
 import online.vidacademica.repositories.network.vidacademica.VidAcademicaWSConstants;
 import retrofit2.Call;
 import retrofit2.http.Body;

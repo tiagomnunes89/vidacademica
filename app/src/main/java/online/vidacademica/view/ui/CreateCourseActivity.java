@@ -34,7 +34,7 @@ public class CreateCourseActivity extends BaseActivity {
 
         // Populando Spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, POSSIBLE_STATUS);
-        binding.layoutCreateCourseContent.inputStatusCourse.setAdapter(adapter);
+        binding.layoutCreateCourseContent.spinnerStatusCourse.setAdapter(adapter);
 
         observeFields();
         observeActions();
@@ -68,7 +68,7 @@ public class CreateCourseActivity extends BaseActivity {
             }
         });
 
-        binding.layoutCreateCourseContent.inputStatusCourse.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        binding.layoutCreateCourseContent.spinnerStatusCourse.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 courseViewModel.courseDTO.setActive(POSSIBLE_STATUS[position]);

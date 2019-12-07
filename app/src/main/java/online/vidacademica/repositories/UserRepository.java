@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 import online.vidacademica.core.ErrorMessage;
 import online.vidacademica.core.ResponseModel;
-import online.vidacademica.entities.UserDTO;
+import online.vidacademica.entities.UserEntity;
 import online.vidacademica.repositories.network.vidacademica.VidAcademicaWSClient;
 import online.vidacademica.repositories.network.vidacademica.services.UserService;
 import online.vidacademica.utils.JsonUtils;
@@ -38,15 +38,15 @@ public class UserRepository {
         return instance;
     }
 
-    public MutableLiveData<ResponseModel<UserDTO>> getAllUsers() throws ValidatorException {
+    public MutableLiveData<ResponseModel<UserEntity>> getAllUsers() throws ValidatorException {
 
-        final MutableLiveData<ResponseModel<UserDTO>> data = new MutableLiveData<>();
+        final MutableLiveData<ResponseModel<UserEntity>> data = new MutableLiveData<>();
 
-//        userService.getAllUsers("").enqueue(new Callback<UserDTO>() {
+//        userService.getAllUsers("").enqueue(new Callback<UserEntity>() {
 //            @Override
-//            public void onResponse(Call<UserDTO> call, Response<UserDTO> response) {
+//            public void onResponse(Call<UserEntity> call, Response<UserEntity> response) {
 //
-//                ResponseModel<UserDTO> responseModel = new ResponseModel<>();
+//                ResponseModel<UserEntity> responseModel = new ResponseModel<>();
 //
 //                responseModel.setCode(response.code());
 //                responseModel.setResponse(response.body());
@@ -61,7 +61,7 @@ public class UserRepository {
 //            }
 //
 //            @Override
-//            public void onFailure(Call<UserDTO> call, Throwable t) {
+//            public void onFailure(Call<UserEntity> call, Throwable t) {
 //
 //            }
 //        });
@@ -69,12 +69,12 @@ public class UserRepository {
         return data;
     }
 
-    public MutableLiveData<ResponseModel<UserDTO>> registerUser(UserDTO userDTO, final MutableLiveData<ResponseModel<UserDTO>> mutableLiveDataObject) {
+    public MutableLiveData<ResponseModel<UserEntity>> registerUser(UserEntity userEntity, final MutableLiveData<ResponseModel<UserEntity>> mutableLiveDataObject) {
 
-        userService.registerUser(userDTO).enqueue(new Callback<UserDTO>() {
+        userService.registerUser(userEntity).enqueue(new Callback<UserEntity>() {
             @Override
-            public void onResponse(Call<UserDTO> call, Response<UserDTO> response) {
-                ResponseModel<UserDTO> responseModel = new ResponseModel<>();
+            public void onResponse(Call<UserEntity> call, Response<UserEntity> response) {
+                ResponseModel<UserEntity> responseModel = new ResponseModel<>();
 
                 responseModel.setCode(response.code());
                 responseModel.setResponse(response.body());
@@ -88,7 +88,7 @@ public class UserRepository {
             }
 
             @Override
-            public void onFailure(Call<UserDTO> call, Throwable t) {
+            public void onFailure(Call<UserEntity> call, Throwable t) {
                 Log.i(TAG, "onFailure: " + Arrays.toString(t.getStackTrace()));
             }
         });
