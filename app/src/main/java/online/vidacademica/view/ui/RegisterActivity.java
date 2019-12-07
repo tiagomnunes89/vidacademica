@@ -26,8 +26,8 @@ import online.vidacademica.viewmodel.RegisterViewModel;
 import static online.vidacademica.view.validation.Validator.executeAllValidators;
 
 public class RegisterActivity extends ActivityBaseClassValidator {
-
     private static final String TAG = RegisterActivity.class.getSimpleName();
+
     private DatePickerDialog.OnDateSetListener onDateSetListener;
 
     private RegisterViewModel registerViewModel;
@@ -57,6 +57,14 @@ public class RegisterActivity extends ActivityBaseClassValidator {
 
         observeActions();
         initValidator();
+    }
+
+    @Override
+    protected void alertYes(int actionCustomIdentifier) {
+    }
+
+    @Override
+    protected void alertNo(int actionCustomIdentifier) {
     }
 
     private void initValidator() {
@@ -126,8 +134,6 @@ public class RegisterActivity extends ActivityBaseClassValidator {
                 }
             }
         });
-
-
     }
 
     @Override
@@ -150,7 +156,6 @@ public class RegisterActivity extends ActivityBaseClassValidator {
     }
 
     private void initValidationList() {
-
         getValidationList().addAll(Arrays.asList(new NameValidation(this, binding.layoutRegisterContent.textInputName),
                 new EmailValidation(this, binding.layoutRegisterContent.textInputEmail),
                 new BirthDateValidation(this, binding.layoutRegisterContent.textInputBirth),

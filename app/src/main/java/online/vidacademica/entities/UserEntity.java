@@ -32,6 +32,10 @@ public class UserEntity implements Serializable {
         this.password = password;
     }
 
+    public UserEntity(String name){
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

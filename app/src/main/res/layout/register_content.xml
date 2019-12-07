@@ -5,7 +5,6 @@
     tools:context=".view.ui.RegisterActivity">
 
     <data>
-
         <variable
             name="RegisterViewModel"
             type="online.vidacademica.viewmodel.RegisterViewModel" />

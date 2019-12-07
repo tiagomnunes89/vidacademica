@@ -1,7 +1,6 @@
 package online.vidacademica.view.ui;
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
@@ -13,16 +12,13 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
-import androidx.constraintlayout.widget.Constraints;
-
-import org.xmlpull.v1.XmlPullParser;
-
-import online.vidacademica.R;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
     private ProgressBar mProgressBar;
+
+    private static final String YES = "SIM";
+    private static final String NO = "NÃO";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,17 +26,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected final void showProgressBar(final int parentViewId) {
-
-
-//                <ProgressBar
-//        android:id="@+id/progressBar_id"
-//        style="?android:attr/progressBarStyle"
-//        android:layout_width="wrap_content"
-//        android:layout_height="wrap_content"
-//        app:layout_constraintBottom_toBottomOf="parent"
-//        app:layout_constraintEnd_toEndOf="parent"
-//        app:layout_constraintStart_toStartOf="parent"
-//        app:layout_constraintTop_toTopOf="parent" />
 
         if (mProgressBar == null) {
             mProgressBar = new ProgressBar(this);
@@ -65,31 +50,56 @@ public abstract class BaseActivity extends AppCompatActivity {
         vg.addView(mProgressBar);
     }
 
-    protected void dismissProgressBar() {
+    protected final void dismissProgressBar() {
         if (mProgressBar != null) {
             mProgressBar.setVisibility(View.INVISIBLE);
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             Toast.makeText(this, "Carregamento cancelado. \n \n Favor tentar novamente.", Toast.LENGTH_LONG).show();
-        } else {
-            super.onBackPressed();
         }
     }
 
-    protected void showToast(String msg) {
+    protected final void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
-    protected void showAlert(String msg) {
+    protected final void showToast(Integer msgResourceId) {
+        showToast(getString(msgResourceId));
+    }
+
+    protected final void showAlert(Integer titleResourceId, Integer msgResourceId, int actionCustomIdentifier) {
+        showAlert(getString(titleResourceId), getString(msgResourceId), actionCustomIdentifier);
+    }
+
+    protected final void showAlert(String title, String msg, int actionCustomIdentifier) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(getResources().getString(R.string.app_name))
+        builder.setTitle(title)
                 .setMessage(msg)
                 .setCancelable(false)
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                .setPositiveButton(YES, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
+                        alertYes(actionCustomIdentifier);
+                    }
+                })
+                .setNegativeButton(NO, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                        alertNo(actionCustomIdentifier);
                     }
                 }).create().show();
     }
+
+    protected final void showAlert(String title, String msg) {
+        showAlert(title, msg, 0);
+    }
+
+
+    protected abstract void alertYes(final int actionCustomIdentifier);
+
+    protected abstract void alertNo(final int actionCustomIdentifier);
+
+
 }

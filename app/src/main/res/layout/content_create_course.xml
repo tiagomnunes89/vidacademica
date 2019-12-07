@@ -4,6 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".presentation.CreateCourseActivity">
 
+    <data>
+        <variable
+            name="CourseViewModel"
+            type="online.vidacademica.viewmodel.CourseViewModel" />
+    </data>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -31,11 +37,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/white"
-                    android:hint="@string/name"
+                    android:hint="@string/app_field_name"
                     android:inputType="textPersonName"
                     android:textColor="@android:color/white"
                     android:textColorHint="@android:color/white"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@={CourseViewModel.courseDTO.name}"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,10 +62,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/white"
-                    android:hint="@string/description"
+                    android:hint="@string/app_field_description"
                     android:inputType="textMultiLine"
                     android:textColor="@android:color/white"
-                    android:textColorHint="@android:color/white" />
+                    android:textColorHint="@android:color/white"
+                    android:text="@={CourseViewModel.courseDTO.description}"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,14 +77,14 @@
                 android:layout_marginStart="@dimen/default_size"
                 android:layout_marginTop="@dimen/little_size"
                 android:fontFamily="@font/dosis_bold"
-                android:text="@string/status"
+                android:text="@string/app_field_status"
                 android:textSize="@dimen/font_normal_text"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_input_description_course" />
 
             <Spinner
-                android:id="@+id/input_status_course"
+                android:id="@+id/spinner_status_course"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/default_size"
@@ -84,7 +92,8 @@
                 android:layout_marginEnd="@dimen/default_size"
                 android:layout_marginBottom="@dimen/short_size"
                 android:background="@drawable/course_spinner_border_input"
-                app:layout_constraintTop_toTopOf="@+id/text_view_status_course" />
+                app:layout_constraintTop_toTopOf="@+id/text_view_status_course"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

@@ -11,9 +11,9 @@ import online.vidacademica.core.ResponseModel;
 import online.vidacademica.entities.UserEntity;
 import online.vidacademica.repositories.UserRepository;
 
-public class RegisterViewModel extends AndroidViewModel {
+import static online.vidacademica.repositories.network.vidacademica.VidAcademicaWSConstants.STATUS_CODE_CREATED;
 
-    private static final Integer CREATED = 201;
+public class RegisterViewModel extends AndroidViewModel {
 
     private UserRepository userRepository;
 
@@ -39,7 +39,7 @@ public class RegisterViewModel extends AndroidViewModel {
         boolean response = false;
         if (userEntityResponse != null &&
                 userEntityResponse.getValue() != null &&
-                userEntityResponse.getValue().getCode() == CREATED) {
+                userEntityResponse.getValue().getCode() == STATUS_CODE_CREATED) {
             response = true;
         }
         return response;
