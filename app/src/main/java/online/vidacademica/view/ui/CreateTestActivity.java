@@ -55,6 +55,11 @@ public class CreateTestActivity extends BaseActivity {
     }
 
     @Override
+    protected void captureIntent() {
+
+    }
+
+    @Override
     protected void alertYes(int actionCustomIdentifier) {
 
     }
@@ -64,11 +69,11 @@ public class CreateTestActivity extends BaseActivity {
 
     }
 
-    private void observeFields() {
+    protected void observeFields() {
 
     }
 
-    private void observeActions() {
+    protected void observeActions() {
         binding.btnSaveTest.setOnClickListener(new View.OnClickListener() {
 
 
@@ -98,4 +103,8 @@ public class CreateTestActivity extends BaseActivity {
         });
     }
 
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
 }
