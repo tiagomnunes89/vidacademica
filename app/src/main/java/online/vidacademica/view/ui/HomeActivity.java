@@ -37,6 +37,13 @@ public class HomeActivity extends BaseActivity {
     private void setUpTeacher() {
         bindingTeacher = DataBindingUtil.setContentView(this, R.layout.activity_teacher_home);
         bindingTeacher.setLifecycleOwner(this);
+
+        bindingTeacher.imageViewBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showAlert(R.string.home_alert_close_title, R.string.home_alert_close_message, 0);
+            }
+        });
     }
 
     private void setUpStudent() {
@@ -47,6 +54,13 @@ public class HomeActivity extends BaseActivity {
 
         bindingStudent.layoutContentBottomCards.cardViewMySubjects.setOnClickListener(v -> startActivity(
                 new Intent(this, ListMySubjectsActivity.class)));
+
+        bindingStudent.imageViewBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showAlert(R.string.home_alert_close_title, R.string.home_alert_close_message, 0);
+            }
+        });
     }
 
     @Override
@@ -56,7 +70,10 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void alertYes(int actionCustomIdentifier) {
-
+        switch (actionCustomIdentifier) {
+            case 0:
+                break;
+        }
     }
 
     @Override

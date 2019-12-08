@@ -125,6 +125,8 @@
     <string name="value">Valor</string>
     <string name="test_date">Data do teste</string>
 
+    <string name="home_alert_close_title">Deseja sair do app?</string>
+    <string name="home_alert_close_message">✋✋✋</string>
     <string name="card_home_my_subjects">Minhas\nMatérias</string>
     <string name="card_home_my_courses">Meus\nCursos</string>
     <string name="card_home_register_course">Cadastrar\nCurso</string>
@@ -133,4 +135,5 @@
     <string name="card_home_my_tests">Minhas\nAvaliações</string>
     <string name="card_home_my_notes">Minhas\nNotas</string>
     <string name="card_home_assign_student">Associar\nAluno</string>
+
 </resources>
