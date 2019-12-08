@@ -5,7 +5,9 @@ import android.widget.DatePicker;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
 import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 @SuppressLint("SimpleDateFormat")
 public class DateFormatUtils {
@@ -64,5 +66,76 @@ public class DateFormatUtils {
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat format = new SimpleDateFormat(BR_DATE_TEMPLATE);
         return format.format(calendar.getTime());
+    }
+
+    public static String convertMillisToHourAndMinute(long millis) {
+        if(millis < 0) {
+            throw new IllegalArgumentException("Duration must be greater than zero!");
+        }
+
+        long hours = TimeUnit.MILLISECONDS.toHours(millis);
+        millis -= TimeUnit.HOURS.toMillis(hours);
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(millis);
+
+        StringBuilder sb = new StringBuilder(64);
+        sb.append(hours);
+        sb.append(":");
+        sb.append(minutes);
+
+        return(sb.toString());
+    }
+
+    public static long convertStringHourToMillis(String hourTotal){
+        if(hourTotal != null){
+            String[] parts = hourTotal.split(":");
+            String hour = parts[0];
+            String minute = parts[1];
+            return TimeUnit.HOURS.toMillis(Long.parseLong(hour)) + TimeUnit.MINUTES.toMillis(Long.parseLong(minute));
+        }
+        return 0l;
+    }
+
+    public static DayOfWeek convertStringToDayOfWeek(String dayName) {
+        if(dayName != null){
+            switch (dayName) {
+                case "Segunda-feira":
+                    return DayOfWeek.valueOf("1");
+                case "Terça-feira":
+                    return DayOfWeek.valueOf("2");
+                case "Quarta-feira":
+                    return DayOfWeek.valueOf("3");
+                case "Quinta-feira":
+                    return DayOfWeek.valueOf("4");
+                case "Sexta-feira":
+                    return DayOfWeek.valueOf("5");
+                case "Sábado":
+                    return DayOfWeek.valueOf("6");
+                case "Domingo":
+                    return DayOfWeek.valueOf("7");
+            }
+        }
+        return null;
+    }
+
+    public static String convertDayOfWeekToString(DayOfWeek dayOfWeek) {
+        if(dayOfWeek != null){
+            switch (dayOfWeek.getValue()) {
+                case 1:
+                    return "Segunda-feira";
+                case 2:
+                    return "Terça-feira";
+                case 3:
+                    return "Quarta-feira";
+                case 4:
+                    return "Quinta-feira";
+                case 5:
+                    return "Sexta-feira";
+                case 6:
+                    return "Sábado";
+                case 7:
+                    return "Domingo";
+            }
+        }
+        return "";
     }
 }

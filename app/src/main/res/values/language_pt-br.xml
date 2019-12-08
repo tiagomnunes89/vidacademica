@@ -135,5 +135,6 @@
     <string name="card_home_my_tests">Minhas\nAvaliações</string>
     <string name="card_home_my_notes">Minhas\nNotas</string>
     <string name="card_home_assign_student">Associar\nAluno</string>
+    <string name="cancel">cancelar</string>
 
 </resources>
