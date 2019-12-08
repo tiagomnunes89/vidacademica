@@ -2,17 +2,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".view.ui.CreateTestActivity">
+    tools:context=".view.ui.RegisterActivity">
 
     <data>
 
-        <variable
-            name="TestViewModel"
-            type="online.vidacademica.viewmodel.TestViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/create_test_screen"
+        android:id="@+id/register_screen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
@@ -41,35 +38,32 @@
                 android:layout_marginEnd="@dimen/default_size"
                 android:fontFamily="@font/dosis_bold"
                 android:gravity="end"
-                android:text="@string/title_create_test"
+                android:text="@string/hour_class"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/font_primary_title" />
 
         </LinearLayout>
 
         <include
-            android:id="@+id/layout_create_test_content"
-            layout="@layout/content_create_test"
+            android:id="@+id/layout_content_add_hour_class"
+            layout="@layout/content_add_hour_class"
+            android:layout_marginTop="@dimen/default_size"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/short_size"
-            app:layout_constraintBottom_toTopOf="@id/btn_save_test"
-            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+            app:layout_constraintBottom_toTopOf="@+id/btn_add_hour"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
         <Button
-            android:id="@+id/btn_save_test"
+            android:id="@+id/btn_add_hour"
             style="@style/AppTheme.Button.Blue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_size"
             android:layout_marginEnd="@dimen/default_size"
             android:layout_marginBottom="@dimen/default_size"
-            android:text="@string/btn_save_test"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:text="@string/add_hour_class"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </layout>

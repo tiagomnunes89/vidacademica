@@ -30,6 +30,7 @@
     <string name="new_password">Nova senha</string>
     <string name="current_password">Senha atual</string>
     <string name="description">Descrição</string>
+    <string name="description_label">"Descrição: "</string>
     <string name="initial_date">Data inicial</string>
     <string name="final_date">Data final</string>
     <string name="subject">Matéria</string>
@@ -77,8 +78,8 @@
     <string name="tip_password">Deve ter letras e números, de 8 a 10 dígitos</string>
     <string name="title_activity_list_my_tests">Meus Testes</string>
     <string name="title_activity_creste_test">Criar Teste</string>
-    <string name="title_create_test">Criar Teste</string>
-    <string name="btn_save_test">Salvar Teste</string>
+    <string name="title_create_test">Criar avaliação</string>
+    <string name="btn_save_test">salvar avaliação</string>
     <string name="title_activity_set_result_test">setResultTestActivity</string>
     <string name="title_activity_teacher_home">TeacherHomeActivity</string>
 
@@ -114,7 +115,25 @@
     <string name="create_test_alert_title">Teste criado com sucesso!</string>
     <string name="create_test_alert_message">Deseja ver seus cursos cadastrados?</string>
 
+    <string name="hour_class">Horário da aula</string>
+    <string name="day_week">Dia da semana:</string>
+    <string name="hour_start">Hora de início</string>
+    <string name="hour_end">Hora de término</string>
+    <string name="add_hour_class">adicionar horário</string>
+    <string name="colon">:</string>
+    <string name="enter_student_name">Digite o nome do aluno</string>
+    <string name="value">Valor</string>
+    <string name="test_date">Data do teste</string>
 
-
+    <string name="home_alert_close_title">Deseja sair do app?</string>
+    <string name="home_alert_close_message">✋✋✋</string>
+    <string name="card_home_my_subjects">Minhas\nMatérias</string>
+    <string name="card_home_my_courses">Meus\nCursos</string>
+    <string name="card_home_register_course">Cadastrar\nCurso</string>
+    <string name="card_home_register_subject">Cadastrar\nMatéria</string>
+    <string name="card_home_register_test">Cadastrar\nAvaliação</string>
+    <string name="card_home_my_tests">Minhas\nAvaliações</string>
+    <string name="card_home_my_notes">Minhas\nNotas</string>
+    <string name="card_home_assign_student">Associar\nAluno</string>
 
 </resources>

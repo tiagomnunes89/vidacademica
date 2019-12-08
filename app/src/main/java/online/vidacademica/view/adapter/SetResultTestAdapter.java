@@ -48,7 +48,7 @@ public class SetResultTestAdapter extends RecyclerView.Adapter<SetResultTestAdap
 
         public SetResultTestViewHolder(@NonNull View itemView) {
             super(itemView);
-            name_student = itemView.findViewById(R.id.name_student);
+            name_student = itemView.findViewById(R.id.text_input_name);
         }
     }
 

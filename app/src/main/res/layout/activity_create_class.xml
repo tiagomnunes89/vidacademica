@@ -46,6 +46,7 @@
         <include
             android:id="@+id/layout_create_class_content"
             layout="@layout/content_create_class"
+            android:layout_marginTop="@dimen/default_size"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/short_size"
