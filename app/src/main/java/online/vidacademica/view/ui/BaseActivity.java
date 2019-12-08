@@ -1,7 +1,6 @@
 package online.vidacademica.view.ui;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +45,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         mProgressBar.setVisibility(View.VISIBLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-        ViewGroup vg = ((ViewGroup) findViewById(parentViewId));
+        ViewGroup vg = findViewById(parentViewId);
         vg.addView(mProgressBar);
     }
 
@@ -76,19 +75,13 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .setMessage(msg)
                 .setCancelable(false)
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                .setPositiveButton(YES, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                        alertYes(actionCustomIdentifier);
-                    }
+                .setPositiveButton(YES, (dialogInterface, i) -> {
+                    dialogInterface.dismiss();
+                    alertYes(actionCustomIdentifier);
                 })
-                .setNegativeButton(NO, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                        alertNo(actionCustomIdentifier);
-                    }
+                .setNegativeButton(NO, (dialogInterface, i) -> {
+                    dialogInterface.dismiss();
+                    alertNo(actionCustomIdentifier);
                 }).create().show();
     }
 

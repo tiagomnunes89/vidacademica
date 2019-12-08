@@ -33,7 +33,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/short_size"
                     android:contentDescription="@string/arrow_to_back"
-                    android:src="@drawable/ic_turn_back_black_24dp" />
+                    android:src="@drawable/ic_close_black_24dp" />
 
                 <TextView
                     android:layout_width="match_parent"

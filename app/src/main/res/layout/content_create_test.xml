@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".view.ui.CreateTestActivity"
-    tools:showIn="@layout/activity_creste_test">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
+        <variable
+            name="TestViewModel"
+            type="online.vidacademica.viewmodel.TestViewModel" />
 
     </data>
 
@@ -16,22 +15,21 @@
         android:layout_height="match_parent"
         android:fillViewport="true"
         app:layout_constraintEnd_toEndOf="parent">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_size">
+
             <LinearLayout
                 android:id="@+id/linear_layout_name_fullscore"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:baselineAligned="false"
                 android:orientation="horizontal"
-                android:layout_marginTop="60dp"
-                android:paddingStart="@dimen/default_size"
-                android:paddingTop="@dimen/default_size"
-                android:paddingEnd="@dimen/default_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent ">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_input_name_test"
@@ -46,8 +44,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@android:color/white"
-                        android:hint="Nome"
+                        android:hint="@string/name"
                         android:inputType="text"
+                        android:text="@={TestViewModel.testEntity.name}"
                         android:textColor="@android:color/white"
                         android:textColorHint="@android:color/white" />
 
@@ -65,9 +64,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@android:color/white"
-                        android:hint="Valor"
+                        android:hint="@string/value"
                         android:inputType="numberDecimal|numberSigned"
                         android:maxLength="6"
+                        android:text="@={TestViewModel.testEntity.fullScore}"
                         android:textColor="@android:color/white"
                         android:textColorHint="@android:color/white" />
 
@@ -79,25 +79,22 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginEnd="@dimen/default_size"
-                android:layout_marginStart="@dimen/default_size"
-                android:layout_marginTop="100dp"
-                app:layout_constraintTop_toTopOf="@id/linear_layout_name_fullscore"
-                app:errorEnabled="true">
+                android:layout_marginTop="@dimen/default_size"
+                app:errorEnabled="true"
+                app:layout_constraintTop_toBottomOf="@+id/linear_layout_name_fullscore">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/input_start_date"
+                    android:id="@+id/input_dt_test"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:cursorVisible="false"
                     android:focusable="false"
-                    android:hint="Data do teste"
-                    android:inputType="none" />
+                    android:hint="@string/test_date"
+                    android:inputType="none"
+                    android:text="@={TestViewModel.testEntity.date}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
 </layout>

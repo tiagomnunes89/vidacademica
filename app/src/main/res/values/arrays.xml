@@ -20,4 +20,14 @@
         <item>Turma CyberCheese</item>
     </string-array>
 
+    <string-array name="dayOfWeek">arraySpinner
+        <item>Segunda-feira</item>
+        <item>Terça-feira</item>
+        <item>Quarta-feira</item>
+        <item>Quinta-feira</item>
+        <item>Sexta-feira</item>
+        <item>Sábado</item>
+        <item>Domingo</item>
+    </string-array>
+
 </resources>

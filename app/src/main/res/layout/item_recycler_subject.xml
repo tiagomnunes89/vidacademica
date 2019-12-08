@@ -7,8 +7,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_size"
-        android:background="@color/colorWhite"
+        android:layout_marginBottom="@dimen/default_size"
+        android:background="@drawable/border_item_white"
         android:orientation="horizontal"
         android:padding="@dimen/semi_short_size">
 

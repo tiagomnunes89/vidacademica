@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -25,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:background="@drawable/spinner_border_input"
-                android:entries="@array/subjects"
+                android:entries="@array/courses"
                 android:paddingStart="@dimen/little_size"
                 android:paddingTop="@dimen/semi_short_size"
                 android:paddingEnd="@dimen/little_size"
@@ -34,13 +33,13 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_test"
+                android:id="@+id/subject_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_size"
+                app:layout_constraintTop_toBottomOf="@id/spinner"
                 tools:itemCount="5"
-                tools:listitem="@layout/item_my_test"
-                app:layout_constraintTop_toBottomOf="@+id/spinner"/>
+                tools:listitem="@layout/item_recycler_subject" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

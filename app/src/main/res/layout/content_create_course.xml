@@ -5,6 +5,7 @@
     tools:context=".presentation.CreateCourseActivity">
 
     <data>
+
         <variable
             name="CourseViewModel"
             type="online.vidacademica.viewmodel.CourseViewModel" />
@@ -18,17 +19,14 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_size">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/text_input_name_course"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_size"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginBottom="@dimen/default_size"
                 android:layout_weight="1"
                 app:errorEnabled="true"
                 app:layout_constraintTop_toTopOf="parent">
@@ -39,10 +37,9 @@
                     android:backgroundTint="@android:color/white"
                     android:hint="@string/app_field_name"
                     android:inputType="textPersonName"
+                    android:text="@={CourseViewModel.courseDTO.name}"
                     android:textColor="@android:color/white"
-                    android:textColorHint="@android:color/white"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:text="@={CourseViewModel.courseDTO.name}"/>
+                    android:textColorHint="@android:color/white" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,12 +48,9 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_size"
-                android:layout_marginTop="80dp"
-                android:layout_marginEnd="@dimen/default_size"
-                android:layout_marginBottom="@dimen/short_size"
+                android:layout_marginTop="@dimen/default_size"
                 app:errorEnabled="true"
-                app:layout_constraintTop_toTopOf="@+id/text_input_name_course">
+                app:layout_constraintTop_toBottomOf="@+id/text_input_name_course">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -64,9 +58,9 @@
                     android:backgroundTint="@android:color/white"
                     android:hint="@string/app_field_description"
                     android:inputType="textMultiLine"
+                    android:text="@={CourseViewModel.courseDTO.description}"
                     android:textColor="@android:color/white"
-                    android:textColorHint="@android:color/white"
-                    android:text="@={CourseViewModel.courseDTO.description}"/>
+                    android:textColorHint="@android:color/white" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,25 +68,26 @@
                 android:id="@+id/text_view_status_course"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_size"
-                android:layout_marginTop="@dimen/little_size"
+                android:layout_marginTop="@dimen/default_size"
                 android:fontFamily="@font/dosis_bold"
                 android:text="@string/app_field_status"
-                android:textSize="@dimen/font_normal_text"
+                android:textSize="@dimen/font_secondary_title"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/spinner_status_course"
                 app:layout_constraintTop_toBottomOf="@+id/text_input_description_course" />
 
             <Spinner
                 android:id="@+id/spinner_status_course"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_size"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="@dimen/default_size"
-                android:layout_marginBottom="@dimen/short_size"
+                android:layout_marginTop="@dimen/semi_short_size"
                 android:background="@drawable/course_spinner_border_input"
-                app:layout_constraintTop_toTopOf="@+id/text_view_status_course"/>
+                android:entries="@array/status"
+                android:paddingStart="@dimen/little_size"
+                android:paddingTop="@dimen/semi_short_size"
+                android:paddingEnd="@dimen/little_size"
+                android:paddingBottom="@dimen/semi_short_size"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_status_course" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
