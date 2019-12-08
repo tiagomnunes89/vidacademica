@@ -35,26 +35,14 @@
 
     </LinearLayout>
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="@dimen/default_size"
-        android:layout_marginTop="@dimen/default_size"
-        android:layout_marginEnd="@dimen/default_size"
-        android:background="@drawable/spinner_border_input"
-        android:entries="@array/subjects"
-        android:padding="@dimen/little_size"
-        android:spinnerMode="dropdown"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
-
     <include
         android:id="@+id/layout_list_my_tests_content"
         layout="@layout/content_list_my_tests"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="@dimen/short_size"
-        app:layout_constraintTop_toBottomOf="@id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintBottom_toTopOf="@id/fab"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -67,4 +55,5 @@
         app:srcCompat="@drawable/ic_add_black_24dp"
         tools:layout_editor_absoluteX="329dp"
         tools:layout_editor_absoluteY="634dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,106 +44,18 @@
 
         </LinearLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <include
+            android:id="@+id/layout_content_add_hour_class"
+            layout="@layout/content_add_hour_class"
+            android:layout_marginTop="@dimen/default_size"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/default_size"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar">
-
-            <LinearLayout
-                android:id="@+id/linear_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-
-                <LinearLayout
-                    android:id="@+id/linear_layout_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_title">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/day_week"
-                        android:textSize="@dimen/font_secondary_title"
-                        android:layout_marginBottom="@dimen/semi_short_size"
-                        android:fontFamily="@font/dosis_bold"/>
-
-                    <Spinner
-                        android:id="@+id/spinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/spinner_border_input"
-                        android:entries="@array/dayOfWeek"
-                        android:layout_marginBottom="@dimen/default_size"
-                        android:paddingBottom="@dimen/semi_short_size"
-                        android:paddingStart="@dimen/tiny_size"
-                        android:paddingEnd="@dimen/tiny_size"
-                        android:paddingTop="@dimen/semi_short_size"
-                        android:spinnerMode="dropdown" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_input_start_time"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/short_size"
-                        app:errorEnabled="true">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edit_text_start_time"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@android:color/white"
-                            android:imeOptions="actionNext"
-                            android:cursorVisible="false"
-                            android:focusable="false"
-                            android:layout_marginBottom="@dimen/little_size"
-                            android:hint="@string/hour_start"
-                            android:inputType="none"
-                            android:textColor="@android:color/white"
-                            android:textColorHint="@android:color/white" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_input_end_time"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/short_size"
-                        app:errorEnabled="true">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edit_text_end_time"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/little_size"
-                            android:backgroundTint="@android:color/white"
-                            android:cursorVisible="false"
-                            android:focusable="false"
-                            android:hint="@string/hour_end"
-                            android:imeOptions="actionDone"
-                            android:inputType="none"
-                            android:textColor="@android:color/white"
-                            android:textColorHint="@android:color/white" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/short_size"
+            app:layout_constraintBottom_toTopOf="@+id/btn_add_hour"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
         <Button
-            android:id="@+id/btn_send_register"
+            android:id="@+id/btn_add_hour"
             style="@style/AppTheme.Button.Blue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -154,6 +66,4 @@
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </layout>

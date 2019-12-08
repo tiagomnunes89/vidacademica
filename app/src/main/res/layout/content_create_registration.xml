@@ -22,7 +22,7 @@
                 android:background="@drawable/course_spinner_border_input"
                 android:completionHint="Selecione um nome"
                 android:completionThreshold="1"
-                android:hint="@string/search_hint"
+                android:hint="@string/enter_student_name"
                 android:paddingStart="@dimen/short_size"
                 android:paddingTop="@dimen/semi_short_size"
                 android:paddingEnd="@dimen/tiny_size"
