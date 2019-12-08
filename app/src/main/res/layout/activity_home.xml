@@ -42,6 +42,7 @@
                     android:layout_marginEnd="@dimen/default_size"
                     android:fontFamily="@font/dosis_bold"
                     android:gravity="end"
+                    android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/font_primary_title" />
 
