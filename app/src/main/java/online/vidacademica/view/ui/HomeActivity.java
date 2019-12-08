@@ -7,12 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 
+import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
+
+import java.util.Random;
 
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityHomeBinding;
 import online.vidacademica.view.enums.RoleEnum;
 
+import static java.lang.Math.random;
 import static online.vidacademica.view.enums.RoleEnum.TEACHER;
 import static online.vidacademica.view.ui.LoginActivity.ROLE;
 
@@ -25,6 +29,8 @@ public class HomeActivity extends BaseActivity {
     private HorizontalScrollView bottomIncludeCards;
     private LayoutInflater inflater;
 
+    private static final String RANDOM_PROFILE_IMG = String.format("monster%s", new Random().nextInt(8));
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +40,8 @@ public class HomeActivity extends BaseActivity {
 
         bottomIncludeCards = findViewById(R.id.layout_content_bottom_cards);
         inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        randomProfilePhoto();
 
         captureIntent();
         if (USER_ROLE == TEACHER) {
@@ -79,6 +87,24 @@ public class HomeActivity extends BaseActivity {
                 showAlert(R.string.home_alert_close_title, R.string.home_alert_close_message, 0);
             }
         });
+
+
+    }
+
+    private void randomProfilePhoto() {
+        binding.homeProfilePhoto.setImageDrawable(
+                getResources().getDrawable(getResourceID(RANDOM_PROFILE_IMG, "drawable", getApplicationContext()))
+        );
+    }
+
+
+    protected static int getResourceID(final String resName, final String resType, final Context ctx) {
+        final int ResourceID = ctx.getResources().getIdentifier(resName, resType, ctx.getApplicationInfo().packageName);
+        if (ResourceID == 0) {
+            throw new IllegalArgumentException("No resource string found with name " + resName);
+        } else {
+            return ResourceID;
+        }
     }
 
     @Override
