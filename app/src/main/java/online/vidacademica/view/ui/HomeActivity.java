@@ -1,14 +1,16 @@
 package online.vidacademica.view.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.HorizontalScrollView;
 
 import androidx.databinding.DataBindingUtil;
 
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityHomeBinding;
-import online.vidacademica.databinding.ActivityTeacherHomeBinding;
 import online.vidacademica.view.enums.RoleEnum;
 
 import static online.vidacademica.view.enums.RoleEnum.TEACHER;
@@ -16,17 +18,24 @@ import static online.vidacademica.view.ui.LoginActivity.ROLE;
 
 public class HomeActivity extends BaseActivity {
 
-    private ActivityHomeBinding bindingStudent;
-    private ActivityTeacherHomeBinding bindingTeacher;
+    private ActivityHomeBinding binding;
 
     private static RoleEnum USER_ROLE;
+
+    private HorizontalScrollView bottomIncludeCards;
+    private LayoutInflater inflater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        captureIntent();
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
+        binding.setLifecycleOwner(this);
 
+        bottomIncludeCards = findViewById(R.id.layout_content_bottom_cards);
+        inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        captureIntent();
         if (USER_ROLE == TEACHER) {
             setUpTeacher();
         } else {
@@ -34,11 +43,19 @@ public class HomeActivity extends BaseActivity {
         }
     }
 
-    private void setUpTeacher() {
-        bindingTeacher = DataBindingUtil.setContentView(this, R.layout.activity_teacher_home);
-        bindingTeacher.setLifecycleOwner(this);
+    private void inflateCards(Integer layoutViewId) {
+        View layout = inflater.inflate(layoutViewId, null);
 
-        bindingTeacher.imageViewBack.setOnClickListener(new View.OnClickListener() {
+        // Clear & set new views:
+        bottomIncludeCards.removeAllViews();
+        bottomIncludeCards.addView(layout);
+    }
+
+    private void setUpTeacher() {
+
+        inflateCards(R.layout.content_bottom_cards_teacher);
+
+        binding.imageViewBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showAlert(R.string.home_alert_close_title, R.string.home_alert_close_message, 0);
@@ -47,15 +64,16 @@ public class HomeActivity extends BaseActivity {
     }
 
     private void setUpStudent() {
-        bindingStudent = DataBindingUtil.setContentView(this, R.layout.activity_home);
-        bindingStudent.setLifecycleOwner(this);
-        bindingStudent.layoutContentBottomCards.cardViewMyNotes.setOnClickListener(v -> startActivity(
+
+        inflateCards(R.layout.content_bottom_cards);
+
+        binding.layoutContentBottomCards.cardViewMyNotes.setOnClickListener(v -> startActivity(
                 new Intent(this, MyScoresActivity.class)));
 
-        bindingStudent.layoutContentBottomCards.cardViewMySubjects.setOnClickListener(v -> startActivity(
+        binding.layoutContentBottomCards.cardViewMySubjects.setOnClickListener(v -> startActivity(
                 new Intent(this, ListMySubjectsActivity.class)));
 
-        bindingStudent.imageViewBack.setOnClickListener(new View.OnClickListener() {
+        binding.imageViewBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showAlert(R.string.home_alert_close_title, R.string.home_alert_close_message, 0);
@@ -108,10 +126,8 @@ public class HomeActivity extends BaseActivity {
         startActivity(new Intent(HomeActivity.this, CreateSubjectActivity.class));
     }
 
-
     public void openMyTests(View view) {
         startActivity(new Intent(HomeActivity.this, ListMyTestsActivity.class));
-
     }
 
     public void addTest(View view) {
