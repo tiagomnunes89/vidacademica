@@ -87,6 +87,11 @@
     <string name="app_field_description">Descrição</string>
     <string name="app_field_status">Status</string>
 
+    <!--Tela de Login-->
+    <string name="login_toast_in_loading">Realizando o login… Aguarde.</string>
+    <string name="login_toast_error">Usuário ou senha inválido.</string>
+    <string name="login_toast_ok">Usuário ou senha inválido.</string>
+
     <!--Tela de criação/edição de curso-->
     <string name="create_course_title">Criar Curso</string>
     <string name="update_course_title">Atualizar Curso</string>
