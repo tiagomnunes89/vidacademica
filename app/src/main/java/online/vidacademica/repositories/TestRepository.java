@@ -9,9 +9,11 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
 
 import online.vidacademica.core.ErrorMessage;
 import online.vidacademica.core.ResponseModel;
+import online.vidacademica.entities.CourseDTO;
 import online.vidacademica.entities.TestEntity;
 import online.vidacademica.entities.TokenEntity;
 import online.vidacademica.repositories.network.vidacademica.VidAcademicaWSClient;
@@ -28,16 +30,14 @@ public class TestRepository {
     private static final String TAG = TestRepository.class.getSimpleName();
 
     private static TestRepository instance;
+    private TokenRepository tokenRepository;
 
     private TestService testService;
 
-    private TokenDao dao;
 
-    private LiveData<ResponseModel<TokenEntity>> tokenEntity;
 
     private TestRepository(Context context) {
-        VidAcademicaLocalDBClient db = VidAcademicaLocalDBClient.getInstance(context);
-        dao = db.tokenDao();
+        tokenRepository = TokenRepository.getInstance(context);
         testService = VidAcademicaWSClient.buildService(TestService.class);
     }
 
@@ -48,14 +48,18 @@ public class TestRepository {
         return instance;
     }
 
-    public MutableLiveData<ResponseModel<TestEntity>>  createTest(final TestEntity testEntity) {
+    public MutableLiveData<ResponseModel<TestEntity>> insert(TestEntity testEntity, final MutableLiveData<ResponseModel<TestEntity>> mutableLiveDataObject) {
 
-        final MutableLiveData<ResponseModel<TestEntity>> data = new MutableLiveData<>();
+        TokenEntity tokenEntity = Optional.of(tokenRepository.getTokenSync()).orElse(new TokenEntity());
 
-        testService.insert("Bearer " + getToken().getValue().getToken(), testEntity).enqueue(new Callback<TestEntity>() {
+        String hash = "";
+        if (tokenEntity != null) {
+            hash = tokenEntity.getToken();
+        }
+
+        testService.insert(String.format("Bearer %s", hash), testEntity).enqueue(new Callback<TestEntity>() {
             @Override
             public void onResponse(Call<TestEntity> call, Response<TestEntity> response) {
-                Log.i(TAG, "onResponse: Olha eu aqui");
                 ResponseModel<TestEntity> responseModel = new ResponseModel<>();
 
                 responseModel.setCode(response.code());
@@ -66,22 +70,18 @@ public class TestRepository {
                     responseModel.setErrorMessage(err);
                 }
 
-                data.setValue(responseModel);
-
+                mutableLiveDataObject.setValue(responseModel);
             }
 
             @Override
             public void onFailure(Call<TestEntity> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + Arrays.toString(t.getStackTrace()));
-
+                Log.i(TAG, "onFailure: " + Arrays.toString(t.getStackTrace()));
             }
         });
 
-        return data;
+        return mutableLiveDataObject;
+
     }
 
-    public LiveData<TokenEntity> getToken() {
-        return dao.findOne();
-    }
 
 }

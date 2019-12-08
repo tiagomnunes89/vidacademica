@@ -2,53 +2,100 @@ package online.vidacademica.view.ui;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
+import android.widget.DatePicker;
+
+import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
+import online.vidacademica.databinding.ActivityCreateTestBinding;
+import online.vidacademica.utils.Util;
+
 import online.vidacademica.R;
-import online.vidacademica.databinding.ActivityCresteTestBinding;
 import online.vidacademica.viewmodel.TestViewModel;
 
-public class CreateTestActivity extends AppCompatActivity {
+public class CreateTestActivity extends BaseActivity {
     private DatePickerDialog.OnDateSetListener onDateSetListenerDtTest;
     private TestViewModel testViewModel;
-    private ActivityCresteTestBinding binding;
+    private ActivityCreateTestBinding binding;
     private Boolean screenCreated;
+    private static final String TAG = CreateTestActivity.class.getSimpleName();
+    private Util util = new Util();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_creste_test);
+        setContentView(R.layout.activity_create_test);
 
         testViewModel = ViewModelProviders.of(this).get(TestViewModel.class);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_create_test);
+        binding.setLifecycleOwner(this);
 
-        testViewModel.createTest();
+        binding.layoutCreateTestContent.setTestViewModel(testViewModel);
 
-        testViewModel.isRegistred().observe(this, new Observer<Boolean>() {
+        binding.layoutCreateTestContent.inputDtTest.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onChanged(Boolean isRegistred) {
-                if (!screenCreated) {
-                    if (isRegistred) {
-                        Toast.makeText(CreateTestActivity.this, "Registro realizado com sucesso.", Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(CreateTestActivity.this, "Erro, servidor ocupado, tente novamente mais tarde.", Toast.LENGTH_LONG).show();
-                    }
-                }
-                screenCreated = false;
+            public void onClick(View view) {
+                util.callDatePickerDialog(CreateTestActivity.this, onDateSetListenerDtTest);
             }
         });
-        binding.btnSaveTest.setOnClickListener(new View.OnClickListener() {
+
+        onDateSetListenerDtTest = new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onClick(View v) {
-//                startActivity(new Intent(RegisterActivity.this, ProfileActivity.class));
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                Log.d(TAG, "onDateSet: mm/dd/yyy: " + day + "/" + month + "/" + year);
+                String date = day + "/" + month + "/" + year;
+                binding.layoutCreateTestContent.inputDtTest.setText(date);
+            }
+        };
+        observeFields();
+        observeActions();
+    }
+
+    @Override
+    protected void alertYes(int actionCustomIdentifier) {
+
+    }
+
+    @Override
+    protected void alertNo(int actionCustomIdentifier) {
+
+    }
+
+    private void observeFields() {
+
+    }
+
+    private void observeActions() {
+        binding.btnSaveTest.setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View view) {
+                showToast(R.string.create_test_toast_create_loading);
+                showProgressBar(R.id.create_test_screen);
                 testViewModel.createTest();
             }
         });
 
+        testViewModel.getLastTestCreated().observe(this, TestEntityResponse -> {
+            dismissProgressBar();
+
+            boolean testCreated = testViewModel.lastTestcreated();
+
+            if (TestEntityResponse != null) {
+
+                if (testCreated) {
+                    showToast(R.string.create_test_toast_create_ok);
+                    showAlert(R.string.create_test_alert_title, R.string.create_test_alert_message, 0);
+                } else {
+                    showToast(R.string.create_course_toast_create_error);
+                }
+
+            }
+        });
     }
 
 }

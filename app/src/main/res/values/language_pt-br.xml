@@ -95,4 +95,5 @@
     <string name="create_course_toast_create_error">Erro, curso não cadastrado. Procure o suporte ou tente novamente mais tarde.</string>
     <string name="create_course_alert_title">Curso criado com sucesso!</string>
     <string name="create_course_alert_message">Deseja cadastrar uma matéria?</string>
+
 </resources>
