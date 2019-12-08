@@ -19,6 +19,7 @@ import online.vidacademica.entities.TestResultDTO;
 public class ScoresAdapter extends RecyclerView.Adapter<ScoresAdapter.ScoresViewHolder> {
 
     List<TestResultDTO> testResultDTOS = new ArrayList<>();
+
     LayoutInflater layoutInflater;
 
     public ScoresAdapter(Context context, List<TestResultDTO> testResultDTOS){
@@ -37,6 +38,7 @@ public class ScoresAdapter extends RecyclerView.Adapter<ScoresAdapter.ScoresView
         TestResultDTO score = testResultDTOS.get(position);
         Locale.setDefault(Locale.US);
         holder.nota.setText(Double.toString(score.getScore()));
+        holder.titulo_materia.setText(score.getsubjectName());
     }
 
     @Override
@@ -46,11 +48,13 @@ public class ScoresAdapter extends RecyclerView.Adapter<ScoresAdapter.ScoresView
 
     public class ScoresViewHolder extends RecyclerView.ViewHolder {
         //item_titulo_materia_em_minhas_notas
+        TextView titulo_materia;
         TextView nota;
 
         public ScoresViewHolder(@NonNull View itemView) {
             super(itemView);
             nota = itemView.findViewById(R.id.item_score);
+            titulo_materia = itemView.findViewById(R.id.item_titulo_materia);
         }
     }
 }

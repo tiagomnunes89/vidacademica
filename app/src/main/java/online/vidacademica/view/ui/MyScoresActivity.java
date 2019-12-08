@@ -23,8 +23,6 @@ public class MyScoresActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_scores);
 
-        //getScores
-
         getScores();
 
         startRecycler();
@@ -42,9 +40,9 @@ public class MyScoresActivity extends AppCompatActivity {
 
     private void getScores() {
 
-        TestResultDTO score1 = new TestResultDTO(20.0, Instant.now(), 1L, 1L);
-        TestResultDTO score2 = new TestResultDTO(35.0, Instant.now(), 1L, 2L);
-        TestResultDTO score3 = new TestResultDTO(45.0, Instant.now(), 1L, 3L);
+        TestResultDTO score1 = new TestResultDTO(20.0, Instant.now(), 1L, "Logica de programação");
+        TestResultDTO score2 = new TestResultDTO(35.0, Instant.now(), 1L, "Logica de programação");
+        TestResultDTO score3 = new TestResultDTO(45.0, Instant.now(), 1L, "FW2");
 
         testResultDTOList.add(score1);
         testResultDTOList.add(score2);
