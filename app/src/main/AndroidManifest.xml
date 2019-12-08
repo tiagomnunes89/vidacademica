@@ -39,7 +39,7 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".view.ui.CreateCourseActivity"
+            android:name=".view.ui.CreateUpdateCourseActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
