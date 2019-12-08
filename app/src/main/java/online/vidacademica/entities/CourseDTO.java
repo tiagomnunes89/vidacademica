@@ -52,6 +52,10 @@ public class CourseDTO implements Serializable {
         return active;
     }
 
+    public String isActiveString() {
+        return activeBoolean2String(active);
+    }
+
     public void setActive(String active) {
         this.active = activeString2Boolean(active);
     }

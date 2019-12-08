@@ -54,8 +54,8 @@ public class ListMyTestsActivity extends AppCompatActivity {
     }
 
     private void getTests() {
-        TestEntity test1 = new TestEntity("Prova 2 de Banco de Dados",23.00,"2019/09/06");
-        TestEntity test2 = new TestEntity("Prova 1 de Banco de Dados",25.00,"2019/06/06");
+        TestEntity test1 = new TestEntity("Prova 2 de Banco de Dados","23.00","2019/09/06");
+        TestEntity test2 = new TestEntity("Prova 1 de Banco de Dados","25.00","2019/06/06");
 
         tests.add(test1);
         tests.add(test2);

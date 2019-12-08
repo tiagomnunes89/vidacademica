@@ -19,7 +19,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/login_screen">
 
             <ImageView
                 android:id="@+id/imageView"
@@ -127,7 +128,6 @@
                     style="@style/AppTheme.Button.Orange"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{() -> LoginViewModel.login()}"
                     android:text="@string/enter"
                     app:layout_constraintTop_toTopOf="parent" />
 
