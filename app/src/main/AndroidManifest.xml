@@ -30,25 +30,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.ui.TeacherHomeActivity"
-            android:label="@string/title_activity_teacher_home"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".view.ui.MyScoresActivity"/>
         <activity
-            android:name=".view.ui.MyScoresActivity" />
-        <activity
-            android:name=".view.ui.CreateRegistrationActivity" />
+            android:name=".view.ui.CreateRegistrationActivity"/>
         <activity
             android:name=".view.ui.setResultTestActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".view.ui.CreateUpdateCourseActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.ui.ListMyTestsActivity"
             android:label="@string/title_activity_list_my_tests"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".view.ui.ListMySubjectsActivity" />
+            android:name=".view.ui.ListMySubjectsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.ui.CreateTestActivity"
             android:label="@string/title_activity_creste_test"
