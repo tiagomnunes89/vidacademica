@@ -2,20 +2,24 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".presentation.CreateCourseActivity">
+    tools:context=".view.ui.CreateTestActivity">
 
     <data>
 
+        <variable
+            name="TestViewModel"
+            type="online.vidacademica.viewmodel.TestViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/create_test_screen">
 
         <LinearLayout
-            android:id="@+id/toolbar_create_course"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimaryDark"
@@ -37,33 +41,31 @@
                 android:layout_marginEnd="@dimen/default_size"
                 android:fontFamily="@font/dosis_bold"
                 android:gravity="end"
-                android:text="@string/title_create_curso"
+                android:text="@string/title_create_test"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/font_primary_title" />
 
         </LinearLayout>
 
         <include
-            android:id="@+id/layout_create_course_content"
-            layout="@layout/content_create_course"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="@dimen/short_size"
-            app:layout_constraintBottom_toTopOf="@id/btn_save_course"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_create_course" />
-
+            android:id="@+id/layout_create_test_content"
+            layout="@layout/content_creste_test"
+            app:layout_constraintBottom_toTopOf="@id/btn_save_test"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
         <Button
-            android:id="@+id/btn_save_course"
+            android:id="@+id/btn_save_test"
             style="@style/AppTheme.Button.Blue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_size"
             android:layout_marginEnd="@dimen/default_size"
             android:layout_marginBottom="@dimen/default_size"
-            android:text="@string/save"
+            android:text="@string/btn_save_test"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </layout>

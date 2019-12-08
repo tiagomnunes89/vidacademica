@@ -14,6 +14,9 @@ public interface TokenDao {
     @Query("SELECT * FROM token LIMIT 1")
     LiveData<TokenEntity> findOne();
 
+    @Query("SELECT * FROM token LIMIT 1")
+    TokenEntity findOneSync();
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(TokenEntity tokenEntity);
 

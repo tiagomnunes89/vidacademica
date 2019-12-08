@@ -15,7 +15,6 @@ import java.util.List;
 
 import online.vidacademica.R;
 import online.vidacademica.entities.CourseDTO;
-import online.vidacademica.entities.TestEntity;
 import online.vidacademica.view.adapter.CoursesAdapter;
 
 public class ListMyCoursesActivity extends AppCompatActivity {
@@ -32,7 +31,7 @@ public class ListMyCoursesActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               startActivity(new Intent(ListMyCoursesActivity.this, CreateCourseActivity.class));
+               startActivity(new Intent(ListMyCoursesActivity.this, CreateUpdateCourseActivity.class));
             }
         });
         getCourses();

@@ -1,54 +1,46 @@
 package online.vidacademica.repositories;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.Optional;
 
 import online.vidacademica.core.ErrorMessage;
 import online.vidacademica.core.ResponseModel;
 import online.vidacademica.entities.CourseDTO;
-import online.vidacademica.entities.TestEntity;
 import online.vidacademica.entities.TokenEntity;
 import online.vidacademica.repositories.network.vidacademica.VidAcademicaWSClient;
-import online.vidacademica.repositories.network.vidacademica.services.TestService;
-import online.vidacademica.repositories.network.vidacademica.services.TokenService;
-import online.vidacademica.repositories.storage.local.VidAcademicaLocalDBClient;
-import online.vidacademica.repositories.storage.local.dao.TokenDao;
+import online.vidacademica.repositories.network.vidacademica.services.CourseService;
 import online.vidacademica.utils.JsonUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TestRepository {
-    private static final String TAG = TestRepository.class.getSimpleName();
+public class CourseRepository {
+    private static final String TAG = CourseRepository.class.getSimpleName();
 
-    private static TestRepository instance;
+    private static CourseRepository instance;
     private TokenRepository tokenRepository;
 
-    private TestService testService;
+    private final CourseService courseService;
 
-
-
-    private TestRepository(Context context) {
+    private CourseRepository(Context context) {
         tokenRepository = TokenRepository.getInstance(context);
-        testService = VidAcademicaWSClient.buildService(TestService.class);
+        courseService = VidAcademicaWSClient.buildService(CourseService.class);
     }
 
-    public static TestRepository getInstance(Context context) {
+    public static CourseRepository getInstance(Context context) {
         if (instance == null) {
-            instance = new TestRepository(context);
+            instance = new CourseRepository(context);
         }
         return instance;
     }
 
-    public MutableLiveData<ResponseModel<TestEntity>> insert(TestEntity testEntity, final MutableLiveData<ResponseModel<TestEntity>> mutableLiveDataObject) {
+    public MutableLiveData<ResponseModel<CourseDTO>> insert(CourseDTO courseDTO, final MutableLiveData<ResponseModel<CourseDTO>> mutableLiveDataObject) {
 
         TokenEntity tokenEntity = Optional.of(tokenRepository.getTokenSync()).orElse(new TokenEntity());
 
@@ -57,10 +49,10 @@ public class TestRepository {
             hash = tokenEntity.getToken();
         }
 
-        testService.insert(String.format("Bearer %s", hash), testEntity).enqueue(new Callback<TestEntity>() {
+        courseService.insert(String.format("Bearer %s", hash), courseDTO).enqueue(new Callback<CourseDTO>() {
             @Override
-            public void onResponse(Call<TestEntity> call, Response<TestEntity> response) {
-                ResponseModel<TestEntity> responseModel = new ResponseModel<>();
+            public void onResponse(Call<CourseDTO> call, Response<CourseDTO> response) {
+                ResponseModel<CourseDTO> responseModel = new ResponseModel<>();
 
                 responseModel.setCode(response.code());
                 responseModel.setResponse(response.body());
@@ -74,7 +66,7 @@ public class TestRepository {
             }
 
             @Override
-            public void onFailure(Call<TestEntity> call, Throwable t) {
+            public void onFailure(Call<CourseDTO> call, Throwable t) {
                 Log.i(TAG, "onFailure: " + Arrays.toString(t.getStackTrace()));
             }
         });
@@ -82,6 +74,5 @@ public class TestRepository {
         return mutableLiveDataObject;
 
     }
-
 
 }

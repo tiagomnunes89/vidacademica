@@ -42,29 +42,29 @@ public class UserRepository {
 
         final MutableLiveData<ResponseModel<UserEntity>> data = new MutableLiveData<>();
 
-        userService.getAllUsers("").enqueue(new Callback<UserEntity>() {
-            @Override
-            public void onResponse(Call<UserEntity> call, Response<UserEntity> response) {
-
-                ResponseModel<UserEntity> responseModel = new ResponseModel<>();
-
-                responseModel.setCode(response.code());
-                responseModel.setResponse(response.body());
-
-                if (!response.isSuccessful()) {
-                    ErrorMessage err = new ErrorMessage(response.code(), JsonUtils.toJson(response.errorBody()));
-                    responseModel.setErrorMessage(err);
-                }
-
-                data.setValue(responseModel);
-
-            }
-
-            @Override
-            public void onFailure(Call<UserEntity> call, Throwable t) {
-
-            }
-        });
+//        userService.getAllUsers("").enqueue(new Callback<UserEntity>() {
+//            @Override
+//            public void onResponse(Call<UserEntity> call, Response<UserEntity> response) {
+//
+//                ResponseModel<UserEntity> responseModel = new ResponseModel<>();
+//
+//                responseModel.setCode(response.code());
+//                responseModel.setResponse(response.body());
+//
+//                if (!response.isSuccessful()) {
+//                    ErrorMessage err = new ErrorMessage(response.code(), JsonUtils.toJson(response.errorBody()));
+//                    responseModel.setErrorMessage(err);
+//                }
+//
+//                data.setValue(responseModel);
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<UserEntity> call, Throwable t) {
+//
+//            }
+//        });
 
         return data;
     }

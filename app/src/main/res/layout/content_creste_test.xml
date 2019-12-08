@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".view.ui.CreateTestActivity"
-    tools:showIn="@layout/activity_creste_test">
+    tools:showIn="@layout/activity_create_test">
 
 
     <data>
-
+        <variable
+            name="TestViewModel"
+            type="online.vidacademica.viewmodel.TestViewModel" />
     </data>
 
     <ScrollView
@@ -49,6 +51,7 @@
                         android:hint="Nome"
                         android:inputType="text"
                         android:textColor="@android:color/white"
+                        android:text="@={TestViewModel.testEntity.name}"
                         android:textColorHint="@android:color/white" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -67,6 +70,7 @@
                         android:backgroundTint="@android:color/white"
                         android:hint="Valor"
                         android:inputType="numberDecimal|numberSigned"
+                        android:text="@={TestViewModel.testEntity.fullScore}"
                         android:maxLength="6"
                         android:textColor="@android:color/white"
                         android:textColorHint="@android:color/white" />
@@ -87,10 +91,11 @@
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/input_start_date"
+                    android:id="@+id/input_dt_test"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:focusable="false"
+                    android:text="@={TestViewModel.testEntity.date}"
                     android:hint="Data do teste"
                     android:inputType="none" />
 

@@ -26,8 +26,8 @@ import online.vidacademica.viewmodel.RegisterViewModel;
 import static online.vidacademica.view.validation.Validator.executeAllValidators;
 
 public class RegisterActivity extends ActivityBaseClassValidator {
-
     private static final String TAG = RegisterActivity.class.getSimpleName();
+
     private DatePickerDialog.OnDateSetListener onDateSetListener;
 
     private RegisterViewModel registerViewModel;
@@ -59,13 +59,26 @@ public class RegisterActivity extends ActivityBaseClassValidator {
         initValidator();
     }
 
+    @Override
+    protected void captureIntent() {
+    }
+
+    @Override
+    protected void alertYes(int actionCustomIdentifier) {
+    }
+
+    @Override
+    protected void alertNo(int actionCustomIdentifier) {
+    }
+
     private void initValidator() {
         observeFields();
         initValidationList();
         enableContinueButton(executeAllValidators(getValidationList()));
     }
 
-    private void observeFields() {
+    @Override
+    protected void observeFields() {
         binding.layoutRegisterContent.editTextName.setOnFocusChangeListener((v, hasFocus) -> {
             if (!hasFocus)
                 enableContinueButton(executeAllValidators(getValidationList(), NameValidation.class));
@@ -96,7 +109,8 @@ public class RegisterActivity extends ActivityBaseClassValidator {
         });
     }
 
-    private void observeActions() {
+    @Override
+    protected void observeActions() {
 
         binding.btnSendRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,8 +140,6 @@ public class RegisterActivity extends ActivityBaseClassValidator {
                 }
             }
         });
-
-
     }
 
     @Override
@@ -150,7 +162,6 @@ public class RegisterActivity extends ActivityBaseClassValidator {
     }
 
     private void initValidationList() {
-
         getValidationList().addAll(Arrays.asList(new NameValidation(this, binding.layoutRegisterContent.textInputName),
                 new EmailValidation(this, binding.layoutRegisterContent.textInputEmail),
                 new BirthDateValidation(this, binding.layoutRegisterContent.textInputBirth),

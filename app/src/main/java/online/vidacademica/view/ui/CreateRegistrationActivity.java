@@ -40,10 +40,10 @@ public class CreateRegistrationActivity extends AppCompatActivity {
     }
 
     private void getStudents() {
-        UserEntity stu1 = new UserEntity(null, "Carlos", "email", "1978-11-16", "bla", "bla");
-        UserEntity stu2 = new UserEntity(null, "Duduzera Comboy", "email", "1978-11-16", "bla", "bla");
-        UserEntity stu3 = new UserEntity(null, "Sotero Overflow", "email", "1978-11-16", "bla", "bla");
-        UserEntity stu4 = new UserEntity(null, "Tiaguera", "email", "1978-11-16", "bla", "bla");
+        UserEntity stu1 = new UserEntity(null, "Carlos", "email", "1978/11/16", "bla", "bla");
+        UserEntity stu2 = new UserEntity(null, "DuduzeraComboy", "email", "1978/11/16", "bla", "bla");
+        UserEntity stu3 = new UserEntity(null, "SoteroOverflow", "email", "1978/11/16", "bla", "bla");
+        UserEntity stu4 = new UserEntity(null, "Tiaguera", "email", "1978/11/16", "bla", "bla");
 
         students.add(stu1);
         students.add(stu2);
