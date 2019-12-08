@@ -19,10 +19,6 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity android:name=".view.ui.PreLoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".view.ui.TeacherHomeActivity"
@@ -40,6 +36,11 @@
             android:name=".view.ui.ListMyTestsActivity"
             android:label="@string/title_activity_list_my_tests"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+
+
+
+
         <activity android:name=".view.ui.ListMySubjectsActivity" />
         <activity
             android:name=".view.ui.CreateTestActivity"

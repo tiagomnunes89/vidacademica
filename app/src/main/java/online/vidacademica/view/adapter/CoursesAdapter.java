@@ -1,6 +1,8 @@
 package online.vidacademica.view.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +16,27 @@ import java.util.List;
 
 import online.vidacademica.R;
 import online.vidacademica.entities.CourseDTO;
+import online.vidacademica.utils.JsonUtils;
+import online.vidacademica.view.enums.CrudEnum;
+import online.vidacademica.view.ui.CreateUpdateCourseActivity;
+
+import static online.vidacademica.utils.JsonUtils.toJson;
 
 public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.CourseViewHolder> {
+    private static final String TAG = CoursesAdapter.class.getSimpleName();
 
-    List<CourseDTO> courses = new ArrayList<>();
-    LayoutInflater layoutInflater;
+    private Context context;
+
+    private List<CourseDTO> courses;
+    private LayoutInflater layoutInflater;
+
+    public static final String CRUD_TYPE = "CRUD_TYPE";
+    private static final CrudEnum UPDATE = CrudEnum.UPDATE;
+
+    public static final String SELECTED_OBJECT = "SELECTED_OBJECT";
 
     public CoursesAdapter(Context context, List<CourseDTO> courses) {
+        this.context = context;
         this.courses = courses;
         this.layoutInflater = LayoutInflater.from(context);
     }
@@ -36,14 +52,19 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.CourseVi
     public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
         CourseDTO courseDTO = courses.get(position);
         holder.titulo.setText(courseDTO.getName());
-        String status;
-        if (courseDTO.isActive()) {
-            status = "Ativo";
-        } else {
-            status = "Inativo";
-        }
-        holder.status.setText(status);
+        holder.status.setText(courseDTO.isActiveString());
         holder.descricao.setText(courseDTO.getDescription());
+
+        holder.itemView.setOnClickListener(v -> {
+            Log.i(TAG, "onBindViewHolder: " + toJson(courses.get(position)));
+
+            Intent intent = new Intent(context, CreateUpdateCourseActivity.class)
+                    .putExtra(CRUD_TYPE, UPDATE)
+                    .putExtra(SELECTED_OBJECT, toJson(courses.get(position)));
+
+            context.startActivity(intent);
+
+        });
     }
 
     @Override
@@ -62,6 +83,10 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.CourseVi
             titulo = itemView.findViewById(R.id.name_course);
             status = itemView.findViewById(R.id.status_course);
             descricao = itemView.findViewById(R.id.description_course);
+
+            itemView.setOnClickListener(v -> {
+                //Here you will put the action after click on item
+            });
         }
     }
 }

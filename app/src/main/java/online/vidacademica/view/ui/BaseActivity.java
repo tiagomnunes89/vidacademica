@@ -97,9 +97,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
+    protected abstract void captureIntent();
+
     protected abstract void alertYes(final int actionCustomIdentifier);
 
     protected abstract void alertNo(final int actionCustomIdentifier);
 
+    protected abstract void observeFields();
+
+    protected abstract void observeActions();
 
 }

@@ -87,13 +87,17 @@
     <string name="app_field_description">Descrição</string>
     <string name="app_field_status">Status</string>
 
-
-    <!--Tela de curso-->
+    <!--Tela de criação/edição de curso-->
     <string name="create_course_title">Criar Curso</string>
+    <string name="update_course_title">Atualizar Curso</string>
     <string name="create_course_toast_create_loading">Cadastrando curso… Aguarde.</string>
+    <string name="update_course_toast_create_loading">Atualizando curso… Aguarde.</string>
     <string name="create_course_toast_create_ok">Curso criado!</string>
+    <string name="update_course_toast_create_ok">Curso atualizado!</string>
     <string name="create_course_toast_create_error">Erro, curso não cadastrado. Procure o suporte ou tente novamente mais tarde.</string>
+    <string name="update_course_toast_create_error">Erro, curso não atualizado. Procure o suporte ou tente novamente mais tarde.</string>
     <string name="create_course_alert_title">Curso criado com sucesso!</string>
+    <string name="update_course_toast_title">Curso atualizado com sucesso!</string>
     <string name="create_course_alert_message">Deseja cadastrar uma matéria?</string>
 
 </resources>
