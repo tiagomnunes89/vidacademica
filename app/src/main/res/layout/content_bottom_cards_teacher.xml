@@ -131,6 +131,34 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_my_tests"
+                android:layout_width="@dimen/huge_size"
+                android:layout_height="@dimen/huge_size"
+                android:onClick="openMyTests"
+                app:cardCornerRadius="@dimen/tiny_size"
+                app:cardElevation="@dimen/no_size"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="@dimen/little_size">
+
+                <ImageView
+                    android:layout_width="@dimen/large_size"
+                    android:layout_height="@dimen/large_size"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_test" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:fontFamily="@font/century_gothic"
+                    android:text="@string/card_home_my_tests"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/font_text" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
                 android:id="@+id/card_add_test"
                 android:layout_width="@dimen/huge_size"
                 android:layout_height="@dimen/huge_size"
@@ -158,11 +186,13 @@
 
             </androidx.cardview.widget.CardView>
 
+
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_view_my_tests"
+                android:id="@+id/card_assign_student"
                 android:layout_width="@dimen/huge_size"
                 android:layout_height="@dimen/huge_size"
-                android:onClick="openMyTests"
+                android:layout_marginEnd="@dimen/no_size"
+                android:onClick="assignStudent"
                 app:cardCornerRadius="@dimen/tiny_size"
                 app:cardElevation="@dimen/no_size"
                 app:cardUseCompatPadding="true"
@@ -172,14 +202,14 @@
                     android:layout_width="@dimen/large_size"
                     android:layout_height="@dimen/large_size"
                     android:contentDescription="@null"
-                    android:src="@drawable/ic_test" />
+                    android:src="@drawable/ic_compare_arrows_black_24dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:fontFamily="@font/century_gothic"
-                    android:text="@string/card_home_my_tests"
+                    android:text="@string/card_home_assign_student"
                     android:textColor="@color/colorWhite"
                     android:textSize="@dimen/font_text" />
 

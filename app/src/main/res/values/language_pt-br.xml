@@ -132,4 +132,5 @@
     <string name="card_home_register_test">Cadastrar\nAvaliação</string>
     <string name="card_home_my_tests">Minhas\nAvaliações</string>
     <string name="card_home_my_notes">Minhas\nNotas</string>
+    <string name="card_home_assign_student">Associar\nAluno</string>
 </resources>

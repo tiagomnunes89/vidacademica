@@ -85,7 +85,6 @@ public class HomeActivity extends BaseActivity {
 
     public void openMySubjects(View view) {
         startActivity(new Intent(HomeActivity.this, ListMySubjectsActivity.class));
-
     }
 
     public void addSubject(View view) {
@@ -100,6 +99,9 @@ public class HomeActivity extends BaseActivity {
 
     public void addTest(View view) {
         startActivity(new Intent(HomeActivity.this, CreateTestActivity.class));
+    }
 
+    public void assignStudent(View view) {
+        startActivity(new Intent(HomeActivity.this, CreateRegistrationActivity.class));
     }
 }
