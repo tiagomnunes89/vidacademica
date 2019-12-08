@@ -20,7 +20,7 @@
             android:padding="@dimen/default_size">
 
             <Spinner
-                android:id="@+id/spinner_courses_in_my_scores"
+                android:id="@+id/spinner"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:background="@drawable/spinner_border_input"
@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_size"
-                app:layout_constraintTop_toBottomOf="@id/spinner_courses_in_my_scores"
+                app:layout_constraintTop_toBottomOf="@+id/spinner"
                 tools:itemCount="5"
                 tools:listitem="@layout/item_recycler_scores" />
 

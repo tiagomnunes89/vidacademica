@@ -26,26 +26,26 @@ public class AddHourClassActivity extends ActivityBaseClassValidator {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_hour_class);
         binding.setLifecycleOwner(this);
 
-        binding.editTextStartTime.setOnClickListener(v ->
+        binding.layoutContentAddHourClass.editTextStartTime.setOnClickListener(v ->
                 util.callTimePickerDialog(AddHourClassActivity.this, onTimeSetListenerStart, "Início da aula:"));
 
-        binding.editTextEndTime.setOnClickListener(v ->
+        binding.layoutContentAddHourClass.editTextEndTime.setOnClickListener(v ->
                 util.callTimePickerDialog(AddHourClassActivity.this, onTimeSetListenerEnd, "Fim da aula:"));
 
         onTimeSetListenerStart = (view, hourOfDay, minute) -> {
             String hourClass = hourOfDay + getString(R.string.colon) + minute;
-            binding.editTextStartTime.setText(hourClass);
+            binding.layoutContentAddHourClass.editTextStartTime.setText(hourClass);
         };
 
         onTimeSetListenerEnd = (view, hourOfDay, minute) -> {
             String hourClass = hourOfDay + getString(R.string.colon) + minute;
-            binding.editTextEndTime.setText(hourClass);
+            binding.layoutContentAddHourClass.editTextEndTime.setText(hourClass);
         };
 
         binding.imageViewBack.setOnClickListener(v ->
                 startActivity(new Intent(AddHourClassActivity.this,CreateSubjectActivity.class)));
 
-        binding.btnSendRegister.setOnClickListener(new View.OnClickListener() {
+        binding.btnAddHour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AddHourClassActivity.this,CreateSubjectActivity.class));
