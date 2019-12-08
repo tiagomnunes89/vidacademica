@@ -46,12 +46,12 @@ public class RegisterActivity extends ActivityBaseClassValidator {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_register);
+        binding.setLifecycleOwner(this);
+
         screenCreated = true;
 
         registerViewModel = ViewModelProviders.of(this).get(RegisterViewModel.class);
-
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_register);
-        binding.setLifecycleOwner(this);
 
         binding.layoutRegisterContent.setRegisterViewModel(registerViewModel);
 

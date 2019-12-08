@@ -1,10 +1,12 @@
 package online.vidacademica.utils;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.icu.util.Calendar;
+import android.widget.TimePicker;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -30,15 +32,26 @@ public class Util {
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
-        if (dialog == null) {
             dialog = new DatePickerDialog(
                     context,
                     android.R.style.Theme_DeviceDefault_Light_Dialog,
                     onDateSetListener,
                     year, month, day);
-        }
+
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
         dialog.show();
+    }
+
+    public void callTimePickerDialog(Context context, TimePickerDialog.OnTimeSetListener onTimeSetListener, String title) {
+
+        Calendar currentTime = Calendar.getInstance();
+        int hour = currentTime.get(Calendar.HOUR_OF_DAY);
+        int minute = currentTime.get(Calendar.MINUTE);
+
+        TimePickerDialog timePicker;
+        timePicker = new TimePickerDialog(context, onTimeSetListener, hour, minute, true);
+        timePicker.setTitle(title);
+        timePicker.show();
     }
 
     public static boolean validatePhoneNumber(String phoneNumber) {

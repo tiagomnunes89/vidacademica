@@ -99,4 +99,11 @@
     <string name="create_course_alert_title">Curso criado com sucesso!</string>
     <string name="update_course_toast_title">Curso atualizado com sucesso!</string>
     <string name="create_course_alert_message">Deseja cadastrar uma matéria?</string>
+
+    <string name="hour_class">Horário da aula</string>
+    <string name="day_week">Dia da semana:</string>
+    <string name="hour_start">Hora de início</string>
+    <string name="hour_end">Hora de término</string>
+    <string name="add_hour_class">adicionar horário</string>
+    <string name="colon">:</string>
 </resources>
