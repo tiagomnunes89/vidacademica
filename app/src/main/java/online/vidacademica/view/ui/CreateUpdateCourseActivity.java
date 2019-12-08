@@ -8,26 +8,37 @@ import android.widget.ArrayAdapter;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.gson.Gson;
+
+import java.util.Optional;
+
 import online.vidacademica.R;
-import online.vidacademica.databinding.ActivityCreateCourseBinding;
+import online.vidacademica.databinding.ActivityCreateUpdateCourseBinding;
+import online.vidacademica.entities.CourseDTO;
+import online.vidacademica.view.enums.CrudEnum;
 import online.vidacademica.viewmodel.CourseViewModel;
 
 import static online.vidacademica.entities.CourseDTO.POSSIBLE_STATUS;
+import static online.vidacademica.view.adapter.CoursesAdapter.CRUD_TYPE;
+import static online.vidacademica.view.adapter.CoursesAdapter.SELECTED_OBJECT;
 
-public class CreateCourseActivity extends BaseActivity {
-    private static final String TAG = CreateCourseActivity.class.getSimpleName();
+public class CreateUpdateCourseActivity extends BaseActivity {
+    private static final String TAG = CreateUpdateCourseActivity.class.getSimpleName();
 
     private CourseViewModel courseViewModel;
 
-    private ActivityCreateCourseBinding binding;
+    private ActivityCreateUpdateCourseBinding binding;
+
+    private static CrudEnum ACTIVITY_FLOW;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         courseViewModel = ViewModelProviders.of(this).get(CourseViewModel.class);
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_create_course);
+        captureIntent();
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_create_update_course);
         binding.setLifecycleOwner(this);
 
         binding.layoutCreateCourseContent.setCourseViewModel(courseViewModel);
@@ -39,6 +50,23 @@ public class CreateCourseActivity extends BaseActivity {
         observeFields();
         observeActions();
 
+    }
+
+    @Override
+    protected void captureIntent() {
+        ACTIVITY_FLOW = (CrudEnum) Optional.ofNullable(getIntent().getSerializableExtra(CRUD_TYPE)).orElse(CrudEnum.CREATE);
+
+        if (ACTIVITY_FLOW.equals(CrudEnum.UPDATE)) {
+            String selectedCourseJson = (String) getIntent().getSerializableExtra(SELECTED_OBJECT);
+
+            if (selectedCourseJson != null) {
+                CourseDTO selectedCourse = new Gson().fromJson(selectedCourseJson, CourseDTO.class);
+
+                if (selectedCourse != null) {
+                    courseViewModel.courseDTO = selectedCourse;
+                }
+            }
+        }
     }
 
     @Override
@@ -54,11 +82,13 @@ public class CreateCourseActivity extends BaseActivity {
 
     }
 
-    private void observeFields() {
+    @Override
+    protected void observeFields() {
 
     }
 
-    private void observeActions() {
+    @Override
+    protected void observeActions() {
         binding.btnSaveCourse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

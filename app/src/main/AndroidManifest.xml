@@ -35,7 +35,7 @@
 
         </activity>
 
-        <activity android:name=".view.ui.CreateCourseActivity"
+        <activity android:name=".view.ui.CreateUpdateCourseActivity"
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
