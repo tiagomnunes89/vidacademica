@@ -126,10 +126,8 @@ public class HomeActivity extends BaseActivity {
         startActivity(new Intent(HomeActivity.this, CreateSubjectActivity.class));
     }
 
-
     public void openMyTests(View view) {
         startActivity(new Intent(HomeActivity.this, ListMyTestsActivity.class));
-
     }
 
     public void addTest(View view) {
