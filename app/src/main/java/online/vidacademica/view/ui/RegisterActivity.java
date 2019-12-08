@@ -60,6 +60,10 @@ public class RegisterActivity extends ActivityBaseClassValidator {
     }
 
     @Override
+    protected void captureIntent() {
+    }
+
+    @Override
     protected void alertYes(int actionCustomIdentifier) {
     }
 
@@ -73,7 +77,8 @@ public class RegisterActivity extends ActivityBaseClassValidator {
         enableContinueButton(executeAllValidators(getValidationList()));
     }
 
-    private void observeFields() {
+    @Override
+    protected void observeFields() {
         binding.layoutRegisterContent.editTextName.setOnFocusChangeListener((v, hasFocus) -> {
             if (!hasFocus)
                 enableContinueButton(executeAllValidators(getValidationList(), NameValidation.class));
@@ -104,7 +109,8 @@ public class RegisterActivity extends ActivityBaseClassValidator {
         });
     }
 
-    private void observeActions() {
+    @Override
+    protected void observeActions() {
 
         binding.btnSendRegister.setOnClickListener(new View.OnClickListener() {
             @Override

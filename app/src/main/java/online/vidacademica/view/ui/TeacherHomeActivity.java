@@ -3,11 +3,7 @@ package online.vidacademica.view.ui;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 
@@ -28,7 +24,7 @@ public class TeacherHomeActivity extends AppCompatActivity {
     }
 
     public void addCourses(View view) {
-        startActivity(new Intent(TeacherHomeActivity.this,CreateCourseActivity.class));
+        startActivity(new Intent(TeacherHomeActivity.this, CreateUpdateCourseActivity.class));
 
     }
 
