@@ -41,7 +41,8 @@
                     android:fontFamily="@font/century_gothic"
                     android:text="@string/card_home_my_notes"
                     android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/font_text" />
+                    android:textSize="@dimen/font_text"
+                    android:onClick="openMyScores"/>
 
             </androidx.cardview.widget.CardView>
 
