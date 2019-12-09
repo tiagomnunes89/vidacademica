@@ -5,7 +5,9 @@
     tools:context=".presentation.CreateCourseActivity">
 
     <data>
-
+        <variable
+            name="CourseViewModel"
+            type="online.vidacademica.viewmodel.CourseViewModel" />
     </data>
 
     <ScrollView

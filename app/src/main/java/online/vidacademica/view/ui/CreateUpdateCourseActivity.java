@@ -1,5 +1,6 @@
 package online.vidacademica.view.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,7 +11,10 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityCreateUpdateCourseBinding;
@@ -30,6 +34,13 @@ public class CreateUpdateCourseActivity extends BaseActivity {
     private ActivityCreateUpdateCourseBinding binding;
 
     private static CrudEnum ACTIVITY_FLOW;
+    private List<CourseDTO> courses = new ArrayList<>();
+
+    /**
+     * Previne que a tela tome ação de cadastrar caso a lista seja atualizada
+     * por outro usuário no servidor.
+     */
+    private static boolean userHasSaved = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +90,11 @@ public class CreateUpdateCourseActivity extends BaseActivity {
 
     @Override
     protected void alertNo(int actionCustomIdentifier) {
-
+        switch (actionCustomIdentifier) {
+            case 0:
+                startActivity(new Intent(CreateUpdateCourseActivity.this, ListMyCoursesActivity.class));
+                break;
+        }
     }
 
     @Override
@@ -94,7 +109,8 @@ public class CreateUpdateCourseActivity extends BaseActivity {
             public void onClick(View view) {
                 showToast(R.string.create_course_toast_create_loading);
                 showProgressBar(R.id.create_course_screen);
-                courseViewModel.createCourse();
+                courseViewModel.getAllCourses();
+                userHasSaved = true;
             }
         });
 
@@ -126,6 +142,33 @@ public class CreateUpdateCourseActivity extends BaseActivity {
 
             }
         });
+
+        courseViewModel.getAllCourses().observe(this, allCourses -> {
+            dismissProgressBar();
+            if (userHasSaved) {
+                if (allCourses != null) {
+                    if (allCourses.getCode() == 200) {
+                        showToast(R.string.list_courses_toast_ok);
+                        courses.addAll(allCourses.getResponse());
+                        verifyCoursesDuplicates();
+                    } else {
+                        showToast(R.string.list_courses_toast_error);
+                    }
+                }
+            }
+
+            userHasSaved = false;
+        });
+    }
+
+    private void verifyCoursesDuplicates() {
+        int qttDuplicates = (int) courses.stream().filter(courseDTO -> courseDTO.getName().equalsIgnoreCase(courseViewModel.courseDTO.getName())).count();
+
+        if (qttDuplicates == 0) {
+            courseViewModel.createCourse();
+        } else {
+            showToast(R.string.create_course_toast_course_duplicate);
+        }
     }
 
 }

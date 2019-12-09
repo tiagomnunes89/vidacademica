@@ -6,13 +6,17 @@
 
     <data>
 
+        <variable
+            name="CourseViewModel"
+            type="online.vidacademica.viewmodel.CourseViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/courses_screen">
 
         <LinearLayout
             android:id="@+id/toolbar_my_courses"
@@ -49,8 +53,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/short_size"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_my_courses"
-            app:layout_constraintBottom_toTopOf="@+id/fab"/>
+            app:layout_constraintBottom_toTopOf="@+id/fab"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_my_courses" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"

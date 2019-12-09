@@ -53,7 +53,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (mProgressBar != null) {
             mProgressBar.setVisibility(View.INVISIBLE);
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-            Toast.makeText(this, "Carregamento cancelado. \n \n Favor tentar novamente.", Toast.LENGTH_LONG).show();
+            ViewGroup vg = (ViewGroup) mProgressBar.getParent();
+            vg.removeView(mProgressBar);
+            mProgressBar = null;
         }
     }
 

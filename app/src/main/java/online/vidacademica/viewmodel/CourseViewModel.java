@@ -22,7 +22,7 @@ public class CourseViewModel extends AndroidViewModel {
     public CourseDTO courseDTO = new CourseDTO();
 
     private MutableLiveData<ResponseModel<CourseDTO>> courseDTOResponse;
-    private MutableLiveData<List<ResponseModel<CourseDTO>>> allCoursesResponse;
+    private MutableLiveData<ResponseModel<List<CourseDTO>>> allCoursesResponse;
 
     public CourseViewModel(@NonNull Application application) {
         super(application);
@@ -48,8 +48,9 @@ public class CourseViewModel extends AndroidViewModel {
         return response;
     }
 
-    public LiveData<List<ResponseModel<CourseDTO>>> getAllCourses() {
+    public MutableLiveData<ResponseModel<List<CourseDTO>>> getAllCourses() {
         if (allCoursesResponse == null) allCoursesResponse = new MutableLiveData<>();
+        courseRepository.findAll(allCoursesResponse);
         return allCoursesResponse;
     }
 
