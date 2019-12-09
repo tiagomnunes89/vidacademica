@@ -11,13 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observer;
 
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityListMyCoursesBinding;
 import online.vidacademica.entities.CourseDTO;
 import online.vidacademica.view.adapter.CoursesAdapter;
 import online.vidacademica.viewmodel.CourseViewModel;
+
+import static online.vidacademica.repositories.network.vidacademica.VidAcademicaWSConstants.STATUS_CODE_OK;
 
 public class ListMyCoursesActivity extends BaseActivity {
 
@@ -74,7 +75,7 @@ public class ListMyCoursesActivity extends BaseActivity {
         courseViewModel.getAllCourses().observe(this, allCourses -> {
             dismissProgressBar();
             if (allCourses != null) {
-                if (allCourses.getCode() == 200) {
+                if (allCourses.getCode() == STATUS_CODE_OK) {
                     showToast(R.string.list_courses_toast_ok);
                     courses.addAll(allCourses.getResponse());
                     startRecycler();

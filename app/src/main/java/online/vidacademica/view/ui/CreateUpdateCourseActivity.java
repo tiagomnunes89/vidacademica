@@ -2,6 +2,7 @@ package online.vidacademica.view.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,19 +15,20 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityCreateUpdateCourseBinding;
 import online.vidacademica.entities.CourseDTO;
 import online.vidacademica.view.enums.CrudEnum;
+import online.vidacademica.view.validation.ActivityBaseClassValidator;
 import online.vidacademica.viewmodel.CourseViewModel;
 
 import static online.vidacademica.entities.CourseDTO.POSSIBLE_STATUS;
+import static online.vidacademica.repositories.network.vidacademica.VidAcademicaWSConstants.STATUS_CODE_OK;
 import static online.vidacademica.view.adapter.CoursesAdapter.CRUD_TYPE;
 import static online.vidacademica.view.adapter.CoursesAdapter.SELECTED_OBJECT;
 
-public class CreateUpdateCourseActivity extends BaseActivity {
+public class CreateUpdateCourseActivity extends ActivityBaseClassValidator {
     private static final String TAG = CreateUpdateCourseActivity.class.getSimpleName();
 
     private CourseViewModel courseViewModel;
@@ -34,6 +36,7 @@ public class CreateUpdateCourseActivity extends BaseActivity {
     private ActivityCreateUpdateCourseBinding binding;
 
     private static CrudEnum ACTIVITY_FLOW;
+
     private List<CourseDTO> courses = new ArrayList<>();
 
     /**
@@ -47,10 +50,11 @@ public class CreateUpdateCourseActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         courseViewModel = ViewModelProviders.of(this).get(CourseViewModel.class);
 
-        captureIntent();
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_create_update_course);
         binding.setLifecycleOwner(this);
+
+        captureIntent();
+        setUpActivityFlow();
 
         binding.layoutCreateCourseContent.setCourseViewModel(courseViewModel);
 
@@ -77,6 +81,12 @@ public class CreateUpdateCourseActivity extends BaseActivity {
                     courseViewModel.courseDTO = selectedCourse;
                 }
             }
+        }
+    }
+
+    private void setUpActivityFlow() {
+        if (ACTIVITY_FLOW.equals(CrudEnum.UPDATE)) {
+            binding.createUpdateCourseScreenTitle.setText(R.string.update_course_title);
         }
     }
 
@@ -107,10 +117,16 @@ public class CreateUpdateCourseActivity extends BaseActivity {
         binding.btnSaveCourse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                userHasSaved = true;
+
                 showToast(R.string.create_course_toast_create_loading);
                 showProgressBar(R.id.create_course_screen);
-                courseViewModel.getAllCourses();
-                userHasSaved = true;
+
+                if (ACTIVITY_FLOW.equals(CrudEnum.UPDATE)) {
+                    courseViewModel.updateCourse();
+                } else {
+                    courseViewModel.getAllCourses();
+                }
             }
         });
 
@@ -126,16 +142,34 @@ public class CreateUpdateCourseActivity extends BaseActivity {
             }
         });
 
-        courseViewModel.getLastCourseCreated().observe(this, courseDTOResponse -> {
+        courseViewModel.getLastCourseCreatedUpdated().observe(this, courseDTOResponse -> {
             dismissProgressBar();
 
             boolean courseCreated = courseViewModel.lastCourseCreated();
+            boolean courseUpdated = courseViewModel.lastCourseUpdated();
 
             if (courseDTOResponse != null) {
 
-                if (courseCreated) {
+                if (courseCreated || courseUpdated) {
                     showToast(R.string.create_course_toast_create_ok);
-                    showAlert(R.string.create_course_alert_title, R.string.create_course_alert_message, 0);
+
+                    if (courseCreated) {
+                        showAlert(R.string.create_course_alert_title, R.string.create_course_alert_message, 0);
+                    } else {
+                        new CountDownTimer(3000, 1000) {
+
+                            @Override
+                            public void onTick(long millisUntilFinished) {
+                                // do something after 1s
+                            }
+
+                            @Override
+                            public void onFinish() {
+                                startActivity(new Intent(CreateUpdateCourseActivity.this, ListMyCoursesActivity.class));
+                            }
+
+                        }.start();
+                    }
                 } else {
                     showToast(R.string.create_course_toast_create_error);
                 }
@@ -147,7 +181,7 @@ public class CreateUpdateCourseActivity extends BaseActivity {
             dismissProgressBar();
             if (userHasSaved) {
                 if (allCourses != null) {
-                    if (allCourses.getCode() == 200) {
+                    if (allCourses.getCode() == STATUS_CODE_OK) {
                         showToast(R.string.list_courses_toast_ok);
                         courses.addAll(allCourses.getResponse());
                         verifyCoursesDuplicates();
