@@ -40,7 +40,8 @@
                 android:gravity="end"
                 android:text="@string/create_course_title"
                 android:textColor="@android:color/black"
-                android:textSize="@dimen/font_primary_title" />
+                android:textSize="@dimen/font_primary_title"
+                android:id="@+id/create_update_course_screen_title"/>
 
         </LinearLayout>
 

@@ -18,22 +18,32 @@ import java.util.Locale;
 import online.vidacademica.R;
 import online.vidacademica.entities.ScoreBySubject;
 import online.vidacademica.entities.TestResultDTO;
+import online.vidacademica.view.enums.CrudEnum;
 import online.vidacademica.view.ui.CreateUpdateCourseActivity;
+import online.vidacademica.view.ui.MyScoresPerSubjectActivity;
 
 import static online.vidacademica.utils.JsonUtils.toJson;
 
 public class ScoresAdapter extends RecyclerView.Adapter<ScoresAdapter.ScoresViewHolder> {
-
     private static final String TAG = CoursesAdapter.class.getSimpleName();
 
-    List<ScoreBySubject> scoreBySubjects = new ArrayList<>();
+    private Context context;
 
-    LayoutInflater layoutInflater;
+    private List<ScoreBySubject> scoreBySubjects = new ArrayList<>();
 
-    public ScoresAdapter(Context context, List<ScoreBySubject> scoreBySubjects){
+    private LayoutInflater layoutInflater;
+
+    public static final String CRUD_TYPE = "CRUD_TYPE";
+    private static final CrudEnum UPDATE = CrudEnum.UPDATE;
+
+    public static final String SELECTED_OBJECT = "SELECTED_OBJECT";
+
+    public ScoresAdapter(Context context, List<ScoreBySubject> scoreBySubjects) {
+        this.context = context;
         this.scoreBySubjects = scoreBySubjects;
         this.layoutInflater = LayoutInflater.from(context);
     }
+
     @NonNull
     @Override
     public ScoresViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -48,6 +58,16 @@ public class ScoresAdapter extends RecyclerView.Adapter<ScoresAdapter.ScoresView
         holder.nota.setText(Double.toString(score.getSubjectTotalScore()));
         holder.titulo_materia.setText(score.getSubject());
 
+        holder.itemView.setOnClickListener(v -> {
+            Log.i(TAG, "onBindViewHolder: " + toJson(scoreBySubjects.get(position)));
+
+            Intent intent = new Intent(context, MyScoresPerSubjectActivity.class)
+                    .putExtra(CRUD_TYPE, UPDATE)
+                    .putExtra(SELECTED_OBJECT, toJson(scoreBySubjects.get(position)));
+
+            context.startActivity(intent);
+
+        });
 
     }
 

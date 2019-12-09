@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="WeekEntryPresentation"
+            type="online.vidacademica.presentation.WeekEntryPresentation" />
+
     </data>
 
     <ScrollView
@@ -63,6 +67,7 @@
                     android:focusable="false"
                     android:hint="@string/hour_start"
                     android:imeOptions="actionNext"
+                    android:text="@={WeekEntryPresentation.startTime}"
                     android:inputType="none"
                     android:textColor="@android:color/white"
                     android:textColorHint="@android:color/white" />
@@ -86,6 +91,7 @@
                     android:cursorVisible="false"
                     android:focusable="false"
                     android:hint="@string/hour_end"
+                    android:text="@={WeekEntryPresentation.endTime}"
                     android:imeOptions="actionDone"
                     android:inputType="none"
                     android:textColor="@android:color/white"

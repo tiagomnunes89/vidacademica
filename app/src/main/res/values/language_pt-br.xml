@@ -96,14 +96,10 @@
     <!--Tela de criação/edição de curso-->
     <string name="create_course_title">Criar Curso</string>
     <string name="update_course_title">Atualizar Curso</string>
-    <string name="create_course_toast_create_loading">Cadastrando curso… Aguarde.</string>
-    <string name="update_course_toast_create_loading">Atualizando curso… Aguarde.</string>
-    <string name="create_course_toast_create_ok">Curso criado!</string>
-    <string name="update_course_toast_create_ok">Curso atualizado!</string>
-    <string name="create_course_toast_create_error">Erro, curso não cadastrado. Procure o suporte ou tente novamente mais tarde.</string>
-    <string name="update_course_toast_create_error">Erro, curso não atualizado. Procure o suporte ou tente novamente mais tarde.</string>
-    <string name="create_course_alert_title">Curso criado com sucesso!</string>
-    <string name="update_course_toast_title">Curso atualizado com sucesso!</string>
+    <string name="create_course_toast_create_loading">Salvando curso… Aguarde.</string>
+    <string name="create_course_toast_create_ok">Curso salvo!</string>
+    <string name="create_course_toast_create_error">Erro, curso não foi salvo. Procure o suporte ou tente novamente mais tarde.</string>
+    <string name="create_course_alert_title">Curso salvo com sucesso!</string>
     <string name="create_course_alert_message">Deseja cadastrar uma matéria?</string>
     <string name="create_course_toast_course_duplicate">Curso não cadastrado. Nome duplicado.</string>
 
@@ -139,5 +135,6 @@
     <string name="card_home_my_tests">Minhas\nAvaliações</string>
     <string name="card_home_my_notes">Minhas\nNotas</string>
     <string name="card_home_assign_student">Associar\nAluno</string>
+    <string name="cancel">cancelar</string>
 
 </resources>

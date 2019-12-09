@@ -47,6 +47,8 @@ public class HomeActivity extends BaseActivity {
         } else {
             setUpStudent();
         }
+
+        observeActions();
     }
 
     private void inflateCards(Integer layoutViewId) {
@@ -58,15 +60,8 @@ public class HomeActivity extends BaseActivity {
     }
 
     private void setUpTeacher() {
-
         inflateCards(R.layout.content_bottom_cards_teacher);
 
-        binding.imageViewBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showAlert(R.string.home_alert_close_title, R.string.home_alert_close_message, 0);
-            }
-        });
     }
 
     private void setUpStudent() {
@@ -130,7 +125,12 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void observeActions() {
-
+        binding.imageViewBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showAlert(R.string.home_alert_close_title, R.string.home_alert_close_message, 0);
+            }
+        });
     }
 
     public void openMyCourses(View view) {
@@ -139,7 +139,6 @@ public class HomeActivity extends BaseActivity {
 
     public void addCourses(View view) {
         startActivity(new Intent(HomeActivity.this, CreateUpdateCourseActivity.class));
-
     }
 
     public void openMySubjects(View view) {
@@ -160,5 +159,9 @@ public class HomeActivity extends BaseActivity {
 
     public void assignStudent(View view) {
         startActivity(new Intent(HomeActivity.this, CreateRegistrationActivity.class));
+    }
+
+    public void openMyScores(View view) {
+        startActivity(new Intent(HomeActivity.this, MyScoresActivity.class));
     }
 }
