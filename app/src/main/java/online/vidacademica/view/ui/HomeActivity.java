@@ -69,7 +69,7 @@ public class HomeActivity extends BaseActivity {
         inflateCards(R.layout.content_bottom_cards);
 
         binding.layoutContentBottomCards.cardViewMyNotes.setOnClickListener(v -> startActivity(
-                new Intent(this, MyScoresActivity.class)));
+                new Intent(this, ScoresActivity.class)));
 
         binding.layoutContentBottomCards.cardViewMySubjects.setOnClickListener(v -> startActivity(
                 new Intent(this, ListMySubjectsActivity.class)));
@@ -162,6 +162,6 @@ public class HomeActivity extends BaseActivity {
     }
 
     public void openMyScores(View view) {
-        startActivity(new Intent(HomeActivity.this, MyScoresActivity.class));
+        startActivity(new Intent(HomeActivity.this, ScoresActivity.class));
     }
 }

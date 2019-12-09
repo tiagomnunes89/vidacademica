@@ -31,6 +31,7 @@ public class CreateRegistrationActivity extends AppCompatActivity {
         String students [] = getStudents();
 
         AutoCompleteTextView autoCompleteTextView = findViewById(R.id.text_input_name_student);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (this,android.R.layout.simple_list_item_1,students);
         autoCompleteTextView.setAdapter(adapter);

@@ -22,19 +22,20 @@
         <activity
             android:name=".content_my_scores_per_subject"/>
         <activity
-            android:name=".view.ui.MyScoresPerSubjectActivity"/>
+            android:name=".view.ui.ScoreDetailsActivity"/>
         <activity
             android:name=".view.ui.AddHourClassActivity"/>
         <activity
             android:name=".view.ui.PreLoginActivity">
+
+        </activity>
+        <activity
+            android:name=".view.ui.ScoresActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity
-            android:name=".view.ui.MyScoresActivity"/>
         <activity
             android:name=".view.ui.CreateRegistrationActivity" />
         <activity

@@ -9,6 +9,6 @@ public class content_my_scores_per_subject extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_my_scores_per_subject);
+        setContentView(R.layout.content_score_details);
     }
 }
