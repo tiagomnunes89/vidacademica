@@ -12,8 +12,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Util {
-
-    private DatePickerDialog dialog;
     private static final String REGEX_DDD = "\\([1-9]{2}\\)";
     private static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^((?!.*?\\.\\.)[A-Za-z0-9._-]+@[A-Za-z0-9]+[A-Za-z0-9\\-.]+\\" +
@@ -24,8 +22,8 @@ public class Util {
             + "(( [A-ZÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ'`]{1,}( [A-ZÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ'`]{2,}){1,}))* *)$", Pattern.CASE_INSENSITIVE);
     public static final String BIRTH_DATE_REGEX = "^([0-2][0-9]|(3)[0-1])(\\/)(((0)[0-9])|((1)[0-2]))(\\/)\\d{4}$";
 
-    public void callDatePickerDialog(Context context, DatePickerDialog.OnDateSetListener onDateSetListener) {
-
+    public static void callDatePickerDialog(Context context, DatePickerDialog.OnDateSetListener onDateSetListener) {
+       DatePickerDialog dialog;
         Calendar cal = Calendar.getInstance();
 
         int year = cal.get(Calendar.YEAR);
@@ -42,7 +40,7 @@ public class Util {
         dialog.show();
     }
 
-    public void callTimePickerDialog(Context context, TimePickerDialog.OnTimeSetListener onTimeSetListener, String title) {
+    public static void callTimePickerDialog(Context context, TimePickerDialog.OnTimeSetListener onTimeSetListener, String title) {
 
         Calendar currentTime = Calendar.getInstance();
         int hour = currentTime.get(Calendar.HOUR_OF_DAY);
