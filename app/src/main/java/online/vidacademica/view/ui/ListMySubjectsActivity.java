@@ -41,9 +41,9 @@ public class ListMySubjectsActivity extends AppCompatActivity {
     }
 
     private void getSubjects() {
-        SubjectDTO sub1 = new SubjectDTO("nome1", false,"2019/01/01", "2020/01/01");
-        SubjectDTO sub2 = new SubjectDTO("nome2", true,"2019/05/01", "2021/05/01");
-        SubjectDTO sub3 = new SubjectDTO("nome3", true,"2019/07/01", "2022/07/01");
+        SubjectDTO sub1 = new SubjectDTO("FW1", false,"2019/01/01", "2020/01/01");
+        SubjectDTO sub2 = new SubjectDTO("FW2", true,"2019/05/01", "2021/05/01");
+        SubjectDTO sub3 = new SubjectDTO("PDS1", true,"2019/07/01", "2022/07/01");
 
         subjects.add(sub1);
         subjects.add(sub2);

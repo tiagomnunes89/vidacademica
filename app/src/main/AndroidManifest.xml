@@ -22,10 +22,7 @@
         <activity android:name=".view.ui.MyScoresPerSubject">
         </activity>
         <activity android:name=".view.ui.PreLoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".view.ui.MyScoresActivity">
 
@@ -42,7 +39,12 @@
             android:label="@string/title_activity_list_my_tests"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".view.ui.ListMySubjectsActivity" />
+        <activity android:name=".view.ui.ListMySubjectsActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
             android:name=".view.ui.CreateTestActivity"
             android:label="@string/title_activity_creste_test"
