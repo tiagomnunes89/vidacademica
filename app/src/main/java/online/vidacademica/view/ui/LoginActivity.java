@@ -80,7 +80,7 @@ public class LoginActivity extends ActivityBaseClassValidator {
             public void onChanged(@Nullable TokenEntity tokenEntity) {
                 dismissProgressBar();
                 if (tokenEntity == null) {
-                    binding.editUser.setError("Usuário ou senha incorretos.");
+                    binding.editUser.setError(getString(R.string.login_toast_ok));
                 } else {
                     showToast(R.string.login_toast_ok);
 
