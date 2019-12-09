@@ -46,10 +46,10 @@ public class MyScoresActivity extends AppCompatActivity {
 
     private void getScores() {
 
-        //Carrega a tabela de testes de acordo com o curso
-        TestResultDTO score1 = new TestResultDTO(25.0, Instant.now(), 1L, "PDS1");
-        TestResultDTO score2 = new TestResultDTO(35.0, Instant.now(), 2L, "PDS1");
-        TestResultDTO score3 = new TestResultDTO(70.0, Instant.now(), 3L, "FW2");
+        //Carrega a tabela de testes de acordo com o curso(Este DTO combina 2 tabelas, tb_test e tb_test result)
+        TestResultDTO score1 = new TestResultDTO(25.0, Instant.now(), "Prova 1", "PDS1");
+        TestResultDTO score2 = new TestResultDTO(35.0, Instant.now(), "Prova 2", "PDS1");
+        TestResultDTO score3 = new TestResultDTO(70.0, Instant.now(), "Prova 1", "FW2");
 
         testResultDTOList.add(score1);
         testResultDTOList.add(score2);
@@ -66,7 +66,7 @@ public class MyScoresActivity extends AppCompatActivity {
 
         for (TestResultDTO score: testResultDTOList) {
             for (ScoreBySubject subject: scoreBySubjectList) {
-                if(subject.getSubject().equals(score.getsubjectName())){
+                if(subject.getSubject().equals(score.getSubjectName())){
                     subject.addToSubjectTotalScore(score.getScore());
                 }
             }

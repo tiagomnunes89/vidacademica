@@ -19,7 +19,8 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity android:name=".content_my_scores_per_subject"></activity>
-        <activity android:name=".activity_my_scores_per_subject" />
+        <activity android:name=".view.ui.MyScoresPerSubject">
+        </activity>
         <activity android:name=".view.ui.PreLoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
