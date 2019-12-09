@@ -10,23 +10,34 @@
         android:id="@+id/divider_open"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:layout_marginTop="@dimen/default_size"
         android:layout_marginBottom="@dimen/short_size"
         android:background="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <TextView
-        android:id="@+id/text_view_title_item_sch"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/close_item_icon"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/short_size"
-        android:fontFamily="@font/dosis_bold"
-        android:textSize="@dimen/font_secondary_title"
-        app:layout_constraintTop_toBottomOf="@+id/divider_open"
-        tools:text="Segunda-feira" />
+        android:layout_marginTop="@dimen/semi_short_size"
+        android:src="@drawable/ic_close_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/text_view_day_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dosis_bold"
+            android:layout_gravity="start"
+            android:layout_marginTop="@dimen/short_size"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/font_secondary_title"
+            tools:text="Segunda-feira"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider_open"
+            android:orientation="horizontal"/>
 
     <LinearLayout
         android:id="@+id/linear_layout_item_schedule"
@@ -34,9 +45,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/little_size"
         android:gravity="center_horizontal"
+        android:paddingBottom="@dimen/default_size"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_title_item_sch">
+        app:layout_constraintTop_toBottomOf="@+id/text_view_day_name">
 
         <TextView
             android:id="@+id/textView"
@@ -47,7 +59,7 @@
             android:text="@string/from"
             android:textSize="@dimen/font_secondary_title"
             android:textStyle="normal"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_title_item_sch" />
+            app:layout_constraintTop_toBottomOf="@+id/text_view_day_name" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_layout_item_initial"
@@ -76,7 +88,7 @@
             android:text="@string/to"
             android:textSize="@dimen/font_secondary_title"
             android:textStyle="normal"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_title_item_sch" />
+            app:layout_constraintTop_toBottomOf="@+id/text_view_day_name" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_layout_item_final"
@@ -97,6 +109,5 @@
 
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

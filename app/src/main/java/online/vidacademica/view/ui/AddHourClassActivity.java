@@ -63,8 +63,7 @@ public class AddHourClassActivity extends ActivityBaseClassValidator {
             startActivity(new Intent(this, CreateSubjectActivity.class));
         });
 
-        binding.btnCancel.setOnClickListener(btnCancel ->
-                startActivity(new Intent(AddHourClassActivity.this, CreateSubjectActivity.class)));
+        binding.btnCancel.setOnClickListener(btnCancel -> onBackPressed());
 
         binding.layoutContentAddHourClass.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
