@@ -13,7 +13,7 @@ import retrofit2.http.POST;
 public interface CourseService {
 
     @GET(VidAcademicaWSConstants.COURSE_PATH)
-    Call<List<CourseDTO>> getAllUsers(@Header("Authorization") String bearerToken);
+    Call<List<CourseDTO>> findAll(@Header("Authorization") String bearerToken);
 
     @POST(VidAcademicaWSConstants.COURSE_PATH)
     Call<CourseDTO> insert(@Header("Authorization") String bearerToken, @Body CourseDTO couseDTO);
