@@ -105,7 +105,11 @@
     <string name="create_course_alert_title">Curso criado com sucesso!</string>
     <string name="update_course_toast_title">Curso atualizado com sucesso!</string>
     <string name="create_course_alert_message">Deseja cadastrar uma matéria?</string>
+    <string name="create_course_toast_course_duplicate">Curso não cadastrado. Nome duplicado.</string>
 
+    <!--Tela de listagem de cursos-->
+    <string name="list_courses_toast_ok">Cursos carregados.</string>
+    <string name="list_courses_toast_error">Erro ao carregar cursos. Tente novamente mais tarde.</string>
 
     <!--Tela de test-->
     <string name="create_test_title">Criar Curso</string>
