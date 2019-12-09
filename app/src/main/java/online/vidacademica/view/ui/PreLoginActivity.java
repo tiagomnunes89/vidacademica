@@ -67,25 +67,8 @@ public class PreLoginActivity extends BaseActivity {
                 startActivity(new Intent(PreLoginActivity.this, RegisterActivity.class));
             }
         });
-        loginViewModel.getToken().observe(this, new Observer<TokenEntity>() {
-            @Override
-            public void onChanged(@Nullable TokenEntity tokenEntity) {
-                dismissProgressBar();
-                if (tokenEntity != null) {
-                    if (hasAValidUser(tokenEntity)) {
-                        startActivity(new Intent(PreLoginActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY));
-                    }
-                }
-            }
-        });
+
     }
 
-    private boolean hasAValidUser(TokenEntity tokenEntity) {
-        if (tokenEntity != null) {
-            if (tokenEntity.getEmail() != null && tokenEntity.getPassword() != null) {
-                return true;
-            }
-        }
-        return false;
-    }
+
 }
