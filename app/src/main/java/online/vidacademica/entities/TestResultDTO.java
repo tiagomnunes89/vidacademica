@@ -9,24 +9,23 @@ public class TestResultDTO implements Serializable {
 
     private Double score;
     private Instant date;
-    private Long testId;
+    private String testName;
     private String subjectName;
-
 
     public TestResultDTO(){}
 
-    public TestResultDTO(Double score, Instant date, Long testId, String subjectName) {
+    public TestResultDTO(Double score, Instant date, String testName, String subjectName) {
         this.score = score;
         this.date = date;
-        this.testId = testId;
+        this.testName = testName;
         this.subjectName = subjectName;
     }
 
-    public String getsubjectName() {
+    public String getSubjectName() {
         return subjectName;
     }
 
-    public void setsubjectName(String subjectName) {
+    public void setSubjectName(String subjectName) {
         this.subjectName = subjectName;
     }
 
@@ -46,12 +45,12 @@ public class TestResultDTO implements Serializable {
         this.date = date;
     }
 
-    public Long getTestId() {
-        return testId;
+    public String getTestName() {
+        return testName;
     }
 
-    public void setTestId(Long testId) {
-        this.testId = testId;
+    public void setTestName(String testName) {
+        this.testName = testName;
     }
 
 

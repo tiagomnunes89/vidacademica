@@ -47,7 +47,6 @@
         <include
             android:id="@+id/layout_content_add_hour_class"
             layout="@layout/content_add_hour_class"
-            android:layout_marginTop="@dimen/default_size"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/short_size"
@@ -63,6 +62,17 @@
             android:layout_marginEnd="@dimen/default_size"
             android:layout_marginBottom="@dimen/default_size"
             android:text="@string/add_hour_class"
+            app:layout_constraintBottom_toTopOf="@+id/btn_cancel" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            style="@style/AppTheme.Button.Orange"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_size"
+            android:layout_marginEnd="@dimen/default_size"
+            android:layout_marginBottom="@dimen/default_size"
+            android:text="@string/cancel"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

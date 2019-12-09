@@ -7,10 +7,14 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityCreateSubjectBinding;
+import online.vidacademica.entities.ClassEntity;
+import online.vidacademica.presentation.SingletonClassEntity;
 import online.vidacademica.utils.Util;
+import online.vidacademica.view.adapter.WeekEntriesAdapter;
 
 public class CreateSubjectActivity extends AppCompatActivity {
     private static final String TAG = "CreateSubjectActivity";
@@ -18,12 +22,19 @@ public class CreateSubjectActivity extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener onDateSetListenerFinal;
     private ActivityCreateSubjectBinding binding;
     private Util util = new Util();
+    private ClassEntity classEntity;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_create_subject);
+        binding.setLifecycleOwner(this);
+
+        classEntity = new ClassEntity();
+        if (SingletonClassEntity.INSTANCE.getClassEntity() == null) {
+            SingletonClassEntity.createClassEntity(classEntity);
+        }
 
         binding.layoutCreateSubjectContent.inputStartDate.setOnClickListener(view ->
                 util.callDatePickerDialog(CreateSubjectActivity.this, onDateSetListenerStart));
@@ -46,5 +57,28 @@ public class CreateSubjectActivity extends AppCompatActivity {
 
         binding.layoutCreateSubjectContent.containerAddSchedule.setOnClickListener(v ->
                 startActivity(new Intent(CreateSubjectActivity.this, AddHourClassActivity.class)));
+
+        startRecycler();
+    }
+
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        startRecycler();
+    }
+
+    private void startRecycler() {
+        if (SingletonClassEntity.INSTANCE.getClassEntity() != null) {
+            WeekEntriesAdapter adapter = new WeekEntriesAdapter(
+                    this, SingletonClassEntity.INSTANCE.getClassEntity().getWeekEntries());
+
+            binding.layoutCreateSubjectContent.recycler.setAdapter(adapter);
+
+            //Criar layout manager
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+            binding.layoutCreateSubjectContent.recycler.setLayoutManager(linearLayoutManager);
+        }
     }
 }
