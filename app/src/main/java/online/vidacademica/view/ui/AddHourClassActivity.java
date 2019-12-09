@@ -21,8 +21,6 @@ public class AddHourClassActivity extends ActivityBaseClassValidator {
     private ActivityAddHourClassBinding binding;
     private TimePickerDialog.OnTimeSetListener onTimeSetListenerStart;
     private TimePickerDialog.OnTimeSetListener onTimeSetListenerEnd;
-    private Util util = new Util();
-    private WeekEntryPresentation weekEntryPresentationScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,37 +28,39 @@ public class AddHourClassActivity extends ActivityBaseClassValidator {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_hour_class);
         binding.setLifecycleOwner(this);
-        weekEntryPresentationScreen = new WeekEntryPresentation();
 
         binding.layoutContentAddHourClass.setWeekEntryPresentation(new WeekEntryPresentation());
 
+        observerFields();
+    }
+
+    private void observerFields() {
         binding.layoutContentAddHourClass.editTextStartTime.setOnClickListener(v ->
-                util.callTimePickerDialog(AddHourClassActivity.this, onTimeSetListenerStart, "Início da aula:"));
+                Util.callTimePickerDialog(AddHourClassActivity.this, onTimeSetListenerStart, "Início da aula:"));
 
         binding.layoutContentAddHourClass.editTextEndTime.setOnClickListener(v ->
-                util.callTimePickerDialog(AddHourClassActivity.this, onTimeSetListenerEnd, "Fim da aula:"));
+                Util.callTimePickerDialog(AddHourClassActivity.this, onTimeSetListenerEnd, "Fim da aula:"));
 
         onTimeSetListenerStart = (view, hourOfDay, minute) -> {
             String hourClass = hourOfDay + getString(R.string.colon) + minute;
             binding.layoutContentAddHourClass.editTextStartTime.setText(hourClass);
-            weekEntryPresentationScreen.setStartTime(hourClass);
         };
 
         onTimeSetListenerEnd = (view, hourOfDay, minute) -> {
             String hourClass = hourOfDay + getString(R.string.colon) + minute;
             binding.layoutContentAddHourClass.editTextEndTime.setText(hourClass);
-            weekEntryPresentationScreen.setStartTime(hourClass);
         };
 
         binding.imageViewBack.setOnClickListener(imageViewBack ->
-                startActivity(new Intent(AddHourClassActivity.this, CreateSubjectActivity.class)));
+                startActivity(new Intent(this, CreateSubjectActivity.class)));
 
         binding.btnAddHour.setOnClickListener(v -> {
             if (SingletonClassEntity.INSTANCE.getClassEntity() != null) {
                 SingletonClassEntity.INSTANCE.getClassEntity().addEntry(
-                        WeekEntryMapper.get().convertFrom(weekEntryPresentationScreen));
+                        WeekEntryMapper.get().convertFrom(
+                                binding.layoutContentAddHourClass.getWeekEntryPresentation()));
             }
-            startActivity(new Intent(AddHourClassActivity.this, CreateSubjectActivity.class));
+            startActivity(new Intent(this, CreateSubjectActivity.class));
         });
 
         binding.btnCancel.setOnClickListener(btnCancel ->
@@ -69,8 +69,8 @@ public class AddHourClassActivity extends ActivityBaseClassValidator {
         binding.layoutContentAddHourClass.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                binding.layoutContentAddHourClass.getWeekEntryPresentation().setDay(selectedItemView.toString());
-                weekEntryPresentationScreen.setDay(selectedItemView.toString());
+                String dayOfWeek = parentView.getSelectedItem().toString();
+                binding.layoutContentAddHourClass.getWeekEntryPresentation().setDay(dayOfWeek);
             }
 
             @Override

@@ -99,19 +99,19 @@ public class DateFormatUtils {
         if(dayName != null){
             switch (dayName) {
                 case "Segunda-feira":
-                    return DayOfWeek.valueOf("1");
+                    return DayOfWeek.of(1);
                 case "Terça-feira":
-                    return DayOfWeek.valueOf("2");
+                    return DayOfWeek.of(2);
                 case "Quarta-feira":
-                    return DayOfWeek.valueOf("3");
+                    return DayOfWeek.of(3);
                 case "Quinta-feira":
-                    return DayOfWeek.valueOf("4");
+                    return DayOfWeek.of(4);
                 case "Sexta-feira":
-                    return DayOfWeek.valueOf("5");
+                    return DayOfWeek.of(5);
                 case "Sábado":
-                    return DayOfWeek.valueOf("6");
+                    return DayOfWeek.of(6);
                 case "Domingo":
-                    return DayOfWeek.valueOf("7");
+                    return DayOfWeek.of(7);
             }
         }
         return null;
