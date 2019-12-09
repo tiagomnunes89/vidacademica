@@ -1,8 +1,6 @@
 package online.vidacademica.view.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,22 +14,16 @@ import java.util.List;
 import java.util.Locale;
 
 import online.vidacademica.R;
-import online.vidacademica.entities.ScoreBySubject;
 import online.vidacademica.entities.TestResultDTO;
-import online.vidacademica.view.ui.CreateUpdateCourseActivity;
 
-import static online.vidacademica.utils.JsonUtils.toJson;
+public class MyTestPerSubjectAdapter extends RecyclerView.Adapter<MyTestPerSubjectAdapter.ScoresViewHolder> {
 
-public class ScoresAdapter extends RecyclerView.Adapter<ScoresAdapter.ScoresViewHolder> {
-
-    private static final String TAG = CoursesAdapter.class.getSimpleName();
-
-    List<ScoreBySubject> scoreBySubjects = new ArrayList<>();
+    List<TestResultDTO> testResultDTOS = new ArrayList<>();
 
     LayoutInflater layoutInflater;
 
-    public ScoresAdapter(Context context, List<ScoreBySubject> scoreBySubjects){
-        this.scoreBySubjects = scoreBySubjects;
+    public MyTestPerSubjectAdapter(Context context, List<TestResultDTO> testResultDTOS){
+        this.testResultDTOS = testResultDTOS;
         this.layoutInflater = LayoutInflater.from(context);
     }
     @NonNull
@@ -43,17 +35,15 @@ public class ScoresAdapter extends RecyclerView.Adapter<ScoresAdapter.ScoresView
 
     @Override
     public void onBindViewHolder(@NonNull ScoresViewHolder holder, int position) {
-        ScoreBySubject score = scoreBySubjects.get(position);
+        TestResultDTO score = testResultDTOS.get(position);
         Locale.setDefault(Locale.US);
-        holder.nota.setText(Double.toString(score.getSubjectTotalScore()));
-        holder.titulo_materia.setText(score.getSubject());
-
-
+        holder.nota.setText(Double.toString(score.getScore()));
+        holder.titulo_materia.setText(score.getsubjectName());
     }
 
     @Override
     public int getItemCount() {
-        return scoreBySubjects.size();
+        return testResultDTOS.size();
     }
 
     public class ScoresViewHolder extends RecyclerView.ViewHolder {

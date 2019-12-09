@@ -5,17 +5,23 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
 import online.vidacademica.R;
+import online.vidacademica.entities.CourseDTO;
+import online.vidacademica.entities.ScoreBySubject;
+import online.vidacademica.entities.SubjectDTO;
+import online.vidacademica.entities.TestEntity;
 import online.vidacademica.entities.TestResultDTO;
 import online.vidacademica.view.adapter.ScoresAdapter;
 
 public class MyScoresActivity extends AppCompatActivity {
 
+    List<ScoreBySubject> scoreBySubjectList = new ArrayList<>();
     List<TestResultDTO> testResultDTOList = new ArrayList<>();
 
     @Override
@@ -23,15 +29,13 @@ public class MyScoresActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_scores);
 
-        //getScores
-
         getScores();
 
         startRecycler();
     }
 
     private void startRecycler() {
-        ScoresAdapter adapter = new ScoresAdapter(this, testResultDTOList);
+        ScoresAdapter adapter = new ScoresAdapter(this, scoreBySubjectList);
         RecyclerView recyclerView = findViewById(R.id.scores_recycler);
         recyclerView.setAdapter(adapter);
 
@@ -42,12 +46,30 @@ public class MyScoresActivity extends AppCompatActivity {
 
     private void getScores() {
 
-        TestResultDTO score1 = new TestResultDTO(20.0, Instant.now(), 1L, 1L);
-        TestResultDTO score2 = new TestResultDTO(35.0, Instant.now(), 1L, 2L);
-        TestResultDTO score3 = new TestResultDTO(45.0, Instant.now(), 1L, 3L);
+        //Carrega a tabela de testes de acordo com o curso
+        TestResultDTO score1 = new TestResultDTO(25.0, Instant.now(), 1L, "PDS1");
+        TestResultDTO score2 = new TestResultDTO(35.0, Instant.now(), 2L, "PDS1");
+        TestResultDTO score3 = new TestResultDTO(70.0, Instant.now(), 3L, "FW2");
 
         testResultDTOList.add(score1);
         testResultDTOList.add(score2);
         testResultDTOList.add(score3);
+
+         //Carrega materias de acordo com o curso.
+        ScoreBySubject sbs1 = new ScoreBySubject("FW2", 0.0);
+        ScoreBySubject sbs2 = new ScoreBySubject("PDS1", 0.0);
+
+        scoreBySubjectList.add(sbs1);
+        scoreBySubjectList.add(sbs2);
+
+        //Calcula nota final de acordo com materia
+
+        for (TestResultDTO score: testResultDTOList) {
+            for (ScoreBySubject subject: scoreBySubjectList) {
+                if(subject.getSubject().equals(score.getsubjectName())){
+                    subject.addToSubjectTotalScore(score.getScore());
+                }
+            }
+        }
     }
 }
