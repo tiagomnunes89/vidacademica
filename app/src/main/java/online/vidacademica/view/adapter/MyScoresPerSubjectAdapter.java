@@ -17,22 +17,27 @@ import java.util.Locale;
 
 import online.vidacademica.R;
 import online.vidacademica.entities.TestResultDTO;
-import online.vidacademica.view.ui.CreateUpdateCourseActivity;
-import online.vidacademica.view.ui.MyScoresPerSubject;
+import online.vidacademica.view.enums.CrudEnum;
+import online.vidacademica.view.ui.MyScoresActivity;
+import online.vidacademica.view.ui.MyScoresPerSubjectActivity;
 
-import static androidx.constraintlayout.widget.Constraints.TAG;
 import static online.vidacademica.utils.JsonUtils.toJson;
 
 public class MyScoresPerSubjectAdapter extends RecyclerView.Adapter<MyScoresPerSubjectAdapter.ScoresViewHolder> {
+    private static final String TAG = MyScoresActivity.class.getSimpleName();
 
-    List<TestResultDTO> testResultDTOS = new ArrayList<>();
+    private Context context;
 
-    LayoutInflater layoutInflater;
+    private List<TestResultDTO> testResultDTOS = new ArrayList<>();
 
-    public MyScoresPerSubjectAdapter(Context context, List<TestResultDTO> testResultDTOS){
+    private LayoutInflater layoutInflater;
+
+    public MyScoresPerSubjectAdapter(Context context, List<TestResultDTO> testResultDTOS) {
+        this.context = context;
         this.testResultDTOS = testResultDTOS;
         this.layoutInflater = LayoutInflater.from(context);
     }
+
     @NonNull
     @Override
     public ScoresViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -43,25 +48,17 @@ public class MyScoresPerSubjectAdapter extends RecyclerView.Adapter<MyScoresPerS
     @Override
     public void onBindViewHolder(@NonNull ScoresViewHolder holder, int position) {
         TestResultDTO score = testResultDTOS.get(position);
+
         Locale.setDefault(Locale.US);
-        holder.titulo_test.setText(score.getTestName());
+
+        holder.titleTest.setText(score.getTestName());
         holder.fullScore.setText(Double.toString(score.getScore()));
-        String dayTest = score.getDate().toString().substring(8,10);
-        String monthTest = score.getDate().toString().substring(5,7);
-        String yearTest = score.getDate().toString().substring(2,4);
-        holder.dtTest.setText(dayTest + "/"+monthTest+"/"+yearTest);
 
-       /*   holder.itemView.setOnClickListener(v -> {
-            Log.i(TAG, "onBindViewHolder: " + toJson(testResultDTOS.get(position)));
+        String dayTest = score.getDate().toString().substring(8, 10);
+        String monthTest = score.getDate().toString().substring(5, 7);
+        String yearTest = score.getDate().toString().substring(2, 4);
 
-          Intent intent = new Intent(context, MyScoresPerSubject.class)
-                    .putExtra(CRUD_TYPE, UPDATE)
-                    .putExtra(SELECTED_OBJECT, toJson(tests.get(position)));
-
-            context.startActivity(intent);
-
-        });
-        */
+        holder.dtTest.setText(dayTest + "/" + monthTest + "/" + yearTest);
 
     }
 
@@ -72,15 +69,17 @@ public class MyScoresPerSubjectAdapter extends RecyclerView.Adapter<MyScoresPerS
 
     public class ScoresViewHolder extends RecyclerView.ViewHolder {
         //item_titulo_materia_em_minhas_notas
-        TextView titulo_test;
+        TextView titleTest;
         TextView fullScore;
         TextView dtTest;
 
         public ScoresViewHolder(@NonNull View itemView) {
             super(itemView);
-            titulo_test = itemView.findViewById(R.id.item_titulo_test);
+            titleTest = itemView.findViewById(R.id.item_titulo_test);
             fullScore = itemView.findViewById(R.id.item_fullScore_test);
             dtTest = itemView.findViewById(R.id.item_data_test);
         }
+
+
     }
 }
