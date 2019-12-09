@@ -1,29 +1,64 @@
 package online.vidacademica.view.ui;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityPreLoginBinding;
+import online.vidacademica.entities.TokenEntity;
+import online.vidacademica.view.enums.RoleEnum;
+import online.vidacademica.viewmodel.LoginViewModel;
 
-public class PreLoginActivity extends AppCompatActivity {
+import static online.vidacademica.view.enums.RoleEnum.STUDENT;
+
+public class PreLoginActivity extends BaseActivity {
     private ActivityPreLoginBinding binding;
-    public static SharedPreferences preferences;
+
+    private LoginViewModel loginViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_pre_login);
+
+//        showProgressBar(R.id.prelogin_screen);
+        observeActions();
+    }
+
+    @Override
+    protected void captureIntent() {
+
+    }
+
+    @Override
+    protected void alertYes(int actionCustomIdentifier) {
+
+    }
+
+    @Override
+    protected void alertNo(int actionCustomIdentifier) {
+
+    }
+
+    @Override
+    protected void observeFields() {
+
+    }
+
+    @Override
+    protected void observeActions() {
         binding.buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(PreLoginActivity.this, LoginActivity.class));
+                startActivity(new Intent(PreLoginActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY));
             }
         });
         binding.buttonRegister.setOnClickListener(new View.OnClickListener() {
@@ -32,5 +67,25 @@ public class PreLoginActivity extends AppCompatActivity {
                 startActivity(new Intent(PreLoginActivity.this, RegisterActivity.class));
             }
         });
+        loginViewModel.getToken().observe(this, new Observer<TokenEntity>() {
+            @Override
+            public void onChanged(@Nullable TokenEntity tokenEntity) {
+                dismissProgressBar();
+                if (tokenEntity != null) {
+                    if (hasAValidUser(tokenEntity)) {
+                        startActivity(new Intent(PreLoginActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY));
+                    }
+                }
+            }
+        });
+    }
+
+    private boolean hasAValidUser(TokenEntity tokenEntity) {
+        if (tokenEntity != null) {
+            if (tokenEntity.getEmail() != null && tokenEntity.getPassword() != null) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -32,7 +32,6 @@ public class LoginActivity extends ActivityBaseClassValidator {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
 
         colorStatusBar(getWindow());
 
