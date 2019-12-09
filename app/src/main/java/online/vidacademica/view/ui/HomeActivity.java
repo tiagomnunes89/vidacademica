@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 
-import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
 
 import java.util.Random;
@@ -16,7 +15,6 @@ import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityHomeBinding;
 import online.vidacademica.view.enums.RoleEnum;
 
-import static java.lang.Math.random;
 import static online.vidacademica.view.enums.RoleEnum.TEACHER;
 import static online.vidacademica.view.ui.LoginActivity.ROLE;
 

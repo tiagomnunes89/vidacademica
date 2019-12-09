@@ -82,11 +82,7 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.CourseVi
             super(itemView);
             titulo = itemView.findViewById(R.id.name_course);
             status = itemView.findViewById(R.id.status_course);
-            descricao = itemView.findViewById(R.id.text_input_description_course);
-
-            itemView.setOnClickListener(v -> {
-                //Here you will put the action after click on item
-            });
+            descricao = itemView.findViewById(R.id.description_course);
         }
     }
 }
