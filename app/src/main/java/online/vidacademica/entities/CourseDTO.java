@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class CourseDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    private Integer id;
     private String name;
     private String description;
     private Double workload = 0.0;
@@ -18,10 +19,19 @@ public class CourseDTO implements Serializable {
     public CourseDTO() {
     }
 
-    public CourseDTO(String name, String description, boolean active) {
+    public CourseDTO(Integer id, String name, String description, boolean active) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.active = active;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
