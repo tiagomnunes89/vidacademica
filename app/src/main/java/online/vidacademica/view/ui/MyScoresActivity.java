@@ -30,7 +30,6 @@ public class MyScoresActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_scores);
 
         getScores();
-
         startRecycler();
     }
 
