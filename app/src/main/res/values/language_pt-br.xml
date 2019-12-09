@@ -136,5 +136,7 @@
     <string name="card_home_my_notes">Minhas\nNotas</string>
     <string name="card_home_assign_student">Associar\nAluno</string>
     <string name="cancel">cancelar</string>
+    <string name="edit_profile">Editar\nPerfil</string>
+    <string name="logout">Sair</string>
 
 </resources>

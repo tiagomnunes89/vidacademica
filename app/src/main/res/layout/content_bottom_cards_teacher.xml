@@ -59,7 +59,7 @@
 
                 <ImageView
                     android:layout_width="@dimen/large_size"
-                    android:layout_height="@dimen/large_size"
+                    android:layout_height="28dp"
                     android:contentDescription="@null"
                     android:src="@drawable/ic_button_add_white_24dp" />
 
@@ -144,7 +144,7 @@
                     android:layout_width="@dimen/large_size"
                     android:layout_height="@dimen/large_size"
                     android:contentDescription="@null"
-                    android:src="@drawable/ic_test" />
+                    android:src="@drawable/ic_tests" />
 
                 <TextView
                     android:layout_width="wrap_content"

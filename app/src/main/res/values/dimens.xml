@@ -11,6 +11,7 @@
     <dimen name="font_min_text_size">8sp</dimen>
 
     <!--Sizes-->
+    <dimen name="x_huge_size">110dp</dimen>
     <dimen name="huge_size">102dp</dimen>
     <dimen name="very_largest_size">96dp</dimen>
     <dimen name="xxxxx_largest_size">88dp</dimen>
