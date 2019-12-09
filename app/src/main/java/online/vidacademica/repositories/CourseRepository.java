@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import online.vidacademica.core.ErrorMessage;
@@ -67,6 +68,76 @@ public class CourseRepository {
 
             @Override
             public void onFailure(Call<CourseDTO> call, Throwable t) {
+                Log.i(TAG, "onFailure: " + Arrays.toString(t.getStackTrace()));
+            }
+        });
+
+        return mutableLiveDataObject;
+
+    }
+
+    public MutableLiveData<ResponseModel<CourseDTO>> update(CourseDTO courseDTO, final MutableLiveData<ResponseModel<CourseDTO>> mutableLiveDataObject) {
+
+        TokenEntity tokenEntity = Optional.of(tokenRepository.getTokenSync()).orElse(new TokenEntity());
+
+        String hash = "";
+        if (tokenEntity != null) {
+            hash = tokenEntity.getToken();
+        }
+
+        courseService.update(String.format("Bearer %s", hash), courseDTO.getId(), courseDTO).enqueue(new Callback<CourseDTO>() {
+            @Override
+            public void onResponse(Call<CourseDTO> call, Response<CourseDTO> response) {
+                ResponseModel<CourseDTO> responseModel = new ResponseModel<>();
+
+                responseModel.setCode(response.code());
+                responseModel.setResponse(response.body());
+
+                if (!response.isSuccessful()) {
+                    ErrorMessage err = new ErrorMessage(response.code(), JsonUtils.toJson(response.errorBody()));
+                    responseModel.setErrorMessage(err);
+                }
+
+                mutableLiveDataObject.setValue(responseModel);
+            }
+
+            @Override
+            public void onFailure(Call<CourseDTO> call, Throwable t) {
+                Log.i(TAG, "onFailure: " + Arrays.toString(t.getStackTrace()));
+            }
+        });
+
+        return mutableLiveDataObject;
+
+    }
+
+    public MutableLiveData<ResponseModel<List<CourseDTO>>> findAll(final MutableLiveData<ResponseModel<List<CourseDTO>>> mutableLiveDataObject) {
+
+        TokenEntity tokenEntity = Optional.of(tokenRepository.getTokenSync()).orElse(new TokenEntity());
+
+        String hash = "";
+        if (tokenEntity != null) {
+            hash = tokenEntity.getToken();
+        }
+
+        courseService.findAll(String.format("Bearer %s", hash)).enqueue(new Callback<List<CourseDTO>>() {
+            @Override
+            public void onResponse(Call<List<CourseDTO>> call, Response<List<CourseDTO>> response) {
+                ResponseModel<List<CourseDTO>> responseModel = new ResponseModel<>();
+
+                responseModel.setCode(response.code());
+                responseModel.setResponse(response.body());
+
+                if (!response.isSuccessful()) {
+                    ErrorMessage err = new ErrorMessage(response.code(), JsonUtils.toJson(response.errorBody()));
+                    responseModel.setErrorMessage(err);
+                }
+
+                mutableLiveDataObject.setValue(responseModel);
+            }
+
+            @Override
+            public void onFailure(Call<List<CourseDTO>> call, Throwable t) {
                 Log.i(TAG, "onFailure: " + Arrays.toString(t.getStackTrace()));
             }
         });

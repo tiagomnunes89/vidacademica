@@ -51,6 +51,7 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.CourseVi
     @Override
     public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
         CourseDTO courseDTO = courses.get(position);
+
         holder.titulo.setText(courseDTO.getName());
         holder.status.setText(courseDTO.isActiveString());
         holder.descricao.setText(courseDTO.getDescription());
@@ -83,10 +84,8 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.CourseVi
             titulo = itemView.findViewById(R.id.name_course);
             status = itemView.findViewById(R.id.status_course);
             descricao = itemView.findViewById(R.id.description_course);
-
-            itemView.setOnClickListener(v -> {
-                //Here you will put the action after click on item
-            });
         }
+
+
     }
 }

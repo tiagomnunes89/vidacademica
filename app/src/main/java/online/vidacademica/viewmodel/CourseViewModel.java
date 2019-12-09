@@ -14,6 +14,7 @@ import online.vidacademica.entities.CourseDTO;
 import online.vidacademica.repositories.CourseRepository;
 
 import static online.vidacademica.repositories.network.vidacademica.VidAcademicaWSConstants.STATUS_CODE_CREATED;
+import static online.vidacademica.repositories.network.vidacademica.VidAcademicaWSConstants.STATUS_CODE_OK;
 
 public class CourseViewModel extends AndroidViewModel {
 
@@ -22,7 +23,7 @@ public class CourseViewModel extends AndroidViewModel {
     public CourseDTO courseDTO = new CourseDTO();
 
     private MutableLiveData<ResponseModel<CourseDTO>> courseDTOResponse;
-    private MutableLiveData<List<ResponseModel<CourseDTO>>> allCoursesResponse;
+    private MutableLiveData<ResponseModel<List<CourseDTO>>> allCoursesResponse;
 
     public CourseViewModel(@NonNull Application application) {
         super(application);
@@ -33,7 +34,11 @@ public class CourseViewModel extends AndroidViewModel {
         courseRepository.insert(courseDTO, courseDTOResponse);
     }
 
-    public LiveData<ResponseModel<CourseDTO>> getLastCourseCreated() {
+    public void updateCourse() {
+        courseRepository.update(courseDTO, courseDTOResponse);
+    }
+
+    public LiveData<ResponseModel<CourseDTO>> getLastCourseCreatedUpdated() {
         if (courseDTOResponse == null) courseDTOResponse = new MutableLiveData<>();
         return courseDTOResponse;
     }
@@ -41,15 +46,26 @@ public class CourseViewModel extends AndroidViewModel {
     public boolean lastCourseCreated() {
         boolean response = false;
 
-        if (getLastCourseCreated() != null && getLastCourseCreated().getValue() != null && getLastCourseCreated().getValue().getCode() == STATUS_CODE_CREATED) {
+        if (getLastCourseCreatedUpdated() != null && getLastCourseCreatedUpdated().getValue() != null && getLastCourseCreatedUpdated().getValue().getCode() == STATUS_CODE_CREATED) {
             response = true;
         }
 
         return response;
     }
 
-    public LiveData<List<ResponseModel<CourseDTO>>> getAllCourses() {
+    public boolean lastCourseUpdated() {
+        boolean response = false;
+
+        if (getLastCourseCreatedUpdated() != null && getLastCourseCreatedUpdated().getValue() != null && getLastCourseCreatedUpdated().getValue().getCode() == STATUS_CODE_OK) {
+            response = true;
+        }
+
+        return response;
+    }
+
+    public MutableLiveData<ResponseModel<List<CourseDTO>>> getAllCourses() {
         if (allCoursesResponse == null) allCoursesResponse = new MutableLiveData<>();
+        courseRepository.findAll(allCoursesResponse);
         return allCoursesResponse;
     }
 

@@ -1,17 +1,17 @@
 package online.vidacademica.utils;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.icu.util.Calendar;
+import android.widget.TimePicker;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Util {
-
-    private DatePickerDialog dialog;
     private static final String REGEX_DDD = "\\([1-9]{2}\\)";
     private static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^((?!.*?\\.\\.)[A-Za-z0-9._-]+@[A-Za-z0-9]+[A-Za-z0-9\\-.]+\\" +
@@ -22,23 +22,34 @@ public class Util {
             + "(( [A-ZÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ'`]{1,}( [A-ZÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ'`]{2,}){1,}))* *)$", Pattern.CASE_INSENSITIVE);
     public static final String BIRTH_DATE_REGEX = "^([0-2][0-9]|(3)[0-1])(\\/)(((0)[0-9])|((1)[0-2]))(\\/)\\d{4}$";
 
-    public void callDatePickerDialog(Context context, DatePickerDialog.OnDateSetListener onDateSetListener) {
-
+    public static void callDatePickerDialog(Context context, DatePickerDialog.OnDateSetListener onDateSetListener) {
+       DatePickerDialog dialog;
         Calendar cal = Calendar.getInstance();
 
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
-        if (dialog == null) {
             dialog = new DatePickerDialog(
                     context,
                     android.R.style.Theme_DeviceDefault_Light_Dialog,
                     onDateSetListener,
                     year, month, day);
-        }
+
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
         dialog.show();
+    }
+
+    public static void callTimePickerDialog(Context context, TimePickerDialog.OnTimeSetListener onTimeSetListener, String title) {
+
+        Calendar currentTime = Calendar.getInstance();
+        int hour = currentTime.get(Calendar.HOUR_OF_DAY);
+        int minute = currentTime.get(Calendar.MINUTE);
+
+        TimePickerDialog timePicker;
+        timePicker = new TimePickerDialog(context, onTimeSetListener, hour, minute, true);
+        timePicker.setTitle(title);
+        timePicker.show();
     }
 
     public static boolean validatePhoneNumber(String phoneNumber) {
