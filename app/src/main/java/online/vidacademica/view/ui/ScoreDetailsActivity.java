@@ -1,8 +1,9 @@
 package online.vidacademica.view.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,7 +17,7 @@ import online.vidacademica.databinding.ActivityScoreDetailsBinding;
 import online.vidacademica.entities.TestResultDTO;
 import online.vidacademica.view.adapter.ScoreDetailsAdapter;
 
-public class ScoreDetailsActivity extends AppCompatActivity {
+public class ScoreDetailsActivity extends BaseActivity {
 
     List<TestResultDTO> testResultDTOList = new ArrayList<>();
 
@@ -35,6 +36,31 @@ public class ScoreDetailsActivity extends AppCompatActivity {
         binding.layoutContentMyScores.titleMyScoresPerSubject.setText(testResultDTOList.get(0).getSubjectName());
 
         startRecycler();
+    }
+
+    @Override
+    protected void captureIntent() {
+
+    }
+
+    @Override
+    protected void alertYes(int actionCustomIdentifier) {
+
+    }
+
+    @Override
+    protected void alertNo(int actionCustomIdentifier) {
+
+    }
+
+    @Override
+    protected void observeFields() {
+
+    }
+
+    @Override
+    protected void observeActions() {
+
     }
 
     private void startRecycler() {

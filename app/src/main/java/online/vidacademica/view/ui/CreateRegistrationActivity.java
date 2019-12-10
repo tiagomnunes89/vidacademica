@@ -1,30 +1,24 @@
 package online.vidacademica.view.ui;
 
-import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
-
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Spinner;
-import android.widget.Toast;
+
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import online.vidacademica.R;
-import online.vidacademica.core.ResponseModel;
 import online.vidacademica.databinding.ActivityCreateRegistrationBinding;
 import online.vidacademica.entities.ClassDTO;
-
 import online.vidacademica.entities.RegistrationDTO;
 import online.vidacademica.entities.UserEntity;
 import online.vidacademica.view.adapter.StudentsAdapter;
@@ -40,12 +34,19 @@ public class CreateRegistrationActivity extends BaseActivity {
     RegistrationDTO registrationDTO = new RegistrationDTO();
 
     private CreateRegistrationViewModel createRegistrationViewModel;
+    private ActivityCreateRegistrationBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_registration);
         createRegistrationViewModel = ViewModelProviders.of(this).get(CreateRegistrationViewModel.class);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_create_registration);
+        binding.setLifecycleOwner(this);
+//        binding.setCreateRegistrationViewModel(createRegistrationViewModel);
+
+        binding.imageViewBack.setOnClickListener(v -> onBackPressed());
 
 
         //Preencher a lista dos ja matriculados
@@ -165,7 +166,6 @@ public class CreateRegistrationActivity extends BaseActivity {
                     });
 
 
-
                 } else {
                     showToast("Erro");
 
@@ -180,13 +180,8 @@ public class CreateRegistrationActivity extends BaseActivity {
     public void attachStudent(View view) {
         AutoCompleteTextView name_student = findViewById(R.id.text_input_name_student);
         registrationDTO.setUser(name_student.getText().toString());
-       createRegistrationViewModel.attachStudent(registrationDTO);
+        createRegistrationViewModel.attachStudent(registrationDTO);
 
-        startActivity(new Intent(CreateRegistrationActivity.this,CreateRegistrationActivity.class));
+        startActivity(new Intent(CreateRegistrationActivity.this, CreateRegistrationActivity.class));
     }
-
-
-
-
-
 }

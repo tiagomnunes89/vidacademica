@@ -4,8 +4,8 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -16,7 +16,7 @@ import online.vidacademica.presentation.SingletonClassEntity;
 import online.vidacademica.utils.Util;
 import online.vidacademica.view.adapter.WeekEntriesAdapter;
 
-public class CreateSubjectActivity extends AppCompatActivity {
+public class CreateSubjectActivity extends BaseActivity {
     private static final String TAG = "CreateSubjectActivity";
     private DatePickerDialog.OnDateSetListener onDateSetListenerStart;
     private DatePickerDialog.OnDateSetListener onDateSetListenerFinal;
@@ -30,6 +30,10 @@ public class CreateSubjectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_create_subject);
         binding.setLifecycleOwner(this);
+
+        binding.imageViewBack.setOnClickListener(v -> {
+            startActivity(new Intent(CreateSubjectActivity.this, HomeActivity.class));
+        });
 
         classEntity = new ClassEntity();
         if (SingletonClassEntity.INSTANCE.getClassEntity() == null) {
@@ -53,7 +57,6 @@ public class CreateSubjectActivity extends AppCompatActivity {
             String date = day + "/" + month + "/" + year;
             binding.layoutCreateSubjectContent.inputFinalDate.setText(date);
         };
-        binding.imageViewBack.setOnClickListener(v -> onBackPressed());
 
         binding.layoutCreateSubjectContent.containerAddSchedule.setOnClickListener(v ->
                 startActivity(new Intent(CreateSubjectActivity.this, AddHourClassActivity.class)));
@@ -61,6 +64,30 @@ public class CreateSubjectActivity extends AppCompatActivity {
         startRecycler();
     }
 
+    @Override
+    protected void captureIntent() {
+
+    }
+
+    @Override
+    protected void alertYes(int actionCustomIdentifier) {
+
+    }
+
+    @Override
+    protected void alertNo(int actionCustomIdentifier) {
+
+    }
+
+    @Override
+    protected void observeFields() {
+
+    }
+
+    @Override
+    protected void observeActions() {
+
+    }
 
 
     @Override

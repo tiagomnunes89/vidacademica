@@ -1,11 +1,11 @@
 package online.vidacademica.view.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,7 +18,7 @@ import online.vidacademica.databinding.ActivitySubjectsStudentBinding;
 import online.vidacademica.entities.WeekDayDTO;
 import online.vidacademica.view.adapter.WeekDayAdapter;
 
-public class SubjectsStudent extends AppCompatActivity {
+public class SubjectsStudent extends BaseActivity {
 
     List<WeekDayDTO> weekDayDTOList = new ArrayList<>();
     List<WeekDayDTO> weekDayDTOListLogistica = new ArrayList<>();
@@ -43,10 +43,10 @@ public class SubjectsStudent extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                if(position==0){
+                if (position == 0) {
                     startRecycler(weekDayDTOList);
-                } else{
-                   startRecycler(weekDayDTOListLogistica);
+                } else {
+                    startRecycler(weekDayDTOListLogistica);
                 }
             }
 
@@ -55,6 +55,31 @@ public class SubjectsStudent extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void captureIntent() {
+
+    }
+
+    @Override
+    protected void alertYes(int actionCustomIdentifier) {
+
+    }
+
+    @Override
+    protected void alertNo(int actionCustomIdentifier) {
+
+    }
+
+    @Override
+    protected void observeFields() {
+
+    }
+
+    @Override
+    protected void observeActions() {
+
     }
 
     private void getWeekDayDTO() {

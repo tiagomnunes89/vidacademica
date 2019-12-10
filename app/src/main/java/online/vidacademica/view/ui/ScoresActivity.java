@@ -1,14 +1,14 @@
 package online.vidacademica.view.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -17,12 +17,11 @@ import java.util.List;
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityScoresBinding;
 import online.vidacademica.entities.ScoreBySubject;
-import online.vidacademica.entities.SubjectDTO;
 import online.vidacademica.entities.TestResultDTO;
 import online.vidacademica.entities.weak.SubjectByCourseDTO;
 import online.vidacademica.view.adapter.ScoresAdapter;
 
-public class ScoresActivity extends AppCompatActivity {
+public class ScoresActivity extends BaseActivity {
 
     List<ScoreBySubject> scoreBySubjectList = new ArrayList<>();
     List<ScoreBySubject> scoreBySubjectListLogistica = new ArrayList<>();
@@ -42,7 +41,7 @@ public class ScoresActivity extends AppCompatActivity {
         getCoursesByOwner();
         generateSubjectByCourse();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                (this,android.R.layout.simple_list_item_1,spinnerContent);
+                (this, android.R.layout.simple_list_item_1, spinnerContent);
         binding.layoutContentMyScores.spinner.setAdapter(adapter);
 
         getScores();
@@ -51,9 +50,9 @@ public class ScoresActivity extends AppCompatActivity {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position==0){
+                if (position == 0) {
                     startRecycler(scoreBySubjectList);
-                } else{
+                } else {
                     startRecycler(scoreBySubjectListLogistica);
                 }
             }
@@ -63,8 +62,34 @@ public class ScoresActivity extends AppCompatActivity {
 
             }
         });
+
+        binding.imageViewBack.setOnClickListener(v -> onBackPressed());
     }
 
+    @Override
+    protected void captureIntent() {
+
+    }
+
+    @Override
+    protected void alertYes(int actionCustomIdentifier) {
+
+    }
+
+    @Override
+    protected void alertNo(int actionCustomIdentifier) {
+
+    }
+
+    @Override
+    protected void observeFields() {
+
+    }
+
+    @Override
+    protected void observeActions() {
+
+    }
 
 
     private void startRecycler(List<ScoreBySubject> list) {
@@ -94,8 +119,8 @@ public class ScoresActivity extends AppCompatActivity {
 
         //Mock listas e teste para devolver a lista de subjects pro spinner(somente teste)
 
-            scoreBySubjectList.add(sbs1);
-            scoreBySubjectList.add(sbs2);
+        scoreBySubjectList.add(sbs1);
+        scoreBySubjectList.add(sbs2);
         scoreBySubjectListLogistica.add(sbs3);
 
     }
@@ -113,9 +138,9 @@ public class ScoresActivity extends AppCompatActivity {
 
         //Calcula nota final de acordo com materia
 
-        for (TestResultDTO score: testResultDTOList) {
-            for (ScoreBySubject subject: scoreBySubjectList) {
-                if(subject.getSubject().equals(score.getSubjectName())){
+        for (TestResultDTO score : testResultDTOList) {
+            for (ScoreBySubject subject : scoreBySubjectList) {
+                if (subject.getSubject().equals(score.getSubjectName())) {
                     subject.addToSubjectTotalScore(score.getScore());
                 }
             }

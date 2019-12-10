@@ -19,7 +19,7 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/a_woman_using_our_app"
             android:fitsSystemWindows="true"
-            android:src="@drawable/pre_login_photo"
+            android:src="@drawable/screen_home_photo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -27,8 +27,8 @@
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
-            android:layout_width="117dp"
-            android:layout_height="138dp"
+            android:layout_width="@dimen/xx_largest_size"
+            android:layout_height="@dimen/xx_largest_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,8 +42,23 @@
             android:layout_marginTop="@dimen/x_largest_size"
             android:contentDescription="@string/arrow_to_back"
             android:src="@drawable/ic_logo_dark_va"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name_app"
+            android:textAllCaps="true"
+            android:layout_marginTop="@dimen/xxx_largest_size"
+            android:fontFamily="@font/century_gothic"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_large_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/splash_image_icon_app"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

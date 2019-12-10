@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityLoginBinding;
 import online.vidacademica.entities.TokenEntity;
+import online.vidacademica.presentation.SingletonToken;
 import online.vidacademica.view.enums.RoleEnum;
 import online.vidacademica.view.validation.ActivityBaseClassValidator;
 import online.vidacademica.viewmodel.LoginViewModel;
@@ -86,7 +87,7 @@ public class LoginActivity extends ActivityBaseClassValidator {
                     USER_ROLE = RoleEnum.fromString(tokenEntity.getRole());
                     startActivity(new Intent(LoginActivity.this, HomeActivity.class)
                             .putExtra(ROLE, USER_ROLE));
-
+                    SingletonToken.createTokenEntity(tokenEntity);
                 }
             }
         });

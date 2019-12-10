@@ -53,6 +53,8 @@ public class CreateUpdateCourseActivity extends ActivityBaseClassValidator {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_create_update_course);
         binding.setLifecycleOwner(this);
 
+        binding.imageViewBack.setOnClickListener(v -> onBackPressed());
+
         captureIntent();
         setUpActivityFlow();
 
@@ -64,7 +66,6 @@ public class CreateUpdateCourseActivity extends ActivityBaseClassValidator {
 
         observeFields();
         observeActions();
-
     }
 
     @Override

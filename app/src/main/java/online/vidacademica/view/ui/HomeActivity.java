@@ -15,6 +15,7 @@ import java.util.Random;
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityHomeBinding;
 import online.vidacademica.entities.UserEntity;
+import online.vidacademica.presentation.SingletonToken;
 import online.vidacademica.view.enums.CrudEnum;
 import online.vidacademica.view.enums.RoleEnum;
 import online.vidacademica.viewmodel.LoginViewModel;
@@ -71,6 +72,12 @@ public class HomeActivity extends BaseActivity {
         observeActions();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        captureIntent();
+    }
+
     private void inflateCards(Integer layoutViewId) {
         View layout = inflater.inflate(layoutViewId, null);
 
@@ -87,20 +94,8 @@ public class HomeActivity extends BaseActivity {
 
         inflateCards(R.layout.content_bottom_cards);
 
-        binding.layoutContentBottomCards.cardViewMyNotes.setOnClickListener(v -> startActivity(
-                new Intent(this, ScoresActivity.class)));
-
-        binding.layoutContentBottomCards.cardViewMySubjects.setOnClickListener(v -> startActivity(
-                new Intent(this, ListMySubjectsActivity.class)));
-
-        binding.imageViewBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showAlert(R.string.home_alert_close_title, R.string.home_alert_close_message, 0);
-            }
-        });
-
-
+        binding.imageViewClose.setOnClickListener(view ->
+                showAlert(R.string.home_alert_close_title, R.string.home_alert_close_message, 0));
     }
 
     private void randomProfilePhoto() {
@@ -121,7 +116,13 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void captureIntent() {
-        USER_ROLE = (RoleEnum) getIntent().getSerializableExtra(ROLE);
+        if(getIntent().getSerializableExtra(ROLE) != null){
+            USER_ROLE = (RoleEnum) getIntent().getSerializableExtra(ROLE);
+        } else if (SingletonToken.INSTANCE.getTokenEntity() != null) {
+            USER_ROLE = RoleEnum.fromString(SingletonToken.INSTANCE.getTokenEntity().getRole());
+        } else {
+            startActivity(new Intent(this,PreLoginActivity.class));
+        }
     }
 
     @Override
@@ -152,32 +153,13 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void observeActions() {
-        binding.imageViewBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showAlert(R.string.home_alert_close_title, R.string.home_alert_close_message, 0);
-            }
-        });
-        binding.homeButtonEditProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                editProfile(view);
-            }
-        });
+        binding.imageViewClose.setOnClickListener(view ->
+                showAlert(R.string.home_alert_close_title, R.string.home_alert_close_message, 0));
+        binding.homeButtonEditProfile.setOnClickListener(view -> editProfile(view));
 
-        binding.homeButtonEditProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                editProfile(view);
-            }
-        });
+        binding.homeButtonEditProfile.setOnClickListener(view -> editProfile(view));
 
-        binding.homeTextEditProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                editProfile(view);
-            }
-        });
+        binding.homeTextEditProfile.setOnClickListener(view -> editProfile(view));
         userViewModel.getIsResponseModelLiveData().observe(this, userEntityResponseModel -> {
             dismissProgressBar();
             boolean isUpdated = userViewModel.isUpdated();

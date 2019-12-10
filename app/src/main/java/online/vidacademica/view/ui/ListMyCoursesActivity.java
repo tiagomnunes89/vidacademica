@@ -36,6 +36,8 @@ public class ListMyCoursesActivity extends BaseActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_list_my_courses);
         binding.setLifecycleOwner(this);
 
+        binding.imageViewBack.setOnClickListener(v -> onBackPressed());
+
         showProgressBar(R.id.courses_screen);
 
         observeActions();

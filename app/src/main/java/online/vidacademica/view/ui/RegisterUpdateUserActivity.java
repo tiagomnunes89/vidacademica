@@ -3,21 +3,16 @@ package online.vidacademica.view.ui;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
-
-import com.google.gson.Gson;
 
 import java.util.Arrays;
 import java.util.Optional;
 
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityRegisterBinding;
-import online.vidacademica.entities.CourseDTO;
 import online.vidacademica.utils.DateFormatUtils;
 import online.vidacademica.utils.Util;
 import online.vidacademica.view.enums.CrudEnum;
@@ -31,7 +26,6 @@ import online.vidacademica.viewmodel.LoginViewModel;
 import online.vidacademica.viewmodel.UserViewModel;
 
 import static online.vidacademica.view.adapter.CoursesAdapter.CRUD_TYPE;
-import static online.vidacademica.view.adapter.CoursesAdapter.SELECTED_OBJECT;
 import static online.vidacademica.view.validation.Validator.executeAllValidators;
 
 public class RegisterUpdateUserActivity extends ActivityBaseClassValidator {

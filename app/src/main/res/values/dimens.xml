@@ -2,6 +2,7 @@
 <resources>
 
     <!-- Text Dimensions -->
+    <dimen name="font_large_title">40sp</dimen>
     <dimen name="font_primary_title">24sp</dimen>
     <dimen name="font_normal_text">20sp</dimen>
     <dimen name="font_secondary_title">18sp</dimen>
@@ -11,6 +12,8 @@
     <dimen name="font_min_text_size">8sp</dimen>
 
     <!--Sizes-->
+    <dimen name="monster_size">296dp</dimen>
+    <dimen name="x_huge_size">110dp</dimen>
     <dimen name="huge_size">102dp</dimen>
     <dimen name="very_largest_size">96dp</dimen>
     <dimen name="xxxxx_largest_size">88dp</dimen>
@@ -31,5 +34,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+
 
 </resources>
