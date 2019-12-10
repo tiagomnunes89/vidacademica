@@ -126,6 +126,10 @@ public class HomeActivity extends BaseActivity {
                 startActivity(openSplashActivity);
                 finish();
                 break;
+            case 1:
+                Intent intent = new Intent(HomeActivity.this, RegisterUpdateUserActivity.class).putExtra(CRUD_TYPE, UPDATE);
+                startActivity(intent);
+                break;
         }
     }
 
@@ -171,9 +175,7 @@ public class HomeActivity extends BaseActivity {
     }
 
     public void editProfile(View view) {
-        Intent intent = new Intent(HomeActivity.this, RegisterUpdateUserActivity.class)
-                .putExtra(CRUD_TYPE, UPDATE);
-        startActivity(intent);
+        showAlert(R.string.app_title_alert, R.string.home_alert_confirm_edit, 1);
     }
 
     public void openMyCourses(View view) {

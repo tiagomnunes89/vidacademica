@@ -82,9 +82,11 @@ public class TokenRepository {
                 data.setValue(responseModel);
 
                 TokenEntity fullTokenEntity = Objects.requireNonNull(data.getValue()).getResponse();
-                fullTokenEntity.setPassword(tokenEntity.getPassword());
 
-                insert(fullTokenEntity);
+                if (fullTokenEntity != null) {
+                    fullTokenEntity.setPassword(tokenEntity.getPassword());
+                    insert(fullTokenEntity);
+                }
 
             }
 

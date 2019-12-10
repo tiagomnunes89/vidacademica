@@ -32,7 +32,7 @@ public class UserEntity implements Serializable {
         this.password = password;
     }
 
-    public UserEntity(String name){
+    public UserEntity(String name) {
         this.name = name;
     }
 
@@ -62,17 +62,21 @@ public class UserEntity implements Serializable {
 
     public String getDateOfBirth() {
         String response = "";
+
         if (dateOfBirth != null) {
             String[] mesAnoDia = dateOfBirth.toString().split("\\-");
             response = String.format("%s/%s/%s", mesAnoDia[2], mesAnoDia[0], mesAnoDia[1]);
         }
+
         return response;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void setDateOfBirth(String dateOfBirth) {
-        String[] splittedDate = dateOfBirth.split("\\/");
-        this.dateOfBirth = String.format("%s-%s-%sT00:00:00Z", Integer.parseInt(splittedDate[2]), Integer.parseInt(splittedDate[1]), Integer.parseInt(splittedDate[0]));
+        if (dateOfBirth != null) {
+            String[] splittedDate = dateOfBirth.split("\\/");
+            this.dateOfBirth = String.format("%s-%s-%sT00:00:00Z", Integer.parseInt(splittedDate[2]), Integer.parseInt(splittedDate[1]), Integer.parseInt(splittedDate[0]));
+        }
     }
 
     public String getSocialId() {
