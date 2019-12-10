@@ -89,7 +89,7 @@ public class RegisterUpdateUserActivity extends ActivityBaseClassValidator {
                 CourseDTO selectedCourse = new Gson().fromJson(selectedCourseJson, CourseDTO.class);
 
                 if (selectedCourse != null) {
-                    courseViewModel.courseDTO = selectedCourse;
+//                    courseViewModel.courseDTO = selectedCourse;
                 }
             }
         }

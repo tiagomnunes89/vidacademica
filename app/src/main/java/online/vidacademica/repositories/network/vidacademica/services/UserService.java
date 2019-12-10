@@ -22,7 +22,7 @@ public interface UserService {
     Call<UserEntity> registerUser(@Body UserEntity userEntity);
 
     @PUT(VidAcademicaWSConstants.USER_PATH_ID)
-    Call<UserEntity> updateUser(@Path("id") Long userId, @Header(AUTH_HEADER_KEY) String bearerToken, @Body UserEntity userEntity);
+    Call<UserEntity> update(@Header(AUTH_HEADER_KEY) String bearerToken, @Path("id") Long userId, @Body UserEntity userEntity);
 
     @GET(VidAcademicaWSConstants.USER_PATH)
     Call<UserEntity> self(@Header(AUTH_HEADER_KEY) String bearerToken);
