@@ -14,6 +14,7 @@ import java.util.Random;
 
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityHomeBinding;
+import online.vidacademica.view.enums.CrudEnum;
 import online.vidacademica.view.enums.RoleEnum;
 import online.vidacademica.viewmodel.LoginViewModel;
 
@@ -30,6 +31,11 @@ public class HomeActivity extends BaseActivity {
     private LayoutInflater inflater;
 
     private LoginViewModel loginViewModel;
+
+    public static final String CRUD_TYPE = "CRUD_TYPE";
+    private static final CrudEnum UPDATE = CrudEnum.UPDATE;
+
+    public static final String SELECTED_OBJECT = "SELECTED_OBJECT";
 
     private static final String RANDOM_PROFILE_IMG = String.format("monster%s", new Random().nextInt(8));
 
@@ -141,6 +147,15 @@ public class HomeActivity extends BaseActivity {
                 showAlert(R.string.home_alert_close_title, R.string.home_alert_close_message, 0);
             }
         });
+        binding.homeButtonEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, RegisterUpdateUserActivity.class)
+                        .putExtra(CRUD_TYPE, UPDATE);
+                startActivity(intent);
+            }
+        });
+
     }
 
     public void openMyCourses(View view) {

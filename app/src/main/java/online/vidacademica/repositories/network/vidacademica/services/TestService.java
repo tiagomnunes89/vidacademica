@@ -11,10 +11,12 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 
+import static online.vidacademica.repositories.network.vidacademica.VidAcademicaWSConstants.AUTH_HEADER_KEY;
+
 public interface TestService {
     @GET(VidAcademicaWSConstants.COURSE_PATH)
-    Call<List<TestEntity>> getAllUsers(@Header("Authorization") String bearerToken);
+    Call<List<TestEntity>> getAllUsers(@Header(AUTH_HEADER_KEY) String bearerToken);
 
     @POST(VidAcademicaWSConstants.TEST_PATH)
-    Call<TestEntity> insert(@Header("Authorization") String token, @Body TestEntity testEntity);
+    Call<TestEntity> insert(@Header(AUTH_HEADER_KEY) String token, @Body TestEntity testEntity);
 }

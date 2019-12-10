@@ -88,6 +88,9 @@
     <string name="app_field_description">Descrição</string>
     <string name="app_field_status">Status</string>
 
+    <!--Tela de Registro-->
+    <string name="register_title_update">Atualização</string>
+
     <!--Tela de Login-->
     <string name="login_toast_in_loading">Realizando o login… Aguarde.</string>
     <string name="login_toast_error">Usuário ou senha inválido.</string>

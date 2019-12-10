@@ -3,6 +3,8 @@ package online.vidacademica.repositories.network.vidacademica;
 public final class VidAcademicaWSConstants {
     static final String BASE_URL = "https://vidacademica-services.herokuapp.com";
 
+    public static final String AUTH_HEADER_KEY = "Authorization";
+
     public static final int STATUS_CODE_OK = 200;
     public static final int STATUS_CODE_CREATED = 201;
     public static final int STATUS_CODE_NO_CONTENT = 204;
@@ -13,6 +15,7 @@ public final class VidAcademicaWSConstants {
     public static final String AUTH_PATH_LOGIN = AUTH_PATH + "/login";
 
     public static final String USER_PATH = "/users";
+    public static final String USER_PATH_ID = "/users/{id}";
 
     public static final String TEST_PATH = "/tests";
 
