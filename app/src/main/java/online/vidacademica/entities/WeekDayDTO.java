@@ -1,4 +1,4 @@
-package online.vidacademica.entities.weak;
+package online.vidacademica.entities;
 
 import java.io.Serializable;
 

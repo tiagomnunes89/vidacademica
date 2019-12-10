@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.ui.ListMySubjectsActivity">
+    tools:context=".presentation.ui.ListMyCoursesActivity">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/toolbar"
@@ -37,22 +46,11 @@
 
     <include
         android:id="@+id/layout_create_test_content"
-        layout="@layout/content_list_my_subjects"
+        layout="@layout/content_list_my_subjects_student"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="@dimen/short_size"
         app:layout_constraintBottom_toTopOf="@+id/floating_button_add"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floating_button_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/default_size"
-        android:backgroundTint="#2196F3"
-        android:src="@drawable/ic_add_black_24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-    </com.google.android.material.floatingactionbutton.FloatingActionButton>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

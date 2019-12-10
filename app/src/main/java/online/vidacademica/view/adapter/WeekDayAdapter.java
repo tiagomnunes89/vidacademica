@@ -1,8 +1,6 @@
 package online.vidacademica.view.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,18 +14,15 @@ import java.util.List;
 import java.util.Locale;
 
 import online.vidacademica.R;
-import online.vidacademica.entities.ScoreBySubject;
+import online.vidacademica.entities.WeekDayDTO;
 import online.vidacademica.view.enums.CrudEnum;
-import online.vidacademica.view.ui.ScoreDetailsActivity;
 
-import static online.vidacademica.utils.JsonUtils.toJson;
-
-public class ScoresAdapter extends RecyclerView.Adapter<ScoresAdapter.ScoresViewHolder> {
+public class WeekDayAdapter extends RecyclerView.Adapter<WeekDayAdapter.WeekDayViewHolder> {
     private static final String TAG = CoursesAdapter.class.getSimpleName();
 
     private Context context;
 
-    private List<ScoreBySubject> scoreBySubjects = new ArrayList<>();
+    private List<WeekDayDTO> weekDayDTOList = new ArrayList<>();
 
     private LayoutInflater layoutInflater;
 
@@ -36,53 +31,44 @@ public class ScoresAdapter extends RecyclerView.Adapter<ScoresAdapter.ScoresView
 
     public static final String SELECTED_OBJECT = "SELECTED_OBJECT";
 
-    public ScoresAdapter(Context context, List<ScoreBySubject> scoreBySubjects) {
+    public WeekDayAdapter(Context context, List<WeekDayDTO> weekDayDTOList) {
         this.context = context;
-        this.scoreBySubjects = scoreBySubjects;
+        this.weekDayDTOList = weekDayDTOList;
         this.layoutInflater = LayoutInflater.from(context);
     }
 
     @NonNull
     @Override
-    public ScoresViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.item_recycler_scores, parent, false);
-        return new ScoresViewHolder(view);
+    public WeekDayViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = layoutInflater.inflate(R.layout.item_recycler_subject_student, parent, false);
+        return new WeekDayViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ScoresViewHolder holder, int position) {
-        ScoreBySubject score = scoreBySubjects.get(position);
+    public void onBindViewHolder(@NonNull WeekDayViewHolder holder, int position) {
+        WeekDayDTO weekDay = weekDayDTOList.get(position);
         Locale.setDefault(Locale.US);
-        holder.nota.setText(Double.toString(score.getSubjectTotalScore()));
-        holder.titulo_materia.setText(score.getSubject());
-
-        holder.itemView.setOnClickListener(v -> {
-            Log.i(TAG, "onBindViewHolder: " + toJson(scoreBySubjects.get(position)));
-
-            Intent intent = new Intent(context, ScoreDetailsActivity.class)
-                    .putExtra(CRUD_TYPE, UPDATE)
-                    .putExtra(SELECTED_OBJECT, toJson(scoreBySubjects.get(position)));
-
-            context.startActivity(intent);
-
-        });
-
+        holder.titulo_materia.setText(weekDay.getSubjectTitle());
+        holder.diaSemana.setText(weekDay.getWeekDay());
+        holder.horario.setText(weekDay.getTimeStart()+" - "+weekDay.getTimeEnd());
     }
 
     @Override
     public int getItemCount() {
-        return scoreBySubjects.size();
+        return weekDayDTOList.size();
     }
 
-    public class ScoresViewHolder extends RecyclerView.ViewHolder {
-        //item_titulo_materia_em_minhas_notas
-        TextView titulo_materia;
-        TextView nota;
+    public class WeekDayViewHolder extends RecyclerView.ViewHolder {
 
-        public ScoresViewHolder(@NonNull View itemView) {
+        TextView titulo_materia;
+        TextView diaSemana;
+        TextView horario;
+
+        public WeekDayViewHolder(@NonNull View itemView) {
             super(itemView);
-            nota = itemView.findViewById(R.id.item_score);
             titulo_materia = itemView.findViewById(R.id.item_titulo_materia);
+            diaSemana = itemView.findViewById(R.id.item_dia_semana);
+            horario = itemView.findViewById(R.id.item_horarioInicioEFim);
         }
     }
 }

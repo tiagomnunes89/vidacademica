@@ -22,7 +22,7 @@ public class ListMySubjectsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_my_subjects);
 
-        // Metodo para buscar Subjects
+        // Metodo para buscar SubjectsStudent
 
         getSubjects();
 
