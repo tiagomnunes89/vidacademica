@@ -16,7 +16,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="@dimen/default_size">
+            android:paddingStart="@dimen/x_largest_size"
+            android:paddingEnd="@dimen/x_largest_size">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_view_my_course"

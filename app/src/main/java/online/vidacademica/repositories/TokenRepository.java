@@ -82,9 +82,11 @@ public class TokenRepository {
                 data.setValue(responseModel);
 
                 TokenEntity fullTokenEntity = Objects.requireNonNull(data.getValue()).getResponse();
-                fullTokenEntity.setPassword(tokenEntity.getPassword());
 
-                insert(fullTokenEntity);
+                if (fullTokenEntity != null) {
+                    fullTokenEntity.setPassword(tokenEntity.getPassword());
+                    insert(fullTokenEntity);
+                }
 
             }
 
@@ -140,8 +142,26 @@ public class TokenRepository {
 
         @Override
         protected Void doInBackground(TokenEntity... params) {
+            dao.insertAndDelete(params[0]);
+            return null;
+        }
+    }
+
+    public void deleteAll() {
+        new DeleteAsyncTask(dao).execute();
+    }
+
+    private class DeleteAsyncTask extends AsyncTask<Void, Void, Void> {
+
+        private TokenDao dao;
+
+        DeleteAsyncTask(TokenDao dao) {
+            this.dao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
             dao.deleteAll();
-            dao.insert(params[0]);
             return null;
         }
     }

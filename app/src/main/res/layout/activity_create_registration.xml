@@ -6,6 +6,9 @@
 
     <data>
 
+        <variable
+            name="CreateRegistrationViewModel"
+            type="online.vidacademica.viewmodel.CreateRegistrationViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,11 +52,11 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/short_size"
-            app:layout_constraintBottom_toTopOf="@id/btn_save_course"
+            app:layout_constraintBottom_toTopOf="@id/btn_save_registration"
             app:layout_constraintTop_toBottomOf="@id/toolbar_registration" />
 
         <Button
-            android:id="@+id/btn_save_course"
+            android:id="@+id/btn_save_registration"
             style="@style/AppTheme.Button.Blue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

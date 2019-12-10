@@ -4,15 +4,15 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityProfileBinding;
 import online.vidacademica.utils.Util;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends BaseActivity {
 
     private static final String TAG = "ProfileActivity";
     private DatePickerDialog.OnDateSetListener onDateSetListener;
@@ -35,5 +35,30 @@ public class ProfileActivity extends AppCompatActivity {
         binding.btnChangeRegister.setOnClickListener(v ->
                 startActivity(new Intent(ProfileActivity.this, CreateSubjectActivity.class)));
         binding.imageViewBack.setOnClickListener(v -> onBackPressed());
+    }
+
+    @Override
+    protected void captureIntent() {
+
+    }
+
+    @Override
+    protected void alertYes(int actionCustomIdentifier) {
+
+    }
+
+    @Override
+    protected void alertNo(int actionCustomIdentifier) {
+
+    }
+
+    @Override
+    protected void observeFields() {
+
+    }
+
+    @Override
+    protected void observeActions() {
+
     }
 }

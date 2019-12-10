@@ -1,34 +1,45 @@
 package online.vidacademica.view.ui;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 
-import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
 
 import java.util.Random;
 
 import online.vidacademica.R;
-import online.vidacademica.databinding.ActivityHomeNewLayoutBinding;
+import online.vidacademica.databinding.ActivityHomeBinding;
+import online.vidacademica.entities.UserEntity;
+import online.vidacademica.presentation.SingletonToken;
+import online.vidacademica.view.enums.CrudEnum;
 import online.vidacademica.view.enums.RoleEnum;
+import online.vidacademica.viewmodel.LoginViewModel;
+import online.vidacademica.viewmodel.UserViewModel;
 
 import static online.vidacademica.view.enums.RoleEnum.TEACHER;
 import static online.vidacademica.view.ui.LoginActivity.ROLE;
 
 public class HomeActivity extends BaseActivity {
 
-    private ActivityHomeNewLayoutBinding binding;
+    private ActivityHomeBinding binding;
 
     private static RoleEnum USER_ROLE;
 
     private HorizontalScrollView bottomIncludeCards;
     private LayoutInflater inflater;
+
+    private LoginViewModel loginViewModel;
+    private UserViewModel userViewModel;
+
+    public static final String CRUD_TYPE = "CRUD_TYPE";
+    private static final CrudEnum UPDATE = CrudEnum.UPDATE;
+
+    public static final String SELECTED_OBJECT = "SELECTED_OBJECT";
 
     private static final String RANDOM_PROFILE_IMG = String.format("monster%s", new Random().nextInt(8));
 
@@ -36,17 +47,22 @@ public class HomeActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_home_new_layout);
+        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
+        userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
         binding.setLifecycleOwner(this);
 
         bottomIncludeCards = findViewById(R.id.layout_content_bottom_cards);
         inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        binding.nameUser.setText("Oi, Tiago Marques");
-
-        //randomProfilePhoto();
+        randomProfilePhoto();
 
         captureIntent();
+
+        showProgressBar(R.id.home_screen);
+        userViewModel.self();
+
         if (USER_ROLE == TEACHER) {
             setUpTeacher();
         } else {
@@ -54,6 +70,12 @@ public class HomeActivity extends BaseActivity {
         }
 
         observeActions();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        captureIntent();
     }
 
     private void inflateCards(Integer layoutViewId) {
@@ -66,45 +88,21 @@ public class HomeActivity extends BaseActivity {
 
     private void setUpTeacher() {
         inflateCards(R.layout.content_bottom_cards_teacher);
-        binding.profileType.setText("Professor(a)");
-
     }
 
     private void setUpStudent() {
 
         inflateCards(R.layout.content_bottom_cards);
-        binding.profileType.setText("Aluno(a)");
 
-        binding.layoutContentBottomCards.cardViewMyNotes.setOnClickListener(v -> startActivity(
-                new Intent(this, MyScoresActivity.class)));
-
-        binding.layoutContentBottomCards.cardViewMySubjects.setOnClickListener(v -> startActivity(
-                new Intent(this, ListMySubjectsActivity.class)));
-
-        binding.imageViewBack.setOnClickListener(view -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.CustomAlertDialog));
-            builder.setMessage(R.string.home_alert_close_title).setPositiveButton(getString(R.string.logout), dialogClickListener)
-                    .setNegativeButton(getString(R.string.cancel), dialogClickListener).show();
-        });
+        binding.imageViewClose.setOnClickListener(view ->
+                showAlert(R.string.home_alert_close_title, R.string.home_alert_close_message, 0));
     }
 
-    DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
-        switch (which){
-            case DialogInterface.BUTTON_POSITIVE:
-                startActivity(new Intent(HomeActivity.this,PreLoginActivity.class));
-                break;
-
-            case DialogInterface.BUTTON_NEGATIVE:
-                dialog.cancel();
-                break;
-        }
-    };
-
-/*    private void randomProfilePhoto() {
+    private void randomProfilePhoto() {
         binding.homeProfilePhoto.setImageDrawable(
                 getResources().getDrawable(getResourceID(RANDOM_PROFILE_IMG, "drawable", getApplicationContext()))
         );
-    }*/
+    }
 
 
     protected static int getResourceID(final String resName, final String resType, final Context ctx) {
@@ -118,13 +116,27 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void captureIntent() {
-        USER_ROLE = (RoleEnum) getIntent().getSerializableExtra(ROLE);
+        if(getIntent().getSerializableExtra(ROLE) != null){
+            USER_ROLE = (RoleEnum) getIntent().getSerializableExtra(ROLE);
+        } else if (SingletonToken.INSTANCE.getTokenEntity() != null) {
+            USER_ROLE = RoleEnum.fromString(SingletonToken.INSTANCE.getTokenEntity().getRole());
+        } else {
+            startActivity(new Intent(this,PreLoginActivity.class));
+        }
     }
 
     @Override
     protected void alertYes(int actionCustomIdentifier) {
         switch (actionCustomIdentifier) {
             case 0:
+                loginViewModel.deleteLoginData();
+                Intent openSplashActivity = new Intent(HomeActivity.this, SplashActivity.class).setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(openSplashActivity);
+                finish();
+                break;
+            case 1:
+                Intent intent = new Intent(HomeActivity.this, RegisterUpdateUserActivity.class).putExtra(CRUD_TYPE, UPDATE);
+                startActivity(intent);
                 break;
         }
     }
@@ -141,15 +153,43 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void observeActions() {
-        binding.imageViewBack.setOnClickListener(view -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.CustomAlertDialog));
-            builder.setMessage(R.string.home_alert_close_title).setPositiveButton(getString(R.string.logout), dialogClickListener)
-                    .setNegativeButton(getString(R.string.cancel), dialogClickListener).show();
+        binding.imageViewClose.setOnClickListener(view ->
+                showAlert(R.string.home_alert_close_title, R.string.home_alert_close_message, 0));
+        binding.homeButtonEditProfile.setOnClickListener(view -> editProfile(view));
+
+        binding.homeButtonEditProfile.setOnClickListener(view -> editProfile(view));
+
+        binding.homeTextEditProfile.setOnClickListener(view -> editProfile(view));
+        userViewModel.getIsResponseModelLiveData().observe(this, userEntityResponseModel -> {
+            dismissProgressBar();
+            boolean isUpdated = userViewModel.isUpdated();
+
+            if (userEntityResponseModel != null && userEntityResponseModel.getResponse() != null) {
+
+                UserEntity userEntity = userEntityResponseModel.getResponse();
+
+                if (isUpdated) {
+                    binding.homeButtonEditProfile.setText(String.format("%s\n%s\n%s",
+                            userEntity.getName(),
+                            userEntity.getEmail(),
+                            USER_ROLE.equals(TEACHER) ? "Professor(a)" : "Aluno(a)"));
+
+                    binding.homeFirstName.setText(userEntity.getName().split("\\s")[0]);
+                }
+            }
         });
+    }
+
+    public void editProfile(View view) {
+        showAlert(R.string.app_title_alert, R.string.home_alert_confirm_edit, 1);
     }
 
     public void openMyCourses(View view) {
         startActivity(new Intent(HomeActivity.this, ListMyCoursesActivity.class));
+    }
+
+    public void openSubjectsStudent(View view) {
+        startActivity(new Intent(HomeActivity.this, SubjectsStudent.class));
     }
 
     public void addCourses(View view) {
@@ -177,6 +217,6 @@ public class HomeActivity extends BaseActivity {
     }
 
     public void openMyScores(View view) {
-        startActivity(new Intent(HomeActivity.this, MyScoresActivity.class));
+        startActivity(new Intent(HomeActivity.this, ScoresActivity.class));
     }
 }

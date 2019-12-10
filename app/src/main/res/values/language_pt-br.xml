@@ -87,11 +87,21 @@
     <string name="app_field_name">Nome</string>
     <string name="app_field_description">Descrição</string>
     <string name="app_field_status">Status</string>
+    <string name="app_title_alert">Alerta</string>
+
+    <!--Home-->
+    <string name="home_alert_confirm_edit">No momento apenas o nome pode ser alterado. Deseja continuar?</string>
+
+    <!--Tela de Registro-->
+    <string name="register_title_update">Atualização</string>
+    <string name="register_ficha_criada">Ficha salva com sucesso. Agora faça o login.</string>
+    <string name="register_ficha_atualizada">Ficha salva com sucesso.</string>
+    <string name="register_ficha_error">Erro, servidor ocupado, tente novamente mais tarde.</string>
 
     <!--Tela de Login-->
     <string name="login_toast_in_loading">Realizando o login… Aguarde.</string>
     <string name="login_toast_error">Usuário ou senha inválido.</string>
-    <string name="login_toast_ok">Usuário ou senha inválido.</string>
+    <string name="login_toast_ok">Usuário logado.</string>
 
     <!--Tela de criação/edição de curso-->
     <string name="create_course_title">Criar Curso</string>

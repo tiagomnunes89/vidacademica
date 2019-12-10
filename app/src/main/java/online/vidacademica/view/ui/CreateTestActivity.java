@@ -1,6 +1,7 @@
 package online.vidacademica.view.ui;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,17 +10,15 @@ import android.widget.DatePicker;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
+import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityCreateTestBinding;
 import online.vidacademica.utils.Util;
-
-import online.vidacademica.R;
 import online.vidacademica.viewmodel.TestViewModel;
 
 public class CreateTestActivity extends BaseActivity {
     private DatePickerDialog.OnDateSetListener onDateSetListenerDtTest;
     private TestViewModel testViewModel;
     private ActivityCreateTestBinding binding;
-    private Boolean screenCreated;
     private static final String TAG = CreateTestActivity.class.getSimpleName();
     private Util util = new Util();
 
@@ -41,6 +40,8 @@ public class CreateTestActivity extends BaseActivity {
                 util.callDatePickerDialog(CreateTestActivity.this, onDateSetListenerDtTest);
             }
         });
+
+        binding.imageViewBack.setOnClickListener(v -> onBackPressed());
 
         onDateSetListenerDtTest = new DatePickerDialog.OnDateSetListener() {
             @Override

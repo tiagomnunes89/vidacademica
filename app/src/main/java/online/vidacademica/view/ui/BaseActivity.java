@@ -10,7 +10,10 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.constraintlayout.widget.ConstraintLayout;
+
+import online.vidacademica.R;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -72,7 +75,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected final void showAlert(String title, String msg, int actionCustomIdentifier) {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.CustomAlertDialog));
         builder.setTitle(title)
                 .setMessage(msg)
                 .setCancelable(false)
@@ -101,5 +104,4 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract void observeFields();
 
     protected abstract void observeActions();
-
 }

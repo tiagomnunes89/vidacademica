@@ -1,44 +1,75 @@
 package online.vidacademica.view.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.LinearLayoutCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Spinner;
+
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import online.vidacademica.R;
+import online.vidacademica.databinding.ActivityCreateRegistrationBinding;
+import online.vidacademica.entities.ClassDTO;
 import online.vidacademica.entities.UserEntity;
 import online.vidacademica.view.adapter.StudentsAdapter;
+import online.vidacademica.viewmodel.CreateRegistrationViewModel;
 
-public class CreateRegistrationActivity extends AppCompatActivity {
+import static online.vidacademica.repositories.network.vidacademica.VidAcademicaWSConstants.STATUS_CODE_OK;
 
-    List<UserEntity> students = new ArrayList<>();
+public class CreateRegistrationActivity extends BaseActivity {
+
     List<UserEntity> registeredStudents = new ArrayList<>();
+    List<UserEntity> allUsers = new ArrayList<>();
+    List<ClassDTO> allClasses = new ArrayList<>();
+
+    private CreateRegistrationViewModel createRegistrationViewModel;
+    private ActivityCreateRegistrationBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_registration);
+        createRegistrationViewModel = ViewModelProviders.of(this).get(CreateRegistrationViewModel.class);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_create_registration);
+        binding.setLifecycleOwner(this);
+//        binding.setCreateRegistrationViewModel(createRegistrationViewModel);
 
-        // Preencher list do autocomplete quando digitar nome dos alunos(carrega a partir de 3 letras)
-        String students [] = getStudents();
+        binding.imageViewBack.setOnClickListener(v -> onBackPressed());
 
-        AutoCompleteTextView autoCompleteTextView = findViewById(R.id.text_input_name_student);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                (this,android.R.layout.simple_list_item_1,students);
-        autoCompleteTextView.setAdapter(adapter);
 
         //Preencher a lista dos ja matriculados
         getRegisteredStudents();
-
+        observeActions();
         startRecycler();
+    }
+
+    @Override
+    protected void captureIntent() {
+
+    }
+
+    @Override
+    protected void alertYes(int actionCustomIdentifier) {
+
+    }
+
+    @Override
+    protected void alertNo(int actionCustomIdentifier) {
+
+    }
+
+    @Override
+    protected void observeFields() {
+
     }
 
     private void startRecycler() {
@@ -50,20 +81,14 @@ public class CreateRegistrationActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
     }
+
     private String[] getStudents() {
 
-        //MockStudentsQuePodemSerMatriculados(criados no sistema)
-        UserEntity stu1 = new UserEntity(null, "CarlosADD", "email", "1978/11/16", "bla", "bla");
-        UserEntity stu2 = new UserEntity(null, "CarlosComboyADD", "email", "1978/11/16", "bla", "bla");
-        UserEntity stu3 = new UserEntity(null, "SoteroOverflowADD", "email", "1978/11/16", "bla", "bla");
-        students.add(stu1);
-        students.add(stu2);
-        students.add(stu3);
         //-------------------
         // O adapter utilizado pra preencher a lista do autocomplete é padrao do android e recebe vetor de strings, por isso o codigo abaixo;
-        String [] studentsVect = new String[students.size()];
+        String[] studentsVect = new String[allUsers.size()];
         int x = 0;
-        for (UserEntity student: students) {
+        for (UserEntity student : allUsers) {
             studentsVect[x++] = student.getName();
         }
         return studentsVect;
@@ -81,5 +106,83 @@ public class CreateRegistrationActivity extends AppCompatActivity {
         registeredStudents.add(stu2);
         registeredStudents.add(stu3);
         registeredStudents.add(stu4);
+    }
+
+    protected void observeActions() {
+        createRegistrationViewModel.getAllUsers().observe(this, allUsersResponse -> {
+            if (allUsersResponse != null) {
+                if (allUsersResponse.getCode() == STATUS_CODE_OK) {
+                    allUsers.addAll(allUsersResponse.getResponse());
+                    String[] studentsVect = new String[allUsers.size()];
+                    int x = 0;
+                    for (UserEntity student : allUsers) {
+                        studentsVect[x++] = student.getName();
+                    }
+                    String[] students = studentsVect;
+
+
+                    AutoCompleteTextView autoCompleteTextView = findViewById(R.id.text_input_name_student);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                            (this, android.R.layout.simple_list_item_1, students);
+                    autoCompleteTextView.setAdapter(adapter);
+                } else {
+                    showToast("Erro");
+
+                }
+
+            }
+        });
+
+        createRegistrationViewModel.getAllClasses().observe(this, allClasssesResponse -> {
+            if (allClasssesResponse != null) {
+                if (allClasssesResponse.getCode() == STATUS_CODE_OK) {
+                    allClasses.addAll(allClasssesResponse.getResponse());
+                    String[] classeVect = new String[allClasses.size()];
+                    int x = 0;
+                    for (ClassDTO classe : allClasses) {
+                        classeVect[x++] = classe.getName();
+                    }
+                    String[] classes = classeVect;
+
+                    Spinner spinnerCourses = (Spinner) findViewById(R.id.select_class);
+                    ArrayAdapter adapterSpinner = new ArrayAdapter(CreateRegistrationActivity.this, android.R.layout.simple_list_item_1, classes);
+
+                    spinnerCourses.setAdapter(adapterSpinner);
+
+                } else {
+                    showToast("Erro");
+
+                }
+
+            }
+        });
+
+//        binding.btnSaveRegistration.setOnClickListener(new View.OnClickListener() {
+//
+//
+//            @Override
+//            public void onClick(View view) {
+//                showToast(R.string.create_test_toast_create_loading);
+//                showProgressBar(R.id.create_test_screen);
+//                createRegistrationViewModel.attachStudent();
+//            }
+//        });
+//
+//        createRegistrationViewModel.getLastCreated().observe(this, registrationResponse -> {
+//            dismissProgressBar();
+//
+//            boolean testCreated = createRegistrationViewModel.lastTestcreated();
+//
+//            if (registrationResponse != null) {
+//
+//                if (testCreated) {
+//                    showToast(R.string.create_test_toast_create_ok);
+//                    showAlert(R.string.create_test_alert_title, R.string.create_test_alert_message, 0);
+//                } else {
+//                    showToast(R.string.create_course_toast_create_error);
+//                }
+//
+//            }
+//        });
     }
 }
