@@ -150,12 +150,30 @@ public class HomeActivity extends BaseActivity {
         binding.homeButtonEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, RegisterUpdateUserActivity.class)
-                        .putExtra(CRUD_TYPE, UPDATE);
-                startActivity(intent);
+                editProfile(view);
             }
         });
 
+        binding.homeButtonEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editProfile(view);
+            }
+        });
+
+        binding.homeTextEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editProfile(view);
+            }
+        });
+
+    }
+
+    public void editProfile(View view) {
+        Intent intent = new Intent(HomeActivity.this, RegisterUpdateUserActivity.class)
+                .putExtra(CRUD_TYPE, UPDATE);
+        startActivity(intent);
     }
 
     public void openMyCourses(View view) {

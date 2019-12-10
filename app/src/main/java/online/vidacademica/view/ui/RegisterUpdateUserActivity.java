@@ -73,6 +73,8 @@ public class RegisterUpdateUserActivity extends ActivityBaseClassValidator {
 
         if (ACTIVITY_FLOW.equals(CrudEnum.UPDATE)) {
             binding.registerScreenTitle.setText(getString(R.string.register_title_update));
+            userViewModel.self();
+            showProgressBar(R.id.register_screen);
         }
 
         initValidator();
@@ -163,14 +165,19 @@ public class RegisterUpdateUserActivity extends ActivityBaseClassValidator {
         binding.imageViewBack.setOnClickListener(v -> startActivity(new Intent(RegisterUpdateUserActivity.this, PreLoginActivity.class)));
 
         userViewModel.getIsResponseModelLiveData().observe(this, userEntityResponseModel -> {
-            if (screenCreated != null) {
-                if (userViewModel.isRegistred()) {
-                    dismissProgressBar();
-                    Toast.makeText(RegisterUpdateUserActivity.this, "Registro realizado com sucesso.", Toast.LENGTH_LONG).show();
+            dismissProgressBar();
+
+            if (userEntityResponseModel != null) {
+                if (userViewModel.isRegistred() || (userViewModel.isUpdated() && !screenCreated)) {
+                    showToast(R.string.register_ficha_ok);
+                } else if (screenCreated && userViewModel.isUpdated()) {
+                    userViewModel.userEntity = userEntityResponseModel.getResponse();
                 } else {
-                    Toast.makeText(RegisterUpdateUserActivity.this, "Erro, servidor ocupado, tente novamente mais tarde.", Toast.LENGTH_LONG).show();
+                    showToast(R.string.register_ficha_error);
                 }
             }
+
+            screenCreated = false;
         });
     }
 

@@ -143,7 +143,7 @@ public class UserRepository {
     }
 
 
-    public MutableLiveData<ResponseModel<UserEntity>> self(final MutableLiveData<ResponseModel<UserEntity>> mutableLiveDataObject) {
+    public MutableLiveData<ResponseModel<UserEntity>> self(UserEntity userEntity, final MutableLiveData<ResponseModel<UserEntity>> mutableLiveDataObject) {
 
         TokenEntity tokenEntity = Optional.of(tokenRepository.getTokenSync()).orElse(new TokenEntity());
 
