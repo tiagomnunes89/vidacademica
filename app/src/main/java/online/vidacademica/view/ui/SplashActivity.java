@@ -18,6 +18,7 @@ public class SplashActivity extends BaseActivity {
 
     private ActivitySplashBinding binding;
     private LoginViewModel loginViewModel;
+    Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class SplashActivity extends BaseActivity {
 
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
+        handler = new Handler();
 
         observeActions();
     }
@@ -56,8 +58,6 @@ public class SplashActivity extends BaseActivity {
             public void onChanged(@Nullable TokenEntity tokenEntity) {
                 dismissProgressBar();
 
-                Handler handler = new Handler();
-
                 if (tokenEntity != null) {
                     if (hasAValidUser(tokenEntity)) {
                         handler.postDelayed(new Runnable() {
@@ -69,20 +69,25 @@ public class SplashActivity extends BaseActivity {
                             }
                         }, 2000);
                     } else {
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                Intent openMainActivity = new Intent(SplashActivity.this, PreLoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                                startActivity(openMainActivity);
-                                finish();
-                            }
-                        }, 2000);
+                        openPreLoginActivity();
                     }
+                } else {
+                    openPreLoginActivity();
                 }
             }
         });
     }
 
+    private void openPreLoginActivity() {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent openMainActivity = new Intent(SplashActivity.this, PreLoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(openMainActivity);
+                finish();
+            }
+        }, 2000);
+    }
 
     private boolean hasAValidUser(TokenEntity tokenEntity) {
         if (tokenEntity != null) {

@@ -30,4 +30,8 @@ public class LoginViewModel extends AndroidViewModel {
         String pass = userLoginDatabind.getPassword();
         tokenRepository.login(new TokenEntity(email, pass));
     }
+
+    public void deleteLoginData() {
+        tokenRepository.deleteAll();
+    }
 }

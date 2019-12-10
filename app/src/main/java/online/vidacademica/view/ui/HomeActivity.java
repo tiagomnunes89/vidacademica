@@ -8,12 +8,14 @@ import android.view.View;
 import android.widget.HorizontalScrollView;
 
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
 
 import java.util.Random;
 
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityHomeBinding;
 import online.vidacademica.view.enums.RoleEnum;
+import online.vidacademica.viewmodel.LoginViewModel;
 
 import static online.vidacademica.view.enums.RoleEnum.TEACHER;
 import static online.vidacademica.view.ui.LoginActivity.ROLE;
@@ -27,11 +29,15 @@ public class HomeActivity extends BaseActivity {
     private HorizontalScrollView bottomIncludeCards;
     private LayoutInflater inflater;
 
+    private LoginViewModel loginViewModel;
+
     private static final String RANDOM_PROFILE_IMG = String.format("monster%s", new Random().nextInt(8));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
         binding.setLifecycleOwner(this);
@@ -109,6 +115,10 @@ public class HomeActivity extends BaseActivity {
     protected void alertYes(int actionCustomIdentifier) {
         switch (actionCustomIdentifier) {
             case 0:
+                loginViewModel.deleteLoginData();
+                Intent openSplashActivity = new Intent(HomeActivity.this, SplashActivity.class).setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(openSplashActivity);
+                finish();
                 break;
         }
     }
