@@ -50,7 +50,7 @@ public class WeekDayAdapter extends RecyclerView.Adapter<WeekDayAdapter.WeekDayV
         Locale.setDefault(Locale.US);
         holder.titulo_materia.setText(weekDay.getSubjectTitle());
         holder.diaSemana.setText(weekDay.getWeekDay());
-        holder.horario.setText(weekDay.getTimeStart()+" - "+weekDay.getTimeEnd());
+        holder.horario.setText(weekDay.getTimeStart());
     }
 
     @Override

@@ -33,21 +33,19 @@ public class SubjectsStudent extends AppCompatActivity {
     }
 
     private void getWeekDayDTO() {
-        WeekDayDTO wdEntry1 = new WeekDayDTO("FW2", "Segunda-feira","2018-01-01T18:45:00Z", "2018-01-01T19:30:00Z");
-        WeekDayDTO wdEntry2 = new WeekDayDTO("FW2", "Segunda-feira", "2018-01-01T19:30:00Z", "2018-01-01T20:15:00Z");
-        WeekDayDTO wdEntry3 = new WeekDayDTO("FW2", "Terça-feira", "2018-01-02T18:45:00Z", "2018-01-01T19:30:00Z");
-        WeekDayDTO wdEntry4 = new WeekDayDTO("FW2", "Terça-feira", "2018-01-02T19:30:00Z", "2018-01-01T20:15:00Z");
-        WeekDayDTO wdEntry5 = new WeekDayDTO("PDS1", "Segunda-feira", "2018-01-01T20:15:00Z", "2018-01-01T21:00:00Z");
-        WeekDayDTO wdEntry6 = new WeekDayDTO("PDS1", "Segunda-feira", "2018-01-01T21:15:00Z", "2018-01-01T22:00:00Z");
+        WeekDayDTO wdEntry1 = new WeekDayDTO("Lógica de programação",
+                "Segunda-feira\nTerça-feira\nQuarta-feira",
+                "18:45 - 21:30\n21:15 - 22:00\n19:30 - 21:00",
+                "");
+        WeekDayDTO wdEntry2 = new WeekDayDTO("Fundamentos de Webdesign 2",
+                "Segunda-feira\nSexta-feira",
+                "21:15 - 22:00\n18:45 - 22:00",
+                "");
 
         List<WeekDayDTO> weekDayDTOListTEMP = new ArrayList<>();
 
-        weekDayDTOListTEMP.add(wdEntry1);
-        weekDayDTOListTEMP.add(wdEntry2);
-        weekDayDTOListTEMP.add(wdEntry3);
-        weekDayDTOListTEMP.add(wdEntry4);
-        weekDayDTOListTEMP.add(wdEntry5);
-        weekDayDTOListTEMP.add(wdEntry6);
+        weekDayDTOList.add(wdEntry1);
+        weekDayDTOList.add(wdEntry2);
     }
 
     private void starRecycler() {
