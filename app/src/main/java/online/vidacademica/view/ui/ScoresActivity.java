@@ -82,8 +82,8 @@ public class ScoresActivity extends AppCompatActivity {
         //Carregar os cursos do aluno para preecher o spinner (findOwnerId)
         // Mock ligação course com subject
 
-        spinnerContent.add(0, "SI");
-        spinnerContent.add(1, "LOG");
+        spinnerContent.add(0, "Sistemas");
+        spinnerContent.add(1, "Logistica");
 
     }
 

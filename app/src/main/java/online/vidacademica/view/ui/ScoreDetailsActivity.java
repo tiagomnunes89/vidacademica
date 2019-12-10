@@ -50,7 +50,7 @@ public class ScoreDetailsActivity extends AppCompatActivity {
 
     private void getScoresBySubject() {
 
-        //Moch de provas(testes)
+        //Moch de provas(testes) por subject (precisa ter o nome do subject o na tabela teste nao tem
         TestResultDTO score1 = new TestResultDTO(25.0, Instant.now(), "Prova 1", "PDS1");
         TestResultDTO score2 = new TestResultDTO(35.0, Instant.now(), "Prova 2", "PDS1");
 
