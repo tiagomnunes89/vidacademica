@@ -6,6 +6,9 @@
 
     <data>
 
+        <variable
+            name="CreateRegistrationViewModel"
+            type="online.vidacademica.viewmodel.CreateRegistrationViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
