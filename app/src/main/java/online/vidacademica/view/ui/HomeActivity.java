@@ -14,9 +14,11 @@ import java.util.Random;
 
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityHomeBinding;
+import online.vidacademica.entities.UserEntity;
 import online.vidacademica.view.enums.CrudEnum;
 import online.vidacademica.view.enums.RoleEnum;
 import online.vidacademica.viewmodel.LoginViewModel;
+import online.vidacademica.viewmodel.UserViewModel;
 
 import static online.vidacademica.view.enums.RoleEnum.TEACHER;
 import static online.vidacademica.view.ui.LoginActivity.ROLE;
@@ -31,6 +33,7 @@ public class HomeActivity extends BaseActivity {
     private LayoutInflater inflater;
 
     private LoginViewModel loginViewModel;
+    private UserViewModel userViewModel;
 
     public static final String CRUD_TYPE = "CRUD_TYPE";
     private static final CrudEnum UPDATE = CrudEnum.UPDATE;
@@ -44,6 +47,7 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
+        userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
         binding.setLifecycleOwner(this);
@@ -54,6 +58,10 @@ public class HomeActivity extends BaseActivity {
         randomProfilePhoto();
 
         captureIntent();
+
+        showProgressBar(R.id.home_screen);
+        userViewModel.self();
+
         if (USER_ROLE == TEACHER) {
             setUpTeacher();
         } else {
@@ -73,7 +81,6 @@ public class HomeActivity extends BaseActivity {
 
     private void setUpTeacher() {
         inflateCards(R.layout.content_bottom_cards_teacher);
-
     }
 
     private void setUpStudent() {
@@ -171,7 +178,24 @@ public class HomeActivity extends BaseActivity {
                 editProfile(view);
             }
         });
+        userViewModel.getIsResponseModelLiveData().observe(this, userEntityResponseModel -> {
+            dismissProgressBar();
+            boolean isUpdated = userViewModel.isUpdated();
 
+            if (userEntityResponseModel != null && userEntityResponseModel.getResponse() != null) {
+
+                UserEntity userEntity = userEntityResponseModel.getResponse();
+
+                if (isUpdated) {
+                    binding.homeButtonEditProfile.setText(String.format("%s\n%s\n%s",
+                            userEntity.getName(),
+                            userEntity.getEmail(),
+                            USER_ROLE.equals(TEACHER) ? "Professor(a)" : "Aluno(a)"));
+
+                    binding.homeFirstName.setText(userEntity.getName().split("\\s")[0]);
+                }
+            }
+        });
     }
 
     public void editProfile(View view) {

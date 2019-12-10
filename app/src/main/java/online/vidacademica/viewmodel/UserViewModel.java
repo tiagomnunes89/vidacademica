@@ -25,6 +25,7 @@ public class UserViewModel extends AndroidViewModel {
     public UserViewModel(@NonNull Application application) {
         super(application);
         userRepository = UserRepository.getInstance(application);
+        if (userEntityResponse == null) userEntityResponse = new MutableLiveData<>();
     }
 
     public void register() {
