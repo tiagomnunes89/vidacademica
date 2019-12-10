@@ -21,7 +21,6 @@
         <activity android:name=".view.ui.SubjectsStudent">
         </activity>
         <activity android:name=".view.ui.ScoreDetailsActivity">
-
         </activity>
         <activity android:name=".view.ui.AddHourClassActivity" />
         <activity android:name=".view.ui.PreLoginActivity">
@@ -60,7 +59,7 @@
             android:label="@string/title_activity_create_subject"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".view.ui.RegisterActivity"
+            android:name=".view.ui.RegisterUpdateUserActivity"
             android:configChanges="orientation|screenSize" />
         <activity
             android:name=".view.ui.HomeActivity"

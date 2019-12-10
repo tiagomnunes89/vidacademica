@@ -12,8 +12,9 @@ import online.vidacademica.entities.UserEntity;
 import online.vidacademica.repositories.UserRepository;
 
 import static online.vidacademica.repositories.network.vidacademica.VidAcademicaWSConstants.STATUS_CODE_CREATED;
+import static online.vidacademica.repositories.network.vidacademica.VidAcademicaWSConstants.STATUS_CODE_OK;
 
-public class RegisterViewModel extends AndroidViewModel {
+public class UserViewModel extends AndroidViewModel {
 
     private UserRepository userRepository;
 
@@ -21,7 +22,7 @@ public class RegisterViewModel extends AndroidViewModel {
 
     private MutableLiveData<ResponseModel<UserEntity>> userEntityResponse;
 
-    public RegisterViewModel(@NonNull Application application) {
+    public UserViewModel(@NonNull Application application) {
         super(application);
         userRepository = UserRepository.getInstance(application);
     }
@@ -43,5 +44,23 @@ public class RegisterViewModel extends AndroidViewModel {
             response = true;
         }
         return response;
+    }
+
+    public boolean isUpdated() {
+        boolean response = false;
+        if (userEntityResponse != null &&
+                userEntityResponse.getValue() != null &&
+                userEntityResponse.getValue().getCode() == STATUS_CODE_OK) {
+            response = true;
+        }
+        return response;
+    }
+
+    public void self() {
+        userRepository.self(userEntity, userEntityResponse);
+    }
+
+    public void update() {
+        userRepository.update(userEntity, userEntityResponse);
     }
 }

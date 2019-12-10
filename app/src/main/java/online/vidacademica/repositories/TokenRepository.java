@@ -144,4 +144,23 @@ public class TokenRepository {
             return null;
         }
     }
+
+    public void deleteAll() {
+        new DeleteAsyncTask(dao).execute();
+    }
+
+    private class DeleteAsyncTask extends AsyncTask<Void, Void, Void> {
+
+        private TokenDao dao;
+
+        DeleteAsyncTask(TokenDao dao) {
+            this.dao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            dao.deleteAll();
+            return null;
+        }
+    }
 }

@@ -4,18 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityPreLoginBinding;
-import online.vidacademica.entities.TokenEntity;
-import online.vidacademica.view.enums.RoleEnum;
 import online.vidacademica.viewmodel.LoginViewModel;
-
-import static online.vidacademica.view.enums.RoleEnum.STUDENT;
 
 public class PreLoginActivity extends BaseActivity {
     private ActivityPreLoginBinding binding;
@@ -64,7 +58,7 @@ public class PreLoginActivity extends BaseActivity {
         binding.buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(PreLoginActivity.this, RegisterActivity.class));
+                startActivity(new Intent(PreLoginActivity.this, RegisterUpdateUserActivity.class));
             }
         });
 

@@ -8,12 +8,15 @@ import android.view.View;
 import android.widget.HorizontalScrollView;
 
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
 
 import java.util.Random;
 
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityHomeBinding;
+import online.vidacademica.view.enums.CrudEnum;
 import online.vidacademica.view.enums.RoleEnum;
+import online.vidacademica.viewmodel.LoginViewModel;
 
 import static online.vidacademica.view.enums.RoleEnum.TEACHER;
 import static online.vidacademica.view.ui.LoginActivity.ROLE;
@@ -27,11 +30,20 @@ public class HomeActivity extends BaseActivity {
     private HorizontalScrollView bottomIncludeCards;
     private LayoutInflater inflater;
 
+    private LoginViewModel loginViewModel;
+
+    public static final String CRUD_TYPE = "CRUD_TYPE";
+    private static final CrudEnum UPDATE = CrudEnum.UPDATE;
+
+    public static final String SELECTED_OBJECT = "SELECTED_OBJECT";
+
     private static final String RANDOM_PROFILE_IMG = String.format("monster%s", new Random().nextInt(8));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
         binding.setLifecycleOwner(this);
@@ -109,6 +121,10 @@ public class HomeActivity extends BaseActivity {
     protected void alertYes(int actionCustomIdentifier) {
         switch (actionCustomIdentifier) {
             case 0:
+                loginViewModel.deleteLoginData();
+                Intent openSplashActivity = new Intent(HomeActivity.this, SplashActivity.class).setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(openSplashActivity);
+                finish();
                 break;
         }
     }
@@ -131,6 +147,33 @@ public class HomeActivity extends BaseActivity {
                 showAlert(R.string.home_alert_close_title, R.string.home_alert_close_message, 0);
             }
         });
+        binding.homeButtonEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editProfile(view);
+            }
+        });
+
+        binding.homeButtonEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editProfile(view);
+            }
+        });
+
+        binding.homeTextEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editProfile(view);
+            }
+        });
+
+    }
+
+    public void editProfile(View view) {
+        Intent intent = new Intent(HomeActivity.this, RegisterUpdateUserActivity.class)
+                .putExtra(CRUD_TYPE, UPDATE);
+        startActivity(intent);
     }
 
     public void openMyCourses(View view) {

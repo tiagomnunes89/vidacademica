@@ -9,33 +9,45 @@ import android.widget.Toast;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.gson.Gson;
+
 import java.util.Arrays;
+import java.util.Optional;
 
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityRegisterBinding;
+import online.vidacademica.entities.CourseDTO;
 import online.vidacademica.utils.DateFormatUtils;
 import online.vidacademica.utils.Util;
+import online.vidacademica.view.enums.CrudEnum;
 import online.vidacademica.view.validation.ActivityBaseClassValidator;
 import online.vidacademica.view.validation.validators.BirthDateValidation;
 import online.vidacademica.view.validation.validators.EmailValidation;
 import online.vidacademica.view.validation.validators.NameValidation;
 import online.vidacademica.view.validation.validators.PasswordValidation;
 import online.vidacademica.view.validation.validators.ValidatorDefaultTextInput;
-import online.vidacademica.viewmodel.RegisterViewModel;
+import online.vidacademica.viewmodel.LoginViewModel;
+import online.vidacademica.viewmodel.UserViewModel;
 
+import static online.vidacademica.view.adapter.CoursesAdapter.CRUD_TYPE;
+import static online.vidacademica.view.adapter.CoursesAdapter.SELECTED_OBJECT;
 import static online.vidacademica.view.validation.Validator.executeAllValidators;
 
-public class RegisterActivity extends ActivityBaseClassValidator {
-    private static final String TAG = RegisterActivity.class.getSimpleName();
+public class RegisterUpdateUserActivity extends ActivityBaseClassValidator {
+    private static final String TAG = RegisterUpdateUserActivity.class.getSimpleName();
 
     private DatePickerDialog.OnDateSetListener onDateSetListener;
 
-    private RegisterViewModel registerViewModel;
+    private UserViewModel userViewModel;
+    private LoginViewModel loginViewModel;
+
     private ActivityRegisterBinding binding;
 
     private Util util = new Util();
 
     private Boolean screenCreated;
+
+    private static CrudEnum ACTIVITY_FLOW;
 
     @Override
     public void onBackPressed() {
@@ -50,17 +62,39 @@ public class RegisterActivity extends ActivityBaseClassValidator {
         binding.setLifecycleOwner(this);
 
         screenCreated = true;
+        captureIntent();
 
-        registerViewModel = ViewModelProviders.of(this).get(RegisterViewModel.class);
+        userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
+        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
 
-        binding.layoutRegisterContent.setRegisterViewModel(registerViewModel);
+        binding.layoutRegisterContent.setUserViewModel(userViewModel);
 
         observeActions();
+
+        if (ACTIVITY_FLOW.equals(CrudEnum.UPDATE)) {
+            binding.registerScreenTitle.setText(getString(R.string.register_title_update));
+            userViewModel.self();
+            showProgressBar(R.id.register_screen);
+        }
+
         initValidator();
     }
 
     @Override
     protected void captureIntent() {
+        ACTIVITY_FLOW = (CrudEnum) Optional.ofNullable(getIntent().getSerializableExtra(CRUD_TYPE)).orElse(CrudEnum.CREATE);
+
+        if (ACTIVITY_FLOW.equals(CrudEnum.UPDATE)) {
+            String selectedCourseJson = (String) getIntent().getSerializableExtra(SELECTED_OBJECT);
+
+            if (selectedCourseJson != null) {
+                CourseDTO selectedCourse = new Gson().fromJson(selectedCourseJson, CourseDTO.class);
+
+                if (selectedCourse != null) {
+//                    courseViewModel.courseDTO = selectedCourse;
+                }
+            }
+        }
     }
 
     @Override
@@ -94,7 +128,7 @@ public class RegisterActivity extends ActivityBaseClassValidator {
                 enableContinueButton(executeAllValidators(getValidationList(), BirthDateValidation.class));
             else {
                 binding.layoutRegisterContent.textInputBirth.setErrorEnabled(false);
-                util.callDatePickerDialog(RegisterActivity.this, onDateSetListener);
+                util.callDatePickerDialog(RegisterUpdateUserActivity.this, onDateSetListener);
             }
         });
         binding.layoutRegisterContent.editTextPassword.setOnFocusChangeListener((v, hasFocus) -> {
@@ -115,30 +149,35 @@ public class RegisterActivity extends ActivityBaseClassValidator {
         binding.btnSendRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(RegisterActivity.this, ProfileActivity.class));
+//                startActivity(new Intent(RegisterUpdateUserActivity.this, ProfileActivity.class));
                 showProgressBar(R.id.register_screen);
-                registerViewModel.register();
+                userViewModel.register();
             }
         });
 
         binding.layoutRegisterContent.editTextBirthDate.setOnClickListener(view ->
-                util.callDatePickerDialog(RegisterActivity.this, onDateSetListener));
+                util.callDatePickerDialog(RegisterUpdateUserActivity.this, onDateSetListener));
 
         onDateSetListener = (datePicker, year, month, day) -> {
             String date = DateFormatUtils.onDateSetResultToString(datePicker);
             binding.layoutRegisterContent.editTextBirthDate.setText(date);
         };
-        binding.imageViewBack.setOnClickListener(v -> startActivity(new Intent(RegisterActivity.this, PreLoginActivity.class)));
+        binding.imageViewBack.setOnClickListener(v -> startActivity(new Intent(RegisterUpdateUserActivity.this, PreLoginActivity.class)));
 
-        registerViewModel.getIsResponseModelLiveData().observe(this, userEntityResponseModel -> {
-            if (screenCreated != null) {
-                if (registerViewModel.isRegistred()) {
-                    dismissProgressBar();
-                    Toast.makeText(RegisterActivity.this, "Registro realizado com sucesso.", Toast.LENGTH_LONG).show();
+        userViewModel.getIsResponseModelLiveData().observe(this, userEntityResponseModel -> {
+            dismissProgressBar();
+
+            if (userEntityResponseModel != null) {
+                if (userViewModel.isRegistred() || (userViewModel.isUpdated() && !screenCreated)) {
+                    showToast(R.string.register_ficha_ok);
+                } else if (screenCreated && userViewModel.isUpdated()) {
+                    userViewModel.userEntity = userEntityResponseModel.getResponse();
                 } else {
-                    Toast.makeText(RegisterActivity.this, "Erro, servidor ocupado, tente novamente mais tarde.", Toast.LENGTH_LONG).show();
+                    showToast(R.string.register_ficha_error);
                 }
             }
+
+            screenCreated = false;
         });
     }
 
