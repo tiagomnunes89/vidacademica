@@ -184,6 +184,7 @@ public class CreateUpdateCourseActivity extends ActivityBaseClassValidator {
                     if (allCourses.getCode() == STATUS_CODE_OK) {
                         showToast(R.string.list_courses_toast_ok);
                         courses.addAll(allCourses.getResponse());
+
                         verifyCoursesDuplicates();
                     } else {
                         showToast(R.string.list_courses_toast_error);

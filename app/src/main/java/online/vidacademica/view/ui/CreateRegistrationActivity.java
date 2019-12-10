@@ -14,13 +14,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import online.vidacademica.R;
+import online.vidacademica.entities.TestEntity;
 import online.vidacademica.entities.UserEntity;
 import online.vidacademica.view.adapter.StudentsAdapter;
+import online.vidacademica.viewmodel.CreateRegistrationViewModel;
 
-public class CreateRegistrationActivity extends AppCompatActivity {
+import static online.vidacademica.repositories.network.vidacademica.VidAcademicaWSConstants.STATUS_CODE_OK;
+
+public class CreateRegistrationActivity extends BaseActivity {
 
     List<UserEntity> students = new ArrayList<>();
     List<UserEntity> registeredStudents = new ArrayList<>();
+    List<UserEntity> allUsers = new ArrayList<>();
+
+    private CreateRegistrationViewModel createRegistrationViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +35,7 @@ public class CreateRegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_registration);
 
         // Preencher list do autocomplete quando digitar nome dos alunos(carrega a partir de 3 letras)
-        String students [] = getStudents();
+        String []students = getStudents();
 
         AutoCompleteTextView autoCompleteTextView = findViewById(R.id.text_input_name_student);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
@@ -37,8 +44,28 @@ public class CreateRegistrationActivity extends AppCompatActivity {
 
         //Preencher a lista dos ja matriculados
         getRegisteredStudents();
-
+        observeActions();
         startRecycler();
+    }
+
+    @Override
+    protected void captureIntent() {
+
+    }
+
+    @Override
+    protected void alertYes(int actionCustomIdentifier) {
+
+    }
+
+    @Override
+    protected void alertNo(int actionCustomIdentifier) {
+
+    }
+
+    @Override
+    protected void observeFields() {
+
     }
 
     private void startRecycler() {
@@ -61,9 +88,9 @@ public class CreateRegistrationActivity extends AppCompatActivity {
         students.add(stu3);
         //-------------------
         // O adapter utilizado pra preencher a lista do autocomplete é padrao do android e recebe vetor de strings, por isso o codigo abaixo;
-        String [] studentsVect = new String[students.size()];
+        String [] studentsVect = new String[allUsers.size()];
         int x = 0;
-        for (UserEntity student: students) {
+        for (UserEntity student: allUsers) {
             studentsVect[x++] = student.getName();
         }
         return studentsVect;
@@ -82,4 +109,19 @@ public class CreateRegistrationActivity extends AppCompatActivity {
         registeredStudents.add(stu3);
         registeredStudents.add(stu4);
     }
-}
+
+    protected void observeActions() {
+        createRegistrationViewModel.getAllUsers().observe(this, allUsersResponse -> {
+                if (allUsersResponse != null) {
+                    if (allUsersResponse.getCode() == STATUS_CODE_OK) {
+                        allUsers.addAll(allUsersResponse.getResponse());
+                    } else {
+                        showToast("Erro");
+
+                    }
+
+            }
+        });
+
+    }
+    }
