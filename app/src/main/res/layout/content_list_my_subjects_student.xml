@@ -20,15 +20,11 @@
             android:padding="@dimen/default_size">
 
             <Spinner
-                android:id="@+id/spinner"
+                android:id="@+id/spinner_subject_student"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:background="@drawable/spinner_border_input"
                 android:entries="@array/courses"
-                android:paddingStart="@dimen/little_size"
-                android:paddingTop="@dimen/semi_short_size"
-                android:paddingEnd="@dimen/little_size"
-                android:paddingBottom="@dimen/semi_short_size"
                 android:spinnerMode="dropdown"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_size"
-                app:layout_constraintTop_toBottomOf="@id/spinner"
+                app:layout_constraintTop_toBottomOf="@id/spinner_subject_student"
                 tools:itemCount="5"
                 tools:listitem="@layout/item_recycler_subject_student" />
 

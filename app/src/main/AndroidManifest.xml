@@ -19,11 +19,6 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity android:name=".view.ui.SubjectsStudent">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".view.ui.ScoreDetailsActivity">
         </activity>
@@ -32,7 +27,11 @@
         </activity>
         <activity android:name=".view.ui.ScoresActivity" />
         <activity android:name=".view.ui.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".view.ui.CreateRegistrationActivity" />
         <activity

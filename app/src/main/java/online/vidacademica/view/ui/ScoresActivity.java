@@ -30,7 +30,6 @@ public class ScoresActivity extends AppCompatActivity {
     List<SubjectByCourseDTO> subByCourse = new ArrayList<>();
     List<String> spinnerContent = new ArrayList<>();
 
-
     ActivityScoresBinding binding;
 
     @Override
@@ -82,7 +81,7 @@ public class ScoresActivity extends AppCompatActivity {
         //Carregar os cursos do aluno para preecher o spinner (findOwnerId)
         // Mock ligação course com subject
 
-        spinnerContent.add(0, "Sistemas");
+        spinnerContent.add(0, "Sistemas para internet");
         spinnerContent.add(1, "Logistica");
 
     }
