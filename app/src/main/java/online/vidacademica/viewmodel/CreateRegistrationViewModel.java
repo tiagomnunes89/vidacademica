@@ -22,15 +22,11 @@ import static online.vidacademica.repositories.network.vidacademica.VidAcademica
 public class CreateRegistrationViewModel extends AndroidViewModel {
 
     private CreateRegistrationRepository createRegistrationRepository;
-//    public ActivityCreateRegistrationBinding createRegistrationBinding = new ActivityCreateRegistrationBinding();
-
-    public RegistrationDTO registrationDTO = new RegistrationDTO();
 
 
-    private MutableLiveData<ResponseModel<RegistrationDTO>> registrationResponse;
+    int registrationResponse;
     private MutableLiveData<ResponseModel<List<UserEntity>>> allUsersResponse;
     private MutableLiveData<ResponseModel<List<ClassDTO>>> allClassesResponse;
-
 
 
     public CreateRegistrationViewModel(@NonNull Application application) {
@@ -51,23 +47,8 @@ public class CreateRegistrationViewModel extends AndroidViewModel {
     }
 
 
-    public void attachStudent() {
-        createRegistrationRepository.attachStudent(registrationDTO,registrationResponse);
-    }
-
-    public LiveData<ResponseModel<RegistrationDTO>> getLastCreated() {
-        if (registrationResponse == null) registrationResponse = new MutableLiveData<>();
-        return registrationResponse;
-    }
-
-    public boolean lastTestcreated() {
-        boolean response = false;
-
-        if (getLastCreated() != null && getLastCreated().getValue() != null && getLastCreated().getValue().getCode() == STATUS_CODE_CREATED) {
-            response = true;
-        }
-
-        return response;
+    public void attachStudent(RegistrationDTO registrationDTO) {
+        createRegistrationRepository.attachStudent(registrationDTO);
     }
 
 
