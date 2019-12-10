@@ -45,6 +45,7 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="@android:color/white"
                         android:hint="@string/subject"
+                        android:maxLength="20"
                         android:inputType="text"
                         android:textColor="@android:color/white"
                         android:textColorHint="@android:color/white" />
@@ -88,6 +89,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/white"
                     android:hint="@string/description"
+                    android:maxLength="80"
                     android:inputType="textMultiLine" />
 
             </com.google.android.material.textfield.TextInputLayout>

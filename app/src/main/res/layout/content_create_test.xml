@@ -45,6 +45,7 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="@android:color/white"
                         android:hint="@string/name"
+                        android:maxLength="20"
                         android:inputType="text"
                         android:text="@={TestViewModel.testEntity.name}"
                         android:textColor="@android:color/white"
