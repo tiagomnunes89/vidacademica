@@ -90,6 +90,8 @@
 
     <!--Tela de Registro-->
     <string name="register_title_update">Atualização</string>
+    <string name="register_ficha_ok">Ficha salva com sucesso.</string>
+    <string name="register_ficha_error">Erro, servidor ocupado, tente novamente mais tarde.</string>
 
     <!--Tela de Login-->
     <string name="login_toast_in_loading">Realizando o login… Aguarde.</string>

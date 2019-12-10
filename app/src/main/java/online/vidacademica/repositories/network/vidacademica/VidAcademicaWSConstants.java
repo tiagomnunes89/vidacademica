@@ -15,6 +15,7 @@ public final class VidAcademicaWSConstants {
     public static final String AUTH_PATH_LOGIN = AUTH_PATH + "/login";
 
     public static final String USER_PATH = "/users";
+    public static final String USER_PATH_SELF = "/users/self";
     public static final String USER_PATH_ID = "/users/{id}";
 
     public static final String TEST_PATH = "/tests";

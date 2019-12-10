@@ -24,7 +24,7 @@ public interface UserService {
     @PUT(VidAcademicaWSConstants.USER_PATH_ID)
     Call<UserEntity> update(@Header(AUTH_HEADER_KEY) String bearerToken, @Path("id") Long userId, @Body UserEntity userEntity);
 
-    @GET(VidAcademicaWSConstants.USER_PATH)
+    @GET(VidAcademicaWSConstants.USER_PATH_SELF)
     Call<UserEntity> self(@Header(AUTH_HEADER_KEY) String bearerToken);
 
 
