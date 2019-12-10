@@ -26,4 +26,6 @@ public interface UserService {
 
     @GET(VidAcademicaWSConstants.USER_PATH)
     Call<UserEntity> self(@Header(AUTH_HEADER_KEY) String bearerToken);
+
+
 }

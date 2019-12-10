@@ -13,6 +13,7 @@ import online.vidacademica.core.ErrorMessage;
 import online.vidacademica.core.ResponseModel;
 import online.vidacademica.entities.ClassDTO;
 import online.vidacademica.entities.ClassEntity;
+import online.vidacademica.entities.RegistrationDTO;
 import online.vidacademica.entities.TokenEntity;
 import online.vidacademica.entities.UserEntity;
 import online.vidacademica.repositories.network.vidacademica.VidAcademicaWSClient;
@@ -107,6 +108,41 @@ public class CreateRegistrationRepository {
 
             @Override
             public void onFailure(Call<List<ClassDTO>> call, Throwable t) {
+                Log.i(TAG, "onFailure: " + Arrays.toString(t.getStackTrace()));
+            }
+        });
+
+        return mutableLiveDataObject;
+
+    }
+
+    public MutableLiveData<ResponseModel<RegistrationDTO>> attachStudent(RegistrationDTO registrationDTO, final MutableLiveData<ResponseModel<RegistrationDTO>> mutableLiveDataObject) {
+
+        TokenEntity tokenEntity = Optional.of(tokenRepository.getTokenSync()).orElse(new TokenEntity());
+
+        String hash = "";
+        if (tokenEntity != null) {
+            hash = tokenEntity.getToken();
+        }
+
+        classService.attachStudent(String.format("Bearer %s", hash), registrationDTO).enqueue(new Callback<RegistrationDTO>() {
+            @Override
+            public void onResponse(Call<RegistrationDTO> call, Response<RegistrationDTO> response) {
+                ResponseModel<RegistrationDTO> responseModel = new ResponseModel<>();
+
+                responseModel.setCode(response.code());
+                responseModel.setResponse(response.body());
+
+                if (!response.isSuccessful()) {
+                    ErrorMessage err = new ErrorMessage(response.code(), JsonUtils.toJson(response.errorBody()));
+                    responseModel.setErrorMessage(err);
+                }
+
+                mutableLiveDataObject.setValue(responseModel);
+            }
+
+            @Override
+            public void onFailure(Call<RegistrationDTO> call, Throwable t) {
                 Log.i(TAG, "onFailure: " + Arrays.toString(t.getStackTrace()));
             }
         });
