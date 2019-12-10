@@ -12,24 +12,29 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityCreateRegistrationBinding;
+import online.vidacademica.entities.ClassDTO;
+import online.vidacademica.entities.ClassEntity;
+import online.vidacademica.entities.CourseDTO;
 import online.vidacademica.entities.TestEntity;
 import online.vidacademica.entities.UserEntity;
 import online.vidacademica.view.adapter.StudentsAdapter;
+import online.vidacademica.view.adapter.TestsAdapter;
 import online.vidacademica.viewmodel.CreateRegistrationViewModel;
 
 import static online.vidacademica.repositories.network.vidacademica.VidAcademicaWSConstants.STATUS_CODE_OK;
 
 public class CreateRegistrationActivity extends BaseActivity {
 
-    List<UserEntity> students = new ArrayList<>();
     List<UserEntity> registeredStudents = new ArrayList<>();
     List<UserEntity> allUsers = new ArrayList<>();
+    List<ClassDTO> allClasses = new ArrayList<>();
 
     private CreateRegistrationViewModel createRegistrationViewModel;
 //    private ActivityCreateRegistrationBinding binding;
@@ -44,12 +49,7 @@ public class CreateRegistrationActivity extends BaseActivity {
 //        binding.setLifecycleOwner(this);
 //        binding.setCreateRegistrationViewModel(createRegistrationViewModel);
 
-        // Preencher list do autocomplete quando digitar nome dos alunos(carrega a partir de 3 letras)
-        String []students = getStudents();
 
-        for (UserEntity student: allUsers) {
-            Log.d("Nome",student.getName());
-        }
 
 
 
@@ -138,6 +138,31 @@ public class CreateRegistrationActivity extends BaseActivity {
 
             }
         });
+
+        createRegistrationViewModel.getAllClasses().observe(this, allClasssesResponse -> {
+            if (allClasssesResponse != null) {
+                if (allClasssesResponse.getCode() == STATUS_CODE_OK) {
+                    allClasses.addAll(allClasssesResponse.getResponse());
+                    String [] classeVect = new String[allClasses.size()];
+                    int x = 0;
+                    for (ClassDTO classe: allClasses) {
+                        classeVect[x++] = classe.getName();
+                    }
+                    String [] classes = classeVect;
+
+                    Spinner spinnerCourses = (Spinner) findViewById(R.id.select_class);
+                    ArrayAdapter adapterSpinner = new ArrayAdapter(CreateRegistrationActivity.this, android.R.layout.simple_list_item_1, classes);
+
+                    spinnerCourses.setAdapter(adapterSpinner);
+
+                } else {
+                    showToast("Erro");
+
+                }
+
+            }
+        });
+
 
     }
     }
