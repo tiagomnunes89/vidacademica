@@ -3,6 +3,8 @@ package online.vidacademica.view.ui;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 
 import androidx.databinding.DataBindingUtil;
@@ -109,32 +111,48 @@ public class RegisterUpdateUserActivity extends ActivityBaseClassValidator {
     @Override
     protected void observeFields() {
         binding.layoutRegisterContent.editTextName.setOnFocusChangeListener((v, hasFocus) -> {
-            if (!hasFocus)
-                enableContinueButton(executeAllValidators(getValidationList(), NameValidation.class));
-            else binding.layoutRegisterContent.textInputName.setErrorEnabled(false);
+            enableContinueButton(executeAllValidators(getValidationList(), NameValidation.class));
+            if (hasFocus)
+                binding.layoutRegisterContent.textInputName.setErrorEnabled(false);
         });
         binding.layoutRegisterContent.editTextEmail.setOnFocusChangeListener((v, hasFocus) -> {
-            if (!hasFocus)
-                enableContinueButton(executeAllValidators(getValidationList(), EmailValidation.class));
-            else binding.layoutRegisterContent.textInputEmail.setErrorEnabled(false);
+            enableContinueButton(executeAllValidators(getValidationList(), EmailValidation.class));
+            if (hasFocus)
+                binding.layoutRegisterContent.textInputEmail.setErrorEnabled(false);
         });
         binding.layoutRegisterContent.editTextBirthDate.setOnFocusChangeListener((v, hasFocus) -> {
-            if (!hasFocus)
-                enableContinueButton(executeAllValidators(getValidationList(), BirthDateValidation.class));
-            else {
+            enableContinueButton(executeAllValidators(getValidationList(), BirthDateValidation.class));
+            if (hasFocus) {
                 binding.layoutRegisterContent.textInputBirth.setErrorEnabled(false);
                 util.callDatePickerDialog(RegisterUpdateUserActivity.this, onDateSetListener);
             }
         });
         binding.layoutRegisterContent.editTextPassword.setOnFocusChangeListener((v, hasFocus) -> {
-            if (!hasFocus)
+            enableContinueButton(executeAllValidators(getValidationList(), PasswordValidation.class));
+            if (hasFocus) {
+                binding.layoutRegisterContent.textInputPassword.setErrorEnabled(false);
+            }
+        });
+        binding.layoutRegisterContent.editTextPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
                 enableContinueButton(executeAllValidators(getValidationList(), PasswordValidation.class));
-            else binding.layoutRegisterContent.textInputPassword.setErrorEnabled(false);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
         });
         binding.layoutRegisterContent.editTextRg.setOnFocusChangeListener((v, hasFocus) -> {
-            if (!hasFocus)
-                enableContinueButton(executeAllValidators(getValidationList(), ValidatorDefaultTextInput.class));
-            else binding.layoutRegisterContent.textInputRg.setErrorEnabled(false);
+            enableContinueButton(executeAllValidators(getValidationList(), ValidatorDefaultTextInput.class));
+            if (hasFocus)
+                binding.layoutRegisterContent.textInputRg.setErrorEnabled(false);
         });
     }
 

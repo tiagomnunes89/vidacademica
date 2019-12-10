@@ -72,7 +72,7 @@ public class Util {
     }
 
     public static boolean validatePatternPassword(String password) {
-        if (password == null) return false;
+        if (password == null || password.length() <=7) return false;
         Matcher matcher = PASSWORD_PATTERN.matcher(password);
         // The password must be from 8 to 10 digits with less than 1 number and less than 1 letter
         return matcher.find();
