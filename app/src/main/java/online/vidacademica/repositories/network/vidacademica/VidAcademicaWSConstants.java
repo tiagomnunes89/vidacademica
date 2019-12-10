@@ -25,5 +25,5 @@ public final class VidAcademicaWSConstants {
 
     public static final String CLASS_PATH = "/class";
 
-    public static final String CLASS_PATH_ATTACH_STUDENT = "/attach-student";
+    public static final String CLASS_PATH_ATTACH_STUDENT = "class/attach-student";
 }

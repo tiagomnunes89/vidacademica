@@ -3,6 +3,7 @@ package online.vidacademica.view.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Spinner;
@@ -18,6 +19,7 @@ import java.util.List;
 import online.vidacademica.R;
 import online.vidacademica.databinding.ActivityCreateRegistrationBinding;
 import online.vidacademica.entities.ClassDTO;
+import online.vidacademica.entities.RegistrationDTO;
 import online.vidacademica.entities.UserEntity;
 import online.vidacademica.view.adapter.StudentsAdapter;
 import online.vidacademica.viewmodel.CreateRegistrationViewModel;
@@ -29,6 +31,7 @@ public class CreateRegistrationActivity extends BaseActivity {
     List<UserEntity> registeredStudents = new ArrayList<>();
     List<UserEntity> allUsers = new ArrayList<>();
     List<ClassDTO> allClasses = new ArrayList<>();
+    RegistrationDTO registrationDTO = new RegistrationDTO();
 
     private CreateRegistrationViewModel createRegistrationViewModel;
     private ActivityCreateRegistrationBinding binding;
@@ -143,11 +146,25 @@ public class CreateRegistrationActivity extends BaseActivity {
                         classeVect[x++] = classe.getName();
                     }
                     String[] classes = classeVect;
+                    Spinner spinnerclasses = findViewById(R.id.select_class);
 
-                    Spinner spinnerCourses = (Spinner) findViewById(R.id.select_class);
                     ArrayAdapter adapterSpinner = new ArrayAdapter(CreateRegistrationActivity.this, android.R.layout.simple_list_item_1, classes);
 
-                    spinnerCourses.setAdapter(adapterSpinner);
+                    spinnerclasses.setAdapter(adapterSpinner);
+
+                    spinnerclasses.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            registrationDTO.setClasse(parent.getItemAtPosition(position).toString());
+
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
+
 
                 } else {
                     showToast("Erro");
@@ -157,32 +174,14 @@ public class CreateRegistrationActivity extends BaseActivity {
             }
         });
 
-//        binding.btnSaveRegistration.setOnClickListener(new View.OnClickListener() {
-//
-//
-//            @Override
-//            public void onClick(View view) {
-//                showToast(R.string.create_test_toast_create_loading);
-//                showProgressBar(R.id.create_test_screen);
-//                createRegistrationViewModel.attachStudent();
-//            }
-//        });
-//
-//        createRegistrationViewModel.getLastCreated().observe(this, registrationResponse -> {
-//            dismissProgressBar();
-//
-//            boolean testCreated = createRegistrationViewModel.lastTestcreated();
-//
-//            if (registrationResponse != null) {
-//
-//                if (testCreated) {
-//                    showToast(R.string.create_test_toast_create_ok);
-//                    showAlert(R.string.create_test_alert_title, R.string.create_test_alert_message, 0);
-//                } else {
-//                    showToast(R.string.create_course_toast_create_error);
-//                }
-//
-//            }
-//        });
+
+    }
+
+    public void attachStudent(View view) {
+        AutoCompleteTextView name_student = findViewById(R.id.text_input_name_student);
+        registrationDTO.setUser(name_student.getText().toString());
+        createRegistrationViewModel.attachStudent(registrationDTO);
+
+        startActivity(new Intent(CreateRegistrationActivity.this, CreateRegistrationActivity.class));
     }
 }

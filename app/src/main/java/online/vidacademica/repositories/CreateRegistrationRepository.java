@@ -2,7 +2,9 @@ package online.vidacademica.repositories;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.Arrays;
@@ -21,6 +23,7 @@ import online.vidacademica.repositories.network.vidacademica.services.ClassServi
 import online.vidacademica.repositories.network.vidacademica.services.CourseService;
 import online.vidacademica.repositories.network.vidacademica.services.UserService;
 import online.vidacademica.utils.JsonUtils;
+import online.vidacademica.view.ui.CreateRegistrationActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -116,7 +119,7 @@ public class CreateRegistrationRepository {
 
     }
 
-    public MutableLiveData<ResponseModel<RegistrationDTO>> attachStudent(RegistrationDTO registrationDTO, final MutableLiveData<ResponseModel<RegistrationDTO>> mutableLiveDataObject) {
+    public void attachStudent(RegistrationDTO registrationDTO) {
 
         TokenEntity tokenEntity = Optional.of(tokenRepository.getTokenSync()).orElse(new TokenEntity());
 
@@ -125,20 +128,14 @@ public class CreateRegistrationRepository {
             hash = tokenEntity.getToken();
         }
 
+        Log.println(Log.DEBUG,"TAG",registrationDTO.getUser());
+        Log.println(Log.DEBUG,"TAG",registrationDTO.getClasse());
+
+
         classService.attachStudent(String.format("Bearer %s", hash), registrationDTO).enqueue(new Callback<RegistrationDTO>() {
             @Override
             public void onResponse(Call<RegistrationDTO> call, Response<RegistrationDTO> response) {
-                ResponseModel<RegistrationDTO> responseModel = new ResponseModel<>();
-
-                responseModel.setCode(response.code());
-                responseModel.setResponse(response.body());
-
-                if (!response.isSuccessful()) {
-                    ErrorMessage err = new ErrorMessage(response.code(), JsonUtils.toJson(response.errorBody()));
-                    responseModel.setErrorMessage(err);
-                }
-
-                mutableLiveDataObject.setValue(responseModel);
+                Log.i(TAG, "Success: " + response.toString());
             }
 
             @Override
@@ -146,8 +143,6 @@ public class CreateRegistrationRepository {
                 Log.i(TAG, "onFailure: " + Arrays.toString(t.getStackTrace()));
             }
         });
-
-        return mutableLiveDataObject;
 
     }
 
