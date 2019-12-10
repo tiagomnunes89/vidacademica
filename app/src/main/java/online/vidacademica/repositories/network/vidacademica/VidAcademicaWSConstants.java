@@ -21,4 +21,6 @@ public final class VidAcademicaWSConstants {
 
     public static final String COURSE_PATH = "/courses";
     public static final String COURSE_PATH_ID = "/courses/{id}";
+
+    public static final String CLASS_PATH = "/class";
 }
