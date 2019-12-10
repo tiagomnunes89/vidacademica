@@ -2,11 +2,14 @@ package online.vidacademica.view.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
@@ -14,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import online.vidacademica.R;
+import online.vidacademica.databinding.ActivityCreateRegistrationBinding;
 import online.vidacademica.entities.TestEntity;
 import online.vidacademica.entities.UserEntity;
 import online.vidacademica.view.adapter.StudentsAdapter;
@@ -28,19 +32,26 @@ public class CreateRegistrationActivity extends BaseActivity {
     List<UserEntity> allUsers = new ArrayList<>();
 
     private CreateRegistrationViewModel createRegistrationViewModel;
+//    private ActivityCreateRegistrationBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_registration);
+        createRegistrationViewModel = ViewModelProviders.of(this).get(CreateRegistrationViewModel.class);
+//        binding = DataBindingUtil.setContentView(this,R.layout.content_create_registration);
+//        binding.setLifecycleOwner(this);
+//        binding.setCreateRegistrationViewModel(createRegistrationViewModel);
 
         // Preencher list do autocomplete quando digitar nome dos alunos(carrega a partir de 3 letras)
         String []students = getStudents();
 
-        AutoCompleteTextView autoCompleteTextView = findViewById(R.id.text_input_name_student);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                (this,android.R.layout.simple_list_item_1,students);
-        autoCompleteTextView.setAdapter(adapter);
+        for (UserEntity student: allUsers) {
+            Log.d("Nome",student.getName());
+        }
+
+
 
         //Preencher a lista dos ja matriculados
         getRegisteredStudents();
@@ -79,13 +90,6 @@ public class CreateRegistrationActivity extends BaseActivity {
     }
     private String[] getStudents() {
 
-        //MockStudentsQuePodemSerMatriculados(criados no sistema)
-        UserEntity stu1 = new UserEntity(null, "CarlosADD", "email", "1978/11/16", "bla", "bla");
-        UserEntity stu2 = new UserEntity(null, "CarlosComboyADD", "email", "1978/11/16", "bla", "bla");
-        UserEntity stu3 = new UserEntity(null, "SoteroOverflowADD", "email", "1978/11/16", "bla", "bla");
-        students.add(stu1);
-        students.add(stu2);
-        students.add(stu3);
         //-------------------
         // O adapter utilizado pra preencher a lista do autocomplete é padrao do android e recebe vetor de strings, por isso o codigo abaixo;
         String [] studentsVect = new String[allUsers.size()];
@@ -115,6 +119,18 @@ public class CreateRegistrationActivity extends BaseActivity {
                 if (allUsersResponse != null) {
                     if (allUsersResponse.getCode() == STATUS_CODE_OK) {
                         allUsers.addAll(allUsersResponse.getResponse());
+                        String [] studentsVect = new String[allUsers.size()];
+                        int x = 0;
+                        for (UserEntity student: allUsers) {
+                            studentsVect[x++] = student.getName();
+                        }
+                        String []students = studentsVect;
+
+
+                        AutoCompleteTextView autoCompleteTextView = findViewById(R.id.text_input_name_student);
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                                (this,android.R.layout.simple_list_item_1,students);
+                        autoCompleteTextView.setAdapter(adapter);
                     } else {
                         showToast("Erro");
 

@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.List;
 
 import online.vidacademica.core.ResponseModel;
+import online.vidacademica.databinding.ActivityCreateRegistrationBinding;
 import online.vidacademica.entities.UserEntity;
 import online.vidacademica.repositories.CreateRegistrationRepository;
 
@@ -16,6 +17,7 @@ import online.vidacademica.repositories.CreateRegistrationRepository;
 public class CreateRegistrationViewModel extends AndroidViewModel {
 
     private CreateRegistrationRepository createRegistrationRepository;
+//    public ActivityCreateRegistrationBinding createRegistrationBinding = new ActivityCreateRegistrationBinding();
 
     private MutableLiveData<ResponseModel<List<UserEntity>>> allUsersResponse;
 
