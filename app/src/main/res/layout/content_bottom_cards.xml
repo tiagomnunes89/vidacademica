@@ -51,6 +51,7 @@
                 android:layout_width="@dimen/huge_size"
                 android:layout_height="@dimen/huge_size"
                 android:layout_marginEnd="@dimen/no_size"
+                android:onClick="openSubjectsStudent"
                 app:cardCornerRadius="@dimen/tiny_size"
                 app:cardElevation="@dimen/no_size"
                 app:cardUseCompatPadding="true"

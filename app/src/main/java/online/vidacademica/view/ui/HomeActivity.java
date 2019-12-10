@@ -206,6 +206,10 @@ public class HomeActivity extends BaseActivity {
         startActivity(new Intent(HomeActivity.this, ListMyCoursesActivity.class));
     }
 
+    public void openSubjectsStudent(View view) {
+        startActivity(new Intent(HomeActivity.this, SubjectsStudent.class));
+    }
+
     public void addCourses(View view) {
         startActivity(new Intent(HomeActivity.this, CreateUpdateCourseActivity.class));
     }
