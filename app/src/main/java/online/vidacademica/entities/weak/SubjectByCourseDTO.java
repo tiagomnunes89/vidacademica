@@ -5,27 +5,27 @@ import java.io.Serializable;
 public class SubjectByCourseDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Integer courseId;
-    private  Integer subjectId;
+    private Long courseId;
+    private  Long subjectId;
 
-    public SubjectByCourseDTO(Integer courseId, Integer subjectId) {
+    public SubjectByCourseDTO(Long courseId, Long subjectId) {
         this.courseId = courseId;
         this.subjectId = subjectId;
     }
 
-    public Integer getCourseId() {
+    public Long getCourseId() {
         return courseId;
     }
 
-    public void setCourseId(Integer courseId) {
+    public void setCourseId(Long courseId) {
         this.courseId = courseId;
     }
 
-    public Integer getSubjectId() {
+    public Long getSubjectId() {
         return subjectId;
     }
 
-    public void setSubjectId(Integer subjectId) {
+    public void setSubjectId(Long subjectId) {
         this.subjectId = subjectId;
     }
 }

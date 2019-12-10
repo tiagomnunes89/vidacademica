@@ -52,7 +52,6 @@ public class CreateRegistrationActivity extends BaseActivity {
 
 
 
-
         //Preencher a lista dos ja matriculados
         getRegisteredStudents();
         observeActions();

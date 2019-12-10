@@ -25,10 +25,6 @@
                 android:layout_height="0dp"
                 android:background="@drawable/spinner_border_input"
                 android:entries="@array/courses"
-                android:paddingStart="@dimen/little_size"
-                android:paddingTop="@dimen/semi_short_size"
-                android:paddingEnd="@dimen/little_size"
-                android:paddingBottom="@dimen/semi_short_size"
                 android:spinnerMode="dropdown"
                 app:layout_constraintTop_toTopOf="parent" />
 

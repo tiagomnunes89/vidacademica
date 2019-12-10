@@ -32,7 +32,6 @@ public class LoginActivity extends ActivityBaseClassValidator {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
 
         colorStatusBar(getWindow());
 
@@ -81,14 +80,13 @@ public class LoginActivity extends ActivityBaseClassValidator {
             public void onChanged(@Nullable TokenEntity tokenEntity) {
                 dismissProgressBar();
                 if (tokenEntity == null) {
-                    binding.editUser.setError("Usuário ou senha incorretos.");
+                    binding.editUser.setError(getString(R.string.login_toast_error));
                 } else {
-                    showToast(R.string.login_toast_ok);
-
+//                    showToast(R.string.login_toast_ok);
                     USER_ROLE = RoleEnum.fromString(tokenEntity.getRole());
-
                     startActivity(new Intent(LoginActivity.this, HomeActivity.class)
                             .putExtra(ROLE, USER_ROLE));
+
                 }
             }
         });

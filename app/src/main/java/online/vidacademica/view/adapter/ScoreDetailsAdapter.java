@@ -1,8 +1,6 @@
 package online.vidacademica.view.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,14 +15,10 @@ import java.util.Locale;
 
 import online.vidacademica.R;
 import online.vidacademica.entities.TestResultDTO;
-import online.vidacademica.view.enums.CrudEnum;
-import online.vidacademica.view.ui.MyScoresActivity;
-import online.vidacademica.view.ui.MyScoresPerSubjectActivity;
+import online.vidacademica.view.ui.ScoresActivity;
 
-import static online.vidacademica.utils.JsonUtils.toJson;
-
-public class MyScoresPerSubjectAdapter extends RecyclerView.Adapter<MyScoresPerSubjectAdapter.ScoresViewHolder> {
-    private static final String TAG = MyScoresActivity.class.getSimpleName();
+public class ScoreDetailsAdapter extends RecyclerView.Adapter<ScoreDetailsAdapter.ScoresViewHolder> {
+    private static final String TAG = ScoresActivity.class.getSimpleName();
 
     private Context context;
 
@@ -32,7 +26,7 @@ public class MyScoresPerSubjectAdapter extends RecyclerView.Adapter<MyScoresPerS
 
     private LayoutInflater layoutInflater;
 
-    public MyScoresPerSubjectAdapter(Context context, List<TestResultDTO> testResultDTOS) {
+    public ScoreDetailsAdapter(Context context, List<TestResultDTO> testResultDTOS) {
         this.context = context;
         this.testResultDTOS = testResultDTOS;
         this.layoutInflater = LayoutInflater.from(context);

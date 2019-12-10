@@ -17,10 +17,8 @@ import java.util.Locale;
 
 import online.vidacademica.R;
 import online.vidacademica.entities.ScoreBySubject;
-import online.vidacademica.entities.TestResultDTO;
 import online.vidacademica.view.enums.CrudEnum;
-import online.vidacademica.view.ui.CreateUpdateCourseActivity;
-import online.vidacademica.view.ui.MyScoresPerSubjectActivity;
+import online.vidacademica.view.ui.ScoreDetailsActivity;
 
 import static online.vidacademica.utils.JsonUtils.toJson;
 
@@ -61,7 +59,7 @@ public class ScoresAdapter extends RecyclerView.Adapter<ScoresAdapter.ScoresView
         holder.itemView.setOnClickListener(v -> {
             Log.i(TAG, "onBindViewHolder: " + toJson(scoreBySubjects.get(position)));
 
-            Intent intent = new Intent(context, MyScoresPerSubjectActivity.class)
+            Intent intent = new Intent(context, ScoreDetailsActivity.class)
                     .putExtra(CRUD_TYPE, UPDATE)
                     .putExtra(SELECTED_OBJECT, toJson(scoreBySubjects.get(position)));
 
