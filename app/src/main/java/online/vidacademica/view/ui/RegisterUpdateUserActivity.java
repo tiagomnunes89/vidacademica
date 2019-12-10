@@ -3,6 +3,7 @@ package online.vidacademica.view.ui;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Toast;
 
@@ -45,7 +46,7 @@ public class RegisterUpdateUserActivity extends ActivityBaseClassValidator {
 
     private Util util = new Util();
 
-    private Boolean screenCreated;
+    private boolean screenCreated;
 
     private static CrudEnum ACTIVITY_FLOW;
 
@@ -84,17 +85,17 @@ public class RegisterUpdateUserActivity extends ActivityBaseClassValidator {
     protected void captureIntent() {
         ACTIVITY_FLOW = (CrudEnum) Optional.ofNullable(getIntent().getSerializableExtra(CRUD_TYPE)).orElse(CrudEnum.CREATE);
 
-        if (ACTIVITY_FLOW.equals(CrudEnum.UPDATE)) {
-            String selectedCourseJson = (String) getIntent().getSerializableExtra(SELECTED_OBJECT);
-
-            if (selectedCourseJson != null) {
-                CourseDTO selectedCourse = new Gson().fromJson(selectedCourseJson, CourseDTO.class);
-
-                if (selectedCourse != null) {
-//                    courseViewModel.courseDTO = selectedCourse;
-                }
-            }
-        }
+//        if (ACTIVITY_FLOW.equals(CrudEnum.UPDATE)) {
+//            String selectedCourseJson = (String) getIntent().getSerializableExtra(SELECTED_OBJECT);
+//
+//            if (selectedCourseJson != null) {
+//                CourseDTO selectedCourse = new Gson().fromJson(selectedCourseJson, CourseDTO.class);
+//
+//                if (selectedCourse != null) {
+////                    courseViewModel.courseDTO = selectedCourse;
+//                }
+//            }
+//        }
     }
 
     @Override
@@ -151,7 +152,11 @@ public class RegisterUpdateUserActivity extends ActivityBaseClassValidator {
             public void onClick(View v) {
 //                startActivity(new Intent(RegisterUpdateUserActivity.this, ProfileActivity.class));
                 showProgressBar(R.id.register_screen);
-                userViewModel.register();
+                if (ACTIVITY_FLOW.equals(CrudEnum.UPDATE)) {
+                    userViewModel.update();
+                } else {
+                    userViewModel.register();
+                }
             }
         });
 
@@ -167,11 +172,31 @@ public class RegisterUpdateUserActivity extends ActivityBaseClassValidator {
         userViewModel.getIsResponseModelLiveData().observe(this, userEntityResponseModel -> {
             dismissProgressBar();
 
+            boolean isRegistred = userViewModel.isRegistred();
+            boolean isUpdated = userViewModel.isUpdated();
+
             if (userEntityResponseModel != null) {
-                if (userViewModel.isRegistred() || (userViewModel.isUpdated() && !screenCreated)) {
-                    showToast(R.string.register_ficha_ok);
-                } else if (screenCreated && userViewModel.isUpdated()) {
-                    userViewModel.userEntity = userEntityResponseModel.getResponse();
+                if (isRegistred) {
+                    showToast(R.string.register_ficha_criada);
+                    loginViewModel.deleteLoginData();
+                    Intent openLoginActivity = new Intent(RegisterUpdateUserActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                    startActivity(openLoginActivity);
+                    finish();
+                } else if (isUpdated && !screenCreated) {
+                    showToast(R.string.register_ficha_atualizada);
+                    Intent openLoginActivity = new Intent(RegisterUpdateUserActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                    startActivity(openLoginActivity);
+                    finish();
+                } else if (screenCreated && isUpdated) {
+                    binding.layoutRegisterContent.editTextName.setText(userEntityResponseModel.getResponse().getName());
+                    userViewModel.userEntity.setId(userEntityResponseModel.getResponse().getId());
+
+                    binding.layoutRegisterContent.textInputEmail.setVisibility(View.INVISIBLE);
+                    binding.layoutRegisterContent.textInputRg.setVisibility(View.INVISIBLE);
+                    binding.layoutRegisterContent.textInputBirth.setVisibility(View.INVISIBLE);
+                    binding.layoutRegisterContent.textInputPassword.setVisibility(View.INVISIBLE);
+
+                    enableContinueButton(true);
                 } else {
                     showToast(R.string.register_ficha_error);
                 }

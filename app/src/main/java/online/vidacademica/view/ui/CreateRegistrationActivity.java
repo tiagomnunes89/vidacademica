@@ -1,7 +1,5 @@
 package online.vidacademica.view.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Spinner;
@@ -45,11 +44,9 @@ public class CreateRegistrationActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_registration);
         createRegistrationViewModel = ViewModelProviders.of(this).get(CreateRegistrationViewModel.class);
-//        binding = DataBindingUtil.setContentView(this,R.layout.content_create_registration);
+//        binding = DataBindingUtil.setContentView(this, R.layout.content_create_registration);
 //        binding.setLifecycleOwner(this);
 //        binding.setCreateRegistrationViewModel(createRegistrationViewModel);
-
-
 
 
         //Preencher a lista dos ja matriculados
@@ -87,13 +84,14 @@ public class CreateRegistrationActivity extends BaseActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
     }
+
     private String[] getStudents() {
 
         //-------------------
         // O adapter utilizado pra preencher a lista do autocomplete é padrao do android e recebe vetor de strings, por isso o codigo abaixo;
-        String [] studentsVect = new String[allUsers.size()];
+        String[] studentsVect = new String[allUsers.size()];
         int x = 0;
-        for (UserEntity student: allUsers) {
+        for (UserEntity student : allUsers) {
             studentsVect[x++] = student.getName();
         }
         return studentsVect;
@@ -115,25 +113,25 @@ public class CreateRegistrationActivity extends BaseActivity {
 
     protected void observeActions() {
         createRegistrationViewModel.getAllUsers().observe(this, allUsersResponse -> {
-                if (allUsersResponse != null) {
-                    if (allUsersResponse.getCode() == STATUS_CODE_OK) {
-                        allUsers.addAll(allUsersResponse.getResponse());
-                        String [] studentsVect = new String[allUsers.size()];
-                        int x = 0;
-                        for (UserEntity student: allUsers) {
-                            studentsVect[x++] = student.getName();
-                        }
-                        String []students = studentsVect;
-
-
-                        AutoCompleteTextView autoCompleteTextView = findViewById(R.id.text_input_name_student);
-                        ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                                (this,android.R.layout.simple_list_item_1,students);
-                        autoCompleteTextView.setAdapter(adapter);
-                    } else {
-                        showToast("Erro");
-
+            if (allUsersResponse != null) {
+                if (allUsersResponse.getCode() == STATUS_CODE_OK) {
+                    allUsers.addAll(allUsersResponse.getResponse());
+                    String[] studentsVect = new String[allUsers.size()];
+                    int x = 0;
+                    for (UserEntity student : allUsers) {
+                        studentsVect[x++] = student.getName();
                     }
+                    String[] students = studentsVect;
+
+
+                    AutoCompleteTextView autoCompleteTextView = findViewById(R.id.text_input_name_student);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                            (this, android.R.layout.simple_list_item_1, students);
+                    autoCompleteTextView.setAdapter(adapter);
+                } else {
+                    showToast("Erro");
+
+                }
 
             }
         });
@@ -142,12 +140,12 @@ public class CreateRegistrationActivity extends BaseActivity {
             if (allClasssesResponse != null) {
                 if (allClasssesResponse.getCode() == STATUS_CODE_OK) {
                     allClasses.addAll(allClasssesResponse.getResponse());
-                    String [] classeVect = new String[allClasses.size()];
+                    String[] classeVect = new String[allClasses.size()];
                     int x = 0;
-                    for (ClassDTO classe: allClasses) {
+                    for (ClassDTO classe : allClasses) {
                         classeVect[x++] = classe.getName();
                     }
-                    String [] classes = classeVect;
+                    String[] classes = classeVect;
 
                     Spinner spinnerCourses = (Spinner) findViewById(R.id.select_class);
                     ArrayAdapter adapterSpinner = new ArrayAdapter(CreateRegistrationActivity.this, android.R.layout.simple_list_item_1, classes);
@@ -162,6 +160,32 @@ public class CreateRegistrationActivity extends BaseActivity {
             }
         });
 
-
+//        binding.btnSaveRegistration.setOnClickListener(new View.OnClickListener() {
+//
+//
+//            @Override
+//            public void onClick(View view) {
+//                showToast(R.string.create_test_toast_create_loading);
+//                showProgressBar(R.id.create_test_screen);
+//                createRegistrationViewModel.attachStudent();
+//            }
+//        });
+//
+//        createRegistrationViewModel.getLastCreated().observe(this, registrationResponse -> {
+//            dismissProgressBar();
+//
+//            boolean testCreated = createRegistrationViewModel.lastTestcreated();
+//
+//            if (registrationResponse != null) {
+//
+//                if (testCreated) {
+//                    showToast(R.string.create_test_toast_create_ok);
+//                    showAlert(R.string.create_test_alert_title, R.string.create_test_alert_message, 0);
+//                } else {
+//                    showToast(R.string.create_course_toast_create_error);
+//                }
+//
+//            }
+//        });
     }
-    }
+}
