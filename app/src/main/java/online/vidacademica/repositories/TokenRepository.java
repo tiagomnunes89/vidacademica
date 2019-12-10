@@ -140,8 +140,7 @@ public class TokenRepository {
 
         @Override
         protected Void doInBackground(TokenEntity... params) {
-            dao.deleteAll();
-            dao.insert(params[0]);
+            dao.insertAndDelete(params[0]);
             return null;
         }
     }
