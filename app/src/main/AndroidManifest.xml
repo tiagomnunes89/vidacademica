@@ -18,25 +18,23 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity
-            android:name=".view.ui.ScoreDetailsActivity"/>
-        <activity
-            android:name=".view.ui.AddHourClassActivity"/>
-        <activity
-            android:name=".view.ui.PreLoginActivity">
-        </activity>
-        <activity
-            android:name=".view.ui.ScoresActivity"></activity>
-        <activity android:name=".view.ui.SplashActivity">
+        <activity android:name=".view.ui.SubjectsStudent">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".view.ui.CreateRegistrationActivity" />
+        <activity android:name=".view.ui.ScoreDetailsActivity">
+        </activity>
+        <activity android:name=".view.ui.AddHourClassActivity" />
+        <activity android:name=".view.ui.PreLoginActivity">
+        </activity>
+        <activity android:name=".view.ui.ScoresActivity" />
+        <activity android:name=".view.ui.SplashActivity">
 
+        </activity>
+        <activity android:name=".view.ui.CreateRegistrationActivity" />
         <activity
             android:name=".view.ui.setResultTestActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -46,7 +44,7 @@
         <activity
             android:name=".view.ui.ListMyTestsActivity"
             android:label="@string/title_activity_list_my_tests"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".view.ui.ListMySubjectsActivity" />
         <activity
             android:name=".view.ui.CreateTestActivity"
@@ -60,7 +58,7 @@
         <activity
             android:name=".view.ui.CreateSubjectActivity"
             android:label="@string/title_activity_create_subject"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.ui.RegisterUpdateUserActivity"
             android:configChanges="orientation|screenSize" />

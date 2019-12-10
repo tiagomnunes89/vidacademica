@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_size"
+        android:background="@drawable/border_item_white"
+        android:orientation="horizontal"
+        android:padding="@dimen/semi_short_size">
+
+        <TextView
+            android:id="@+id/item_titulo_materia"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/item_recycler_title_subject"
+            android:textColor="@android:color/black"
+            tools:text="Lógica de programação" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/xx_largest_size"
+        android:layout_marginEnd="@dimen/xxxx_largest_size"
+        android:orientation="horizontal"
+        android:padding="@dimen/semi_short_size"
+        >
+
+        <TextView
+            android:id="@+id/item_dia_semana"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:ellipsize="end"
+            android:text="Segunda-feira\nTerça-feira\nQuarta-feira"
+            android:textAllCaps="true"
+            android:textColor="#4A88E4"
+           />
+
+        <TextView
+            android:id="@+id/item_horarioInicioEFim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="end"
+            android:text="19:00 - 21:00\n18:00 - 18:45\n19:00 - 21:00"
+            android:textColor="#4A88E4"
+           />
+    </LinearLayout>
+
+</FrameLayout>

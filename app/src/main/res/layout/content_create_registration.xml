@@ -32,6 +32,7 @@
                 android:hint="@string/enter_student_name"
                 android:paddingStart="@dimen/short_size"
                 android:paddingTop="@dimen/semi_short_size"
+                android:text="@={CreateRegistrationViewModel.registrationDTO.user}"
                 android:paddingEnd="@dimen/tiny_size"
                 android:paddingBottom="@dimen/semi_short_size"
                 app:layout_constraintTop_toTopOf="parent" />
