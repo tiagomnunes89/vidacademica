@@ -13,7 +13,7 @@ import online.vidacademica.repositories.UserRepository;
 
 import static online.vidacademica.repositories.network.vidacademica.VidAcademicaWSConstants.STATUS_CODE_CREATED;
 
-public class RegisterViewModel extends AndroidViewModel {
+public class UserViewModel extends AndroidViewModel {
 
     private UserRepository userRepository;
 
@@ -21,7 +21,7 @@ public class RegisterViewModel extends AndroidViewModel {
 
     private MutableLiveData<ResponseModel<UserEntity>> userEntityResponse;
 
-    public RegisterViewModel(@NonNull Application application) {
+    public UserViewModel(@NonNull Application application) {
         super(application);
         userRepository = UserRepository.getInstance(application);
     }

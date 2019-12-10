@@ -27,7 +27,7 @@ import online.vidacademica.view.validation.validators.NameValidation;
 import online.vidacademica.view.validation.validators.PasswordValidation;
 import online.vidacademica.view.validation.validators.ValidatorDefaultTextInput;
 import online.vidacademica.viewmodel.LoginViewModel;
-import online.vidacademica.viewmodel.RegisterViewModel;
+import online.vidacademica.viewmodel.UserViewModel;
 
 import static online.vidacademica.view.adapter.CoursesAdapter.CRUD_TYPE;
 import static online.vidacademica.view.adapter.CoursesAdapter.SELECTED_OBJECT;
@@ -38,7 +38,7 @@ public class RegisterUpdateUserActivity extends ActivityBaseClassValidator {
 
     private DatePickerDialog.OnDateSetListener onDateSetListener;
 
-    private RegisterViewModel registerViewModel;
+    private UserViewModel userViewModel;
     private LoginViewModel loginViewModel;
 
     private ActivityRegisterBinding binding;
@@ -64,10 +64,10 @@ public class RegisterUpdateUserActivity extends ActivityBaseClassValidator {
         screenCreated = true;
         captureIntent();
 
-        registerViewModel = ViewModelProviders.of(this).get(RegisterViewModel.class);
+        userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
 
-        binding.layoutRegisterContent.setRegisterViewModel(registerViewModel);
+        binding.layoutRegisterContent.setUserViewModel(userViewModel);
 
         observeActions();
 
@@ -149,7 +149,7 @@ public class RegisterUpdateUserActivity extends ActivityBaseClassValidator {
             public void onClick(View v) {
 //                startActivity(new Intent(RegisterUpdateUserActivity.this, ProfileActivity.class));
                 showProgressBar(R.id.register_screen);
-                registerViewModel.register();
+                userViewModel.register();
             }
         });
 
@@ -162,9 +162,9 @@ public class RegisterUpdateUserActivity extends ActivityBaseClassValidator {
         };
         binding.imageViewBack.setOnClickListener(v -> startActivity(new Intent(RegisterUpdateUserActivity.this, PreLoginActivity.class)));
 
-        registerViewModel.getIsResponseModelLiveData().observe(this, userEntityResponseModel -> {
+        userViewModel.getIsResponseModelLiveData().observe(this, userEntityResponseModel -> {
             if (screenCreated != null) {
-                if (registerViewModel.isRegistred()) {
+                if (userViewModel.isRegistred()) {
                     dismissProgressBar();
                     Toast.makeText(RegisterUpdateUserActivity.this, "Registro realizado com sucesso.", Toast.LENGTH_LONG).show();
                 } else {
