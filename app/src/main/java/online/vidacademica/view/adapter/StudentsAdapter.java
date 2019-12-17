@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,7 +20,7 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.Studen
     List<UserEntity> students = new ArrayList<>();
     LayoutInflater layoutInflater;
 
-    public StudentsAdapter (Context context, List<UserEntity> students){
+    public StudentsAdapter(Context context, List<UserEntity> students) {
         this.students = students;
         this.layoutInflater = LayoutInflater.from(context);
     }
@@ -37,10 +36,7 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.Studen
     public void onBindViewHolder(@NonNull StudentsAdapter.StudentsViewHolder holder, int position) {
         UserEntity student = students.get(position);
         holder.StudentName.setText(student.getName());
-        String birthYear = student.getDateOfBirth().substring(0, 4);
-        String birthDia  = student.getDateOfBirth().substring(15, 17);
-        String birthMonth = student.getDateOfBirth().substring(18,20);
-        holder.dateOfBirth.setText(birthDia +"/"+ birthMonth +"/"+ birthYear);
+        holder.dateOfBirth.setText(student.getDateOfBirth());
     }
 
     @Override

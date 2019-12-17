@@ -85,10 +85,6 @@
                 android:layout_marginTop="@dimen/semi_short_size"
                 android:background="@drawable/course_spinner_border_input"
                 android:entries="@array/status"
-                android:paddingStart="@dimen/little_size"
-                android:paddingTop="@dimen/semi_short_size"
-                android:paddingEnd="@dimen/little_size"
-                android:paddingBottom="@dimen/semi_short_size"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_status_course" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

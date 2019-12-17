@@ -2,9 +2,7 @@ package online.vidacademica.repositories;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
-import androidx.core.content.ContextCompat;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.Arrays;
@@ -14,21 +12,18 @@ import java.util.Optional;
 import online.vidacademica.core.ErrorMessage;
 import online.vidacademica.core.ResponseModel;
 import online.vidacademica.entities.ClassDTO;
-import online.vidacademica.entities.ClassEntity;
 import online.vidacademica.entities.RegistrationDTO;
 import online.vidacademica.entities.TokenEntity;
 import online.vidacademica.entities.UserEntity;
 import online.vidacademica.repositories.network.vidacademica.VidAcademicaWSClient;
 import online.vidacademica.repositories.network.vidacademica.services.ClassService;
-import online.vidacademica.repositories.network.vidacademica.services.CourseService;
 import online.vidacademica.repositories.network.vidacademica.services.UserService;
 import online.vidacademica.utils.JsonUtils;
-import online.vidacademica.view.ui.CreateRegistrationActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CreateRegistrationRepository {
+public class  CreateRegistrationRepository {
     private static final String TAG = CreateRegistrationRepository.class.getSimpleName();
 
     private static CreateRegistrationRepository instance;
@@ -146,4 +141,38 @@ public class CreateRegistrationRepository {
 
     }
 
+    public MutableLiveData<ResponseModel<List<UserEntity>>> findUsersByClassId(
+            final MutableLiveData<ResponseModel<List<UserEntity>>> mutableLiveDataObject,Integer id) {
+
+        TokenEntity tokenEntity = Optional.of(tokenRepository.getTokenSync()).orElse(new TokenEntity());
+
+        String hash = "";
+        if (tokenEntity != null) {
+            hash = tokenEntity.getToken();
+        }
+        classService.findUsersByClassId(String.format("Bearer %s", hash),id).enqueue(
+                new Callback<List<UserEntity>>() {
+            @Override
+            public void onResponse(Call<List<UserEntity>> call, Response<List<UserEntity>> response) {
+                ResponseModel<List<UserEntity>> responseModel = new ResponseModel<>();
+
+                responseModel.setCode(response.code());
+                responseModel.setResponse(response.body());
+
+                if (!response.isSuccessful()) {
+                    ErrorMessage err = new ErrorMessage(response.code(), JsonUtils.toJson(response.errorBody()));
+                    responseModel.setErrorMessage(err);
+                }
+
+                mutableLiveDataObject.setValue(responseModel);
+            }
+            @Override
+            public void onFailure(Call<List<UserEntity>> call, Throwable t) {
+                Log.i(TAG, "onFailure: " + Arrays.toString(t.getStackTrace()));
+            }
+        });
+
+        return mutableLiveDataObject;
+
+    }
 }

@@ -4,19 +4,15 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
 import online.vidacademica.core.ResponseModel;
-import online.vidacademica.databinding.ActivityCreateRegistrationBinding;
 import online.vidacademica.entities.ClassDTO;
 import online.vidacademica.entities.RegistrationDTO;
 import online.vidacademica.entities.UserEntity;
 import online.vidacademica.repositories.CreateRegistrationRepository;
-
-import static online.vidacademica.repositories.network.vidacademica.VidAcademicaWSConstants.STATUS_CODE_CREATED;
 
 
 public class CreateRegistrationViewModel extends AndroidViewModel {
@@ -26,6 +22,7 @@ public class CreateRegistrationViewModel extends AndroidViewModel {
 
     int registrationResponse;
     private MutableLiveData<ResponseModel<List<UserEntity>>> allUsersResponse;
+    private MutableLiveData<ResponseModel<List<UserEntity>>> allUsersClassResponse = new MutableLiveData<>();
     private MutableLiveData<ResponseModel<List<ClassDTO>>> allClassesResponse;
 
 
@@ -51,6 +48,13 @@ public class CreateRegistrationViewModel extends AndroidViewModel {
         createRegistrationRepository.attachStudent(registrationDTO);
     }
 
+    public MutableLiveData<ResponseModel<List<UserEntity>>> findUsersByClassId(int id) {
+        createRegistrationRepository.findUsersByClassId(allUsersClassResponse,id);
+        return allUsersClassResponse;
+    }
 
+    public MutableLiveData<ResponseModel<List<UserEntity>>> getAllUsersClassResponse() {
+        return allUsersClassResponse;
+    }
 }
 
